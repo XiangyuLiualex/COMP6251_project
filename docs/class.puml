@@ -1,0 +1,119 @@
+@startuml class diagram
+
+' todo: add account_credential to all user class
+class account_credential{
+    id,
+    username,
+    email,
+    password_hash,
+    salt,
+    hash_method,
+    role,
+    status,
+    last_login,
+    login(),
+    logout(),
+    changePassword(),
+}
+
+class patient{
+    id,
+    name,
+    date_of_birth,
+    address,
+    register(),
+    bookAppointment(),
+    queryAppointment(),
+    cancelAppointment(),
+    queryService(),
+    queryTest(),
+    queryMedicalHistory(),
+}
+
+class admin{
+    id,
+    name,
+    queryRegisteration(),
+    approvlRegisteration(),
+    denyResiteration(),
+}
+
+class appointment{
+    id,
+    patient_id,
+    doctor_id,
+    practioner_id,
+    type,
+    description,
+    appointment_time,
+    status,
+}
+' update by appointment, test result
+class medicalHistoryRecords{
+    id,
+    patient_id,
+    testId,
+    appointmentId,
+    type,
+    description,
+    createTime,
+}
+
+class ePrescription{
+    id,
+    patient_id,
+    doctor_id,
+    practioner_id,
+    type,
+    description,
+    createTime,
+}
+class medicalTest{
+    id,
+    patient_id,
+    doctor_id,
+    practioner_id,
+    type,
+    description,
+    createTime,
+}
+
+' todo: diff betweeen recieve and review 
+class practitioner{
+    id,
+    name,
+    queryAppointment(),
+    updateAppointment(), / reject and accept/
+    offerAlternative(),
+    updateMedicalHistory(),
+    generatePrescription(),
+    oderTest(),
+}
+class doctor{
+    id,
+    name,
+    updateMedicalHistory(),
+    generatePrescription(),
+    oderTest(),
+}
+
+account_credential <|-- patient
+account_credential <|-- admin
+account_credential <|-- doctor
+account_credential <|-- practitioner
+
+patient "1" -- "0..*" appointment
+patient "1" -- "0..*" medicalHistoryRecords
+patient "1" -- "0..*" ePrescription
+patient "1" -- "0..*" medicalTest
+
+doctor "1" -- "0..*" medicalHistoryRecords
+doctor "1" -- "0..*" ePrescription
+doctor "1" -- "0..*" medicalTest
+
+' omit 3 line avoid the messy diagram
+' practitioner "1" -- "0..*" medicalHistoryRecords
+' practitioner "1" -- "0..*" ePrescription
+' practitioner "1" -- "0..*" medicalTest
+
+@enduml

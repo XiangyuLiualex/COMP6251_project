@@ -1,0 +1,64 @@
+@startuml generated ERD
+
+entity "patient" {
+    #id : BIGINT <<generated>>
+    name : VARCHAR(255)
+    date_of_birth : DATE
+    address : VARCHAR(255)
+    email : VARCHAR(255)
+    password : VARCHAR(255)
+}
+
+entity "appointment" {
+    #id : BIGINT <<generated>>
+    patient_id : BIGINT
+    doctor_id : BIGINT
+    practitioner_id : BIGINT
+    type : VARCHAR(20)
+    description : VARCHAR(255)
+    appointment_time: DATETIME
+    status : TINYINT
+}
+
+entity "doctor" {
+    #id : BIGINT <<generated>>
+    name : VARCHAR(255)
+    username : VARCHAR(255)
+    password : VARCHAR(255)
+}
+
+entity "practitioner" {
+    #id : BIGINT <<generated>>
+    name : VARCHAR(255)
+    username : VARCHAR(255)
+    password : VARCHAR(255)
+}
+
+entity "medical_history_records" {
+    #id : BIGINT <<generated>>
+    *patient_id : BIGINT
+    doctor_id : BIGINT
+    practitioner_id : BIGINT
+    description : VARCHAR(255)
+}
+
+entity "electronic_prescription" {
+    #id : BIGINT <<generated>>
+    *patient_id : BIGINT
+    doctor_id : BIGINT
+    practitioner_id : BIGINT
+    description : VARCHAR(255)
+}
+
+entity "medical_test" {
+    #id : BIGINT <<generated>>
+    *patient_id : BIGINT
+    doctor_id : BIGINT
+    practitioner_id : BIGINT
+    status : TINYINT
+    type : VARCHAR(20)
+    description : VARCHAR(255)
+    result : VARCHAR(1000)
+}
+
+@enduml
