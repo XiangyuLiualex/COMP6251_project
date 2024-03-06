@@ -1,0 +1,22 @@
+@startuml appointment sequence
+
+patient -> app : query or consult
+app -> patient : show appointment and service
+patient -> app : make appointment
+patient -> app : query upcoming appointments
+app -> patient : show upcoming appointments
+app -> practitioner : show appointment
+practitioner -> app : review, accept or reject
+patient -> practitioner : attend appointment
+practitioner -> patient_medical_history : update medical history
+practitioner -> prescription : generate an electronic prescription
+practitioner -> test : order additional tests 
+patient -> app: consult own upcoming tests
+app -> test: forward test request
+app -> patient: show upcoming tests
+
+test -> patient_medical_history: update medical history
+patient_medical_history -> patient:  notify patient   
+
+
+@enduml

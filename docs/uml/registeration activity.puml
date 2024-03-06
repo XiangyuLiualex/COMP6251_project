@@ -1,0 +1,13 @@
+@startuml registeration
+start
+
+:patient submit registeration form;
+:admin review the form;
+if(admin approve the registeration ) then (yes)
+    :patient get the account;
+else (no)
+    :patient need to resubmit the form;
+endif
+
+end
+@enduml
