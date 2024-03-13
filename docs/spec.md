@@ -2,9 +2,12 @@
 
 cw spec
 
-## GDPR
-
+- GDPR
 The responsible use of data (adhering to GDPR) must be supported by the design and implementation.
+- Testing
+- Deployment
+  - on azure, aws
+  - on docker
 
 ## Learning Outcomes
 

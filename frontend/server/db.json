@@ -1,0 +1,19 @@
+{
+    "users": [
+        {
+            "email": "emalil1",
+            "password": "password1",
+            "role": "patient"
+        },
+        {
+            "email": "emalil2",
+            "password": "password2",
+            "role": "doctor"
+        },
+        {
+            "email": "emalil3",
+            "password": "password3",
+            "role": "admin"
+        }
+    ]
+}
