@@ -1,23 +1,57 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import NotFound from './component/error/notfound';
+import axios from 'axios';
+import Homepage from './component/homepage/homepage';
+import Login from './component/account/login';
+
+// todo: extract router to a separate file
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Homepage />,
+    errorElement: <NotFound />,
+  },
+  {
+    path: "/login",
+    element: <Login />,
+    errorElement: <NotFound />,
+  }
+]);
+
+
+// https://tkdodo.eu/blog/react-query-and-type-script
+// https://tanstack.com/query/latest/docs/framework/react/guides/default-query-function?from=reactQueryV3
+// const baseUrl = 'http://localhost:4000/api'
+const queryClient = new QueryClient(
+  //   {
+  //   defaultOptions: {
+  //     queries: {
+  //       queryFn: async ({ queryKey: [url] }) => {
+  //         // ✅ narrow the type of url to string
+  //         // so that we can work with it
+  //         if (typeof url === 'string') {
+  //           const { data } = await axios.get(
+  //             `${baseUrl}/${url.toLowerCase()}`
+  //           )
+  //           return data
+  //         }
+  //         throw new Error('Invalid QueryKey')
+  //       },
+  //     },
+  //   },
+  // }
+)
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+    <React.StrictMode>
+      <QueryClientProvider client={queryClient}>
+        <RouterProvider router={router} />
+      </QueryClientProvider>
+    </React.StrictMode>
 
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
   );
 }
 

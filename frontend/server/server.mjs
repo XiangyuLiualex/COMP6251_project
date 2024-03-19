@@ -1,0 +1,55 @@
+// docs from https://github.com/typicode/json-server/tree/v0?tab=readme-ov-file#routes
+// docs from https://github.com/jeremyben/json-server-auth?tab=readme-ov-file
+import pkg from "json-server";
+import mockData from "./data.mjs";
+import auth from "json-server-auth";
+const { create, router: _router, defaults, bodyParser } = pkg;
+
+const port = 3001;
+const server = create();
+const router = _router("./server/db.json");
+// const router = _router(mockData);
+const middlewares = defaults();
+
+// Set default middlewares (logger, static, cors and no-cache)
+server.use(middlewares);
+server.db = router.db;
+
+// https://github.com/typicode/json-server/issues/286#issuecomment-1804597428
+// dynamic change db file, similar to CLI option --watch
+server.use((req, res, next) => {
+  router.db.read();
+  next();
+});
+
+const rules = auth.rewriter({
+  "/api/*": "/$1",
+  // "/blog/:resource/:id/show": "/:resource/:id",
+});
+server.use(rules);
+
+// Add custom routes before JSON Server router
+server.get("/echo", (req, res) => {
+  res.jsonp(req.query);
+});
+
+// To handle POST, PUT and PATCH you need to use a body-parser
+// You can use the one used by JSON Server
+server.use(bodyParser);
+server.use((req, res, next) => {
+  if (req.method === "POST") {
+    req.body.createdAt = Date.now();
+  }
+  // Continue to JSON Server router
+  next();
+});
+
+// Use default router
+// more config ref from node_modules/json-server/lib/bin.js
+// strict sequence
+server.use(auth);
+server.use(router);
+server.listen(port, () => {
+  console.log(`JSON Server is running at http://localhost:${port}`);
+  console.log("working directory: ", process.cwd());
+});

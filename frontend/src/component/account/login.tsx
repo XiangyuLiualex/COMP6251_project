@@ -11,26 +11,64 @@ import {
   Typography,
 } from "@mui/material";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
-import { useState } from "react";
-import { useQuery } from "@tanstack/react-query";
+import { FormEventHandler, useState } from "react";
+import { useMutation } from "@tanstack/react-query";
+
+async function loginRequest(email: string, password: string): Promise<UserCredential> {
+  return fetch("/login", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ email, password }),
+  })
+    .then((response) => {
+      return response.json();
+    })
+    .catch((error) => {
+      console.error("Login Failed:", error);
+      throw error;
+    });
+}
+
+interface UserCredential {
+  accessToken: string;
+  user: {
+    createdAt: string;
+    email: string;
+    id: string;
+  };
+}
 
 function Login() {
   // const [logined, setLogined] = useState(false);
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  // const [email, setUsername] = useState("");
+  // const [password, setPassword] = useState("");
 
+  // const userData = useQuery({
+  //   queryKey: ["login", username, password],
+  //   queryFn: () => loginRequest(username, password)
+  // });
 
-  async function loginRequest (username: string, password: string){
-    const u = encodeURIComponent(username);
-    const p = encodeURIComponent(password);
-    const url = `/api/user/password?username=${u}&password=${p}`;
-    return fetch(url).then((res) => res.json());
+  const mutation = useMutation<
+    UserCredential,
+    unknown,
+    { email: string; password: string },
+    unknown
+  >({
+    mutationFn: ({ email, password }) => loginRequest(email, password),
+    onSuccess: (data) => {
+      console.log("login success", data);
+    }
+  });
+
+  const handleSubmit: FormEventHandler<HTMLFormElement> = (form) => {
+    form.preventDefault();
+    const formData = new FormData(form.currentTarget);
+    const email = formData.get("email") as string;
+    const password = formData.get("password") as string;
+    mutation.mutate({ email, password });
   };
-
-  const userData=useQuery({
-    queryKey: ["login",username,password],
-    queryFn : ()=>loginRequest(username,password)
-  }); 
 
 
   // const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -66,7 +104,7 @@ function Login() {
         <Typography component="h1" variant="h5">
           Sign in
         </Typography>
-        <Box component="form" onSubmit={()=>userData.refetch()} noValidate sx={{ mt: 1 }}>
+        <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
           <TextField
             margin="normal"
             required
@@ -76,9 +114,9 @@ function Login() {
             name="email"
             autoComplete="email"
             autoFocus
-            onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-              setUsername(event.target.value);
-            }}
+          // onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+          //   setUsername(event.target.value);
+          // }}
           />
           <TextField
             margin="normal"
@@ -89,9 +127,9 @@ function Login() {
             type="password"
             id="password"
             autoComplete="current-password"
-            onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-              setPassword(event.target.value);
-            }}
+          // onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+          //   setPassword(event.target.value);
+          // }}
           />
           <FormControlLabel
             control={<Checkbox value="remember" color="primary" />}
@@ -120,17 +158,12 @@ function Login() {
         </Box>
       </Box>
       <div>
-          {userData.isFetching && (
-            <div>Fetching user data...</div>
-          )}
-          {userData.isError && (
-            <div>{`Error get data!!!`}</div>
-          )}
-          {userData.data && userData.data.length > 0 && userData.data.map((user: any) => (
-            <div>{user.name}</div>
-          ))}
-        </div>
-    {/* {userData ? <div>Logined
+        <div>result:</div>
+        {mutation.isPending && <div>Fetching user data...</div>}
+        {mutation.isError && <div>{`Error get data!!!`}</div>}
+        {mutation.isSuccess && <div>success: user {mutation.data.user.email} </div>}
+      </div>
+      {/* {userData ? <div>Logined
     <div>{userData.data}</div>
     </div> : <div>Not Logined</div>} */}
     </Container>

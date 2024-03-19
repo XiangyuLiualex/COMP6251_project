@@ -2,6 +2,7 @@
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:3001",
   "dependencies": {
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.0",
@@ -15,6 +16,7 @@
     "@types/node": "^16.7.13",
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
+    "axios": "^1.6.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.22.2",
@@ -24,7 +26,8 @@
   },
   "scripts": {
     "start": "npx concurrently \"npm run start:server\" \"npm run start:client\"",
-    "start:server": "npx json-server --watch server/db.json --port 4000 --routes server/routes.json",
+    "start:server": "node server/server.mjs",
+    "start:server-deprecated": "npx json-server --watch server/db.json --port 3001 --routes server/routes.json",
     "start:client": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -47,5 +50,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "json-server": "0.17.4",
+    "json-server-auth": "^2.1.0"
   }
 }
