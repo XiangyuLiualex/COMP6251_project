@@ -161,7 +161,7 @@ function Login() {
         <div>result:</div>
         {mutation.isPending && <div>Fetching user data...</div>}
         {mutation.isError && <div>{`Error get data!!!`}</div>}
-        {mutation.isSuccess && <div>success: user {mutation.data.user.email} </div>}
+        {mutation.isSuccess && <div>success: user {mutation.data.user?.email} </div>}
       </div>
       {/* {userData ? <div>Logined
     <div>{userData.data}</div>
