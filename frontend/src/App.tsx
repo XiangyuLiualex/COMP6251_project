@@ -2,9 +2,9 @@ import React from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import NotFound from './component/error/notfound';
-import axios from 'axios';
 import Homepage from './component/homepage/homepage';
 import Login from './component/account/login';
+import Profile from './component/account/profile';
 
 // todo: extract router to a separate file
 const router = createBrowserRouter([
@@ -17,7 +17,13 @@ const router = createBrowserRouter([
     path: "/login",
     element: <Login />,
     errorElement: <NotFound />,
+  },
+  {
+    path: "/profile",
+    element: <Profile />,
+    errorElement: <NotFound />,
   }
+
 ]);
 
 

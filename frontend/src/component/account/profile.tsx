@@ -5,9 +5,15 @@ export default function Profile() {
         const response = await fetch('/api/profile');
         return response.json();
     }
-    
+
     useQuery({
-        queryKey:['profile'],
+        queryKey: ['profile'],
         queryFn: getProfile
     })
+
+    return (
+        <div>
+            <h1>Profile</h1>
+        </div>
+    )
 }

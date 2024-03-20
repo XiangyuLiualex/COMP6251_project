@@ -13,6 +13,7 @@ import {
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import { FormEventHandler, useState } from "react";
 import { useMutation } from "@tanstack/react-query";
+import { Navigate } from "react-router-dom";
 
 async function loginRequest(email: string, password: string): Promise<UserCredential> {
   return fetch("/login", {
@@ -162,6 +163,7 @@ function Login() {
         {mutation.isPending && <div>Fetching user data...</div>}
         {mutation.isError && <div>{`Error get data!!!`}</div>}
         {mutation.isSuccess && <div>success: user {mutation.data.user?.email} </div>}
+        {mutation.data?.user && < Navigate to="/profile" replace={true} />}
       </div>
       {/* {userData ? <div>Logined
     <div>{userData.data}</div>
