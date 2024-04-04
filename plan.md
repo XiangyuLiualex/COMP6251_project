@@ -35,3 +35,4 @@
   - serverside session in cookie
   - clientside session in JWT
   - [why so much JWT](https://v2ex.com/t/992055) [2](https://www.v2ex.com/t/774127)
+  - [session, jwt, cookie](https://hytonightyx.github.io/fedoc/04-%E6%B8%B8%E8%A7%88%E5%99%A8%E4%B8%8EBOM/Cookie-Session%20,JWT%E8%AE%A4%E8%AF%81%E6%9C%BA%E5%88%B6.html#%E8%B7%A8%E5%9F%9F%E8%AE%A4%E8%AF%81%E7%9A%84%E9%97%AE%E9%A2%98)

@@ -11,7 +11,7 @@ GET {{baseURL}}/echo
 
 ###
 # @name getUsers
-GET {{baseURL}}/users HTTP/1.1
+GET {{baseURL}}/users/4 HTTP/1.1
 
 ###
 # @name getProducts

@@ -19,7 +19,36 @@
       "email": "patient@email.com",
       "password": "$2a$10$eEMIikQx12T5/d7DjY5OAu6v742l6aQQG/XDx0o41Vpcq7.HvTmIq",
       "createdAt": 1710547901293,
-      "id": 4
+      "id": 4,
+      "role": "patient"
+    },
+    {
+      "email": "patient2@email.com",
+      "password": "$2a$10$bKWS3y1mO2Pt5gWKSyt3P.TW9w04B0yYEninS7qsbtxjVwLDzgcW.",
+      "createdAt": 1712193325036,
+      "id": 5,
+      "role": "patient"
+    },
+    {
+      "email": "patient3@email.com",
+      "password": "$2a$10$1pFpyK4puFluANL9gGK55.cOJXQz7pTp/U1Tos7B6dYohS/3ZASW6",
+      "createdAt": 1712193327677,
+      "id": 6,
+      "role": "patient"
+    },
+    {
+      "email": "admin@email.com",
+      "password": "$2a$10$udY7BscuktiJTq.WT2MUj.fk/UdXo4KWBJQ91TXlT./lSr5xJUa.i",
+      "createdAt": 1712193331069,
+      "id": 7,
+      "role": "admin"
+    },
+    {
+      "email": "GP1@email.com",
+      "password": "$2a$10$uQyAQoXQyUIuasCUefRwC.Na1dqEvsbUBPfSpcsrSCl.eHKUo.jOi",
+      "createdAt": 1712193411366,
+      "id": 8,
+      "role": "gp"
     }
   ],
   "products": [

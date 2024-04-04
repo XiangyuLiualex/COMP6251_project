@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 
-export default function Profile() {
+export function Profile() {
     const getProfile = async () => {
         const response = await fetch('/api/profile');
         return response.json();

@@ -1,4 +1,4 @@
-export default function Logout() {
+export function Logout() {
     return (
         <div>
             <h1>Logout</h1>

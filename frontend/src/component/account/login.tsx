@@ -12,8 +12,10 @@ import {
 } from "@mui/material";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import { FormEventHandler, useState } from "react";
-import { useMutation } from "@tanstack/react-query";
+import { DefaultError, useMutation } from "@tanstack/react-query";
 import { Navigate } from "react-router-dom";
+import { hasToken, sessionStore } from "../store/session";
+import { Role } from "../store";
 
 async function loginRequest(email: string, password: string): Promise<UserCredential> {
   return fetch("/login", {
@@ -24,7 +26,7 @@ async function loginRequest(email: string, password: string): Promise<UserCreden
     body: JSON.stringify({ email, password }),
   })
     .then((response) => {
-      return response.json();
+      return response.ok ? response.json() : Promise.reject(response);
     })
     .catch((error) => {
       console.error("Login Failed:", error);
@@ -38,28 +40,29 @@ interface UserCredential {
     createdAt: string;
     email: string;
     id: string;
+    role?: Role;
   };
 }
 
-function Login() {
-  // const [logined, setLogined] = useState(false);
-  // const [email, setUsername] = useState("");
-  // const [password, setPassword] = useState("");
-
-  // const userData = useQuery({
-  //   queryKey: ["login", username, password],
-  //   queryFn: () => loginRequest(username, password)
-  // });
+export function Login() {
 
   const mutation = useMutation<
     UserCredential,
-    unknown,
-    { email: string; password: string },
+    DefaultError,
+    {
+      email: string; password: string
+    },
     unknown
   >({
     mutationFn: ({ email, password }) => loginRequest(email, password),
-    onSuccess: (data) => {
-      console.log("login success", data);
+    onSuccess: async (data) => {
+      // sessionStore.setState({ token: data.accessToken })
+      // todo : when backend build change into this way
+      // sessionStore.setState({ token: data.accessToken, role: data.user.role})
+      // tamporary workaround
+      const role = await fetch(`/users/${data.user.id}`).then((res) => res.json()).then((data) => data.role);
+      sessionStore.setState({ token: data.accessToken, role: role })
+      console.log("login success", role);
     }
   });
 
@@ -71,23 +74,6 @@ function Login() {
     mutation.mutate({ email, password });
   };
 
-
-  // const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-  //   event.preventDefault();
-  //   const data = new FormData(event.currentTarget);
-  //   try {
-  //     loginRequest(data.get("email") as string, data.get("password") as string);
-  //     setLogined(true);
-  //     // navigate
-  //     console.log("login success");
-  //     console.log({
-  //       email: data.get("email"),
-  //       password: data.get("password"),
-  //     });
-  //   } catch (error) {
-  //     console.error("Login Failed:", error);
-  //   }
-  // };
 
   return (
     <Container component="main" maxWidth="xs">
@@ -161,9 +147,14 @@ function Login() {
       <div>
         <div>result:</div>
         {mutation.isPending && <div>Fetching user data...</div>}
-        {mutation.isError && <div>{`Error get data!!!`}</div>}
+        {mutation.isError && <div>{`is error!!!`}</div>}
+        {mutation.error && <div>{`Error get data!!!`}</div>}
         {mutation.isSuccess && <div>success: user {mutation.data.user?.email} </div>}
-        {mutation.data?.user && < Navigate to="/profile" replace={true} />}
+        {hasToken() && <span>
+          <div>role: {sessionStore.getState().role}</div>
+          <div> Logined {sessionStore.getState().token}</div>
+        </span>}
+        {/* {mutation.data?.user && < Navigate to="/profile" replace={true} />} */}
       </div>
       {/* {userData ? <div>Logined
     <div>{userData.data}</div>
@@ -171,4 +162,3 @@ function Login() {
     </Container>
   );
 }
-export default Login;
