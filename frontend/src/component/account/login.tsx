@@ -13,7 +13,7 @@ import {
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import { FormEventHandler, useState } from "react";
 import { DefaultError, useMutation } from "@tanstack/react-query";
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import { hasToken, sessionStore } from "../store/session";
 import { Role } from "../store";
 
@@ -44,9 +44,30 @@ interface UserCredential {
   };
 }
 
-export function Login() {
 
-  const mutation = useMutation<
+//todo refactor mutation and redirect path
+function roleBasedRedirect(role: Role): string {
+  switch (role) {
+    case "admin":
+      return "/admin";
+
+
+    // todo gp page not yet build
+    // case "gp":
+    //   return "/gp";
+
+    case "patient":
+      return "/patient";
+
+    default:
+      return "/patient";
+  }
+}
+
+function useLoginMutation() {
+  const navigate = useNavigate();
+
+  return useMutation<
     UserCredential,
     DefaultError,
     {
@@ -62,16 +83,24 @@ export function Login() {
       // tamporary workaround
       const role = await fetch(`/users/${data.user.id}`).then((res) => res.json()).then((data) => data.role);
       sessionStore.setState({ token: data.accessToken, role: role })
+
+      navigate(roleBasedRedirect(role))
       console.log("login success", role);
     }
   });
+
+}
+
+export function Login() {
+
+  const { mutate, data, isError, error, isPending, isSuccess } = useLoginMutation();
 
   const handleSubmit: FormEventHandler<HTMLFormElement> = (form) => {
     form.preventDefault();
     const formData = new FormData(form.currentTarget);
     const email = formData.get("email") as string;
     const password = formData.get("password") as string;
-    mutation.mutate({ email, password });
+    mutate({ email, password });
   };
 
 
@@ -146,10 +175,10 @@ export function Login() {
       </Box>
       <div>
         <div>result:</div>
-        {mutation.isPending && <div>Fetching user data...</div>}
-        {mutation.isError && <div>{`is error!!!`}</div>}
-        {mutation.error && <div>{`Error get data!!!`}</div>}
-        {mutation.isSuccess && <div>success: user {mutation.data.user?.email} </div>}
+        {isPending && <div>Fetching user data...</div>}
+        {isError && <div>{`is error!!!`}</div>}
+        {error && <div>{`Error get data!!!`}</div>}
+        {isSuccess && <div>success: user {data.user?.email} </div>}
         {hasToken() && <span>
           <div>role: {sessionStore.getState().role}</div>
           <div> Logined {sessionStore.getState().token}</div>

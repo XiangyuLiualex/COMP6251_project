@@ -1,15 +1,41 @@
 import logo from './logo.svg';
 import './homepage.css';
+import { Box, AppBar, Toolbar, Button, Typography, IconButton } from '@mui/material';
+import LocalHospitalIcon from '@mui/icons-material/LocalHospital';
+import { useNavigate } from 'react-router-dom';
 
-function header() {
+// todo: make header bar responsive 
+// https://mui.com/material-ui/react-app-bar/#app-bar-with-responsive-menu
+function Header() {
+    const navigate = useNavigate();
+
     return (
-        <header >
-            <p>Header</p>
-        </header>
+        <Box sx={{ flexGrow: 1 }}>
+            <AppBar position="static">
+                <Toolbar>
+                    <IconButton
+                        size="large"
+                        edge="start"
+                        color="inherit"
+                        aria-label="menu"
+                        sx={{ mr: 2 }}
+                    >
+                        <LocalHospitalIcon />
+                    </IconButton>
+                    <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+                        G4 Health Service
+
+                    </Typography>
+                    <Button color="inherit" onClick={() => navigate("/login")}>Login</Button>
+
+                    <Button color="inherit" onClick={() => navigate("/register")}>register</Button>
+                </Toolbar>
+            </AppBar>
+        </Box>
     )
 }
 
-function footer() {
+function Footer() {
     return (
         <footer>
             <p>Footer</p>
@@ -40,9 +66,9 @@ function body() {
 export default function Homepage() {
     return (
         <div>
-            {header()}
+            <Header />
             {body()}
-            {footer()}
+            <Footer />
         </div>
     );
 

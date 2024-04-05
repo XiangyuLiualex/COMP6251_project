@@ -1,0 +1,1 @@
+export { adminMedicalRoute } from './admin.route';
