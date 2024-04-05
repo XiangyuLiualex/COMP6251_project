@@ -48,3 +48,6 @@ Content-Type: application/json
     "email": "GP1@email.com",
     "password": "generalP1"
     }
+
+###
+# @name registerPatientMedical1

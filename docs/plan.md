@@ -3,7 +3,7 @@
 1. build the miniumal viable product (MVP)
    1. using mock data for fetch api as backend
    2. draw the wireframe for the frontend
-2. transfer to vite from CRA(to heavy)
+2. transfer to vite from CRA(too heavy)
 
 ## TODOs
 
