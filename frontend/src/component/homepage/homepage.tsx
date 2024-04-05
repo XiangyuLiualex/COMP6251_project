@@ -1,7 +1,23 @@
 import logo from './logo.svg';
 import './homepage.css';
 
-export default function Homepage() {
+function header() {
+    return (
+        <header >
+            <p>Header</p>
+        </header>
+    )
+}
+
+function footer() {
+    return (
+        <footer>
+            <p>Footer</p>
+        </footer>
+    )
+}
+
+function body() {
     return (
         <div className="App">
             <header className="App-header">
@@ -19,5 +35,15 @@ export default function Homepage() {
         </div>
     )
 
+}
+
+export default function Homepage() {
+    return (
+        <div>
+            {header()}
+            {body()}
+            {footer()}
+        </div>
+    );
 
 }

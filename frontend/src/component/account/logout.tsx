@@ -1,7 +1,9 @@
+import { sessionStore } from "../store"
+
+const logoutMutation = () => sessionStore.getState().updateToken(null);
+
 export function Logout() {
     return (
-        <div>
-            <h1>Logout</h1>
-        </div>
+        <button onClick={logoutMutation}>Logout</button>
     )
 }
