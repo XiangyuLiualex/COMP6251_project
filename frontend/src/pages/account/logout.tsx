@@ -1,4 +1,4 @@
-import { sessionStore } from "../store"
+import { sessionStore } from "../../entities/session"
 
 const logoutMutation = () => sessionStore.getState().updateToken(null);
 

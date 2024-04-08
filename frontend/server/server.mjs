@@ -1,8 +1,11 @@
 // docs from https://github.com/typicode/json-server/tree/v0?tab=readme-ov-file#routes
 // docs from https://github.com/jeremyben/json-server-auth?tab=readme-ov-file
+// auth without middleware, defining by ourselves
+// https://gist.github.com/MindaugasBernatavicius/b4aac3c08a47aa6777add84bf8daa366
 import pkg from "json-server";
 import mockData from "./data.mjs";
 import auth from "json-server-auth";
+import ret from "./data.mjs";
 const { create, router: _router, defaults, bodyParser } = pkg;
 
 const port = 3001;
@@ -30,7 +33,18 @@ server.use(rules);
 
 // Add custom routes before JSON Server router
 server.get("/echo", (req, res) => {
-  res.jsonp(req.query);
+  console.log("signup delay 1s");
+  setTimeout(() => {
+    res.jsonp(req.query);
+  }, 1000);
+});
+
+// signup delay 1s
+server.post("/signUp", (req, res, next) => {
+  // console.log("signup delay 1s");
+  setTimeout(() => {
+    next();
+  }, 1000);
 });
 
 // To handle POST, PUT and PATCH you need to use a body-parser

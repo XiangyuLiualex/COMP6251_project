@@ -23,7 +23,7 @@ function Header() {
                         <LocalHospitalIcon />
                     </IconButton>
                     <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                        G4 Health Service
+                        G4 Health Practice
 
                     </Typography>
                     <Button color="inherit" onClick={() => navigate("/login")}>Login</Button>

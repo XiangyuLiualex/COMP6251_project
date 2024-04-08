@@ -1,10 +1,10 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import Homepage from "../component/homepage/homepage";
-import { Login, Profile } from "../component/account";
-import NotFound from "../component/error/notfound";
-import { adminMedicalRoute } from "../component/medical/admin";
-import { patientMedicalRoute } from "../component/medical/patient";
-import { registerRoute } from "../component/account/register";
+import Homepage from "../pages/homepage/homepage";
+import { Login, Profile } from "../pages/account";
+import NotFound from "../pages/error/notfound";
+import { adminMedicalRoute } from "../pages/medical/admin";
+import { patientMedicalRoute } from "../pages/medical/patient";
+import { registerRoute } from "../pages/account/register";
 
 const router = createBrowserRouter([
   {

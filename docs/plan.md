@@ -4,6 +4,8 @@
    1. using mock data for fetch api as backend
    2. draw the wireframe for the frontend
 2. transfer to vite from CRA(too heavy)
+   - not maintained anymore
+   - [try](https://www.freecodecamp.org/news/how-to-migrate-from-create-react-app-to-vite/)
 
 ## TODOs
 
@@ -29,6 +31,7 @@
 - using React Query
 
 - backend
+  - user account statues
   - authentication method
     - [why not jwt](http://cryto.net/~joepie91/blog/2016/06/13/stop-using-jwt-for-sessions/)
     - [diff session](https://www.cnblogs.com/liqing/p/about-session.html)

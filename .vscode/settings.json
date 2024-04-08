@@ -1,3 +1,4 @@
 {
-  "plantuml.exportOutDir": "/docs/design/out"
+  "plantuml.exportOutDir": "/docs/design/out",
+  "terminal.integrated.cwd": "./frontend/"
 }

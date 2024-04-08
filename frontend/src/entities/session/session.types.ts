@@ -12,3 +12,14 @@ export type Actions = {
 }
 
 export type sessionState = State & Actions;
+
+export type UserCredential = {
+  accessToken: string;
+  user: {
+    // todo remove createAt when backend build
+    createdAt: string;
+    email: string;
+    id: string;
+    role?: Role;
+  };
+}

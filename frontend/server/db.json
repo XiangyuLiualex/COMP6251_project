@@ -49,6 +49,44 @@
       "createdAt": 1712193411366,
       "id": 8,
       "role": "gp"
+    },
+    {
+      "email": "patient5@email.com",
+      "password": "$2a$10$5/nlBnL9kTED9OVPombCL.c.oUsYOPimgtG95mn0hGXyMy/D1efSu",
+      "createdAt": 1712521986202,
+      "id": 9
+    },
+    {
+      "email": "patient4@email.com",
+      "password": "$2a$10$Ld5atDiK/hUh47RCzHsxVeW4IwXSC08jLaSb7vjkBrKEMpt4ln1yO",
+      "createdAt": 1712522153107,
+      "id": 10
+    },
+    {
+      "email": "patient6@email.com",
+      "password": "$2a$10$zuWPfd7HexTRBAT1L4J2p.3/KzkLg5feo.oWzQMd4njHdZ6.3A522",
+      "createdAt": 1712522297600,
+      "id": 11
+    },
+    {
+      "email": "patient7@email.com",
+      "password": "$2a$10$X2PloSK7ZdoSiNb8PWUZF.K63dhak2mAT8XZNB6n1evN/e8pcE0eC",
+      "createdAt": 1712522444790,
+      "id": 12
+    },
+    {
+      "email": "patient8@email.com",
+      "password": "$2a$10$mB6jGxjE2wQ1o6dIcOk4uujCZm5gHDBnJKN8MRA6qj4ZUct1e/HQu",
+      "createdAt": 1712522909910,
+      "id": 13
+    },
+    {
+      "email": "patient11@email.com",
+      "password": "$2a$10$h9o15ccRBJvDDnMbAXylGu8gUIaL79pgoAjQytgRMDzIbdnhEVttq",
+      "firstName": "pa11",
+      "lastName": "asd",
+      "createdAt": 1712534828841,
+      "id": 14
     }
   ],
   "products": [

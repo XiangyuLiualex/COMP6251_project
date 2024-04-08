@@ -11,85 +11,8 @@ import {
   Typography,
 } from "@mui/material";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
-import { FormEventHandler, useState } from "react";
-import { DefaultError, useMutation } from "@tanstack/react-query";
-import { Navigate, useNavigate } from "react-router-dom";
-import { hasToken, sessionStore } from "../store/session";
-import { Role } from "../store";
-
-async function loginRequest(email: string, password: string): Promise<UserCredential> {
-  return fetch("/login", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ email, password }),
-  })
-    .then((response) => {
-      return response.ok ? response.json() : Promise.reject(response);
-    })
-    .catch((error) => {
-      console.error("Login Failed:", error);
-      throw error;
-    });
-}
-
-interface UserCredential {
-  accessToken: string;
-  user: {
-    createdAt: string;
-    email: string;
-    id: string;
-    role?: Role;
-  };
-}
-
-
-//todo refactor mutation and redirect path
-function roleBasedRedirect(role: Role): string {
-  switch (role) {
-    case "admin":
-      return "/admin";
-
-
-    // todo gp page not yet build
-    // case "gp":
-    //   return "/gp";
-
-    case "patient":
-      return "/patient";
-
-    default:
-      return "/patient";
-  }
-}
-
-function useLoginMutation() {
-  const navigate = useNavigate();
-
-  return useMutation<
-    UserCredential,
-    DefaultError,
-    {
-      email: string; password: string
-    },
-    unknown
-  >({
-    mutationFn: ({ email, password }) => loginRequest(email, password),
-    onSuccess: async (data) => {
-      // sessionStore.setState({ token: data.accessToken })
-      // todo : when backend build change into this way
-      // sessionStore.setState({ token: data.accessToken, role: data.user.role})
-      // tamporary workaround
-      const role = await fetch(`/users/${data.user.id}`).then((res) => res.json()).then((data) => data.role);
-      sessionStore.setState({ token: data.accessToken, role: role })
-
-      navigate(roleBasedRedirect(role))
-      console.log("login success", role);
-    }
-  });
-
-}
+import { FormEventHandler } from "react";
+import { hasToken, sessionStore, useLoginMutation } from "../../entities/session";
 
 export function Login() {
 
@@ -166,7 +89,7 @@ export function Login() {
               </Link>
             </Grid>
             <Grid item>
-              <Link href="#" variant="body2">
+              <Link href="/register" variant="body2">
                 {"Don't have an account? Sign Up"}
               </Link>
             </Grid>

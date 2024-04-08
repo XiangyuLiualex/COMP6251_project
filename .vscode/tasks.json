@@ -1,0 +1,19 @@
+{
+  "version": "2.0.0",
+  "_comment": "ref from https://dev.to/robole/how-to-run-webpack-automatically-in-vs-code-when-you-open-a-project-1c19",
+  "tasks": [
+    {
+      "label": "Run yarn start on startup",
+      "type": "shell",
+      "command": "cd frontend && yarn start",
+      "windows": {
+        "command": "yarn start"
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      },
+      "runOptions": { "runOn": "folderOpen" }
+    }
+  ]
+}
