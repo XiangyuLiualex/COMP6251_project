@@ -6,12 +6,11 @@
 2. transfer to vite from CRA(too heavy)
    - not maintained anymore
    - [try](https://www.freecodecamp.org/news/how-to-migrate-from-create-react-app-to-vite/)
+   - or [carco](https://craco.js.org/)
 
 ## TODOs
 
 - [ ] draw the wireframe for the frontend
-- [ ] create mock data for each page
-- [x] react router
 - [ ] login page
   - login for patient
   - login for doctor and practitioner
