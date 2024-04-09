@@ -11,6 +11,7 @@ export const patientConfig: NaviListConfig[] = [
     { primary: 'Profile', to: '/patient/profile', icon: <PeopleIcon /> },
     { primary: 'self-register', to: pathKeys.patient.selfRegister(), icon: <PeopleIcon /> },
     { primary: 'Medical History', to: '/patient/medical-history', icon: <PeopleIcon /> },
+    { primary: 'Book Appointment', to: '/patient/appointment', icon: <PeopleIcon /> },
 ];
 export const adminConfig: NaviListConfig[] = [
     { primary: 'Profile', to: '/admin/profile', icon: <PeopleIcon /> },
@@ -21,6 +22,7 @@ export const gpConfig: NaviListConfig[] = [
     { primary: 'Profile', to: '/gp/profile', icon: <PeopleIcon /> },
     { primary: 'Medical History', to: '/gp/medical-history', icon: <PeopleIcon /> },
 ];
+
 
 export type GenericLayoutProps = {
     role: Role;
