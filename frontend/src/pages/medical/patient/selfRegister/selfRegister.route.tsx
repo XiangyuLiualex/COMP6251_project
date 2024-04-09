@@ -1,7 +1,8 @@
 import { RouteObject } from "react-router-dom";
 import { SelfRegisterPage } from "./selfRegister.ui";
+import { pathKeys } from "../../config/path";
 
 export const selfRegisterRoute: RouteObject = {
-    path: 'self-register',
+    path: pathKeys.patient.selfRegister(),
     element: <SelfRegisterPage />
 }
