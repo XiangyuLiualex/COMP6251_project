@@ -1,6 +1,6 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Homepage from "../pages/homepage/homepage";
-import { Login, Profile } from "../pages/account";
+import { Login } from "../pages/account";
 import NotFound from "../pages/error/notfound";
 import { adminMedicalRoute } from "../pages/medical/admin";
 import { patientMedicalRoute } from "../pages/medical/patient";
@@ -20,10 +20,6 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element: <Login />,
-      },
-      {
-        path: "/profile",
-        element: <Profile />,
       },
     ]
   },

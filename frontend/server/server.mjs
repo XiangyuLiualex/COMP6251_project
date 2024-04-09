@@ -27,6 +27,7 @@ server.use((req, res, next) => {
 
 const rules = auth.rewriter({
   "/api/*": "/$1",
+  "/patient/self-reg-form": "/self-reg-form",
   // "/blog/:resource/:id/show": "/:resource/:id",
 });
 server.use(rules);

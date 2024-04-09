@@ -89,6 +89,75 @@
       "id": 14
     }
   ],
+  "self-reg-form": [
+    {
+      "createdAt": 1712634877909,
+      "id": 1
+    },
+    {
+      "createdAt": 1712634888691,
+      "id": 2
+    },
+    {
+      "createdAt": 1712634924614,
+      "id": 3
+    },
+    {
+      "createdAt": 1712634926152,
+      "id": 4
+    },
+    {
+      "createdAt": 1712634948101,
+      "id": 5
+    },
+    {
+      "createdAt": 1712634949093,
+      "id": 6
+    },
+    {
+      "name": "patient2",
+      "condition": "fine",
+      "createdAt": 1712635231620,
+      "id": 7
+    },
+    [
+      {
+        "id": "39d0fc26-7721-5ea1-87ba-eb77ddeb19b5",
+        "name": "Jared White",
+        "age": 25,
+        "joinDate": "2023-11-07T15:26:25.672Z",
+        "role": "Development"
+      },
+      {
+        "id": "e8d2741a-afef-5bef-a148-031a11d5f5aa",
+        "name": "Maud Parsons",
+        "age": 36,
+        "joinDate": "2024-03-29T11:08:06.997Z",
+        "role": "Development"
+      },
+      {
+        "id": "afa6594d-321e-5037-ad30-649f8edfd697",
+        "name": "Loretta Morrison",
+        "age": 19,
+        "joinDate": "2023-12-19T09:51:25.350Z",
+        "role": "Development"
+      },
+      {
+        "id": "26197255-ea86-5710-9732-cdce4a49ef96",
+        "name": "Susie Bennett",
+        "age": 28,
+        "joinDate": "2023-07-12T18:24:30.180Z",
+        "role": "Finance"
+      },
+      {
+        "id": "776ad7e2-88d8-5a1d-836c-0cf86814a6cc",
+        "name": "Nathaniel Hampton",
+        "age": 23,
+        "joinDate": "2023-08-07T13:08:31.984Z",
+        "role": "Development"
+      }
+    ]
+  ],
   "products": [
     {
       "id": 1,
@@ -104,6 +173,16 @@
       "id": 3,
       "name": "product3",
       "price": 300
+    },
+    {
+      "createdAt": 1712635045330,
+      "id": 4
+    },
+    {
+      "name": "p4",
+      "price": 100,
+      "createdAt": 1712635190796,
+      "id": 5
     }
   ],
   "orders": [

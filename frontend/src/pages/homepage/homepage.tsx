@@ -28,7 +28,7 @@ function Header() {
                     </Typography>
                     <Button color="inherit" onClick={() => navigate("/login")}>Login</Button>
 
-                    <Button color="inherit" onClick={() => navigate("/register")}>register</Button>
+                    <Button color="inherit" onClick={() => navigate("/sign-up")}>register</Button>
                 </Toolbar>
             </AppBar>
         </Box>

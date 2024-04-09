@@ -51,7 +51,13 @@ Content-Type: application/json
 
 ###
 # @name selfRegister1
-POST {{baseURL}}/selfRegister HTTP/1.1
+POST {{baseURL}}/patient/self-reg-form HTTP/1.1
+Content-Type: application/json
+
 {
-    "id": "1",
+    "name": "patient2",
+    "condition": "fine"
 }
+
+### @name getSelfReg
+GET {{baseURL}}/patient/self-reg-form HTTP/1.1
