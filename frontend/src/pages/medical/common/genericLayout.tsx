@@ -1,4 +1,4 @@
-import { Box, Container, CssBaseline, Grid, Link, Paper, Toolbar, Typography } from "@mui/material";
+import { Box, Container, CssBaseline, Link, Toolbar, Typography } from "@mui/material";
 import { useState } from "react";
 import { Outlet } from "react-router-dom";
 import { Header } from "./header";
