@@ -500,7 +500,7 @@ export function AppointmentPage() {
     <>
       <h1>Displaying GPS Information</h1>
       <ul>
-        {data.data.map((speaker) => (
+        {data.map((speaker) => (
           <li key={speaker.id}>
             {speaker.name}, <em> {speaker.Treatments} </em>
           </li>
