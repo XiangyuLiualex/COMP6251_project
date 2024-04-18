@@ -1,3 +1,9 @@
+import { useState } from 'react';
+import {useQuery} from '@tanstack/react-query';
+import axios from 'axios';
+
+
+
 
 const GPS =[
     {name:"GP1", GId:"G001",Treatments:"Internal Medicine Treatment", yearsInPractice:4, Phone:"+44 123123123", 
@@ -31,17 +37,30 @@ const GPS =[
       ]}
 ];
 
-function ConfirmBox(){
+function DoubleConfirm({name,date,time,reason}){
     return(
-        <form>
-            <h2>What is the reason for this appointment</h2>
-            <input type="text" placeholder="Berifly describe your problem here..." />
+        <div>
+            <h2>Please confirm your booking information: </h2>
+            <h3>GP name: {name}</h3>
+            <h3>Date Selected: {date}</h3>
+            <h3>Time Selected: {time}</h3>
+            <h3>Booking Reason: {reason}</h3>
             <button>Submit</button>
-        </form>
+        </div>
     )
 }
 
-function DaySchedule({ schedule }) {
+function ConfirmBox({reasonText, onSubmit, onReasonText}){
+    return(
+        <div>
+            <h2>What is the reason for this appointment</h2>
+            <input type="text" value={reasonText} placeholder="Berifly describe your problem here..." onChange={onReasonText} />
+            <button onClick={()=>onSubmit()}>Submit</button>
+        </div>
+    )
+}
+
+function DaySchedule({onSlotSelect,schedule }) {
     return (
       <td>
         <h4>{schedule.date}</h4>
@@ -51,7 +70,7 @@ function DaySchedule({ schedule }) {
           {schedule.slots.map((slot, index) => (
             slot.bookedByPID === null && (
               <li key={index}>
-              <button >{slot.time}</button>
+              <button onClick={()=>onSlotSelect({date:schedule.date, time:slot.time})}>{slot.time}</button>
               </li>
             )
           ))}
@@ -60,13 +79,13 @@ function DaySchedule({ schedule }) {
     );
   }
   
-  function WeekSchedule({ schedules }) {
+  function WeekSchedule({ onSlotSelect, schedules}) {
     return (
       <table>
         <tbody>
           <tr>
             {schedules.map((schedule, index) => (
-              <DaySchedule key={index} schedule={schedule} />
+              <DaySchedule onSlotSelect={onSlotSelect} key={index} schedule={schedule} />
             ))}
           </tr>
         </tbody>
@@ -75,14 +94,14 @@ function DaySchedule({ schedule }) {
   }
 
 
-function GPBox({gp}){
+function GPBox({onGpSelect, gp}){
     return(
         <tr>
             <td>{gp.name}</td>
             <td>{gp.Treatments}</td>
             <td>Year in practice: {gp.yearsInPractice}</td>
             <td>
-                <button>Book Online</button>
+                <button onClick={()=>onGpSelect(gp)}>Book Online</button>
                 <button>Consult By Call</button>
             </td>
         </tr>
@@ -90,13 +109,13 @@ function GPBox({gp}){
 }
 
 
-function GPSBox({gps,type}){
+function GPSBox({onGpSelect, gps,type}){
     const rows = [];
-    if(type=="healthComplaint"){
+    if(type==="healthComplaint"){
         gps.forEach((gp)=>{
             if(gp.yearsInPractice<=3){
                 rows.push(
-                    <GPBox
+                    <GPBox onGpSelect={onGpSelect}
                         gp={gp}
                         key={gp.GId}
                     />
@@ -107,7 +126,7 @@ function GPSBox({gps,type}){
         gps.forEach((gp)=>{
             if(gp.yearsInPractice>3){
                 rows.push(
-                    <GPBox
+                    <GPBox onGpSelect={onGpSelect}
                         gp={gp}
                         key={gp.GId}
                     />
@@ -123,24 +142,110 @@ function GPSBox({gps,type}){
     )
 }
 
-function InitialBox(){
+function InitialBox({onTypeSelect}){
     return(
         <div>
             <h2>Please choose your appointment type: </h2>
-            <button>Illness</button>
-            <button>Health Complaint</button>
+            <button onClick={()=>onTypeSelect("illness")}>Illness</button>
+            <button onClick={()=>onTypeSelect("healthComplaint")}>Health Complaint</button>
         </div>
     )
 }
 
 export function AppointmentPage() {
+    const [currentBox, setCurrentBox]=useState("Initial");
+    const [type, setType]=useState(null);
+    const [gpSelect,setGpSelect]=useState(null);
+    const [slotSelect,setSlotSelect]=useState(null);
+    const [reasonText, setReasonText]=useState("");
+    const{data, isLoading, error} = useQuery("speakers", 
+    ()=>(axios("http://localhost:3001/gps")));
+    if(error) return <h4>Error:{error.message}, retry again</h4>;
+    if(isLoading) return<h4>...Loading data</h4>
+    console.log(data)
+    
+
+
+
+    const handleTypeSelect=(type)=>{
+        setCurrentBox("GPS");
+        setType(type);
+    };
+
+    const handleGpSelect=(gp)=>{
+        const theGp=JSON.parse(JSON.stringify(gp));
+        setCurrentBox("schedule");
+        setGpSelect(theGp);
+    }
+
+    const handleSlotSelect=(slot)=>{
+        setCurrentBox("confirm");
+        setSlotSelect(slot);
+    }
+
+    const handleReasonText = (event) => {
+        setReasonText(event.target.value);
+      };
+
+    const handleSubmit=()=>{
+        console.log("This is the booking information: \nGP name:"+gpSelect.name+"\nGP ID: "
+        +gpSelect.GId+"\n Date Selected: "+slotSelect.date+"\n time Selected: "+slotSelect.time+"\nBooking Reason: "+reasonText);
+       setCurrentBox("doubleConfirm");
+    }
+
     return (
-        <div>
-            <h1>Appointment Page</h1>
-            {/* <InitialBox/> */}
-            {/* <GPSBox gps={GPS} type="healthComplaint"/> */}
-            {/* <WeekSchedule schedules={GPS[0].schedule}/> */}
-            <ConfirmBox/>
-        </div>
-    );
+        <>
+        <h1>Displaying GPS Information</h1>
+        <ul>
+        {data.data.map(speaker => (
+          <li key={speaker.id}>
+            {speaker.name},  <em> {speaker.Treatments} </em>
+          </li>
+        ))}
+      </ul>
+          </>  );
+
+    switch(currentBox){
+        case 'Initial':
+            return (
+                <div>
+                    <h1>Appointment Page</h1>
+                    <InitialBox onTypeSelect={handleTypeSelect}/>
+                </div>
+            );
+        case 'GPS':
+            return (
+                <div>
+                    <h1>Appointment Page</h1>
+                    <GPSBox onGpSelect={handleGpSelect} gps={GPS} type={type}/>
+                </div>
+            );
+        case 'schedule':
+            return (
+                <div>
+                    <h1>Appointment Page</h1>
+                    <WeekSchedule onSlotSelect={handleSlotSelect} schedules={gpSelect.schedule}/>
+                </div>
+            );
+        case 'confirm':
+            return (
+                <div>
+                    <h1>Appointment Page</h1>
+                    <h3>You have select appointment with: </h3>
+                    <h4>{gpSelect.name}</h4>
+                    <h3> Your have select time slot:</h3>
+                    <h4>{slotSelect.date}</h4>
+                    <h4>{slotSelect.time}</h4>
+                    <ConfirmBox reasonText={reasonText} onSubmit={handleSubmit} onReasonText={handleReasonText}/>
+                </div>
+            );
+        case 'doubleConfirm':
+            return (
+                <div>
+                    <h1>Appointment Page</h1>
+                    <DoubleConfirm name={gpSelect.name} date={slotSelect.date} time={slotSelect.time} reason={reasonText}/>
+                </div>
+            );
+
+    }
 }

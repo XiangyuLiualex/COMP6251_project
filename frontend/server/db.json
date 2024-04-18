@@ -228,5 +228,324 @@
         }
       ]
     }
+  ],
+
+  "gps": [
+    {
+      "name": "GP1",
+      "GId": "G001",
+      "Treatments": "Internal Medicine Treatment",
+      "yearsInPractice": 4,
+      "Phone": "+44 123123123",
+      "schedule": [
+        {
+          "date": "2024-05-06",
+          "dayOfWeek": "Monday",
+          "slots": [
+            {"time": "8:00-9:00", "bookedByPID": "001"},
+            {"time": "9:00-10:00", "bookedByPID": null},
+            {"time": "10:00-11:00", "bookedByPID": null},
+            {"time": "11:00-12:00", "bookedByPID": null},
+            {"time": "13:00-14:00", "bookedByPID": null},
+            {"time": "14:00-15:00", "bookedByPID": null},
+            {"time": "15:00-16:00", "bookedByPID": null},
+            {"time": "16:00-17:00", "bookedByPID": null}
+          ]
+        },
+        {
+          "date": "2024-05-07",
+          "dayOfWeek": "Tuesday",
+          "slots": [
+            {"time": "8:00-9:00", "bookedByPID": null},
+            {"time": "9:00-10:00", "bookedByPID": null},
+            {"time": "10:00-11:00", "bookedByPID": null},
+            {"time": "11:00-12:00", "bookedByPID": null},
+            {"time": "13:00-14:00", "bookedByPID": null},
+            {"time": "14:00-15:00", "bookedByPID": null},
+            {"time": "15:00-16:00", "bookedByPID": null},
+            {"time": "16:00-17:00", "bookedByPID": null}
+          ]
+        },
+        {
+          "date": "2024-05-08",
+          "dayOfWeek": "Wednesday",
+          "slots": [
+            {"time": "8:00-9:00", "bookedByPID": null},
+            {"time": "9:00-10:00", "bookedByPID": null},
+            {"time": "10:00-11:00", "bookedByPID": null},
+            {"time": "11:00-12:00", "bookedByPID": null},
+            {"time": "13:00-14:00", "bookedByPID": null},
+            {"time": "14:00-15:00", "bookedByPID": null},
+            {"time": "15:00-16:00", "bookedByPID": null},
+            {"time": "16:00-17:00", "bookedByPID": null}
+          ]
+        },
+        {
+          "date": "2024-05-09",
+          "dayOfWeek": "Thursday",
+          "slots": [
+            {"time": "8:00-9:00", "bookedByPID": null},
+            {"time": "9:00-10:00", "bookedByPID": null},
+            {"time": "10:00-11:00", "bookedByPID": null},
+            {"time": "11:00-12:00", "bookedByPID": null},
+            {"time": "13:00-14:00", "bookedByPID": null},
+            {"time": "14:00-15:00", "bookedByPID": null},
+            {"time": "15:00-16:00", "bookedByPID": null},
+            {"time": "16:00-17:00", "bookedByPID": null}
+          ]
+        },
+        {
+          "date": "2024-05-10",
+          "dayOfWeek": "Friday",
+          "slots": [
+            {"time": "8:00-9:00", "bookedByPID": null},
+            {"time": "9:00-10:00", "bookedByPID": null},
+            {"time": "10:00-11:00", "bookedByPID": null},
+            {"time": "11:00-12:00", "bookedByPID": null},
+            {"time": "13:00-14:00", "bookedByPID": null},
+            {"time": "14:00-15:00", "bookedByPID": null},
+            {"time": "15:00-16:00", "bookedByPID": null},
+            {"time": "16:00-17:00", "bookedByPID": null}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "GP2",
+      "GId": "G002",
+      "Treatments": "Surgical Treatment",
+      "yearsInPractice": 8,
+      "Phone": "+44 5231252343",
+      "schedule": [
+        {
+          "date": "2024-05-06",
+          "dayOfWeek": "Monday",
+          "slots": [
+            {"time": "8:00-9:00", "bookedByPID": null},
+            {"time": "9:00-10:00", "bookedByPID": null},
+            {"time": "10:00-11:00", "bookedByPID": null},
+            {"time": "11:00-12:00", "bookedByPID": null},
+            {"time": "13:00-14:00", "bookedByPID": null},
+            {"time": "14:00-15:00", "bookedByPID": null},
+            {"time": "15:00-16:00", "bookedByPID": null},
+            {"time": "16:00-17:00", "bookedByPID": null}
+          ]
+        },
+        {
+          "date": "2024-05-07",
+          "dayOfWeek": "Tuesday",
+          "slots": [
+            {"time": "8:00-9:00", "bookedByPID": "002"},
+            {"time": "9:00-10:00", "bookedByPID": null},
+            {"time": "10:00-11:00", "bookedByPID": null},
+            {"time": "11:00-12:00", "bookedByPID": null},
+            {"time": "13:00-14:00", "bookedByPID": null},
+            {"time": "14:00-15:00", "bookedByPID": null},
+            {"time": "15:00-16:00", "bookedByPID": null},
+            {"time": "16:00-17:00", "bookedByPID": null}
+          ]
+        },
+        {
+          "date": "2024-05-08",
+          "dayOfWeek": "Wednesday",
+          "slots": [
+            {"time": "8:00-9:00", "bookedByPID": null},
+            {"time": "9:00-10:00", "bookedByPID": null},
+            {"time": "10:00-11:00", "bookedByPID": null},
+            {"time": "11:00-12:00", "bookedByPID": null},
+            {"time": "13:00-14:00", "bookedByPID": null},
+            {"time": "14:00-15:00", "bookedByPID": null},
+            {"time": "15:00-16:00", "bookedByPID": null},
+            {"time": "16:00-17:00", "bookedByPID": null}
+          ]
+        },
+        {
+          "date": "2024-05-09",
+          "dayOfWeek": "Thursday",
+          "slots": [
+            {"time": "8:00-9:00", "bookedByPID": null},
+            {"time": "9:00-10:00", "bookedByPID": null},
+            {"time": "10:00-11:00", "bookedByPID": null},
+            {"time": "11:00-12:00", "bookedByPID": null},
+            {"time": "13:00-14:00", "bookedByPID": null},
+            {"time": "14:00-15:00", "bookedByPID": null},
+            {"time": "15:00-16:00", "bookedByPID": null},
+            {"time": "16:00-17:00", "bookedByPID": null}
+          ]
+        },
+        {
+          "date": "2024-05-10",
+          "dayOfWeek": "Friday",
+          "slots": [
+            {"time": "8:00-9:00", "bookedByPID": null},
+            {"time": "9:00-10:00", "bookedByPID": null},
+            {"time": "10:00-11:00", "bookedByPID": null},
+            {"time": "11:00-12:00", "bookedByPID": null},
+            {"time": "13:00-14:00", "bookedByPID": null},
+            {"time": "14:00-15:00", "bookedByPID": null},
+            {"time": "15:00-16:00", "bookedByPID": null},
+            {"time": "16:00-17:00", "bookedByPID": null}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "GP3",
+      "GId": "G003",
+      "Treatments": "Psychotherapy",
+      "yearsInPractice": 1,
+      "Phone": "+44 552232343",
+      "schedule": [
+        {
+          "date": "2024-05-06",
+          "dayOfWeek": "Monday",
+          "slots": [
+            {"time": "8:00-9:00", "bookedByPID": null},
+            {"time": "9:00-10:00", "bookedByPID": null},
+            {"time": "10:00-11:00", "bookedByPID": null},
+            {"time": "11:00-12:00", "bookedByPID": null},
+            {"time": "13:00-14:00", "bookedByPID": null},
+            {"time": "14:00-15:00", "bookedByPID": null},
+            {"time": "15:00-16:00", "bookedByPID": null},
+            {"time": "16:00-17:00", "bookedByPID": null}
+          ]
+        },
+        {
+          "date": "2024-05-07",
+          "dayOfWeek": "Tuesday",
+          "slots": [
+            {"time": "8:00-9:00", "bookedByPID": null},
+            {"time": "9:00-10:00", "bookedByPID": null},
+            {"time": "10:00-11:00", "bookedByPID": null},
+            {"time": "11:00-12:00", "bookedByPID": null},
+            {"time": "13:00-14:00", "bookedByPID": null},
+            {"time": "14:00-15:00", "bookedByPID": null},
+            {"time": "15:00-16:00", "bookedByPID": null},
+            {"time": "16:00-17:00", "bookedByPID": null}
+          ]
+        },
+        {
+          "date": "2024-05-08",
+          "dayOfWeek": "Wednesday",
+          "slots": [
+            {"time": "8:00-9:00", "bookedByPID": "003"},
+            {"time": "9:00-10:00", "bookedByPID": null},
+            {"time": "10:00-11:00", "bookedByPID": null},
+            {"time": "11:00-12:00", "bookedByPID": null},
+            {"time": "13:00-14:00", "bookedByPID": null},
+            {"time": "14:00-15:00", "bookedByPID": null},
+            {"time": "15:00-16:00", "bookedByPID": null},
+            {"time": "16:00-17:00", "bookedByPID": null}
+          ]
+        },
+        {
+          "date": "2024-05-09",
+          "dayOfWeek": "Thursday",
+          "slots": [
+            {"time": "8:00-9:00", "bookedByPID": null},
+            {"time": "9:00-10:00", "bookedByPID": null},
+            {"time": "10:00-11:00", "bookedByPID": null},
+            {"time": "11:00-12:00", "bookedByPID": null},
+            {"time": "13:00-14:00", "bookedByPID": null},
+            {"time": "14:00-15:00", "bookedByPID": null},
+            {"time": "15:00-16:00", "bookedByPID": null},
+            {"time": "16:00-17:00", "bookedByPID": null}
+          ]
+        },
+        {
+          "date": "2024-05-10",
+          "dayOfWeek": "Friday",
+          "slots": [
+            {"time": "8:00-9:00", "bookedByPID": null},
+            {"time": "9:00-10:00", "bookedByPID": null},
+            {"time": "10:00-11:00", "bookedByPID": null},
+            {"time": "11:00-12:00", "bookedByPID": null},
+            {"time": "13:00-14:00", "bookedByPID": null},
+            {"time": "14:00-15:00", "bookedByPID": null},
+            {"time": "15:00-16:00", "bookedByPID": null},
+            {"time": "16:00-17:00", "bookedByPID": null}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "GP4",
+      "GId": "G004",
+      "Treatments": "Skin Care Treatment",
+      "yearsInPractice": 2,
+      "Phone": "+44 46352252343",
+      "schedule": [
+        {
+          "date": "2024-05-06",
+          "dayOfWeek": "Monday",
+          "slots": [
+            {"time": "8:00-9:00", "bookedByPID": null},
+            {"time": "9:00-10:00", "bookedByPID": null},
+            {"time": "10:00-11:00", "bookedByPID": null},
+            {"time": "11:00-12:00", "bookedByPID": null},
+            {"time": "13:00-14:00", "bookedByPID": null},
+            {"time": "14:00-15:00", "bookedByPID": null},
+            {"time": "15:00-16:00", "bookedByPID": null},
+            {"time": "16:00-17:00", "bookedByPID": null}
+          ]
+        },
+        {
+          "date": "2024-05-07",
+          "dayOfWeek": "Tuesday",
+          "slots": [
+            {"time": "8:00-9:00", "bookedByPID": null},
+            {"time": "9:00-10:00", "bookedByPID": null},
+            {"time": "10:00-11:00", "bookedByPID": null},
+            {"time": "11:00-12:00", "bookedByPID": null},
+            {"time": "13:00-14:00", "bookedByPID": null},
+            {"time": "14:00-15:00", "bookedByPID": null},
+            {"time": "15:00-16:00", "bookedByPID": null},
+            {"time": "16:00-17:00", "bookedByPID": null}
+          ]
+        },
+        {
+          "date": "2024-05-08",
+          "dayOfWeek": "Wednesday",
+          "slots": [
+            {"time": "8:00-9:00", "bookedByPID": null},
+            {"time": "9:00-10:00", "bookedByPID": null},
+            {"time": "10:00-11:00", "bookedByPID": null},
+            {"time": "11:00-12:00", "bookedByPID": null},
+            {"time": "13:00-14:00", "bookedByPID": null},
+            {"time": "14:00-15:00", "bookedByPID": null},
+            {"time": "15:00-16:00", "bookedByPID": null},
+            {"time": "16:00-17:00", "bookedByPID": null}
+          ]
+        },
+        {
+          "date": "2024-05-09",
+          "dayOfWeek": "Thursday",
+          "slots": [
+            {"time": "8:00-9:00", "bookedByPID": "004"},
+            {"time": "9:00-10:00", "bookedByPID": null},
+            {"time": "10:00-11:00", "bookedByPID": null},
+            {"time": "11:00-12:00", "bookedByPID": null},
+            {"time": "13:00-14:00", "bookedByPID": null},
+            {"time": "14:00-15:00", "bookedByPID": null},
+            {"time": "15:00-16:00", "bookedByPID": null},
+            {"time": "16:00-17:00", "bookedByPID": null}
+          ]
+        },
+        {
+          "date": "2024-05-10",
+          "dayOfWeek": "Friday",
+          "slots": [
+            {"time": "8:00-9:00", "bookedByPID": null},
+            {"time": "9:00-10:00", "bookedByPID": null},
+            {"time": "10:00-11:00", "bookedByPID": null},
+            {"time": "11:00-12:00", "bookedByPID": null},
+            {"time": "13:00-14:00", "bookedByPID": null},
+            {"time": "14:00-15:00", "bookedByPID": null},
+            {"time": "15:00-16:00", "bookedByPID": null},
+            {"time": "16:00-17:00", "bookedByPID": null}
+          ]
+        }
+      ]
+    }
   ]
 }
