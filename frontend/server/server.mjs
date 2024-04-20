@@ -28,6 +28,7 @@ server.use((req, res, next) => {
 const rules = auth.rewriter({
   "/api/*": "/$1",
   "/patient/self-reg-form": "/self-reg-form",
+  // "/book-slot/:id": "/slots/:id",
   // "/blog/:resource/:id/show": "/:resource/:id",
 });
 server.use(rules);
@@ -53,7 +54,7 @@ server.post("/signUp", (req, res, next) => {
 server.use(bodyParser);
 server.use((req, res, next) => {
   if (req.method === "POST") {
-    req.body.createdAt = Date.now();
+    // req.body.createdAt = Date.now();
   }
   // Continue to JSON Server router
   next();
