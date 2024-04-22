@@ -1,1 +1,1 @@
-export * from './genericLayout'
+export * from './GenericLayout'

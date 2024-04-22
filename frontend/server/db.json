@@ -229,83 +229,210 @@
       ]
     }
   ],
-
   "gps": [
     {
       "name": "GP1",
-      "GId": "G001",
-      "Treatments": "Internal Medicine Treatment",
+      "id": "1",
+      "treatments": "Internal Medicine Treatment",
       "yearsInPractice": 4,
-      "Phone": "+44 123123123",
+      "phone": "+44 123123123",
       "schedule": [
         {
           "date": "2024-05-06",
           "dayOfWeek": "Monday",
           "slots": [
-            {"time": "8:00-9:00", "bookedByPID": "001"},
-            {"time": "9:00-10:00", "bookedByPID": null},
-            {"time": "10:00-11:00", "bookedByPID": null},
-            {"time": "11:00-12:00", "bookedByPID": null},
-            {"time": "13:00-14:00", "bookedByPID": null},
-            {"time": "14:00-15:00", "bookedByPID": null},
-            {"time": "15:00-16:00", "bookedByPID": null},
-            {"time": "16:00-17:00", "bookedByPID": null}
+            {
+              "id": "1",
+              "time": "8:00-9:00",
+              "bookedByPID": "001"
+            },
+            {
+              "id": "2",
+              "time": "9:00-10:00",
+              "bookedByPID": null
+            },
+            {
+              "id": "3",
+              "time": "10:00-11:00",
+              "bookedByPID": null
+            },
+            {
+              "id": "4",
+              "time": "11:00-12:00",
+              "bookedByPID": null
+            },
+            {
+              "id": "5",
+              "time": "13:00-14:00",
+              "bookedByPID": null
+            },
+            {
+              "id": "6",
+              "time": "14:00-15:00",
+              "bookedByPID": null
+            },
+            {
+              "id": "7",
+              "time": "15:00-16:00",
+              "bookedByPID": null
+            },
+            {
+              "id": "8",
+              "time": "16:00-17:00",
+              "bookedByPID": null
+            }
           ]
         },
         {
           "date": "2024-05-07",
           "dayOfWeek": "Tuesday",
           "slots": [
-            {"time": "8:00-9:00", "bookedByPID": null},
-            {"time": "9:00-10:00", "bookedByPID": null},
-            {"time": "10:00-11:00", "bookedByPID": null},
-            {"time": "11:00-12:00", "bookedByPID": null},
-            {"time": "13:00-14:00", "bookedByPID": null},
-            {"time": "14:00-15:00", "bookedByPID": null},
-            {"time": "15:00-16:00", "bookedByPID": null},
-            {"time": "16:00-17:00", "bookedByPID": null}
+            {
+              "time": "8:00-9:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "9:00-10:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "10:00-11:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "11:00-12:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "13:00-14:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "14:00-15:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "15:00-16:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "16:00-17:00",
+              "bookedByPID": null
+            }
           ]
         },
         {
           "date": "2024-05-08",
           "dayOfWeek": "Wednesday",
           "slots": [
-            {"time": "8:00-9:00", "bookedByPID": null},
-            {"time": "9:00-10:00", "bookedByPID": null},
-            {"time": "10:00-11:00", "bookedByPID": null},
-            {"time": "11:00-12:00", "bookedByPID": null},
-            {"time": "13:00-14:00", "bookedByPID": null},
-            {"time": "14:00-15:00", "bookedByPID": null},
-            {"time": "15:00-16:00", "bookedByPID": null},
-            {"time": "16:00-17:00", "bookedByPID": null}
+            {
+              "time": "8:00-9:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "9:00-10:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "10:00-11:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "11:00-12:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "13:00-14:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "14:00-15:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "15:00-16:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "16:00-17:00",
+              "bookedByPID": null
+            }
           ]
         },
         {
           "date": "2024-05-09",
           "dayOfWeek": "Thursday",
           "slots": [
-            {"time": "8:00-9:00", "bookedByPID": null},
-            {"time": "9:00-10:00", "bookedByPID": null},
-            {"time": "10:00-11:00", "bookedByPID": null},
-            {"time": "11:00-12:00", "bookedByPID": null},
-            {"time": "13:00-14:00", "bookedByPID": null},
-            {"time": "14:00-15:00", "bookedByPID": null},
-            {"time": "15:00-16:00", "bookedByPID": null},
-            {"time": "16:00-17:00", "bookedByPID": null}
+            {
+              "time": "8:00-9:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "9:00-10:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "10:00-11:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "11:00-12:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "13:00-14:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "14:00-15:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "15:00-16:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "16:00-17:00",
+              "bookedByPID": null
+            }
           ]
         },
         {
           "date": "2024-05-10",
           "dayOfWeek": "Friday",
           "slots": [
-            {"time": "8:00-9:00", "bookedByPID": null},
-            {"time": "9:00-10:00", "bookedByPID": null},
-            {"time": "10:00-11:00", "bookedByPID": null},
-            {"time": "11:00-12:00", "bookedByPID": null},
-            {"time": "13:00-14:00", "bookedByPID": null},
-            {"time": "14:00-15:00", "bookedByPID": null},
-            {"time": "15:00-16:00", "bookedByPID": null},
-            {"time": "16:00-17:00", "bookedByPID": null}
+            {
+              "time": "8:00-9:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "9:00-10:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "10:00-11:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "11:00-12:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "13:00-14:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "14:00-15:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "15:00-16:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "16:00-17:00",
+              "bookedByPID": null
+            }
           ]
         }
       ]
@@ -321,70 +448,190 @@
           "date": "2024-05-06",
           "dayOfWeek": "Monday",
           "slots": [
-            {"time": "8:00-9:00", "bookedByPID": null},
-            {"time": "9:00-10:00", "bookedByPID": null},
-            {"time": "10:00-11:00", "bookedByPID": null},
-            {"time": "11:00-12:00", "bookedByPID": null},
-            {"time": "13:00-14:00", "bookedByPID": null},
-            {"time": "14:00-15:00", "bookedByPID": null},
-            {"time": "15:00-16:00", "bookedByPID": null},
-            {"time": "16:00-17:00", "bookedByPID": null}
+            {
+              "time": "8:00-9:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "9:00-10:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "10:00-11:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "11:00-12:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "13:00-14:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "14:00-15:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "15:00-16:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "16:00-17:00",
+              "bookedByPID": null
+            }
           ]
         },
         {
           "date": "2024-05-07",
           "dayOfWeek": "Tuesday",
           "slots": [
-            {"time": "8:00-9:00", "bookedByPID": "002"},
-            {"time": "9:00-10:00", "bookedByPID": null},
-            {"time": "10:00-11:00", "bookedByPID": null},
-            {"time": "11:00-12:00", "bookedByPID": null},
-            {"time": "13:00-14:00", "bookedByPID": null},
-            {"time": "14:00-15:00", "bookedByPID": null},
-            {"time": "15:00-16:00", "bookedByPID": null},
-            {"time": "16:00-17:00", "bookedByPID": null}
+            {
+              "time": "8:00-9:00",
+              "bookedByPID": "002"
+            },
+            {
+              "time": "9:00-10:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "10:00-11:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "11:00-12:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "13:00-14:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "14:00-15:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "15:00-16:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "16:00-17:00",
+              "bookedByPID": null
+            }
           ]
         },
         {
           "date": "2024-05-08",
           "dayOfWeek": "Wednesday",
           "slots": [
-            {"time": "8:00-9:00", "bookedByPID": null},
-            {"time": "9:00-10:00", "bookedByPID": null},
-            {"time": "10:00-11:00", "bookedByPID": null},
-            {"time": "11:00-12:00", "bookedByPID": null},
-            {"time": "13:00-14:00", "bookedByPID": null},
-            {"time": "14:00-15:00", "bookedByPID": null},
-            {"time": "15:00-16:00", "bookedByPID": null},
-            {"time": "16:00-17:00", "bookedByPID": null}
+            {
+              "time": "8:00-9:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "9:00-10:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "10:00-11:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "11:00-12:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "13:00-14:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "14:00-15:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "15:00-16:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "16:00-17:00",
+              "bookedByPID": null
+            }
           ]
         },
         {
           "date": "2024-05-09",
           "dayOfWeek": "Thursday",
           "slots": [
-            {"time": "8:00-9:00", "bookedByPID": null},
-            {"time": "9:00-10:00", "bookedByPID": null},
-            {"time": "10:00-11:00", "bookedByPID": null},
-            {"time": "11:00-12:00", "bookedByPID": null},
-            {"time": "13:00-14:00", "bookedByPID": null},
-            {"time": "14:00-15:00", "bookedByPID": null},
-            {"time": "15:00-16:00", "bookedByPID": null},
-            {"time": "16:00-17:00", "bookedByPID": null}
+            {
+              "time": "8:00-9:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "9:00-10:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "10:00-11:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "11:00-12:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "13:00-14:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "14:00-15:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "15:00-16:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "16:00-17:00",
+              "bookedByPID": null
+            }
           ]
         },
         {
           "date": "2024-05-10",
           "dayOfWeek": "Friday",
           "slots": [
-            {"time": "8:00-9:00", "bookedByPID": null},
-            {"time": "9:00-10:00", "bookedByPID": null},
-            {"time": "10:00-11:00", "bookedByPID": null},
-            {"time": "11:00-12:00", "bookedByPID": null},
-            {"time": "13:00-14:00", "bookedByPID": null},
-            {"time": "14:00-15:00", "bookedByPID": null},
-            {"time": "15:00-16:00", "bookedByPID": null},
-            {"time": "16:00-17:00", "bookedByPID": null}
+            {
+              "time": "8:00-9:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "9:00-10:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "10:00-11:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "11:00-12:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "13:00-14:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "14:00-15:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "15:00-16:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "16:00-17:00",
+              "bookedByPID": null
+            }
           ]
         }
       ]
@@ -400,70 +647,190 @@
           "date": "2024-05-06",
           "dayOfWeek": "Monday",
           "slots": [
-            {"time": "8:00-9:00", "bookedByPID": null},
-            {"time": "9:00-10:00", "bookedByPID": null},
-            {"time": "10:00-11:00", "bookedByPID": null},
-            {"time": "11:00-12:00", "bookedByPID": null},
-            {"time": "13:00-14:00", "bookedByPID": null},
-            {"time": "14:00-15:00", "bookedByPID": null},
-            {"time": "15:00-16:00", "bookedByPID": null},
-            {"time": "16:00-17:00", "bookedByPID": null}
+            {
+              "time": "8:00-9:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "9:00-10:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "10:00-11:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "11:00-12:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "13:00-14:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "14:00-15:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "15:00-16:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "16:00-17:00",
+              "bookedByPID": null
+            }
           ]
         },
         {
           "date": "2024-05-07",
           "dayOfWeek": "Tuesday",
           "slots": [
-            {"time": "8:00-9:00", "bookedByPID": null},
-            {"time": "9:00-10:00", "bookedByPID": null},
-            {"time": "10:00-11:00", "bookedByPID": null},
-            {"time": "11:00-12:00", "bookedByPID": null},
-            {"time": "13:00-14:00", "bookedByPID": null},
-            {"time": "14:00-15:00", "bookedByPID": null},
-            {"time": "15:00-16:00", "bookedByPID": null},
-            {"time": "16:00-17:00", "bookedByPID": null}
+            {
+              "time": "8:00-9:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "9:00-10:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "10:00-11:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "11:00-12:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "13:00-14:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "14:00-15:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "15:00-16:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "16:00-17:00",
+              "bookedByPID": null
+            }
           ]
         },
         {
           "date": "2024-05-08",
           "dayOfWeek": "Wednesday",
           "slots": [
-            {"time": "8:00-9:00", "bookedByPID": "003"},
-            {"time": "9:00-10:00", "bookedByPID": null},
-            {"time": "10:00-11:00", "bookedByPID": null},
-            {"time": "11:00-12:00", "bookedByPID": null},
-            {"time": "13:00-14:00", "bookedByPID": null},
-            {"time": "14:00-15:00", "bookedByPID": null},
-            {"time": "15:00-16:00", "bookedByPID": null},
-            {"time": "16:00-17:00", "bookedByPID": null}
+            {
+              "time": "8:00-9:00",
+              "bookedByPID": "003"
+            },
+            {
+              "time": "9:00-10:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "10:00-11:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "11:00-12:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "13:00-14:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "14:00-15:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "15:00-16:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "16:00-17:00",
+              "bookedByPID": null
+            }
           ]
         },
         {
           "date": "2024-05-09",
           "dayOfWeek": "Thursday",
           "slots": [
-            {"time": "8:00-9:00", "bookedByPID": null},
-            {"time": "9:00-10:00", "bookedByPID": null},
-            {"time": "10:00-11:00", "bookedByPID": null},
-            {"time": "11:00-12:00", "bookedByPID": null},
-            {"time": "13:00-14:00", "bookedByPID": null},
-            {"time": "14:00-15:00", "bookedByPID": null},
-            {"time": "15:00-16:00", "bookedByPID": null},
-            {"time": "16:00-17:00", "bookedByPID": null}
+            {
+              "time": "8:00-9:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "9:00-10:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "10:00-11:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "11:00-12:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "13:00-14:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "14:00-15:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "15:00-16:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "16:00-17:00",
+              "bookedByPID": null
+            }
           ]
         },
         {
           "date": "2024-05-10",
           "dayOfWeek": "Friday",
           "slots": [
-            {"time": "8:00-9:00", "bookedByPID": null},
-            {"time": "9:00-10:00", "bookedByPID": null},
-            {"time": "10:00-11:00", "bookedByPID": null},
-            {"time": "11:00-12:00", "bookedByPID": null},
-            {"time": "13:00-14:00", "bookedByPID": null},
-            {"time": "14:00-15:00", "bookedByPID": null},
-            {"time": "15:00-16:00", "bookedByPID": null},
-            {"time": "16:00-17:00", "bookedByPID": null}
+            {
+              "time": "8:00-9:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "9:00-10:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "10:00-11:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "11:00-12:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "13:00-14:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "14:00-15:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "15:00-16:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "16:00-17:00",
+              "bookedByPID": null
+            }
           ]
         }
       ]
@@ -479,73 +846,339 @@
           "date": "2024-05-06",
           "dayOfWeek": "Monday",
           "slots": [
-            {"time": "8:00-9:00", "bookedByPID": null},
-            {"time": "9:00-10:00", "bookedByPID": null},
-            {"time": "10:00-11:00", "bookedByPID": null},
-            {"time": "11:00-12:00", "bookedByPID": null},
-            {"time": "13:00-14:00", "bookedByPID": null},
-            {"time": "14:00-15:00", "bookedByPID": null},
-            {"time": "15:00-16:00", "bookedByPID": null},
-            {"time": "16:00-17:00", "bookedByPID": null}
+            {
+              "time": "8:00-9:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "9:00-10:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "10:00-11:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "11:00-12:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "13:00-14:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "14:00-15:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "15:00-16:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "16:00-17:00",
+              "bookedByPID": null
+            }
           ]
         },
         {
           "date": "2024-05-07",
           "dayOfWeek": "Tuesday",
           "slots": [
-            {"time": "8:00-9:00", "bookedByPID": null},
-            {"time": "9:00-10:00", "bookedByPID": null},
-            {"time": "10:00-11:00", "bookedByPID": null},
-            {"time": "11:00-12:00", "bookedByPID": null},
-            {"time": "13:00-14:00", "bookedByPID": null},
-            {"time": "14:00-15:00", "bookedByPID": null},
-            {"time": "15:00-16:00", "bookedByPID": null},
-            {"time": "16:00-17:00", "bookedByPID": null}
+            {
+              "time": "8:00-9:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "9:00-10:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "10:00-11:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "11:00-12:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "13:00-14:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "14:00-15:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "15:00-16:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "16:00-17:00",
+              "bookedByPID": null
+            }
           ]
         },
         {
           "date": "2024-05-08",
           "dayOfWeek": "Wednesday",
           "slots": [
-            {"time": "8:00-9:00", "bookedByPID": null},
-            {"time": "9:00-10:00", "bookedByPID": null},
-            {"time": "10:00-11:00", "bookedByPID": null},
-            {"time": "11:00-12:00", "bookedByPID": null},
-            {"time": "13:00-14:00", "bookedByPID": null},
-            {"time": "14:00-15:00", "bookedByPID": null},
-            {"time": "15:00-16:00", "bookedByPID": null},
-            {"time": "16:00-17:00", "bookedByPID": null}
+            {
+              "time": "8:00-9:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "9:00-10:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "10:00-11:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "11:00-12:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "13:00-14:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "14:00-15:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "15:00-16:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "16:00-17:00",
+              "bookedByPID": null
+            }
           ]
         },
         {
           "date": "2024-05-09",
           "dayOfWeek": "Thursday",
           "slots": [
-            {"time": "8:00-9:00", "bookedByPID": "004"},
-            {"time": "9:00-10:00", "bookedByPID": null},
-            {"time": "10:00-11:00", "bookedByPID": null},
-            {"time": "11:00-12:00", "bookedByPID": null},
-            {"time": "13:00-14:00", "bookedByPID": null},
-            {"time": "14:00-15:00", "bookedByPID": null},
-            {"time": "15:00-16:00", "bookedByPID": null},
-            {"time": "16:00-17:00", "bookedByPID": null}
+            {
+              "time": "8:00-9:00",
+              "bookedByPID": "004"
+            },
+            {
+              "time": "9:00-10:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "10:00-11:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "11:00-12:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "13:00-14:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "14:00-15:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "15:00-16:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "16:00-17:00",
+              "bookedByPID": null
+            }
           ]
         },
         {
           "date": "2024-05-10",
           "dayOfWeek": "Friday",
           "slots": [
-            {"time": "8:00-9:00", "bookedByPID": null},
-            {"time": "9:00-10:00", "bookedByPID": null},
-            {"time": "10:00-11:00", "bookedByPID": null},
-            {"time": "11:00-12:00", "bookedByPID": null},
-            {"time": "13:00-14:00", "bookedByPID": null},
-            {"time": "14:00-15:00", "bookedByPID": null},
-            {"time": "15:00-16:00", "bookedByPID": null},
-            {"time": "16:00-17:00", "bookedByPID": null}
+            {
+              "time": "8:00-9:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "9:00-10:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "10:00-11:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "11:00-12:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "13:00-14:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "14:00-15:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "15:00-16:00",
+              "bookedByPID": null
+            },
+            {
+              "time": "16:00-17:00",
+              "bookedByPID": null
+            }
           ]
         }
       ]
+    }
+  ],
+  "gpss": [
+    {
+      "name": "GP1",
+      "id": "1",
+      "treatments": "Internal Medicine Treatment",
+      "yearsInPractice": 4,
+      "phone": "+44 123123123"
+    },
+    {
+      "name": "GP2",
+      "id": "2",
+      "treatments": "Internal Medicine Treatment",
+      "yearsInPractice": 3,
+      "phone": "+44 77777889"
+    }
+  ],
+  "slots": [
+    {
+      "id": "1",
+      "gpId": "1",
+      "date": "2024-05-06",
+      "dayOfWeek": "Monday",
+      "time": "8:00-9:00",
+      "bookedByPID": "002"
+    },
+    {
+      "id": "2",
+      "gpId": "1",
+      "date": "2024-05-06",
+      "dayOfWeek": "Monday",
+      "time": "9:00-10:00",
+      "bookedByPID": "002"
+    },
+    {
+      "id": "3",
+      "gpId": "1",
+      "date": "2024-05-06",
+      "dayOfWeek": "Monday",
+      "time": "10:00-11:00",
+      "bookedByPID": null
+    },
+    {
+      "id": "4",
+      "gpId": "1",
+      "date": "2024-05-06",
+      "dayOfWeek": "Monday",
+      "time": "11:00-12:00",
+      "bookedByPID": null
+    },
+    {
+      "id": "5",
+      "gpId": "1",
+      "date": "2024-05-06",
+      "dayOfWeek": "Monday",
+      "time": "13:00-14:00",
+      "bookedByPID": null
+    },
+    {
+      "id": "6",
+      "gpId": "1",
+      "date": "2024-05-06",
+      "dayOfWeek": "Monday",
+      "time": "14:00-15:00",
+      "bookedByPID": null
+    },
+    {
+      "id": "7",
+      "gpId": "1",
+      "date": "2024-05-06",
+      "dayOfWeek": "Monday",
+      "time": "15:00-16:00",
+      "bookedByPID": null
+    },
+    {
+      "id": "8",
+      "gpId": "1",
+      "date": "2024-05-06",
+      "dayOfWeek": "Monday",
+      "time": "16:00-17:00",
+      "bookedByPID": null
+    },
+    {
+      "id": "9",
+      "gpId": "1",
+      "date": "2024-05-06",
+      "dayOfWeek": "Monday",
+      "time": "8:00-9:00",
+      "bookedByPID": null
+    },
+    {
+      "id": "10",
+      "gpId": "2",
+      "date": "2024-05-06",
+      "dayOfWeek": "Monday",
+      "time": "9:00-10:00",
+      "bookedByPID": null
+    },
+    {
+      "id": "11",
+      "gpId": "2",
+      "date": "2024-05-06",
+      "dayOfWeek": "Monday",
+      "time": "10:00-11:00",
+      "bookedByPID": null
+    },
+    {
+      "id": "12",
+      "gpId": "2",
+      "date": "2024-05-06",
+      "dayOfWeek": "Monday",
+      "time": "11:00-12:00",
+      "bookedByPID": null
+    },
+    {
+      "id": "13",
+      "gpId": "2",
+      "date": "2024-05-06",
+      "dayOfWeek": "Monday",
+      "time": "13:00-14:00",
+      "bookedByPID": null
+    },
+    {
+      "id": "14",
+      "gpId": "2",
+      "date": "2024-05-06",
+      "dayOfWeek": "Monday",
+      "time": "14:00-15:00",
+      "bookedByPID": null
+    },
+    {
+      "id": "15",
+      "gpId": "2",
+      "date": "2024-05-06",
+      "dayOfWeek": "Monday",
+      "time": "15:00-16:00",
+      "bookedByPID": null
+    },
+    {
+      "id": "16",
+      "gpId": "2",
+      "date": "2024-05-06",
+      "dayOfWeek": "Monday",
+      "time": "16:00-17:00",
+      "bookedByPID": null
     }
   ]
 }
