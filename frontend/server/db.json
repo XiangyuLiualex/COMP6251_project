@@ -1058,7 +1058,8 @@
       "date": "2024-05-06",
       "dayOfWeek": "Monday",
       "time": "8:00-9:00",
-      "bookedByPID": "002"
+      "bookedByPID": "5",
+      "status": "booked"
     },
     {
       "id": "2",
@@ -1066,7 +1067,8 @@
       "date": "2024-05-06",
       "dayOfWeek": "Monday",
       "time": "9:00-10:00",
-      "bookedByPID": "002"
+      "bookedByPID": "002",
+      "status": "hold"
     },
     {
       "id": "3",
@@ -1074,7 +1076,8 @@
       "date": "2024-05-06",
       "dayOfWeek": "Monday",
       "time": "10:00-11:00",
-      "bookedByPID": null
+      "bookedByPID": null,
+      "status": "open"
     },
     {
       "id": "4",
@@ -1082,7 +1085,8 @@
       "date": "2024-05-06",
       "dayOfWeek": "Monday",
       "time": "11:00-12:00",
-      "bookedByPID": null
+      "bookedByPID": null,
+      "status": "open"
     },
     {
       "id": "5",
@@ -1090,7 +1094,8 @@
       "date": "2024-05-06",
       "dayOfWeek": "Monday",
       "time": "13:00-14:00",
-      "bookedByPID": null
+      "bookedByPID": null,
+      "status": "open"
     },
     {
       "id": "6",
@@ -1098,7 +1103,8 @@
       "date": "2024-05-06",
       "dayOfWeek": "Monday",
       "time": "14:00-15:00",
-      "bookedByPID": null
+      "bookedByPID": null,
+      "status": "open"
     },
     {
       "id": "7",
@@ -1106,7 +1112,8 @@
       "date": "2024-05-06",
       "dayOfWeek": "Monday",
       "time": "15:00-16:00",
-      "bookedByPID": null
+      "bookedByPID": null,
+      "status": "open"
     },
     {
       "id": "8",
@@ -1114,15 +1121,17 @@
       "date": "2024-05-06",
       "dayOfWeek": "Monday",
       "time": "16:00-17:00",
-      "bookedByPID": null
+      "bookedByPID": null,
+      "status": "open"
     },
     {
       "id": "9",
-      "gpId": "1",
+      "gpId": "2",
       "date": "2024-05-06",
       "dayOfWeek": "Monday",
       "time": "8:00-9:00",
-      "bookedByPID": null
+      "bookedByPID": null,
+      "status": "open"
     },
     {
       "id": "10",
@@ -1130,7 +1139,8 @@
       "date": "2024-05-06",
       "dayOfWeek": "Monday",
       "time": "9:00-10:00",
-      "bookedByPID": null
+      "bookedByPID": null,
+      "status": "open"
     },
     {
       "id": "11",
@@ -1138,7 +1148,8 @@
       "date": "2024-05-06",
       "dayOfWeek": "Monday",
       "time": "10:00-11:00",
-      "bookedByPID": null
+      "bookedByPID": null,
+      "status": "open"
     },
     {
       "id": "12",
@@ -1146,7 +1157,8 @@
       "date": "2024-05-06",
       "dayOfWeek": "Monday",
       "time": "11:00-12:00",
-      "bookedByPID": null
+      "bookedByPID": null,
+      "status": "open"
     },
     {
       "id": "13",
@@ -1154,7 +1166,8 @@
       "date": "2024-05-06",
       "dayOfWeek": "Monday",
       "time": "13:00-14:00",
-      "bookedByPID": null
+      "bookedByPID": null,
+      "status": "open"
     },
     {
       "id": "14",
@@ -1162,7 +1175,8 @@
       "date": "2024-05-06",
       "dayOfWeek": "Monday",
       "time": "14:00-15:00",
-      "bookedByPID": null
+      "bookedByPID": null,
+      "status": "open"
     },
     {
       "id": "15",
@@ -1170,7 +1184,8 @@
       "date": "2024-05-06",
       "dayOfWeek": "Monday",
       "time": "15:00-16:00",
-      "bookedByPID": null
+      "bookedByPID": null,
+      "status": "open"
     },
     {
       "id": "16",
@@ -1178,7 +1193,44 @@
       "date": "2024-05-06",
       "dayOfWeek": "Monday",
       "time": "16:00-17:00",
-      "bookedByPID": null
+      "bookedByPID": null,
+      "status": "open"
+    },
+    {
+      "id": "17",
+      "gpId": "1",
+      "date": "2024-05-07",
+      "dayOfWeek": "Tuesday",
+      "time": "15:00-16:00",
+      "bookedByPID": null,
+      "status": "open"
+    },
+    {
+      "id": "18",
+      "gpId": "2",
+      "date": "2024-05-07",
+      "dayOfWeek": "Tuesday",
+      "time": "16:00-17:00",
+      "bookedByPID": null,
+      "status": "open"
+    },
+    {
+      "id": "19",
+      "gpId": "1",
+      "date": "2024-05-08",
+      "dayOfWeek": "Wednesday",
+      "time": "15:00-16:00",
+      "bookedByPID": null,
+      "status": "open"
+    },
+    {
+      "id": "20",
+      "gpId": "2",
+      "date": "2024-05-09",
+      "dayOfWeek": "Thursday",
+      "time": "16:00-17:00",
+      "bookedByPID": null,
+      "status": "open"
     }
   ]
 }

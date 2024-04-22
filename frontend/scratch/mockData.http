@@ -79,6 +79,7 @@ PATCH {{baseURL}}/slots/2 HTTP/1.1
 Content-Type: application/json
 
 {
-    "bookedByPID": "002"
+    "bookedByPID": "002",
+    "status":"hold"
 }
 ###

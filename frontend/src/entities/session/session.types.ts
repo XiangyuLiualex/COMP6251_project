@@ -5,6 +5,7 @@ export type Token = string ;
 export type State ={
     token : Token | null;
     role: Role | null;
+    userId: string | null;
 }
 
 export type Actions = {

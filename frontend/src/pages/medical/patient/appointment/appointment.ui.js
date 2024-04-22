@@ -1,327 +1,11 @@
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
+import { sessionStore } from "../../../../entities/session";
+import useUpdateSlotMutation from "../../../../entities/patient/appointment.query";
 
-const GPS = [
-  {
-    name: "GP1",
-    GId: "G001",
-    Treatments: "Internal Medicine Treatment",
-    yearsInPractice: 4,
-    Phone: "+44 123123123",
-    schedule: [
-      {
-        date: "2024-05-06",
-        dayOfWeek: "Monday",
-        slots: [
-          { time: "8:00-9:00", bookedByPID: "001" },
-          { time: "9:00-10:00", bookedByPID: null },
-          { time: "10:00-11:00", bookedByPID: null },
-          { time: "11:00-12:00", bookedByPID: null },
-          { time: "13:00-14:00", bookedByPID: null },
-          { time: "14:00-15:00", bookedByPID: null },
-          { time: "15:00-16:00", bookedByPID: null },
-          { time: "16:00-17:00", bookedByPID: null },
-        ],
-      },
-      {
-        date: "2024-05-07",
-        dayOfWeek: "Tuesday",
-        slots: [
-          { time: "8:00-9:00", bookedByPID: null },
-          { time: "9:00-10:00", bookedByPID: null },
-          { time: "10:00-11:00", bookedByPID: null },
-          { time: "11:00-12:00", bookedByPID: null },
-          { time: "13:00-14:00", bookedByPID: null },
-          { time: "14:00-15:00", bookedByPID: null },
-          { time: "15:00-16:00", bookedByPID: null },
-          { time: "16:00-17:00", bookedByPID: null },
-        ],
-      },
-      {
-        date: "2024-05-08",
-        dayOfWeek: "Wednesday",
-        slots: [
-          { time: "8:00-9:00", bookedByPID: null },
-          { time: "9:00-10:00", bookedByPID: null },
-          { time: "10:00-11:00", bookedByPID: null },
-          { time: "11:00-12:00", bookedByPID: null },
-          { time: "13:00-14:00", bookedByPID: null },
-          { time: "14:00-15:00", bookedByPID: null },
-          { time: "15:00-16:00", bookedByPID: null },
-          { time: "16:00-17:00", bookedByPID: null },
-        ],
-      },
-      {
-        date: "2024-05-09",
-        dayOfWeek: "Thursday",
-        slots: [
-          { time: "8:00-9:00", bookedByPID: null },
-          { time: "9:00-10:00", bookedByPID: null },
-          { time: "10:00-11:00", bookedByPID: null },
-          { time: "11:00-12:00", bookedByPID: null },
-          { time: "13:00-14:00", bookedByPID: null },
-          { time: "14:00-15:00", bookedByPID: null },
-          { time: "15:00-16:00", bookedByPID: null },
-          { time: "16:00-17:00", bookedByPID: null },
-        ],
-      },
-      {
-        date: "2024-05-10",
-        dayOfWeek: "Friday",
-        slots: [
-          { time: "8:00-9:00", bookedByPID: null },
-          { time: "9:00-10:00", bookedByPID: null },
-          { time: "10:00-11:00", bookedByPID: null },
-          { time: "11:00-12:00", bookedByPID: null },
-          { time: "13:00-14:00", bookedByPID: null },
-          { time: "14:00-15:00", bookedByPID: null },
-          { time: "15:00-16:00", bookedByPID: null },
-          { time: "16:00-17:00", bookedByPID: null },
-        ],
-      },
-    ],
-  },
-  {
-    name: "GP2",
-    GId: "G002",
-    Treatments: "Surgical Treatment",
-    yearsInPractice: 8,
-    Phone: "+44 5231252343",
-    schedule: [
-      {
-        date: "2024-05-06",
-        dayOfWeek: "Monday",
-        slots: [
-          { time: "8:00-9:00", bookedByPID: null },
-          { time: "9:00-10:00", bookedByPID: null },
-          { time: "10:00-11:00", bookedByPID: null },
-          { time: "11:00-12:00", bookedByPID: null },
-          { time: "13:00-14:00", bookedByPID: null },
-          { time: "14:00-15:00", bookedByPID: null },
-          { time: "15:00-16:00", bookedByPID: null },
-          { time: "16:00-17:00", bookedByPID: null },
-        ],
-      },
-      {
-        date: "2024-05-07",
-        dayOfWeek: "Tuesday",
-        slots: [
-          { time: "8:00-9:00", bookedByPID: "002" },
-          { time: "9:00-10:00", bookedByPID: null },
-          { time: "10:00-11:00", bookedByPID: null },
-          { time: "11:00-12:00", bookedByPID: null },
-          { time: "13:00-14:00", bookedByPID: null },
-          { time: "14:00-15:00", bookedByPID: null },
-          { time: "15:00-16:00", bookedByPID: null },
-          { time: "16:00-17:00", bookedByPID: null },
-        ],
-      },
-      {
-        date: "2024-05-08",
-        dayOfWeek: "Wednesday",
-        slots: [
-          { time: "8:00-9:00", bookedByPID: null },
-          { time: "9:00-10:00", bookedByPID: null },
-          { time: "10:00-11:00", bookedByPID: null },
-          { time: "11:00-12:00", bookedByPID: null },
-          { time: "13:00-14:00", bookedByPID: null },
-          { time: "14:00-15:00", bookedByPID: null },
-          { time: "15:00-16:00", bookedByPID: null },
-          { time: "16:00-17:00", bookedByPID: null },
-        ],
-      },
-      {
-        date: "2024-05-09",
-        dayOfWeek: "Thursday",
-        slots: [
-          { time: "8:00-9:00", bookedByPID: null },
-          { time: "9:00-10:00", bookedByPID: null },
-          { time: "10:00-11:00", bookedByPID: null },
-          { time: "11:00-12:00", bookedByPID: null },
-          { time: "13:00-14:00", bookedByPID: null },
-          { time: "14:00-15:00", bookedByPID: null },
-          { time: "15:00-16:00", bookedByPID: null },
-          { time: "16:00-17:00", bookedByPID: null },
-        ],
-      },
-      {
-        date: "2024-05-10",
-        dayOfWeek: "Friday",
-        slots: [
-          { time: "8:00-9:00", bookedByPID: null },
-          { time: "9:00-10:00", bookedByPID: null },
-          { time: "10:00-11:00", bookedByPID: null },
-          { time: "11:00-12:00", bookedByPID: null },
-          { time: "13:00-14:00", bookedByPID: null },
-          { time: "14:00-15:00", bookedByPID: null },
-          { time: "15:00-16:00", bookedByPID: null },
-          { time: "16:00-17:00", bookedByPID: null },
-        ],
-      },
-    ],
-  },
-  {
-    name: "GP3",
-    GId: "G003",
-    Treatments: "Psychotherapy",
-    yearsInPractice: 1,
-    Phone: "+44 552232343",
-    schedule: [
-      {
-        date: "2024-05-06",
-        dayOfWeek: "Monday",
-        slots: [
-          { time: "8:00-9:00", bookedByPID: null },
-          { time: "9:00-10:00", bookedByPID: null },
-          { time: "10:00-11:00", bookedByPID: null },
-          { time: "11:00-12:00", bookedByPID: null },
-          { time: "13:00-14:00", bookedByPID: null },
-          { time: "14:00-15:00", bookedByPID: null },
-          { time: "15:00-16:00", bookedByPID: null },
-          { time: "16:00-17:00", bookedByPID: null },
-        ],
-      },
-      {
-        date: "2024-05-07",
-        dayOfWeek: "Tuesday",
-        slots: [
-          { time: "8:00-9:00", bookedByPID: null },
-          { time: "9:00-10:00", bookedByPID: null },
-          { time: "10:00-11:00", bookedByPID: null },
-          { time: "11:00-12:00", bookedByPID: null },
-          { time: "13:00-14:00", bookedByPID: null },
-          { time: "14:00-15:00", bookedByPID: null },
-          { time: "15:00-16:00", bookedByPID: null },
-          { time: "16:00-17:00", bookedByPID: null },
-        ],
-      },
-      {
-        date: "2024-05-08",
-        dayOfWeek: "Wednesday",
-        slots: [
-          { time: "8:00-9:00", bookedByPID: "003" },
-          { time: "9:00-10:00", bookedByPID: null },
-          { time: "10:00-11:00", bookedByPID: null },
-          { time: "11:00-12:00", bookedByPID: null },
-          { time: "13:00-14:00", bookedByPID: null },
-          { time: "14:00-15:00", bookedByPID: null },
-          { time: "15:00-16:00", bookedByPID: null },
-          { time: "16:00-17:00", bookedByPID: null },
-        ],
-      },
-      {
-        date: "2024-05-09",
-        dayOfWeek: "Thursday",
-        slots: [
-          { time: "8:00-9:00", bookedByPID: null },
-          { time: "9:00-10:00", bookedByPID: null },
-          { time: "10:00-11:00", bookedByPID: null },
-          { time: "11:00-12:00", bookedByPID: null },
-          { time: "13:00-14:00", bookedByPID: null },
-          { time: "14:00-15:00", bookedByPID: null },
-          { time: "15:00-16:00", bookedByPID: null },
-          { time: "16:00-17:00", bookedByPID: null },
-        ],
-      },
-      {
-        date: "2024-05-10",
-        dayOfWeek: "Friday",
-        slots: [
-          { time: "8:00-9:00", bookedByPID: null },
-          { time: "9:00-10:00", bookedByPID: null },
-          { time: "10:00-11:00", bookedByPID: null },
-          { time: "11:00-12:00", bookedByPID: null },
-          { time: "13:00-14:00", bookedByPID: null },
-          { time: "14:00-15:00", bookedByPID: null },
-          { time: "15:00-16:00", bookedByPID: null },
-          { time: "16:00-17:00", bookedByPID: null },
-        ],
-      },
-    ],
-  },
-  {
-    name: "GP4",
-    GId: "G004",
-    Treatments: "Skin Care Treatment",
-    yearsInPractice: 2,
-    Phone: "+44 46352252343",
-    schedule: [
-      {
-        date: "2024-05-06",
-        dayOfWeek: "Monday",
-        slots: [
-          { time: "8:00-9:00", bookedByPID: null },
-          { time: "9:00-10:00", bookedByPID: null },
-          { time: "10:00-11:00", bookedByPID: null },
-          { time: "11:00-12:00", bookedByPID: null },
-          { time: "13:00-14:00", bookedByPID: null },
-          { time: "14:00-15:00", bookedByPID: null },
-          { time: "15:00-16:00", bookedByPID: null },
-          { time: "16:00-17:00", bookedByPID: null },
-        ],
-      },
-      {
-        date: "2024-05-07",
-        dayOfWeek: "Tuesday",
-        slots: [
-          { time: "8:00-9:00", bookedByPID: null },
-          { time: "9:00-10:00", bookedByPID: null },
-          { time: "10:00-11:00", bookedByPID: null },
-          { time: "11:00-12:00", bookedByPID: null },
-          { time: "13:00-14:00", bookedByPID: null },
-          { time: "14:00-15:00", bookedByPID: null },
-          { time: "15:00-16:00", bookedByPID: null },
-          { time: "16:00-17:00", bookedByPID: null },
-        ],
-      },
-      {
-        date: "2024-05-08",
-        dayOfWeek: "Wednesday",
-        slots: [
-          { time: "8:00-9:00", bookedByPID: null },
-          { time: "9:00-10:00", bookedByPID: null },
-          { time: "10:00-11:00", bookedByPID: null },
-          { time: "11:00-12:00", bookedByPID: null },
-          { time: "13:00-14:00", bookedByPID: null },
-          { time: "14:00-15:00", bookedByPID: null },
-          { time: "15:00-16:00", bookedByPID: null },
-          { time: "16:00-17:00", bookedByPID: null },
-        ],
-      },
-      {
-        date: "2024-05-09",
-        dayOfWeek: "Thursday",
-        slots: [
-          { time: "8:00-9:00", bookedByPID: "004" },
-          { time: "9:00-10:00", bookedByPID: null },
-          { time: "10:00-11:00", bookedByPID: null },
-          { time: "11:00-12:00", bookedByPID: null },
-          { time: "13:00-14:00", bookedByPID: null },
-          { time: "14:00-15:00", bookedByPID: null },
-          { time: "15:00-16:00", bookedByPID: null },
-          { time: "16:00-17:00", bookedByPID: null },
-        ],
-      },
-      {
-        date: "2024-05-10",
-        dayOfWeek: "Friday",
-        slots: [
-          { time: "8:00-9:00", bookedByPID: null },
-          { time: "9:00-10:00", bookedByPID: null },
-          { time: "10:00-11:00", bookedByPID: null },
-          { time: "11:00-12:00", bookedByPID: null },
-          { time: "13:00-14:00", bookedByPID: null },
-          { time: "14:00-15:00", bookedByPID: null },
-          { time: "15:00-16:00", bookedByPID: null },
-          { time: "16:00-17:00", bookedByPID: null },
-        ],
-      },
-    ],
-  },
-];
-
-function DoubleConfirm({ name, date, time, reason }) {
+function DoubleConfirm({ name, date, time, reason,slotId,pId,isError,isLoad,isSuccess,onUpdateSlot }) {
+  console.log("slotId: "+slotId+" pId: "+pId);
   return (
     <div>
       <h2>Please confirm your booking information: </h2>
@@ -329,7 +13,12 @@ function DoubleConfirm({ name, date, time, reason }) {
       <h3>Date Selected: {date}</h3>
       <h3>Time Selected: {time}</h3>
       <h3>Booking Reason: {reason}</h3>
-      <button>Submit</button>
+      <button onClick={() => onUpdateSlot(slotId, pId)} disabled={isLoad}>
+        Submit
+      </button>
+
+        {isError && <p>An error occurred: {isError.message}</p>}
+        {isSuccess && <p>Slot updated successfully!</p>}
     </div>
   );
 }
@@ -349,20 +38,33 @@ function ConfirmBox({ reasonText, onSubmit, onReasonText }) {
   );
 }
 
-function DaySchedule({ onSlotSelect, schedule }) {
+// {
+//   "id": "6",
+//   "gpId": "1",
+//   "date": "2024-05-06",
+//   "dayOfWeek": "Monday",
+//   "time": "14:00-15:00",
+//   "bookedByPID": null
+// }
+
+function DaySchedule({onSlotSelect, daySlots }) {
+  // console.log(daySlots);
+  // console.log(daySlots[0].bookedByPID === null);
+  //onSlotSelect, schedule
+
   return (
     <td>
-      <h4>{schedule.date}</h4>
-      <h5>{schedule.dayOfWeek}</h5>
-
+      
       <ul>
-        {schedule.slots.map(
+      <h4>{daySlots[0].date}</h4>
+      <h5>{daySlots[0].dayOfWeek}</h5>
+        {daySlots.map(
           (slot, index) =>
-            slot.bookedByPID === null && (
+            slot.status === "open" && (
               <li key={index}>
                 <button
                   onClick={() =>
-                    onSlotSelect({ date: schedule.date, time: slot.time })
+                    onSlotSelect({ date: slot.date, time: slot.time, id:slot.id })
                   }
                 >
                   {slot.time}
@@ -375,16 +77,31 @@ function DaySchedule({ onSlotSelect, schedule }) {
   );
 }
 
-function WeekSchedule({ onSlotSelect, schedules }) {
+function WeekSchedule({ onSlotSelect, weekSlots }) {
+    weekSlots.sort((a, b) => a.id - b.id);
+    const slots = weekSlots.reduce((acc, slot) => {
+    // 查找当前日期是否已经有对应的分组
+    const existingGroup = acc.find(group => group[0].date === slot.date);
+    if (existingGroup) {
+        // 如果存在，将当前slot添加到该组
+        existingGroup.push(slot);
+    } else {
+        // 如果不存在，创建新的组并添加到accumulator
+        acc.push([slot]);
+    }
+    return acc;
+}, []);
+  console.log(slots);
+
   return (
     <table>
       <tbody>
         <tr>
-          {schedules.map((schedule, index) => (
+          {slots.map((slot, index) => (
             <DaySchedule
               onSlotSelect={onSlotSelect}
               key={index}
-              schedule={schedule}
+              daySlots={slot}
             />
           ))}
         </tr>
@@ -412,13 +129,13 @@ function GPSBox({ onGpSelect, gps, type }) {
   if (type === "healthComplaint") {
     gps.forEach((gp) => {
       if (gp.yearsInPractice <= 3) {
-        rows.push(<GPBox onGpSelect={onGpSelect} gp={gp} key={gp.GId} />);
+        rows.push(<GPBox onGpSelect={onGpSelect} gp={gp} key={gp.id} />);
       }
     });
   } else {
     gps.forEach((gp) => {
       if (gp.yearsInPractice > 3) {
-        rows.push(<GPBox onGpSelect={onGpSelect} gp={gp} key={gp.GId} />);
+        rows.push(<GPBox onGpSelect={onGpSelect} gp={gp} key={gp.id} />);
       }
     });
   }
@@ -443,22 +160,43 @@ function InitialBox({ onTypeSelect }) {
 }
 
 export function AppointmentPage() {
+
   const [currentBox, setCurrentBox] = useState("Initial");
   const [type, setType] = useState(null);
   const [gpSelect, setGpSelect] = useState(null);
   const [slotSelect, setSlotSelect] = useState(null);
   const [reasonText, setReasonText] = useState("");
+  const {mutate, isLoad,isError,isSuccess}=useUpdateSlotMutation();
   const { data, isLoading, error } = useQuery({
     queryKey: ["speakers"],
     queryFn: async () => {
-      var response = await axios("http://localhost:3001/gps");
-      console.log(response.data);
-      return response.data;
+      var gpss = await axios("http://localhost:3001/gpss");
+      // console.log(gpss.data);
+      var slots=await axios("http://localhost:3001/slots")
+      
+      var response=gpss.data.map(gp=>{
+        const gpSlots = slots.data.filter(slot=>slot.gpId===gp.id);
+        return{
+          ...gp,
+          slots:gpSlots
+        };
+      });
+      return response;
     },
   });
   if (error) return <h4>Error:{error.message}, retry again</h4>;
   if (isLoading) return <h4>...Loading data</h4>;
-  console.log(data);
+  // console.log(data);
+  const GPS=data;
+
+  const handleUpdateSlot=(sId, pId)=>{
+    console.log("last place:"+sId+" "+pId);
+    mutate({
+      slotId: sId,
+      bookedByPID: pId,
+      
+    });
+  };
 
   const handleTypeSelect = (type) => {
     setCurrentBox("GPS");
@@ -496,18 +234,18 @@ export function AppointmentPage() {
     setCurrentBox("doubleConfirm");
   };
 
-  return (
-    <>
-      <h1>Displaying GPS Information</h1>
-      <ul>
-        {data.map((speaker) => (
-          <li key={speaker.id}>
-            {speaker.name}, <em> {speaker.Treatments} </em>
-          </li>
-        ))}
-      </ul>
-    </>
-  );
+  // return (
+  //   <>
+  //     <h1>Displaying GPS Information</h1>
+  //     <ul>
+  //       {data.map((speaker) => (
+  //         <li key={speaker.id}>
+  //           {speaker.name}, <em> {speaker.Treatments} </em>
+  //         </li>
+  //       ))}
+  //     </ul>
+  //   </>
+  // );
 
   switch (currentBox) {
     case "Initial":
@@ -530,7 +268,7 @@ export function AppointmentPage() {
           <h1>Appointment Page</h1>
           <WeekSchedule
             onSlotSelect={handleSlotSelect}
-            schedules={gpSelect.schedule}
+            weekSlots={gpSelect.slots}
           />
         </div>
       );
@@ -559,8 +297,17 @@ export function AppointmentPage() {
             date={slotSelect.date}
             time={slotSelect.time}
             reason={reasonText}
+            slotId={slotSelect.id}
+            pId={sessionStore.getState().userId}
+            isError={isError}
+            isLoad={isLoad}
+            isSuccess={isSuccess}
+            onUpdateSlot={handleUpdateSlot}
           />
         </div>
       );
   }
 }
+
+
+
