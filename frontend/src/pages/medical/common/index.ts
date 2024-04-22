@@ -1,1 +1,1 @@
-export * from './genericLayout.ui';
+export * from './GenericLayout.ui';

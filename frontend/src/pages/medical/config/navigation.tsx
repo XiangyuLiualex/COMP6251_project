@@ -3,14 +3,15 @@ import { ListItemLinkProps } from "../common/naviList";
 import PeopleIcon from '@mui/icons-material/People';
 import { pathKeys } from "./path";
 
-interface NaviListConfig extends ListItemLinkProps {
+export interface NaviListConfig extends ListItemLinkProps {
     disabled?: boolean;
-    isShow?: boolean;
+    // isShow?: boolean;
 }
 export const patientConfig: NaviListConfig[] = [
     { primary: 'Profile', to: '/patient/profile', icon: <PeopleIcon /> },
     { primary: 'self-register', to: pathKeys.patient.selfRegister(), icon: <PeopleIcon /> },
-    { primary: 'Medical History', to: '/patient/medical-history', icon: <PeopleIcon /> },
+    { primary: 'Medical History', to: pathKeys.patient.history(), icon: <PeopleIcon /> },
+    { primary: 'Medical Tests', to: pathKeys.patient.tests(), icon: <PeopleIcon /> }
 ];
 export const adminConfig: NaviListConfig[] = [
     { primary: 'Profile', to: '/admin/profile', icon: <PeopleIcon /> },

@@ -3,6 +3,7 @@ import './homepage.css';
 import { Box, AppBar, Toolbar, Button, Typography, IconButton } from '@mui/material';
 import LocalHospitalIcon from '@mui/icons-material/LocalHospital';
 import { useNavigate } from 'react-router-dom';
+import { pathKeys } from '../medical/config/path';
 
 // todo: make header bar responsive 
 // https://mui.com/material-ui/react-app-bar/#app-bar-with-responsive-menu
@@ -26,9 +27,9 @@ function Header() {
                         G4 Health Practice
 
                     </Typography>
-                    <Button color="inherit" onClick={() => navigate("/login")}>Login</Button>
+                    <Button color="inherit" onClick={() => navigate(pathKeys.login())}>Login</Button>
 
-                    <Button color="inherit" onClick={() => navigate("/sign-up")}>register</Button>
+                    <Button color="inherit" onClick={() => navigate(pathKeys.signUp())}>Sign up</Button>
                 </Toolbar>
             </AppBar>
         </Box>

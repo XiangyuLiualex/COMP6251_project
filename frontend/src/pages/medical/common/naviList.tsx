@@ -2,7 +2,21 @@ import { List, ListItem, ListItemButton, ListItemIcon, ListItemText, Paper } fro
 import React from "react";
 import { NavLink, NavLinkProps } from "react-router-dom";
 import { Role } from "../../../entities/session/session.types";
-import { adminConfig, gpConfig, patientConfig } from "../config/navigation";
+import { NaviListConfig, adminConfig, gpConfig, patientConfig } from "../config/navigation";
+import { UseGuestCheck } from "../../../entities/patient/patient.query";
+
+
+function pattientGuestValid(patientConfig: NaviListConfig[]) {
+    const { data } = UseGuestCheck();
+    if (data.patientId === false) {
+        return patientConfig;
+    } else if (data.patientId === true) {
+        return patientConfig.filter((item) => item.primary !== "Self Register");
+    } else {
+        console.error("patientId is not boolean");
+        return patientConfig;
+    }
+}
 
 
 export function NavLists({ role }: { role: Role }) {
@@ -26,7 +40,11 @@ export function NavLists({ role }: { role: Role }) {
         <Paper elevation={0}>
             <List component="nav">
                 {config.map((item) => {
-                    return <ListItemLink key={"nav" + item.primary} to={item.to} primary={item.primary} icon={item.icon} />
+                    if (!item.disabled) {
+                        return <ListItemLink key={"nav" + item.primary} to={item.to} primary={item.primary} icon={item.icon} />
+                    } else {
+                        return null;
+                    }
                 })}
 
             </List>
@@ -62,4 +80,6 @@ function ListItemLink(props: ListItemLinkProps) {
 
     );
 }
+
+
 

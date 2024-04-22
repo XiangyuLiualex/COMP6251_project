@@ -1,3 +1,14 @@
+# Backend
+
+
+1. patient
+   1. if guest, request limited
+2. json server
+3. json server auth
+   1. login....
+4. sign up, create role patient
+
+
 # plan for the project
 
 1. build the miniumal viable product (MVP)
