@@ -1,4 +1,4 @@
-import { useMutation } from '@tanstack/react-query';
+import { useQuery, useMutation } from '@tanstack/react-query';
 import axios from 'axios';
 
 const baseURL = "http://localhost:3001";
@@ -36,5 +36,27 @@ const useUpdateSlotMutation = () => {
     }
   });
 };
+
+
+export function useAppointmentQuery(){
+  return useQuery({
+    queryKey: ["speakers"],
+    queryFn: async () => {
+      var gpss = await axios("http://localhost:3001/gpss");
+      // console.log(gpss.data);
+      var slots=await axios("http://localhost:3001/slots")
+      
+      var response=gpss.data.map(gp=>{
+        const gpSlots = slots.data.filter(slot=>slot.gpId===gp.id);
+        return{
+          ...gp,
+          slots:gpSlots
+        };
+      });
+      return response;
+    },
+  });
+
+}  
 
 export default useUpdateSlotMutation;

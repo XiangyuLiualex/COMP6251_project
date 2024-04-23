@@ -2,7 +2,10 @@ import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { sessionStore } from "../../../../entities/session";
-import useUpdateSlotMutation from "../../../../entities/patient/appointment.query";
+// import useUpdateSlotMutation from "../../../../entities/patient/appointment.query";
+import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
+import useUpdateSlotMutation, { useAppointmentQuery } from "../../../../entities/patient/appointment.query";
 
 export function DoubleConfirm({ name, date, time, reason,slotId,pId,isError,isLoad,isSuccess,onUpdateSlot }) {
   const handleOnSubmit=()=>{
@@ -153,12 +156,15 @@ function GPSBox({ onGpSelect, gps, type }) {
 
 function InitialBox({ onTypeSelect }) {
   return (
+    
     <div>
       <h2>Please choose your appointment type: </h2>
-      <button onClick={() => onTypeSelect("illness")}>Illness</button>
-      <button onClick={() => onTypeSelect("healthComplaint")}>
+      <Stack spacing={2} direction="row">
+      <Button variant="contained" onClick={() => onTypeSelect("illness")}>Illness</Button>
+      <Button variant="contained" onClick={() => onTypeSelect("healthComplaint")}>
         Health Complaint
-      </button>
+      </Button>
+    </Stack>
     </div>
   );
 }
@@ -171,23 +177,11 @@ export function AppointmentPage() {
   const [slotSelect, setSlotSelect] = useState(null);
   const [reasonText, setReasonText] = useState("");
   const {mutate, isLoad,isError,isSuccess}=useUpdateSlotMutation();
-  const { data, isLoading, error } = useQuery({
-    queryKey: ["speakers"],
-    queryFn: async () => {
-      var gpss = await axios("http://localhost:3001/gpss");
-      // console.log(gpss.data);
-      var slots=await axios("http://localhost:3001/slots")
-      
-      var response=gpss.data.map(gp=>{
-        const gpSlots = slots.data.filter(slot=>slot.gpId===gp.id);
-        return{
-          ...gp,
-          slots:gpSlots
-        };
-      });
-      return response;
-    },
-  });
+  const { data, isLoading, error } =useAppointmentQuery()
+
+
+
+
   if (error) return <h4>Error:{error.message}, retry again</h4>;
   if (isLoading) return <h4>...Loading data</h4>;
   // console.log(data);
