@@ -7,9 +7,13 @@ export interface NaviListConfig extends ListItemLinkProps {
     disabled?: boolean;
     // isShow?: boolean;
 }
+export const guestPrimary = {
+    profile: 'Profile',
+    selfRegister: 'self-register',
+}
 export const patientConfig: NaviListConfig[] = [
-    { primary: 'Profile', to: '/patient/profile', icon: <PeopleIcon /> },
-    { primary: 'self-register', to: pathKeys.patient.selfRegister(), icon: <PeopleIcon /> },
+    { primary: guestPrimary.profile, to: '/patient/profile', icon: <PeopleIcon /> },
+    { primary: guestPrimary.selfRegister, to: pathKeys.patient.selfRegister(), icon: <PeopleIcon /> },
     { primary: 'Medical History', to: pathKeys.patient.history(), icon: <PeopleIcon /> },
     { primary: 'Medical Tests', to: pathKeys.patient.tests(), icon: <PeopleIcon /> }
 ];

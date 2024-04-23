@@ -12,11 +12,11 @@
    3. [x] one patient, role -> patient
 3. patient:
    1. [x] role -> patient
-   2. more function rendered in side bar
-   3. appointment
-      1. search all available appointments
-      2. book an appointment
-      3. update an appointment
+   2. [x] more function rendered in side bar
+   3. [ ] appointment
+      1. [ ] search all available appointments
+      2. [ ] book an appointment
+      3. [ ] update an appointment
 4. GP:
    1. appointments
       1. search my appointments
@@ -52,7 +52,12 @@
    1. [x] data
 4. rename the title and resources
    1. medical history?
-   2. 
+
+## code refactoring
+
+1. using more zustand store
+2. pathKeys complete
+3. warp-query transform
 
 ## description
 

@@ -2,20 +2,27 @@ import { List, ListItem, ListItemButton, ListItemIcon, ListItemText, Paper } fro
 import React from "react";
 import { NavLink, NavLinkProps } from "react-router-dom";
 import { Role } from "../../../entities/session/session.types";
-import { NaviListConfig, adminConfig, gpConfig, patientConfig } from "../config/navigation";
+import { NaviListConfig, adminConfig, gpConfig, guestPrimary, patientConfig } from "../config/navigation";
 import { UseGuestCheck } from "../../../entities/patient/patient.query";
 
 
+// todo refresh flash show hidden item
+// save in store
 function pattientGuestValid(patientConfig: NaviListConfig[]) {
-    const { data } = UseGuestCheck();
-    if (data.patientId === false) {
-        return patientConfig;
-    } else if (data.patientId === true) {
-        return patientConfig.filter((item) => item.primary !== "Self Register");
-    } else {
-        console.error("patientId is not boolean");
+    const { data, error, isError } = UseGuestCheck();
+    console.log(data);
+    if (!data) {
         return patientConfig;
     }
+
+    if (data.ifPatientValid === "true") {
+        return patientConfig;
+    } else if (data.ifPatientValid === "false") {
+        return patientConfig.filter((item) =>
+            item.primary === guestPrimary.profile || item.primary === guestPrimary.selfRegister);
+    }
+
+    return patientConfig;
 }
 
 
@@ -23,7 +30,7 @@ export function NavLists({ role }: { role: Role }) {
     let config
     switch (role) {
         case "patient":
-            config = patientConfig;
+            config = pattientGuestValid(patientConfig);
             break;
         case "admin":
             config = adminConfig;

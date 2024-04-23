@@ -56,15 +56,22 @@ export function useSelfRegisterFormMutation() {
     });
 }
 
+type GuestCheckData = {
+    id: number;
+    patientId: number;
+    ifPatientValid: string;
+};
+
 // TODO backend return exist or not
 export function UseGuestCheck() {
+    const currentUId = sessionStore.getState().uid;
+
     const fn = wrappedFetch({
-        url: pathKeys.patient.apiGuestCheck(),
+        url: pathKeys.patient.apiGuestCheck().concat("/" + currentUId),
         method: "GET",
-        body: { id: sessionStore.getState().uid },
     });
 
-    return useQuery({
+    return useQuery<GuestCheckData>({
         queryKey: ["guestCheck"],
         queryFn: () => fn,
     });
@@ -73,7 +80,7 @@ export function UseGuestCheck() {
 type WrappedConfig = {
     url: string;
     method: "POST" | "GET" | "PUT" | "DELETE" | "PATCH";
-    body: any;
+    body?: any;
 };
 
 function buildHeader(config: WrappedConfig) {

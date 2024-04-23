@@ -357,7 +357,6 @@
       "id": 5
     }
   ],
-  "posts": {},
   "guestPatient": [
     {
       "id": 123,
@@ -413,5 +412,8 @@
       "patientId": 24,
       "ifPatientValid": "false"
     }
-  ]
+  ],
+  "medical-history":[],
+  "test":[],
+  "prescription":[]
 }
