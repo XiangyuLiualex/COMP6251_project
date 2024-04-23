@@ -99,3 +99,24 @@ Content-Type: application/json
     "ifPatientValid": "flase"
 }
 ###
+
+### ---------testing------------------
+
+### @name get gps
+GET {{baseURL}}/gpss HTTP/1.1
+###
+
+### @name getSlots
+GET {{baseURL}}/gpss/1/slots/ HTTP/1.1
+###
+
+#TODO verifications: user is bookedById,.....
+### @name bookSlot
+PATCH {{baseURL}}/slots/2 HTTP/1.1
+Content-Type: application/json
+
+{
+    "bookedByPID": "002",
+    "status":"hold"
+}
+###

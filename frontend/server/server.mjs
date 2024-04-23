@@ -32,6 +32,7 @@ const rules = auth.rewriter({
   "/admin/approvals": "/self-reg",
   "/admin/approve/:id": "/self-reg/:id",
   "/patient/guest-check/:id": "/guestPatient/:id",
+  // "/book-slot/:id": "/slots/:id",
   // "/blog/:resource/:id/show": "/:resource/:id",
 });
 server.use(rules);
@@ -111,13 +112,14 @@ server.patch("/self-reg/:id", (req) => {
 
 // To handle POST, PUT and PATCH you need to use a body-parser
 // You can use the one used by JSON Server
-// server.use((req, res, next) => {
-//   if (req.method === "POST") {
-//     req.body.createdAt = Date.now();
-//   }
-//   // Continue to JSON Server router
-//   next();
-// });
+server.use(bodyParser);
+server.use((req, res, next) => {
+  if (req.method === "POST") {
+    req.body.createdAt = Date.now();
+  }
+  // Continue to JSON Server router
+  next();
+});
 
 // Add custom routes before JSON Server router
 // Use default router
