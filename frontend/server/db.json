@@ -456,6 +456,217 @@
       "ifPatientValid": "true"
     }
   ],
+  "gpss": [
+    {
+      "name": "GP1",
+      "id": "1",
+      "treatments": "Internal Medicine Treatment",
+      "yearsInPractice": 4,
+      "phone": "+44 123123123"
+    },
+    {
+      "name": "GP2",
+      "id": "2",
+      "treatments": "Internal Medicine Treatment",
+      "yearsInPractice": 3,
+      "phone": "+44 77777889"
+    }
+  ],
+  "slots": [
+    {
+      "id": "1",
+      "gpId": "1",
+      "date": "2024-05-06",
+      "dayOfWeek": "Monday",
+      "time": "8:00-9:00",
+      "bookedByPID": "5",
+      "status": "booked"
+    },
+    {
+      "id": "2",
+      "gpId": "1",
+      "date": "2024-05-06",
+      "dayOfWeek": "Monday",
+      "time": "9:00-10:00",
+      "bookedByPID": "002",
+      "status": "hold"
+    },
+    {
+      "id": "3",
+      "gpId": "1",
+      "date": "2024-05-06",
+      "dayOfWeek": "Monday",
+      "time": "10:00-11:00",
+      "bookedByPID": null,
+      "status": "open"
+    },
+    {
+      "id": "4",
+      "gpId": "1",
+      "date": "2024-05-06",
+      "dayOfWeek": "Monday",
+      "time": "11:00-12:00",
+      "bookedByPID": null,
+      "status": "open"
+    },
+    {
+      "id": "5",
+      "gpId": "1",
+      "date": "2024-05-06",
+      "dayOfWeek": "Monday",
+      "time": "13:00-14:00",
+      "bookedByPID": null,
+      "status": "open"
+    },
+    {
+      "id": "6",
+      "gpId": "1",
+      "date": "2024-05-06",
+      "dayOfWeek": "Monday",
+      "time": "14:00-15:00",
+      "bookedByPID": null,
+      "status": "open"
+    },
+    {
+      "id": "7",
+      "gpId": "1",
+      "date": "2024-05-06",
+      "dayOfWeek": "Monday",
+      "time": "15:00-16:00",
+      "bookedByPID": 5,
+      "status": "hold"
+    },
+    {
+      "id": "8",
+      "gpId": "1",
+      "date": "2024-05-06",
+      "dayOfWeek": "Monday",
+      "time": "16:00-17:00",
+      "bookedByPID": 5,
+      "status": "hold"
+    },
+    {
+      "id": "9",
+      "gpId": "2",
+      "date": "2024-05-06",
+      "dayOfWeek": "Monday",
+      "time": "8:00-9:00",
+      "bookedByPID": null,
+      "status": "open"
+    },
+    {
+      "id": "10",
+      "gpId": "2",
+      "date": "2024-05-06",
+      "dayOfWeek": "Monday",
+      "time": "9:00-10:00",
+      "bookedByPID": null,
+      "status": "open"
+    },
+    {
+      "id": "11",
+      "gpId": "2",
+      "date": "2024-05-06",
+      "dayOfWeek": "Monday",
+      "time": "10:00-11:00",
+      "bookedByPID": null,
+      "status": "open"
+    },
+    {
+      "id": "12",
+      "gpId": "2",
+      "date": "2024-05-06",
+      "dayOfWeek": "Monday",
+      "time": "11:00-12:00",
+      "bookedByPID": null,
+      "status": "open"
+    },
+    {
+      "id": "13",
+      "gpId": "2",
+      "date": "2024-05-06",
+      "dayOfWeek": "Monday",
+      "time": "13:00-14:00",
+      "bookedByPID": null,
+      "status": "open"
+    },
+    {
+      "id": "14",
+      "gpId": "2",
+      "date": "2024-05-06",
+      "dayOfWeek": "Monday",
+      "time": "14:00-15:00",
+      "bookedByPID": null,
+      "status": "open"
+    },
+    {
+      "id": "15",
+      "gpId": "2",
+      "date": "2024-05-06",
+      "dayOfWeek": "Monday",
+      "time": "15:00-16:00",
+      "bookedByPID": null,
+      "status": "open"
+    },
+    {
+      "id": "16",
+      "gpId": "2",
+      "date": "2024-05-06",
+      "dayOfWeek": "Monday",
+      "time": "16:00-17:00",
+      "bookedByPID": null,
+      "status": "open"
+    },
+    {
+      "id": "17",
+      "gpId": "1",
+      "date": "2024-05-07",
+      "dayOfWeek": "Tuesday",
+      "time": "15:00-16:00",
+      "bookedByPID": null,
+      "status": "open"
+    },
+    {
+      "id": "18",
+      "gpId": "2",
+      "date": "2024-05-07",
+      "dayOfWeek": "Tuesday",
+      "time": "16:00-17:00",
+      "bookedByPID": null,
+      "status": "open"
+    },
+    {
+      "id": "19",
+      "gpId": "1",
+      "date": "2024-05-08",
+      "dayOfWeek": "Wednesday",
+      "time": "15:00-16:00",
+      "bookedByPID": 5,
+      "status": "hold"
+    },
+    {
+      "id": "20",
+      "gpId": "2",
+      "date": "2024-05-09",
+      "dayOfWeek": "Thursday",
+      "time": "16:00-17:00",
+      "bookedByPID": null,
+      "status": "open"
+    }
+  ],
+  "appointment": [
+    {
+      "id": "1",
+      "patientId": "2",
+      "gpId": "1",
+      "slotId": "9",
+      "gpName": "GP1",
+      "time": "8:00-9:00",
+      "date": "2024-05-05",
+      "reason": "I feel headache",
+      "status": "beforeApprove"
+    }
+  ],
   "medical-history": [],
   "test": [],
   "prescription": []
