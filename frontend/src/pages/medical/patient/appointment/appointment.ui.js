@@ -4,7 +4,11 @@ import axios from "axios";
 import { sessionStore } from "../../../../entities/session";
 import useUpdateSlotMutation from "../../../../entities/patient/appointment.query";
 
-function DoubleConfirm({ name, date, time, reason,slotId,pId,isError,isLoad,isSuccess,onUpdateSlot }) {
+export function DoubleConfirm({ name, date, time, reason,slotId,pId,isError,isLoad,isSuccess,onUpdateSlot }) {
+  const handleOnSubmit=()=>{
+    onUpdateSlot(slotId, pId)
+    // ()
+  }
   console.log("slotId: "+slotId+" pId: "+pId);
   return (
     <div>
@@ -13,7 +17,7 @@ function DoubleConfirm({ name, date, time, reason,slotId,pId,isError,isLoad,isSu
       <h3>Date Selected: {date}</h3>
       <h3>Time Selected: {time}</h3>
       <h3>Booking Reason: {reason}</h3>
-      <button onClick={() => onUpdateSlot(slotId, pId)} disabled={isLoad}>
+      <button onClick={handleOnSubmit} disabled={isLoad}>
         Submit
       </button>
 
