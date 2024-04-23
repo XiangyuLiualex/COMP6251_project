@@ -13,6 +13,7 @@ import {
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import { FormEventHandler } from "react";
 import { hasToken, sessionStore, useLoginMutation } from "../../entities/session";
+import { pathKeys } from "../medical/config/path";
 
 export function Login() {
 
@@ -41,7 +42,7 @@ export function Login() {
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          Sign in
+          Login
         </Typography>
         <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
           <TextField
@@ -80,7 +81,7 @@ export function Login() {
             variant="contained"
             sx={{ mt: 3, mb: 2 }}
           >
-            Sign In
+            Login
           </Button>
           <Grid container>
             <Grid item xs>
@@ -89,7 +90,7 @@ export function Login() {
               </Link>
             </Grid>
             <Grid item>
-              <Link href="/register" variant="body2">
+              <Link href={pathKeys.signUp()} variant="body2">
                 {"Don't have an account? Sign Up"}
               </Link>
             </Grid>

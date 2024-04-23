@@ -6,6 +6,7 @@ import pkg from "json-server";
 import mockData from "./data.mjs";
 import auth from "json-server-auth";
 import ret from "./data.mjs";
+import fetch from "node-fetch";
 const { create, router: _router, defaults, bodyParser } = pkg;
 
 const port = 3001;
@@ -27,38 +28,98 @@ server.use((req, res, next) => {
 
 const rules = auth.rewriter({
   "/api/*": "/$1",
-  "/patient/self-reg-form": "/self-reg-form",
+  "/patient/self-reg": "/self-reg",
+  "/admin/approvals": "/self-reg",
+  "/admin/approve/:id": "/self-reg/:id",
+  "/patient/guest-check/:id": "/guestPatient/:id",
   // "/blog/:resource/:id/show": "/:resource/:id",
 });
 server.use(rules);
 
-// Add custom routes before JSON Server router
+server.use(bodyParser);
 server.get("/echo", (req, res) => {
-  console.log("signup delay 1s");
   setTimeout(() => {
     res.jsonp(req.query);
   }, 1000);
 });
-
-// signup delay 1s
-server.post("/signUp", (req, res, next) => {
-  // console.log("signup delay 1s");
+server.post("/echo", (req, res) => {
   setTimeout(() => {
-    next();
+    res.jsonp(req.body);
   }, 1000);
+});
+
+server.post("/sign-up", async (req, res) => {
+  req.body.role = "patient";
+
+  const resp = await fetch("http://localhost:".concat(port).concat("/signup"), {
+    method: "POST",
+    body: JSON.stringify(req.body),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  res.jsonp(await resp.json());
+
+  setTimeout(() => {
+    // make this account guest
+    const thisUser = router.db
+      .get("users")
+      .find({ email: req.body.email })
+      .value();
+    console.log("thisU:", thisUser);
+
+    const invalidPatient = {
+      id: thisUser.id,
+      patientId: thisUser.id,
+      ifPatientValid: "false",
+    };
+    // router.db.set("guestPatient", invalidPatient);
+    // router.db.update(({ posts }) => {
+    //   posts.push({ id: 1, value: "abc" });
+    // });
+    fetch("http://localhost:".concat(port).concat("/guestPatient"), {
+      method: "POST",
+      body: JSON.stringify(invalidPatient),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    router.db.update(({ guestPatient }) => {
+      guestPatient.push(invalidPatient);
+      console.log("guestPatient:", guestPatient);
+    });
+  }, 1000);
+});
+
+// admin approve self reg form
+// then update guestPatient
+server.patch("/self-reg/:id", (req) => {
+  fetch(
+    "http://localhost:"
+      .concat(port)
+      .concat("/guestPatient".concat("/" + req.params.id)),
+    {
+      method: "PATCH",
+      body: JSON.stringify({ ifPatientValid: "true" }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
 });
 
 // To handle POST, PUT and PATCH you need to use a body-parser
 // You can use the one used by JSON Server
-server.use(bodyParser);
-server.use((req, res, next) => {
-  if (req.method === "POST") {
-    req.body.createdAt = Date.now();
-  }
-  // Continue to JSON Server router
-  next();
-});
+// server.use((req, res, next) => {
+//   if (req.method === "POST") {
+//     req.body.createdAt = Date.now();
+//   }
+//   // Continue to JSON Server router
+//   next();
+// });
 
+// Add custom routes before JSON Server router
 // Use default router
 // more config ref from node_modules/json-server/lib/bin.js
 // strict sequence

@@ -27,7 +27,8 @@ import {
     randomArrayItem,
 } from '@mui/x-data-grid-generator';
 import { FormEvent } from 'react';
-import { useSelfRegisterFormMutation } from '../../../../entities/patient/patient.query';
+import { SelfRegisterData_forSubmit, useSelfRegisterFormMutation } from '../../../../entities/patient/patient.query';
+import { Role } from '../../../../entities/session/session.types';
 
 const roles = ['Market', 'Finance', 'Development'];
 const randomRole = () => {
@@ -37,35 +38,35 @@ const randomRole = () => {
 const initialRows: GridRowsProp = [
     {
         id: randomId(),
-        name: randomTraderName(),
+        name: "keith mason",
         age: 25,
         joinDate: randomCreatedDate(),
-        role: randomRole(),
+        role: "Finance",
     },
     {
         id: randomId(),
-        name: randomTraderName(),
+        name: "Vernon Clarke",
         age: 36,
-        joinDate: randomCreatedDate(),
-        role: randomRole(),
+        joinDate: new Date('04 Dec 2015 GMT'),
+        role: "Development",
     },
     {
         id: randomId(),
-        name: randomTraderName(),
+        name: "Walter Romero",
         age: 19,
         joinDate: randomCreatedDate(),
-        role: randomRole(),
+        role: "Market",
     },
     {
         id: randomId(),
-        name: randomTraderName(),
+        name: "Mathilda Sparks",
         age: 28,
         joinDate: randomCreatedDate(),
-        role: randomRole(),
+        role: "Market",
     },
     {
         id: randomId(),
-        name: randomTraderName(),
+        name: "Richard Rogers",
         age: 23,
         joinDate: randomCreatedDate(),
         role: randomRole(),
@@ -101,8 +102,35 @@ function EditToolbar(props: EditToolbarProps) {
 }
 
 
+type selfRegisterConfig = {
+    role: Role | null;
+    data: any;
+}
+export type selfRegiForm = any[]
 
-export default function FullFeaturedCrudGrid() {
+export default function FullFeaturedCrudGrid(config: selfRegisterConfig) {
+
+    // TODO admin not allow to edit registration itself
+    const editable = config.role === 'patient' ? true : false;
+    // TODO extend to a dynamic form
+    function parseStringToForm(stringForm: selfRegiForm) {
+
+        const res0: GridRowsProp = [{
+            id: "ce9ea426-1716-5216-a3c0-aa5d576093db",
+            name: "Richard Rogers",
+            age: 23,
+            joinDate: randomCreatedDate(),
+            role: randomRole(),
+        }]
+        // todo dynamic change
+        const res = stringForm;
+        res.forEach(row => {
+            row.age = Number(row.age)
+            row.joinDate = new Date(row.joinDate)
+        });
+        return res;
+    }
+    const theRows = config.data === null ? initialRows : parseStringToForm(config.data);
 
     const { mutate } = useSelfRegisterFormMutation();
 
@@ -112,7 +140,7 @@ export default function FullFeaturedCrudGrid() {
         console.log(rows)
 
     }
-    const [rows, setRows] = React.useState(initialRows);
+    const [rows, setRows] = React.useState(theRows);
     const [rowModesModel, setRowModesModel] = React.useState<GridRowModesModel>({});
 
     const handleRowEditStop: GridEventListener<'rowEditStop'> = (params, event) => {

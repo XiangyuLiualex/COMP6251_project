@@ -2,6 +2,7 @@ import { useMutation } from "@tanstack/react-query";
 import { UserCredential } from "../session/session.types";
 import { useNavigate } from "react-router-dom";
 import { sessionStore } from "../session";
+import { pathKeys } from "../../pages/medical/config/path";
 
 export type SignUpForm = {
     firstName: string;
@@ -12,7 +13,7 @@ export type SignUpForm = {
 
 async function signUpRequest(signUpForm: SignUpForm): Promise<UserCredential> {
     // todo fetch can be extracted to a common function
-    const response = await fetch("/signup", {
+    const response = await fetch(pathKeys.signUp(), {
         method: "POST",
         headers: {
             "Content-Type": "application/json",

@@ -73,7 +73,7 @@ export function useLoginMutation() {
       // sessionStore.setState({ token: data.accessToken, role: data.user.role})
       // temporary workaround
       const role = await fetch(`/users/${data.user.id}`).then((res) => res.json()).then((data) => data.role);
-      sessionStore.setState({ token: data.accessToken, role: role })
+      sessionStore.setState({ token: data.accessToken, role: role, uid: data.user.id })
 
       navigate(roleBasedRedirect(role))
       console.log("login success", role);
@@ -88,6 +88,7 @@ export function useLoginMutation() {
 const createSessionSlice: StateCreator<sessionState, [], [], sessionState> = (set) => ({
   token: null,
   role: null,
+  uid: "",
   updateToken: (token: string | null) => set({ token: token || null, }),
 })
 

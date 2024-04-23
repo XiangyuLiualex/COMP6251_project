@@ -1,8 +1,63 @@
 # COMP6251
 
-- npm install 
-  - install denpendency for the first time
-- npm start
+## plan
+
+1. patient:
+   1. [x] sign up, role is unreg-patient
+   2. [x] self register
+      1. [x] submit a form
+2. admin:
+   1. [x] review the form
+   2. [x] approve the form
+   3. [x] one patient, role -> patient
+3. patient:
+   1. [x] role -> patient
+   2. [x] more function rendered in side bar
+   3. [ ] appointment
+      1. [ ] search all available appointments
+      2. [ ] book an appointment
+      3. [ ] update an appointment
+4. GP:
+   1. appointments
+      1. search my appointments
+      2. update my appointments
+   2. today works
+      1. search today's appointments
+      2. appointment take place
+         1. update the appointment?
+         2. update patient medical history
+         3. create prescription
+         4. optional: order additional tests
+5. Tester:
+   1. incoming tests
+   2. update test results
+   3. update patient medical history
+   4. notification to patients
+6. patient:
+   1. appointment
+      1. incoming appointments
+      2. done appointments
+   2. tests:
+      1. incoming tests
+      2. done tests
+
+## collaboration TODOs
+
+0. sign up password double check
+1. sidebar icons
+2. self register page complete:
+   1. [x] data
+   2. [x] layout
+3. patient profile
+   1. [x] data
+4. rename the title and resources
+   1. medical history?
+
+## code refactoring
+
+1. using more zustand store
+2. pathKeys complete
+3. warp-query transform
 
 ## description
 

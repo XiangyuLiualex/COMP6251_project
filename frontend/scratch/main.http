@@ -10,6 +10,16 @@ GET {{baseURL}}/echo
 &age=99
 
 ###
+# @name postEcho
+POST {{baseURL}}/echo HTTP/1.1
+Content-Type: application/json
+
+    {
+    "name": "chz",
+    "age": 99
+    }
+###
+    
 # @name getUsers
 GET {{baseURL}}/users/4 HTTP/1.1
 
@@ -30,12 +40,12 @@ Content-Type: application/json
 ###
 
 # @name login
-POST {{baseURL}}/login HTTP/1.1
+POST {{baseURL}}/signIn HTTP/1.1
 Content-Type: application/json
     
     {
-    "email": "patient@email.com",
-    "password": "patient"
+    "email": "patient2@email.com",
+    "password": "patient2"
     }
 
 # Content-Type: application/x-www-form-urlencoded

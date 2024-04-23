@@ -2,14 +2,35 @@ import { List, ListItem, ListItemButton, ListItemIcon, ListItemText, Paper } fro
 import React from "react";
 import { NavLink, NavLinkProps } from "react-router-dom";
 import { Role } from "../../../entities/session/session.types";
-import { adminConfig, gpConfig, patientConfig } from "../config/navigation";
+import { NaviListConfig, adminConfig, gpConfig, guestPrimary, patientConfig } from "../config/navigation";
+import { UseGuestCheck } from "../../../entities/patient/patient.query";
+
+
+// todo refresh flash show hidden item
+// save in store
+function pattientGuestValid(patientConfig: NaviListConfig[]) {
+    const { data, error, isError } = UseGuestCheck();
+    console.log(data);
+    if (!data) {
+        return patientConfig;
+    }
+
+    if (data.ifPatientValid === "true") {
+        return patientConfig;
+    } else if (data.ifPatientValid === "false") {
+        return patientConfig.filter((item) =>
+            item.primary === guestPrimary.profile || item.primary === guestPrimary.selfRegister);
+    }
+
+    return patientConfig;
+}
 
 
 export function NavLists({ role }: { role: Role }) {
     let config
     switch (role) {
         case "patient":
-            config = patientConfig;
+            config = pattientGuestValid(patientConfig);
             break;
         case "admin":
             config = adminConfig;
@@ -26,7 +47,11 @@ export function NavLists({ role }: { role: Role }) {
         <Paper elevation={0}>
             <List component="nav">
                 {config.map((item) => {
-                    return <ListItemLink key={"nav" + item.primary} to={item.to} primary={item.primary} icon={item.icon} />
+                    if (!item.disabled) {
+                        return <ListItemLink key={"nav" + item.primary} to={item.to} primary={item.primary} icon={item.icon} />
+                    } else {
+                        return null;
+                    }
                 })}
 
             </List>
@@ -62,4 +87,6 @@ function ListItemLink(props: ListItemLinkProps) {
 
     );
 }
+
+
 

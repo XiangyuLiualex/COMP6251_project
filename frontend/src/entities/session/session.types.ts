@@ -1,10 +1,12 @@
 export type Role = "patient" | "admin" | "gp";
+export type ifPatientValid = boolean;
 
 export type Token = string ;
 
 export type State ={
     token : Token | null;
     role: Role | null;
+    uid: string ;
 }
 
 export type Actions = {
