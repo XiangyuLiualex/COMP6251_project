@@ -1,0 +1,29 @@
+@baseURL=http://localhost:3001/api
+
+# @name queryAppointments
+GET {{baseURL}}/appointments
+###
+
+# @name updateAppointment
+PATCH {{baseURL}}/appointments/update
+###
+
+# @name todayAppointments
+GET {{baseURL}}/appointments/today
+###
+
+# @name queryPatientInfoByid
+GET {{baseURL}}/patients/24
+###
+
+# @name queryPatientMecialHistory
+GET {{baseURL}}/patients/24/medicalHistory
+###
+
+# @name craetePrescription
+POST {{baseURL}}/prescriptions
+###
+
+# @name createTests
+POST {{baseURL}}/tests
+###

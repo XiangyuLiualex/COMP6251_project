@@ -80,7 +80,7 @@ Content-Type: application/json
 GET  {{baseURL}}/patient/guest-check/24 HTTP/1.1
 ###
 
-### @name patchGuestPatient
+# @name patchGuestPatient
 PATCH  {{baseURL}}/guestPatient/24 HTTP/1.1
 
 Content-Type: application/json
@@ -91,7 +91,8 @@ Content-Type: application/json
     "ifPatientValid": "11"
 }
 ###
-# @name 
+
+# @name checkGuest
 PATCH {{baseURL}}/patient/guest-check/24 HTTP/1.1
 Content-Type: application/json
 

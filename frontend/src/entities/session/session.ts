@@ -3,6 +3,7 @@ import { StateCreator, createStore } from "zustand";
 import { Role, UserCredential, sessionState } from './session.types';
 import { useNavigate } from 'react-router-dom';
 import { DefaultError, useMutation } from '@tanstack/react-query';
+import { pathKeys } from '../../pages/medical/config/path';
 
 type LoginForm = {
   email: string;
@@ -42,8 +43,8 @@ function roleBasedRedirect(role: Role): string {
 
 
     // todo gp page not yet build
-    // case "gp":
-    //   return "/gp";
+    case "gp":
+      return pathKeys.practitioner.gp.root();
 
     case "patient":
       return "/patient";

@@ -19,13 +19,15 @@ export const patientConfig: NaviListConfig[] = [
     { primary: 'Book Appointment', to: '/patient/appointment', icon: <PeopleIcon /> }
 ];
 export const adminConfig: NaviListConfig[] = [
-    { primary: 'Profile', to: '/admin/profile', icon: <PeopleIcon /> },
-    { primary: 'Approvals', to: '/admin/approvals', icon: <PeopleIcon /> },
+    { primary: 'Profile', to: pathKeys.admin.profile(), icon: <PeopleIcon /> },
+    { primary: 'Approvals', to: pathKeys.admin.approvals(), icon: <PeopleIcon /> },
 ];
 
 export const gpConfig: NaviListConfig[] = [
-    { primary: 'Profile', to: '/gp/profile', icon: <PeopleIcon /> },
-    { primary: 'Medical History', to: '/gp/medical-history', icon: <PeopleIcon /> },
+    { primary: 'Profile', to: pathKeys.practitioner.gp.profile(), icon: <PeopleIcon /> },
+    { primary: 'Appointment', to: '/practitioner/gp/appointment', icon: <PeopleIcon /> },
+    { primary: 'Today Appointment', to: '/practitioner/gp/today', icon: <PeopleIcon /> },
+    { primary: 'Medical Tests', to: '/practitioner/gp/tests', icon: <PeopleIcon /> },
 ];
 
 

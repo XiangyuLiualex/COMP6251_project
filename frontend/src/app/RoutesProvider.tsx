@@ -5,6 +5,7 @@ import NotFound from "../pages/error/notfound";
 import { adminMedicalRoute } from "../pages/medical/admin";
 import { patientMedicalRoute } from "../pages/medical/patient";
 import { registerRoute } from "../pages/account/register";
+import { practitionerMedicalRoute } from "../pages/medical/practitioner";
 
 const router = createBrowserRouter([
   {
@@ -13,6 +14,7 @@ const router = createBrowserRouter([
       registerRoute,
       adminMedicalRoute,
       patientMedicalRoute,
+      practitionerMedicalRoute,
       {
         path: "/",
         element: <Homepage />,

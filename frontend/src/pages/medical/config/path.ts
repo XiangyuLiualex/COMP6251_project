@@ -1,3 +1,4 @@
+import { profile } from "console";
 import { sign } from "crypto";
 
 // TODO: handling all the paths
@@ -30,6 +31,12 @@ export const pathKeys = {
         root() {
             return pathKeys.root.concat('admin/');
         },
+        profile() {
+            return pathKeys.admin.root().concat('profile');
+        },
+        approvals() {
+            return pathKeys.admin.root().concat('approvals');
+        },
         apiGetAllApprovals() {
             return apiPrefix(pathKeys.admin.root().concat('approvals'));
         },
@@ -39,6 +46,21 @@ export const pathKeys = {
         apiApproveSelfRegister(pid: string) {
             return apiPrefix(pathKeys.admin.root().concat('approve').concat("/" + pid));
         }
+    },
+    practitioner: {
+        root() {
+            return pathKeys.root.concat('practitioner/');
+        },
+        gp: {
+            root() {
+                return pathKeys.practitioner.root().concat('gp/');
+            },
+            profile() {
+                return pathKeys.practitioner.gp.root().concat('profile');
+            },
+
+        }
+
     }
 }
 
