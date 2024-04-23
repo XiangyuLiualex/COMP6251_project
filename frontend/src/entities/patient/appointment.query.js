@@ -3,20 +3,17 @@ import axios from 'axios';
 
 const baseURL = "http://localhost:3001";
 
+// For update slot
 // 创建一个函数用于调用API
 const updateSlotRequest = async (slotId, bookedByPID) => {
-    console.log(slotId+" "+bookedByPID);
-    console.log(`${baseURL}/slots/${slotId}`, bookedByPID);
     const response = await axios.patch(`${baseURL}/slots/${slotId}`, {
         bookedByPID,
-    status:"hold"
+        status:"hold"
     }, {
     headers: {
       'Content-Type': 'application/json'
     }
   });
-  console.log(`${baseURL}/slots/${slotId}`, bookedByPID);
-  
   return response.data; // 返回响应数据
 };
 
@@ -37,7 +34,42 @@ const useUpdateSlotMutation = () => {
   });
 };
 
+// for submit appointment
+const submitAppointmentRequest = async (pId, gpId, slotId,gpName,time,date,reason) => {
+  const response = await axios.post(`${baseURL}/appointment/`, {
+      pId,
+      gpId,
+      slotId,
+      gpName,
+      time,
+      date,
+      reason,
+      "status":"beforeApprove"
+  }, {
+  headers: {
+    'Content-Type': 'application/json'
+  }
+});
+return response.data; // 返回响应数据
+};
 
+export const useSubmitAppointmentMutation = () => {
+  return useMutation({
+    mutationFn:(data)=> submitAppointmentRequest(data.pId, data.gpId, data.slotId, data.gpName,data.time, data.date, data.reason),
+    onSuccess: (data) => {
+      // 成功回调函数
+      console.log('Appointment submit successfully:', data);
+      alert('Appointment submit successfully!');
+    },
+    onError: (error) => {
+      // 错误处理回调函数
+      console.error('Error Appointment submit:', error);
+      alert('Failed to Appointment submit: ' + error.message);
+    }
+  });
+};
+
+// for get gpss and timeslot date
 export function useAppointmentQuery(){
   return useQuery({
     queryKey: ["speakers"],

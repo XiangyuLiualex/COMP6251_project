@@ -5,18 +5,18 @@ import { sessionStore } from "../../../../entities/session";
 // import useUpdateSlotMutation from "../../../../entities/patient/appointment.query";
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
-import useUpdateSlotMutation, { useAppointmentQuery } from "../../../../entities/patient/appointment.query";
+import useUpdateSlotMutation, { useAppointmentQuery, useSubmitAppointmentMutation } from "../../../../entities/patient/appointment.query";
 
-export function DoubleConfirm({ name, date, time, reason,slotId,pId,isError,isLoad,isSuccess,onUpdateSlot }) {
+export function DoubleConfirm({ gpName, date, time, reason,slotId,pId,gpId,isError,isLoad,isSuccess,onUpdateSlot,onSubmitAppointment }) {
   const handleOnSubmit=()=>{
     onUpdateSlot(slotId, pId)
-    // ()
+    onSubmitAppointment(pId,gpId,slotId,gpName,time,date,reason)
   }
   console.log("slotId: "+slotId+" pId: "+pId);
   return (
     <div>
       <h2>Please confirm your booking information: </h2>
-      <h3>GP name: {name}</h3>
+      <h3>GP name: {gpName}</h3>
       <h3>Date Selected: {date}</h3>
       <h3>Time Selected: {time}</h3>
       <h3>Booking Reason: {reason}</h3>
@@ -176,7 +176,8 @@ export function AppointmentPage() {
   const [gpSelect, setGpSelect] = useState(null);
   const [slotSelect, setSlotSelect] = useState(null);
   const [reasonText, setReasonText] = useState("");
-  const {mutate, isLoad,isError,isSuccess}=useUpdateSlotMutation();
+  const {mutate:mutateSlot, isLoad,isError,isSuccess}=useUpdateSlotMutation();
+  const {mutate:mutateAppointment}=useSubmitAppointmentMutation();
   const { data, isLoading, error } =useAppointmentQuery()
 
 
@@ -189,10 +190,20 @@ export function AppointmentPage() {
 
   const handleUpdateSlot=(sId, pId)=>{
     console.log("last place:"+sId+" "+pId);
-    mutate({
+    mutateSlot({
       slotId: sId,
       bookedByPID: pId,
-      
+    });
+  };
+  const handleSubmitAppointment=(pId, gpId, slotId,gpName,time,date,reason)=>{
+    mutateAppointment({
+      patientId:pId,
+      gpId:gpId,
+      slotId:slotId,
+      gpName:gpName,
+      time:time,
+      date:date,
+      reason:reason
     });
   };
 
@@ -291,16 +302,18 @@ export function AppointmentPage() {
         <div>
           <h1>Appointment Page</h1>
           <DoubleConfirm
-            name={gpSelect.name}
+            gpName={gpSelect.name}
             date={slotSelect.date}
             time={slotSelect.time}
             reason={reasonText}
             slotId={slotSelect.id}
             pId={sessionStore.getState().uid}
+            gpId={gpSelect.id}
             isError={isError}
             isLoad={isLoad}
             isSuccess={isSuccess}
             onUpdateSlot={handleUpdateSlot}
+            onSubmitAppointment={handleSubmitAppointment}
           />
         </div>
       );
