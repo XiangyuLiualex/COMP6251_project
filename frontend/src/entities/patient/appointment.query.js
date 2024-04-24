@@ -35,9 +35,10 @@ const useUpdateSlotMutation = () => {
 };
 
 // for submit appointment
-const submitAppointmentRequest = async (pId, gpId, slotId,gpName,time,date,reason) => {
+const submitAppointmentRequest = async (patientId, gpId, slotId,gpName,time,date,reason) => {
+  console.log("Submitting url with :", { patientId, gpId, slotId, gpName, time, date, reason });
   const response = await axios.post(`${baseURL}/appointment/`, {
-      pId,
+      patientId,
       gpId,
       slotId,
       gpName,
@@ -55,7 +56,8 @@ return response.data; // 返回响应数据
 
 export const useSubmitAppointmentMutation = () => {
   return useMutation({
-    mutationFn:(data)=> submitAppointmentRequest(data.pId, data.gpId, data.slotId, data.gpName,data.time, data.date, data.reason),
+
+    mutationFn:(data)=> submitAppointmentRequest(data.patientId, data.gpId, data.slotId, data.gpName,data.time, data.date, data.reason),
     onSuccess: (data) => {
       // 成功回调函数
       console.log('Appointment submit successfully:', data);
@@ -88,7 +90,6 @@ export function useAppointmentQuery(){
       return response;
     },
   });
-
 }  
 
 export default useUpdateSlotMutation;

@@ -7,12 +7,12 @@ import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import useUpdateSlotMutation, { useAppointmentQuery, useSubmitAppointmentMutation } from "../../../../entities/patient/appointment.query";
 
-export function DoubleConfirm({ gpName, date, time, reason,slotId,pId,gpId,isError,isLoad,isSuccess,onUpdateSlot,onSubmitAppointment }) {
+export function DoubleConfirm({ gpName, date, time, reason,slotId,patientId,gpId,isError,isLoad,isSuccess,onUpdateSlot,onSubmitAppointment }) {
   const handleOnSubmit=()=>{
-    onUpdateSlot(slotId, pId)
-    onSubmitAppointment(pId,gpId,slotId,gpName,time,date,reason)
+    onUpdateSlot(slotId, patientId)
+    onSubmitAppointment(patientId,gpId,slotId,gpName,time,date,reason)
   }
-  console.log("slotId: "+slotId+" pId: "+pId);
+  console.log(patientId,gpId,slotId,gpName,time,date,reason);
   return (
     <div>
       <h2>Please confirm your booking information: </h2>
@@ -195,9 +195,10 @@ export function AppointmentPage() {
       bookedByPID: pId,
     });
   };
-  const handleSubmitAppointment=(pId, gpId, slotId,gpName,time,date,reason)=>{
+  const handleSubmitAppointment=(patientId, gpId, slotId,gpName,time,date,reason)=>{
+    // console.log("Submitting appointment with:", { pId, gpId, slotId, gpName, time, date, reason });
     mutateAppointment({
-      patientId:pId,
+      patientId:patientId,
       gpId:gpId,
       slotId:slotId,
       gpName:gpName,
@@ -307,7 +308,7 @@ export function AppointmentPage() {
             time={slotSelect.time}
             reason={reasonText}
             slotId={slotSelect.id}
-            pId={sessionStore.getState().uid}
+            patientId={sessionStore.getState().uid.toString()}
             gpId={gpSelect.id}
             isError={isError}
             isLoad={isLoad}
