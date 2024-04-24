@@ -671,10 +671,10 @@
       "gpId": "8",
       "slotId": "3",
       "gpName": "GP1",
-      "time": "10:00-11:00",
+      "time": "11:00-12:00",
       "date": "2024-05-06",
-      "reason": "",
-      "status": "Approved",
+      "reason": "try me",
+      "status": "beforeApprove",
       "createdAt": 1713974895561,
       "id": 2
     },
@@ -686,7 +686,7 @@
       "time": "10:00-11:00",
       "date": "2024-05-06",
       "reason": "",
-      "status": "Approved",
+      "status": "beforeApprove",
       "createdAt": 1713974999811,
       "id": 3
     },
@@ -698,7 +698,7 @@
       "time": "14:00-15:00",
       "date": "2024-05-06",
       "reason": "我肚子疼",
-      "status": "Approved",
+      "status": "beforeApprove",
       "createdAt": 1713975029223,
       "id": 4
     },
@@ -706,11 +706,11 @@
       "patientId": "5",
       "gpId": "8",
       "slotId": "11",
-      "gpName": "GP2",
-      "time": "7:00-8:00",
+      "gpName": "GP1",
+      "time": "09:00-10:00",
       "date": "2024-05-05",
       "reason": "我是谁",
-      "status": "Approved",
+      "status": "beforeApprove",
       "createdAt": 1713975086074,
       "id": 5
     }
