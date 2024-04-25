@@ -728,7 +728,7 @@
     },
     {
       "id": 2,
-      "userId": "8",
+      "userId": 8,
       "name": "GP1",
       "gender": "female",
       "profession": "General Practioner",
@@ -746,6 +746,7 @@
       "email": "admin@emial.com",
       "aboutMe": "I will prove the self signUp"
     }
+    
   ],
   "medical-history": [],
   "test": [],
