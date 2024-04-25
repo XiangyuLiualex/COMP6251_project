@@ -1,13 +1,17 @@
 import React from "react";
 import { QueryClientProvider } from "./QueryClientProvider";
 import { RoutesProvider } from "./RoutesProvider";
+import { SnackbarProvider } from 'notistack';
+
 
 export function App() {
     return (
         <React.StrictMode>
-            <QueryClientProvider>
-                <RoutesProvider />
-            </QueryClientProvider>
+            <SnackbarProvider >
+                <QueryClientProvider>
+                    <RoutesProvider />
+                </QueryClientProvider>
+            </SnackbarProvider>
         </React.StrictMode>
     )
 }
