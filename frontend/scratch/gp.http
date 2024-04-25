@@ -27,3 +27,14 @@ POST {{baseURL}}/prescriptions
 # @name createTests
 POST {{baseURL}}/tests
 ###
+# @name profile
+GET {{baseURL}}/profile?userId=24
+###
+#@ @name patchProfile
+PATCH {{baseURL}}/profile/4
+Content-Type: application/json
+
+{
+    "name": "Dr. John Doe"
+}
+###

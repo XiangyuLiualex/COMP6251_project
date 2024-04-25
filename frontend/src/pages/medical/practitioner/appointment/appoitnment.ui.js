@@ -19,7 +19,7 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 
-function AlternativeComponent({appointment,onUpdateAppointment}){
+function AlternativeComponent({ appointment, onUpdateAppointment }) {
   const [open, setOpenAlt] = React.useState(false);
   const handleClickOpen = () => {
     setOpenAlt(true);
@@ -29,16 +29,16 @@ function AlternativeComponent({appointment,onUpdateAppointment}){
   };
   console.log(appointment.id);
   // gpId,slotId,gpName,time,date,status
-  const handleonUpdate=(formJson,appointment)=>{
+  const handleonUpdate = (formJson, appointment) => {
     console.log(appointment);
-    const updateData={};
-    updateData.id=appointment.id;
-    if(formJson.gpId!=='') updateData.gpId=formJson.gpId;
-    if(formJson.slotId!=='') updateData.slotId=formJson.slotId;
-    if(formJson.gpName!=='') updateData.gpName=formJson.gpName;
-    if(formJson.time!=='') updateData.time=formJson.time;
-    const dataToSend={...appointment, ...updateData};
-    onUpdateAppointment(dataToSend.id,dataToSend.gpId,dataToSend.slotId,dataToSend.gpName,dataToSend.time,dataToSend.date,"Approved");
+    const updateData = {};
+    updateData.id = appointment.id;
+    if (formJson.gpId !== '') updateData.gpId = formJson.gpId;
+    if (formJson.slotId !== '') updateData.slotId = formJson.slotId;
+    if (formJson.gpName !== '') updateData.gpName = formJson.gpName;
+    if (formJson.time !== '') updateData.time = formJson.time;
+    const dataToSend = { ...appointment, ...updateData };
+    onUpdateAppointment(dataToSend.id, dataToSend.gpId, dataToSend.slotId, dataToSend.gpName, dataToSend.time, dataToSend.date, "Approved");
   }
   return (
     <React.Fragment>
@@ -60,13 +60,13 @@ function AlternativeComponent({appointment,onUpdateAppointment}){
             // const time=formJson.time;
             // const date=formJson.date;
             // console.log(gpId,slotId,gpName,time,date);
-            handleonUpdate(formJson,appointment);
+            handleonUpdate(formJson, appointment);
 
             // console.log(slotId==="");
             handleClose();
           },
         }}
-        // gpId,slotId,gpName,time,date,status
+      // gpId,slotId,gpName,time,date,status
       >
         <DialogTitle>Subscribe</DialogTitle>
         <DialogContent>
@@ -91,7 +91,7 @@ function AlternativeComponent({appointment,onUpdateAppointment}){
             fullWidth
             variant="standard"
           />
-           <TextField
+          <TextField
             margin="dense"
             id="gpName"
             name="gpName"
@@ -132,7 +132,7 @@ function AlternativeComponent({appointment,onUpdateAppointment}){
 
 
 
-export function BasicTable({ appointments, onUpdateAppointment}) {
+export function BasicTable({ appointments, onUpdateAppointment }) {
 
 
   return (
@@ -163,7 +163,7 @@ export function BasicTable({ appointments, onUpdateAppointment}) {
               <TableCell align="right">
                 <Button variant="outlined"
                   onClick={() =>
-                    onUpdateAppointment(row.id,row.gpId,row.slotId,row.gpName,row.time,row.date, "Approved")}
+                    onUpdateAppointment(row.id, row.gpId, row.slotId, row.gpName, row.time, row.date, "Approved")}
                 >
                   Accept
                 </Button>
@@ -171,15 +171,15 @@ export function BasicTable({ appointments, onUpdateAppointment}) {
               <TableCell align="right">
                 <Button variant="outlined"
                   onClick={() =>
-                    onUpdateAppointment(row.id,row.gpId,row.slotId,row.gpName,row.time,row.date, "Rejected")}
+                    onUpdateAppointment(row.id, row.gpId, row.slotId, row.gpName, row.time, row.date, "Rejected")}
                 >
                   Reject
                 </Button>
               </TableCell>
               <TableCell align="right">
-                <AlternativeComponent 
-                                      appointment={row}
-                                      onUpdateAppointment={onUpdateAppointment}
+                <AlternativeComponent
+                  appointment={row}
+                  onUpdateAppointment={onUpdateAppointment}
 
                 />
               </TableCell>
@@ -193,8 +193,8 @@ export function BasicTable({ appointments, onUpdateAppointment}) {
 
 export function HandleAppointmentPage() {
   const { data, isLoading, error, refetch } = useHandleAppointmentQuery(sessionStore.getState().uid);
-  const {mutate: mutateAppointment,isLoad,isError,isSuccess,} = useUpdateAppointmentMutation();
-  
+  const { mutate: mutateAppointment, isLoad, isError, isSuccess, } = useUpdateAppointmentMutation();
+
 
   if (error) return <h4>Error:{error.message}, retry again</h4>;
   if (isLoading) return <h4>...Loading data</h4>;
@@ -203,10 +203,11 @@ export function HandleAppointmentPage() {
 
   if (isSuccess) {
     // isSuccess 变为 true 时执行的函数
+    // 
     refetch();
     // 可在这里调用需要执行的函数
   }
-  const handleUpdateAppointment = (appointmentId,gpId,slotId,gpName,time,date,status) => {
+  const handleUpdateAppointment = (appointmentId, gpId, slotId, gpName, time, date, status) => {
     mutateAppointment({
       appointmentId: appointmentId,
       gpId: gpId,

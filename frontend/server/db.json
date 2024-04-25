@@ -715,6 +715,68 @@
       "id": 5
     }
   ],
+  "profile": [
+    {
+      "id": 1,
+      "userId": "9",
+      "name": "Alex",
+      "gender": "male",
+      "profession": "Software Engineer",
+      "hobby": "frisbee",
+      "email": "alex@emial.com",
+      "aboutMe": "I am a patient"
+    },
+    {
+      "id": 2,
+      "userId": 3,
+      "name": "GP1",
+      "gender": "female",
+      "profession": "General Practioner",
+      "hobby": "Movie",
+      "email": "GP1@emial.com",
+      "aboutMe": "I am professional with Internal Medicine Treatment"
+    },
+    {
+      "id": 3,
+      "userId": "2",
+      "name": "admin1",
+      "gender": "male",
+      "profession": "Admin",
+      "hobby": "basketball",
+      "email": "admin@emial.com",
+      "aboutMe": "I will prove the self signUp"
+    },
+    {
+      "name": "Jame",
+      "gender": "male",
+      "profession": "Student",
+      "hobby": "LOL",
+      "aboutMe": "I am jame",
+      "userId": 5,
+      "createdAt": 1714076556367,
+      "id": 4
+    },
+    {
+      "name": "Daney",
+      "gender": "female",
+      "profession": "Docter",
+      "hobby": "study",
+      "aboutMe": "I am Daney",
+      "userId": 8,
+      "createdAt": 1714076753892,
+      "id": 5
+    },
+    {
+      "name": "Tom",
+      "gender": "male",
+      "profession": "Admin",
+      "hobby": "Web dev",
+      "aboutMe": "I am tom",
+      "userId": 7,
+      "createdAt": 1714076826010,
+      "id": 6
+    }
+  ],
   "medical-history": [],
   "test": [],
   "prescription": []
