@@ -6,7 +6,6 @@ import { useSnackbar } from 'notistack';
 
 const baseURL = "http://localhost:3001";
 
-// for get gpss and timeslot date
 export function useProfileQuery(userId) {
   const { enqueueSnackbar } = useSnackbar();
   return useQuery({
