@@ -715,6 +715,38 @@
       "id": 5
     }
   ],
+  "profile": [
+    {
+      "id": 1,
+      "userId": "5",
+      "name": "Alex",
+      "gender": "male",
+      "profession": "Software Engineer",
+      "hobby": "frisbee",
+      "email": "alex@emial.com",
+      "aboutMe": "I am a patient"
+    },
+    {
+      "id": 2,
+      "userId": "8",
+      "name": "GP1",
+      "gender": "female",
+      "profession": "General Practioner",
+      "hobby": "Movie",
+      "email": "GP1@emial.com",
+      "aboutMe": "I am professional with Internal Medicine Treatment"
+    },
+    {
+      "id": 3,
+      "userId": "7",
+      "name": "admin1",
+      "gender": "male",
+      "profession": "Admin",
+      "hobby": "basketball",
+      "email": "admin@emial.com",
+      "aboutMe": "I will prove the self signUp"
+    }
+  ],
   "medical-history": [],
   "test": [],
   "prescription": []

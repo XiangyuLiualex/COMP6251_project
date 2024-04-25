@@ -1,8 +1,8 @@
 import { createElement } from "react";
 import { RouteObject } from "react-router-dom";
-import { ProfilePage } from "./profile.ui";
+import { GpProfilePage } from "./profile.ui.js";
 
 export const Practitioner_ProfileRoute: RouteObject = {
     path: 'profile',
-    element: createElement(ProfilePage)
+    element: createElement(GpProfilePage)
 } 
