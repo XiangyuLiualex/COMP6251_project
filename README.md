@@ -1,5 +1,7 @@
 # COMP6251
 
+- vercel support
+
 ## plan
 
 1. patient:
