@@ -13,7 +13,7 @@ export type SignUpForm = {
 
 async function signUpRequest(signUpForm: SignUpForm): Promise<UserCredential> {
     // todo fetch can be extracted to a common function
-    const response = await fetch(pathKeys.signUp(), {
+    const response = await fetch(pathKeys.apiSignup(), {
         method: "POST",
         headers: {
             "Content-Type": "application/json",

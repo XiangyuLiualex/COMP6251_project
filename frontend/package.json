@@ -19,6 +19,7 @@
     "@types/node": "^20.12.5",
     "@types/react": "^18.2.74",
     "@types/react-dom": "^18.2.24",
+    "@vitejs/plugin-react-swc": "^3.6.0",
     "axios": "^1.6.7",
     "node-fetch": "^3.3.2",
     "notistack": "^3.0.1",
@@ -26,12 +27,23 @@
     "react-dom": "^18.2.0",
     "react-query": "^3.39.3",
     "react-router-dom": "^6.22.2",
-    "react-scripts": "5.0.1",
     "typescript": "^5.4.4",
+    "vite": "^5.2.10",
+    "vite-plugin-svgr": "^4.2.0",
+    "vite-tsconfig-paths": "^4.3.2",
     "web-vitals": "^2.1.0",
     "zustand": "^4.5.2"
   },
   "scripts": {
+    "start": "npx concurrently \"npm run start:server\" \"npm run start:client\"",
+    "start:client": "vite",
+    "start:server": "node server/server.mjs",
+    "build": "tsc && vite build",
+    "serve": "vite preview",
+    "test": "vitest",
+    "test:coverage": "vitest run --coverage --watch=false"
+  },
+  "scripts_cra": {
     "start": "npx concurrently \"npm run start:server\" \"npm run start:client\"",
     "start:server": "node server/server.mjs",
     "start:server-deprecated": "npx json-server --watch server/db.json --port 3001 --routes server/routes.json",
@@ -59,7 +71,10 @@
     ]
   },
   "devDependencies": {
+    "@vitest/coverage-v8": "^1.5.2",
+    "jsdom": "^24.0.0",
     "json-server": "0.17.4",
-    "json-server-auth": "^2.1.0"
+    "json-server-auth": "^2.1.0",
+    "vitest": "^1.5.2"
   }
 }
