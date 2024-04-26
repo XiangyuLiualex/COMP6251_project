@@ -1,6 +1,7 @@
 # COMP6251
 
 - vercel support
+- backend: api.*.com for api
 
 ## plan
 
