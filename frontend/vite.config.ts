@@ -25,10 +25,10 @@ export default defineConfig({
     },
     optimizeDeps: {
         esbuildOptions: {
+            jsx: "automatic",
             loader: {
                 ".js": "jsx",
             },
         },
     },
-
 })

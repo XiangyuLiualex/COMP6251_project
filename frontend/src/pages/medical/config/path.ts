@@ -1,4 +1,3 @@
-
 // TODO: handling all the paths
 export const pathKeys = {
     root: '/',
@@ -65,7 +64,11 @@ export const pathKeys = {
 }
 
 export function apiPrefix(input: string) {
-    return 'http://localhost:3001/api'.concat(input);
+    if (import.meta.env.PROD) {
+        return 'https://api.chzfakevox.com/api'.concat(input);
+    } else {
+        return 'http://localhost:3001/api'.concat(input);
+    }
 }
 
 // function urls(url: string) {
