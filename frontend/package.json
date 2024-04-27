@@ -1,8 +1,19 @@
 {
-  "name": "frontend",
-  "version": "0.1.0",
+  "name": "anvite",
   "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "npx concurrently \"npm run dev\" \"npm run mock\"",
+    "dev": "vite ",
+    "mock":"node server/server.mjs",
+    "build": "tsc && vite build",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview"
+  },
   "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.0",
     "@mui/icons-material": "^5.15.15",
@@ -11,69 +22,25 @@
     "@mui/x-data-grid": "^7.1.1",
     "@mui/x-data-grid-generator": "^7.1.1",
     "@tanstack/react-query": "^5.27.5",
-    "@testing-library/jest-dom": "^5.14.1",
-    "@testing-library/react": "^13.0.0",
-    "@testing-library/user-event": "^13.2.1",
-    "@types/jest": "^29.5.12",
-    "@types/react": "^18.2.74",
-    "@types/react-dom": "^18.2.24",
-    "@vitejs/plugin-react": "^4.2.1",
-    "@vitejs/plugin-react-swc": "^3.6.0",
     "axios": "^1.6.7",
     "node-fetch": "^3.3.2",
     "notistack": "^3.0.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "zustand": "^4.5.2",
     "react-query": "^3.39.3",
-    "react-router-dom": "^6.22.2",
-    "typescript": "^5.4.4",
-    "vite": "^5.2.10",
-    "vite-plugin-svgr": "^4.2.0",
-    "vite-tsconfig-paths": "^4.3.2",
-    "web-vitals": "^2.1.0",
-    "zustand": "^4.5.2"
-  },
-  "scripts": {
-    "start": "npx concurrently \"npm run start:server\" \"npm run start:client\"",
-    "start:client": "vite",
-    "start:server": "node server/server.mjs",
-    "build": "tsc && vite build --config tsconfig.json",
-    "serve": "vite preview",
-    "test": "vitest",
-    "test:coverage": "vitest run --coverage --watch=false"
-  },
-  "scripts_cra": {
-    "start": "npx concurrently \"npm run start:server\" \"npm run start:client\"",
-    "start:server": "node server/server.mjs",
-    "start:client": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+    "react-router-dom": "^6.22.2"
   },
   "devDependencies": {
-    "@types/node": "^20.12.7",
-    "@vitest/coverage-v8": "^1.5.2",
-    "jsdom": "^24.0.0",
+    "@types/react": "^18.2.66",
+    "@types/react-dom": "^18.2.22",
+    "@typescript-eslint/eslint-plugin": "^7.2.0",
+    "@typescript-eslint/parser": "^7.2.0",
+    "@vitejs/plugin-react-swc": "^3.5.0",
+    "eslint": "^8.57.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.6",
+    "typescript": "^5.2.2",
+    "vite": "^5.2.0",
     "json-server": "0.17.4",
-    "json-server-auth": "^2.1.0",
-    "vitest": "^1.5.2"
+    "json-server-auth": "^2.1.0"
   }
 }
