@@ -37,7 +37,7 @@
     "start": "npx concurrently \"npm run start:server\" \"npm run start:client\"",
     "start:client": "vite",
     "start:server": "node server/server.mjs",
-    "build": "tsc && vite build ",
+    "build": "tsc && vite build --config tsconfig.json",
     "serve": "vite preview",
     "test": "vitest",
     "test:coverage": "vitest run --coverage --watch=false"
