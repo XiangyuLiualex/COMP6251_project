@@ -83,6 +83,9 @@ export const pathKeys = {
         },
         apiUpdateAppointmentById(appointmentId:string){
             return apiPrefix(pathKeys.appointment.root().concat('/'+appointmentId));
+        },
+        apiGetAppointmentByIdAndDate(gpid:string,date:string){
+            return apiPrefix(pathKeys.root.concat('appointment?date='+date+'&gpId='+gpid));
         }
     },
     profile:{
@@ -94,6 +97,14 @@ export const pathKeys = {
         },
         apiEditProfile(){
             return apiPrefix(pathKeys.profile.root());
+        }
+    },
+    test:{
+        root(){
+            return pathKeys.root.concat('test/')
+        },
+        apiAddTest(){
+            return apiPrefix(pathKeys.test.root())
         }
     }
 }
