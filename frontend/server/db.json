@@ -777,7 +777,29 @@
       "id": 6
     }
   ],
-  "medical-history": [],
+  "medical-history": [
+    {
+      "userId": 12,
+      "dissese": "fever",
+      "discription": "Take 2 tablets of paracetamol",
+      "createdAt": 1714402623948,
+      "id": 1
+    },
+    {
+      "userId": 12,
+      "dissese": "fever",
+      "discription": "Take 2 tablets of paracetamol",
+      "createdAt": 1714402629646,
+      "id": 2
+    },
+    {
+      "userId": 12,
+      "dissese": "fever",
+      "discription": "Take 2 tablets of paracetamol",
+      "createdAt": 1714403969087,
+      "id": 3
+    }
+  ],
   "test": [],
   "prescription": []
 }

@@ -1,0 +1,17 @@
+@baseURL=http://localhost:3001/api
+
+# @name queryAppointments
+GET {{baseURL}}/medical-history?userId=12
+###
+
+# @name craetePrescription
+POST {{baseURL}}/medical-history
+Content-Type: application/json
+
+{
+    "userId":12,
+    "dissese":"fever",
+    "discription":"Take 2 tablets of paracetamol"
+}
+###
+

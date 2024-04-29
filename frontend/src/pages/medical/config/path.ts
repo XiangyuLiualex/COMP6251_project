@@ -60,6 +60,9 @@ export const pathKeys = {
 
         }
 
+    },
+    apiGetHistory(id: string) {
+        return apiPrefix("/medical-history".concat(`?userId=${id}`));
     }
 }
 
