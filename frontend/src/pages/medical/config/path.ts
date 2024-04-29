@@ -1,9 +1,8 @@
-import { profile } from "console";
-import { sign } from "crypto";
-
 // TODO: handling all the paths
 export const pathKeys = {
     root: '/',
+    apiLogin() { return apiPrefix('/login') },
+    apiSignup() { return apiPrefix('/signup') },
     login() { return this.root.concat('login') },
     signUp() { return this.root.concat('sign-up') },
     patient: {
@@ -64,6 +63,14 @@ export const pathKeys = {
     }
 }
 
-function apiPrefix(input: string) {
-    return '/api'.concat(input);
+export function apiPrefix(input: string) {
+    if (import.meta.env.PROD) {
+        return 'https://api.chzfakevox.com/api'.concat(input);
+    } else {
+        return 'http://localhost:3001/api'.concat(input);
+    }
 }
+
+// function urls(url: string) {
+// return "http://localhost:3001/api/".concat(url)
+// }

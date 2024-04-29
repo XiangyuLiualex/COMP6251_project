@@ -40,7 +40,7 @@ Content-Type: application/json
 ###
 
 # @name login
-POST {{baseURL}}/signIn HTTP/1.1
+POST {{baseURL}}/login HTTP/1.1
 Content-Type: application/json
     
     {
