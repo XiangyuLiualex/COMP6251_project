@@ -2,7 +2,7 @@
 
 - vercel support
 - backend: api.*.com for api
-- api design
+- api design!
 
 ## plan
 
