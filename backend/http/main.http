@@ -1,0 +1,6 @@
+@baseURL = http://localhost:8080
+# @name getHi
+GET {{baseURL}}/hi HTTP/1.1
+###
+# @name testDB
+GET {{baseURL}}/user/1

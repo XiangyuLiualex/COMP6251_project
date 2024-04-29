@@ -7,12 +7,12 @@ import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import useUpdateSlotMutation, { useAppointmentQuery, useSubmitAppointmentMutation } from "../../../../entities/patient/appointment.query";
 
-export function DoubleConfirm({ gpName, date, time, reason,slotId,patientId,gpId,isError,isLoad,isSuccess,onUpdateSlot,onSubmitAppointment }) {
-  const handleOnSubmit=()=>{
+export function DoubleConfirm({ gpName, date, time, reason, slotId, patientId, gpId, isError, isLoad, isSuccess, onUpdateSlot, onSubmitAppointment }) {
+  const handleOnSubmit = () => {
     onUpdateSlot(slotId, patientId)
-    onSubmitAppointment(patientId,gpId,slotId,gpName,time,date,reason)
+    onSubmitAppointment(patientId, gpId, slotId, gpName, time, date, reason)
   }
-  console.log(patientId,gpId,slotId,gpName,time,date,reason);
+  console.log(patientId, gpId, slotId, gpName, time, date, reason);
   return (
     <div>
       <h2>Please confirm your booking information: </h2>
@@ -24,8 +24,8 @@ export function DoubleConfirm({ gpName, date, time, reason,slotId,patientId,gpId
         Submit
       </button>
 
-        {isError && <p>An error occurred: {isError.message}</p>}
-        {isSuccess && <p>Slot updated successfully!</p>}
+      {isError && <p>An error occurred: {isError.message}</p>}
+      {isSuccess && <p>Slot updated successfully!</p>}
     </div>
   );
 }
@@ -54,24 +54,24 @@ function ConfirmBox({ reasonText, onSubmit, onReasonText }) {
 //   "bookedByPID": null
 // }
 
-function DaySchedule({onSlotSelect, daySlots }) {
+function DaySchedule({ onSlotSelect, daySlots }) {
   // console.log(daySlots);
   // console.log(daySlots[0].bookedByPID === null);
   //onSlotSelect, schedule
 
   return (
     <td>
-      
+
       <ul>
-      <h4>{daySlots[0].date}</h4>
-      <h5>{daySlots[0].dayOfWeek}</h5>
+        <h4>{daySlots[0].date}</h4>
+        <h5>{daySlots[0].dayOfWeek}</h5>
         {daySlots.map(
           (slot, index) =>
             slot.status === "open" && (
               <li key={index}>
                 <button
                   onClick={() =>
-                    onSlotSelect({ date: slot.date, time: slot.time, id:slot.id })
+                    onSlotSelect({ date: slot.date, time: slot.time, id: slot.id })
                   }
                 >
                   {slot.time}
@@ -85,19 +85,19 @@ function DaySchedule({onSlotSelect, daySlots }) {
 }
 
 function WeekSchedule({ onSlotSelect, weekSlots }) {
-    weekSlots.sort((a, b) => a.id - b.id);
-    const slots = weekSlots.reduce((acc, slot) => {
+  weekSlots.sort((a, b) => a.id - b.id);
+  const slots = weekSlots.reduce((acc, slot) => {
     // 查找当前日期是否已经有对应的分组
     const existingGroup = acc.find(group => group[0].date === slot.date);
     if (existingGroup) {
-        // 如果存在，将当前slot添加到该组
-        existingGroup.push(slot);
+      // 如果存在，将当前slot添加到该组
+      existingGroup.push(slot);
     } else {
-        // 如果不存在，创建新的组并添加到accumulator
-        acc.push([slot]);
+      // 如果不存在，创建新的组并添加到accumulator
+      acc.push([slot]);
     }
     return acc;
-}, []);
+  }, []);
   console.log(slots);
 
   return (
@@ -156,15 +156,15 @@ function GPSBox({ onGpSelect, gps, type }) {
 
 function InitialBox({ onTypeSelect }) {
   return (
-    
+
     <div>
       <h2>Please choose your appointment type: </h2>
       <Stack spacing={2} direction="row">
-      <Button variant="contained" onClick={() => onTypeSelect("illness")}>Illness</Button>
-      <Button variant="contained" onClick={() => onTypeSelect("healthComplaint")}>
-        Health Complaint
-      </Button>
-    </Stack>
+        <Button variant="contained" onClick={() => onTypeSelect("illness")}>Illness</Button>
+        <Button variant="contained" onClick={() => onTypeSelect("healthComplaint")}>
+          Health Complaint
+        </Button>
+      </Stack>
     </div>
   );
 }
@@ -176,9 +176,9 @@ export function AppointmentPage() {
   const [gpSelect, setGpSelect] = useState(null);
   const [slotSelect, setSlotSelect] = useState(null);
   const [reasonText, setReasonText] = useState("");
-  const {mutate:mutateSlot, isLoad,isError,isSuccess}=useUpdateSlotMutation();
-  const {mutate:mutateAppointment}=useSubmitAppointmentMutation();
-  const { data, isLoading, error } =useAppointmentQuery()
+  const { mutate: mutateSlot, isLoad, isError, isSuccess } = useUpdateSlotMutation();
+  const { mutate: mutateAppointment } = useSubmitAppointmentMutation();
+  const { data, isLoading, error } = useAppointmentQuery()
 
 
 
@@ -186,25 +186,25 @@ export function AppointmentPage() {
   if (error) return <h4>Error:{error.message}, retry again</h4>;
   if (isLoading) return <h4>...Loading data</h4>;
   // console.log(data);
-  const GPS=data;
+  const GPS = data;
 
-  const handleUpdateSlot=(sId, pId)=>{
-    console.log("last place:"+sId+" "+pId);
+  const handleUpdateSlot = (sId, pId) => {
+    console.log("last place:" + sId + " " + pId);
     mutateSlot({
       slotId: sId,
       bookedByPID: pId,
     });
   };
-  const handleSubmitAppointment=(patientId, gpId, slotId,gpName,time,date,reason)=>{
+  const handleSubmitAppointment = (patientId, gpId, slotId, gpName, time, date, reason) => {
     // console.log("Submitting appointment with:", { pId, gpId, slotId, gpName, time, date, reason });
     mutateAppointment({
-      patientId:patientId,
-      gpId:gpId,
-      slotId:slotId,
-      gpName:gpName,
-      time:time,
-      date:date,
-      reason:reason
+      patientId: patientId,
+      gpId: gpId,
+      slotId: slotId,
+      gpName: gpName,
+      time: time,
+      date: date,
+      reason: reason
     });
   };
 
@@ -231,15 +231,15 @@ export function AppointmentPage() {
   const handleSubmit = () => {
     console.log(
       "This is the booking information: \nGP name:" +
-        gpSelect.name +
-        "\nGP ID: " +
-        gpSelect.GId +
-        "\n Date Selected: " +
-        slotSelect.date +
-        "\n time Selected: " +
-        slotSelect.time +
-        "\nBooking Reason: " +
-        reasonText
+      gpSelect.name +
+      "\nGP ID: " +
+      gpSelect.GId +
+      "\n Date Selected: " +
+      slotSelect.date +
+      "\n time Selected: " +
+      slotSelect.time +
+      "\nBooking Reason: " +
+      reasonText
     );
     setCurrentBox("doubleConfirm");
   };

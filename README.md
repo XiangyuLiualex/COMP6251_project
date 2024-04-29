@@ -18,13 +18,15 @@
    1. [x] role -> patient
    2. [x] more function rendered in side bar
    3. [ ] appointment
-      1. [ ] search all available appointments
-      2. [ ] book an appointment
+      1. [x] search all available appointments
+      2. [x] book an appointment
       3. [ ] update an appointment
+      4. [ ] history appointment
+      5. [ ] tests prescription
 4. GP:
    1. appointments
-      1. search my appointments
-      2. update my appointments
+      1. [x] search my appointments
+      2. [x] update my appointments
    2. today works
       1. search today's appointments
       2. appointment take place

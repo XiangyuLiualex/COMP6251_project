@@ -3,7 +3,7 @@ import { StateCreator, createStore } from "zustand";
 import { Role, UserCredential, sessionState } from './session.types';
 import { useNavigate } from 'react-router-dom';
 import { DefaultError, useMutation } from '@tanstack/react-query';
-import { pathKeys } from '../../pages/medical/config/path';
+import { apiPrefix, pathKeys } from '../../pages/medical/config/path';
 
 type LoginForm = {
   email: string;
@@ -14,7 +14,7 @@ type LoginForm = {
 // https://doichevkostia.dev/blog/authentication-store-with-zustand/
 // https://github.com/yurisldk/realworld-react-fsd/blob/master/src/entities/session/session.model.ts#L35
 async function loginRequest(params: LoginForm): Promise<UserCredential> {
-  const response = await fetch("/login", {
+  const response = await fetch(pathKeys.apiLogin(), {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -73,7 +73,8 @@ export function useLoginMutation() {
       // todo : when backend build change into this way
       // sessionStore.setState({ token: data.accessToken, role: data.user.role})
       // temporary workaround
-      const role = await fetch(`/users/${data.user.id}`).then((res) => res.json()).then((data) => data.role);
+      const role = await fetch(apiPrefix(`/users/${data.user.id}`)).
+        then((res) => res.json()).then((data) => data.role);
       sessionStore.setState({ token: data.accessToken, role: role, uid: data.user.id })
 
       navigate(roleBasedRedirect(role))
