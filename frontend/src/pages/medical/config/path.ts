@@ -5,6 +5,8 @@ export const pathKeys = {
     apiSignup() { return apiPrefix('/signup') },
     login() { return this.root.concat('login') },
     signUp() { return this.root.concat('sign-up') },
+    apiGetGpss(){return apiPrefix('/gpss')},
+    apiGetSlots(){return apiPrefix('/slots')},
     patient: {
         root() {
             return pathKeys.root.concat('patient/');
@@ -60,6 +62,39 @@ export const pathKeys = {
 
         }
 
+    },
+    slots:{
+        root(){
+            return pathKeys.root.concat('slots/');
+        },
+        apiUpdateSlotById(sid:string){
+            return apiPrefix(pathKeys.slots.root().concat("/" + sid));
+        }
+    },
+    appointment:{
+        root(){
+            return pathKeys.root.concat('appointment/');
+        },
+        apiAddAppointment(){
+            return apiPrefix(pathKeys.appointment.root());
+        },
+        apiGetAppointmentById(gpid:string){
+            return apiPrefix(pathKeys.root.concat('appointment?gpId='+gpid));
+        },
+        apiUpdateAppointmentById(appointmentId:string){
+            return apiPrefix(pathKeys.appointment.root().concat('/'+appointmentId));
+        }
+    },
+    profile:{
+        root(){
+            return pathKeys.root.concat('profile/');
+        },
+        apiGetProfileById(userId:string){
+            return apiPrefix(pathKeys.root.concat('profile?userId='+userId));
+        },
+        apiEditProfile(){
+            return apiPrefix(pathKeys.profile.root());
+        }
     }
 }
 
