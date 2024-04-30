@@ -1,5 +1,7 @@
 package com.chzfakevox.backend.user
 
+import com.chzfakevox.backend.config.userId
+import com.chzfakevox.backend.util.unauthorized
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.web.servlet.function.body
@@ -27,7 +29,11 @@ class UserRouterConfiguration {
             ok().body(model)
         }
         POST("/patient/self-reg"){
+//            val userId = it.userId()?.toLong()
             val payload = it.body<SelfRegisterRequest>()
+//            if(userId != payload.patientId){
+//                unauthorized("not your token")
+//            }
             val model = service.selfRegister(payload)
             ok().body(model)
         }
