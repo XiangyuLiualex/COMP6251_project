@@ -31,6 +31,7 @@ import { SelfRegisterData_forSubmit, useSelfRegisterFormMutation } from '../../.
 import { Role } from '../../../../entities/session/session.types';
 import { forEach } from "json-server-auth";
 import { sessionStore } from "../../../../entities/session";
+import {useMedicalHistoryMutation } from '../../../../entities/patient/submitHistory.query.ts';
 
 //const roles = ['Market', 'Finance', 'Development'];
 /*const randomRole = () => {
@@ -102,7 +103,11 @@ export default function FullFeaturedCrudGrid(config: selfRegisterConfig) {
     const selfRegMutate = useSelfRegisterFormMutation();
     const historyMutate = useMedicalHistoryMutation();
 
-    const mutate = ifNotSelfReg ? historyMutate.mutate : selfRegMutate.mutate;
+    //const mutate = ifNotSelfReg ? historyMutate.mutate : selfRegMutate.mutate;
+    // 这里是确定使用哪个 mutate 函数的逻辑
+    const mutate = config.role === 'patient' ? selfRegMutate.mutate : historyMutate.mutate;
+    //role为patient传入selfReg，Role不为patient传入medicalhistory
+    //const mutate = config.role === 'patient' ? historyMutate.mutate : selfRegMutate.mutate;
 
 
 
