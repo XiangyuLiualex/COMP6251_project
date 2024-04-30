@@ -115,6 +115,9 @@ export const pathKeys = {
         },
         apiUpdateTestById(testId: string) {
             return apiPrefix(pathKeys.test.root().concat('/' + testId));
+        },
+        apiGetTestByAppointmentId(appointmentId:string){
+            return apiPrefix(pathKeys.root.concat('test?appointmentId=' + appointmentId));
         }
     },
     prescription: {
@@ -123,6 +126,9 @@ export const pathKeys = {
         },
         apiAddPrescription() {
             return apiPrefix(pathKeys.prescription.root())
+        },
+        apiViewPrescriptionById(appointmentId:string){
+            return apiPrefix(pathKeys.root.concat('prescription?appointmentId=' + appointmentId));
         }
     },
     apiGetHistory(id: string) {

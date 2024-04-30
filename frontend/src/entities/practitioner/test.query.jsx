@@ -51,6 +51,16 @@ export function useTestQuery() {
   });
 }
 
+export function useTestByAppointmentQuery(appointmentId) {
+  return useQuery({
+    queryKey: ["test",appointmentId],
+    queryFn: async () => {
+      var response = await axios(pathKeys.test.apiGetTestByAppointmentId(appointmentId));
+      return response.data;
+    },
+  });
+}
+
 
 
 const updateTestRequest = async (testId,testerId,result) => {

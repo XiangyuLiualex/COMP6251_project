@@ -552,7 +552,7 @@
       "time": "11:00-12:00",
       "date": "2024-05-06",
       "reason": "try me",
-      "status": "Approved",
+      "status": "done",
       "createdAt": 1713974895561,
       "id": 2
     },
@@ -564,7 +564,7 @@
       "time": "10:00-11:00",
       "date": "2024-05-06",
       "reason": "我要把这句话写别长",
-      "status": "Approved",
+      "status": "done",
       "createdAt": 1713974999811,
       "id": 3
     },
@@ -831,6 +831,24 @@
       "quantity": "2",
       "createdAt": 1714484486056,
       "id": 2
+    },
+    {
+      "patientId": "5",
+      "appointmentId": 4,
+      "medicationName": "莲花清瘟",
+      "medicationInstruction": "一日三次",
+      "quantity": "3",
+      "createdAt": 1714517671453,
+      "id": 3
+    },
+    {
+      "patientId": "5",
+      "appointmentId": 7,
+      "medicationName": "喝水",
+      "medicationInstruction": "多喝",
+      "quantity": "99",
+      "createdAt": 1714517690790,
+      "id": 4
     }
   ]
 }
