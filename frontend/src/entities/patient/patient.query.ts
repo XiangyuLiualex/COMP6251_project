@@ -3,9 +3,10 @@ import { authorizationHeader, sessionStore } from "../session";
 import { pathKeys } from "../../pages/medical/config/path";
 import { GridRowsProp } from "@mui/x-data-grid";
 import { selfRegiForm } from "../../pages/medical/patient/selfRegister/form.tsx";
+import {randomId} from "@mui/x-data-grid-generator";
 
 export type SelfRegisterData_forSubmit = {
-    //patientId: string;
+    patientId: string;
     createDateTimeString: string;
     // todo type this
     formData: selfRegiForm;
@@ -20,7 +21,7 @@ function handleRequestData(form: any) {
     const createTime = new Date().toDateString();
     const statues = "created";
     const data: SelfRegisterData_forSubmit = {
-        //patientId: sessionStore.getState().uid,
+        patientId: sessionStore.getState().uid,
         createDateTimeString: createTime,
         formData: form,
         statues: statues,

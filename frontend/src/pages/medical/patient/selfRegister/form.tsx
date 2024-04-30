@@ -151,6 +151,7 @@ export default function FullFeaturedCrudGrid(config: selfRegisterConfig) {
         const updatedRows = rows.map((row => {
             const { id, ...rest } = row;
             return {
+                id: randomId(),
                 ...rest,
                 patientId: sessionStore.getState().uid
             };
@@ -159,6 +160,7 @@ export default function FullFeaturedCrudGrid(config: selfRegisterConfig) {
         mutate(updatedRows)
         console.log(updatedRows)//在这里加一个获取新的PatientId，怎么才能在formdata里面得到这个PatientId？现在这个patientId在formdata外面
     }
+
     const [rows, setRows] = React.useState(theRows);
     const [rowModesModel, setRowModesModel] = React.useState<GridRowModesModel>({});
 
@@ -233,21 +235,34 @@ export default function FullFeaturedCrudGrid(config: selfRegisterConfig) {
             width: 180,
             editable: true,
         },
-        {
+        /*{
             field: 'role',
             headerName: 'Department',
             width: 220,
             editable: true,
             type: 'singleSelect',
             valueOptions: ['Market', 'Finance', 'Development'],
-        },
+        },*/
         {
             field: 'medicalhistory',
             headerName: 'Disease',
             width: 220,
             editable: true,
             type: 'singleSelect',
-            valueOptions: ['None','Asthma', 'Diabetes', 'Epilepsy','Heart Attack','Raised Blood Pressure','Cancer','Heart Failure','Bipolar Disorder','Dementia'],
+            valueOptions: ['None','Asthma', 'Diabetes', 'Epilepsy','Heart Attack','Raised Blood Pressure','Cancer','Heart Failure','Bipolar Disorder','Dementia','Others'],
+        },
+        {
+            field: 'diseasedetails',
+            headerName: 'Disease Details',
+            width: 220,
+            editable: true
+        },
+        {
+            field: 'DiagnosedDate',
+            headerName: 'Diagnosed date',
+            type: 'date',
+            width: 180,
+            editable: true,
         },
         {
             field: 'actions',
@@ -337,3 +352,4 @@ export default function FullFeaturedCrudGrid(config: selfRegisterConfig) {
         </Box>
     );
 }
+
