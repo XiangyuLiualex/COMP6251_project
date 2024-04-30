@@ -1,7 +1,7 @@
 import { RouteObject } from "react-router-dom";
-import { MedicalHistoryPage } from "./medicalHistory.ui";
+import { PatientMedicalHistoryPage } from "./medicalHistory.ui";
 
 export const medicalHistoryRoute: RouteObject = {
     path: 'medical-history',
-    element: <MedicalHistoryPage />
+    element: <PatientMedicalHistoryPage />
 }

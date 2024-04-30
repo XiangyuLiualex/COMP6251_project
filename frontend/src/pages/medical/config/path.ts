@@ -5,8 +5,8 @@ export const pathKeys = {
     apiSignup() { return apiPrefix('/signup') },
     login() { return this.root.concat('login') },
     signUp() { return this.root.concat('sign-up') },
-    apiGetGpss(){return apiPrefix('/gpss')},
-    apiGetSlots(){return apiPrefix('/slots')},
+    apiGetGpss() { return apiPrefix('/gpss') },
+    apiGetSlots() { return apiPrefix('/slots') },
     patient: {
         root() {
             return pathKeys.root.concat('patient/');
@@ -63,60 +63,63 @@ export const pathKeys = {
         }
 
     },
-    slots:{
-        root(){
+    slots: {
+        root() {
             return pathKeys.root.concat('slots/');
         },
-        apiUpdateSlotById(sid:string){
+        apiUpdateSlotById(sid: string) {
             return apiPrefix(pathKeys.slots.root().concat("/" + sid));
         }
     },
-    appointment:{
-        root(){
+    appointment: {
+        root() {
             return pathKeys.root.concat('appointment/');
         },
-        apiAddAppointment(){
+        apiAddAppointment() {
             return apiPrefix(pathKeys.appointment.root());
         },
-        apiGetAppointmentById(gpid:string){
-            return apiPrefix(pathKeys.root.concat('appointment?gpId='+gpid));
+        apiGetAppointmentById(gpid: string) {
+            return apiPrefix(pathKeys.root.concat('appointment?gpId=' + gpid));
         },
-        apiUpdateAppointmentById(appointmentId:string){
-            return apiPrefix(pathKeys.appointment.root().concat('/'+appointmentId));
+        apiUpdateAppointmentById(appointmentId: string) {
+            return apiPrefix(pathKeys.appointment.root().concat('/' + appointmentId));
         },
-        apiGetAppointmentByIdAndDate(gpid:string,date:string){
-            return apiPrefix(pathKeys.root.concat('appointment?date='+date+'&gpId='+gpid));
+        apiGetAppointmentByIdAndDate(gpid: string, date: string) {
+            return apiPrefix(pathKeys.root.concat('appointment?date=' + date + '&gpId=' + gpid));
         }
     },
-    profile:{
-        root(){
+    profile: {
+        root() {
             return pathKeys.root.concat('profile/');
         },
-        apiGetProfileById(userId:string){
-            return apiPrefix(pathKeys.root.concat('profile?userId='+userId));
+        apiGetProfileById(userId: string) {
+            return apiPrefix(pathKeys.root.concat('profile?userId=' + userId));
         },
-        apiEditProfile(){
+        apiEditProfile() {
             return apiPrefix(pathKeys.profile.root());
         }
     },
-    test:{
-        root(){
+    test: {
+        root() {
             return pathKeys.root.concat('test/')
         },
-        apiAddTest(){
+        apiAddTest() {
             return apiPrefix(pathKeys.test.root())
         },
-        apiUpdateTestById(testId:string){
-            return apiPrefix(pathKeys.test.root().concat('/'+testId));
+        apiUpdateTestById(testId: string) {
+            return apiPrefix(pathKeys.test.root().concat('/' + testId));
         }
     },
-    prescription:{
-        root(){
+    prescription: {
+        root() {
             return pathKeys.root.concat('prescription/')
         },
-        apiAddPrescription(){
+        apiAddPrescription() {
             return apiPrefix(pathKeys.prescription.root())
         }
+    },
+    apiGetHistory(id: string) {
+        return apiPrefix("/medical-history".concat(`?userId=${id}`));
     }
 }
 

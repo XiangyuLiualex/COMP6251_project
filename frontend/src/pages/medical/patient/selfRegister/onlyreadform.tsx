@@ -32,17 +32,10 @@ import { Role } from '../../../../entities/session/session.types';
 import {forEach} from "json-server-auth";
 import {sessionStore} from "../../../../entities/session";
 
-//const roles = ['Market', 'Finance', 'Development'];
-/*const randomRole = () => {
-    return randomArrayItem(roles);
-};*/
 
 const initialRows: GridRowsProp = [
     {
         id: randomId(),
-        //name: "",
-        //age: null,
-        //joinDate: null,
     },
 ];
 
@@ -66,13 +59,13 @@ function EditToolbar(props: EditToolbarProps) {
         }));
     };
 
-    return (
+   /* return (
         <GridToolbarContainer>
             <Button color="primary" startIcon={<AddIcon />} onClick={handleClick}>
                 Add record
             </Button>
         </GridToolbarContainer>
-    );
+    );*/
 }
 
 
@@ -82,7 +75,7 @@ type selfRegisterConfig = {
 }
 export type selfRegiForm = any[]
 
-export default function FullFeaturedCrudGrid(config: selfRegisterConfig) {
+export default function PartFullFeaturedCrudGrid(config: selfRegisterConfig) {
 
     // TODO admin not allow to edit registration itself
     const editable = config.role === 'patient' ? true : false;
@@ -174,7 +167,7 @@ export default function FullFeaturedCrudGrid(config: selfRegisterConfig) {
     };
 
     const columns: GridColDef[] = [
-        /*{ field: 'name', headerName: 'Name', width: 180, editable: true },*/
+        /*{ field: 'name', headerName: 'Name', width: 180, editable: false,},*/
 /*        {
             field: 'patientid',
             headerName: 'PatientId',
@@ -195,14 +188,14 @@ export default function FullFeaturedCrudGrid(config: selfRegisterConfig) {
             width: 80,
             align: 'left',
             headerAlign: 'left',
-            editable: true,
-        },
-        {
+            editable: false,
+        },*/
+        /*{
             field: 'joinDate',
             headerName: 'Join date',
             type: 'date',
             width: 180,
-            editable: true,
+            editable: false,
         },*/
         /*{
             field: 'role',
@@ -215,31 +208,32 @@ export default function FullFeaturedCrudGrid(config: selfRegisterConfig) {
         {
             field: 'medicalhistory',
             headerName: 'Disease',
-            width: 240,
-            editable: true,
+            width: 220,
+            editable: false,
             type: 'singleSelect',
             valueOptions: ['None','Asthma', 'Diabetes', 'Epilepsy','Heart Attack','Raised Blood Pressure','Cancer','Heart Failure','Bipolar Disorder','Dementia','Others'],
         },
         {
             field: 'diseasedetails',
             headerName: 'Disease Details',
-            width: 240,
-            editable: true
+            width: 220,
+            editable: false
         },
         {
             field: 'diagnosedDate',
             headerName: 'Diagnosed date',
             type: 'date',
-            width: 200,
-            editable: true,
+            width: 180,
+            editable: false,
         },
-        {
+        /*{
             field: 'actions',
             type: 'actions',
             headerName: 'Actions',
-            width: 140,
+            width: 100,
             cellClassName: 'actions',
             getActions: ({ id }) => {
+                const canEdit = false;
                 const isInEditMode = rowModesModel[id]?.mode === GridRowModes.Edit;
 
                 if (isInEditMode) {
@@ -278,7 +272,7 @@ export default function FullFeaturedCrudGrid(config: selfRegisterConfig) {
                     />,
                 ];
             },
-        },
+        },*/
     ];
 
 

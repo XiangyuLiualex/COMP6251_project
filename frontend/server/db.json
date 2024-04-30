@@ -137,267 +137,50 @@
   ],
   "self-reg": [
     {
-      "patientId": 4,
-      "createDateTimeString": "Mon Apr 22 2024",
+      "patientId": 5,
+      "createDateTimeString": "Tue Apr 30 2024",
       "formData": [
         {
-          "id": "93f057e1-56ff-5e04-ae57-67bbabcbb3c0",
-          "name": "keith mason",
-          "age": 25,
-          "joinDate": "2023-12-24T10:02:13.581Z",
-          "role": "Finance"
+          "id": "f9fb13fa-cf1f-5548-9e66-2809a27f7e44",
+          "medicalhistory": "Cancer",
+          "diseasedetails": "dwedwe",
+          "diagnosedDate": "2024-04-14T23:00:00.000Z",
+          "patientId": 5
         },
         {
-          "id": "79f59040-827e-5d51-bc14-336128f8d2e8",
-          "name": "Vernon Clarke",
-          "age": 36,
-          "joinDate": "2015-12-04T00:00:00.000Z",
-          "role": "Development"
-        },
-        {
-          "id": "c66c6677-a395-5964-9fc1-15e59ab9d11a",
-          "name": "Walter Romero",
-          "age": 19,
-          "joinDate": "2023-12-25T12:03:34.560Z",
-          "role": "Market"
-        },
-        {
-          "id": "82fb6c82-ac7b-5631-a8df-5b915fece865",
-          "name": "Mathilda Sparks",
-          "age": 28,
-          "joinDate": "2023-07-21T15:42:13.977Z",
-          "role": "Market"
-        },
-        {
-          "id": "6d094354-ea73-5cde-b184-6aaa5c50a82c",
-          "name": "Richard Rogers",
-          "age": 23,
-          "joinDate": "2023-05-14T17:34:04.802Z",
-          "role": "Finance"
+          "id": "b14d656b-b6b7-545a-97a7-e59778fdc78d",
+          "medicalhistory": "Asthma",
+          "diseasedetails": "dwdw",
+          "diagnosedDate": "2024-04-10T23:00:00.000Z",
+          "patientId": 5
         }
       ],
-      "statues": "approved",
-      "createdAt": 1713800984485,
+      "statues": "created",
+      "createdAt": 1714488046438,
       "id": 1
     },
     {
-      "patientId": 4,
-      "createDateTimeString": "Mon Apr 22 2024",
+      "patientId": 5,
+      "createDateTimeString": "Tue Apr 30 2024",
       "formData": [
         {
-          "id": "93f057e1-56ff-5e04-ae57-67bbabcbb3c0",
-          "name": "keith mason",
-          "age": 25,
-          "joinDate": "2023-12-24T10:02:13.581Z",
-          "role": "Finance"
+          "id": "ce07c7d7-beb4-55d8-82f4-daeea5e6f964",
+          "medicalhistory": "Cancer",
+          "diseasedetails": "dqwdqw",
+          "diagnosedDate": "2024-04-09T23:00:00.000Z",
+          "patientId": 5
         },
         {
-          "id": "79f59040-827e-5d51-bc14-336128f8d2e8",
-          "name": "Vernon Clarke",
-          "age": 36,
-          "joinDate": "2015-12-04T00:00:00.000Z",
-          "role": "Development"
-        },
-        {
-          "id": "c66c6677-a395-5964-9fc1-15e59ab9d11a",
-          "name": "Walter Romero",
-          "age": 19,
-          "joinDate": "2023-12-25T12:03:34.560Z",
-          "role": "Market"
-        },
-        {
-          "id": "82fb6c82-ac7b-5631-a8df-5b915fece865",
-          "name": "Mathilda Sparks",
-          "age": 28,
-          "joinDate": "2023-07-21T15:42:13.977Z",
-          "role": "Market"
-        },
-        {
-          "id": "6d094354-ea73-5cde-b184-6aaa5c50a82c",
-          "name": "Richard Rogers",
-          "age": 23,
-          "joinDate": "2023-05-14T17:34:04.802Z",
-          "role": "Finance"
+          "id": "18ab3f08-fc7f-5db4-ae97-96c3692b2d85",
+          "medicalhistory": "Asthma",
+          "diseasedetails": "dqwnjfwj",
+          "diagnosedDate": "2024-04-21T23:00:00.000Z",
+          "patientId": 5
         }
       ],
-      "statues": "approved",
-      "createdAt": 1713800989661,
+      "statues": "created",
+      "createdAt": 1714490221413,
       "id": 2
-    },
-    {
-      "patientId": 4,
-      "createDateTimeString": "Mon Apr 22 2024",
-      "formData": [
-        {
-          "id": "93f057e1-56ff-5e04-ae57-67bbabcbb3c0",
-          "name": "keith mason",
-          "age": 25,
-          "joinDate": "2023-12-24T10:02:13.581Z",
-          "role": "Finance"
-        },
-        {
-          "id": "79f59040-827e-5d51-bc14-336128f8d2e8",
-          "name": "Vernon Clarke",
-          "age": 36,
-          "joinDate": "2015-12-04T00:00:00.000Z",
-          "role": "Development"
-        },
-        {
-          "id": "c66c6677-a395-5964-9fc1-15e59ab9d11a",
-          "name": "Walter Romero",
-          "age": 19,
-          "joinDate": "2023-12-25T12:03:34.560Z",
-          "role": "Market"
-        },
-        {
-          "id": "82fb6c82-ac7b-5631-a8df-5b915fece865",
-          "name": "Mathilda Sparks",
-          "age": 28,
-          "joinDate": "2023-07-21T15:42:13.977Z",
-          "role": "Market"
-        },
-        {
-          "id": "6d094354-ea73-5cde-b184-6aaa5c50a82c",
-          "name": "Richard Rogers",
-          "age": 23,
-          "joinDate": "2023-05-14T17:34:04.802Z",
-          "role": "Finance"
-        }
-      ],
-      "statues": "created",
-      "createdAt": 1713800998005,
-      "id": 3
-    },
-    {
-      "patientId": 7,
-      "createDateTimeString": "Mon Apr 22 2024",
-      "formData": [
-        {
-          "id": "93f057e1-56ff-5e04-ae57-67bbabcbb3c0",
-          "name": "keith mason",
-          "age": 25,
-          "joinDate": "2023-12-24T10:02:13.581Z",
-          "role": "Finance"
-        },
-        {
-          "id": "79f59040-827e-5d51-bc14-336128f8d2e8",
-          "name": "Vernon Clarke",
-          "age": 36,
-          "joinDate": "2015-12-04T00:00:00.000Z",
-          "role": "Development"
-        },
-        {
-          "id": "c66c6677-a395-5964-9fc1-15e59ab9d11a",
-          "name": "Walter Romero",
-          "age": 19,
-          "joinDate": "2023-12-25T12:03:34.560Z",
-          "role": "Market"
-        },
-        {
-          "id": "82fb6c82-ac7b-5631-a8df-5b915fece865",
-          "name": "Mathilda Sparks",
-          "age": 28,
-          "joinDate": "2023-07-21T15:42:13.977Z",
-          "role": "Market"
-        },
-        {
-          "id": "6d094354-ea73-5cde-b184-6aaa5c50a82c",
-          "name": "Richard Rogers",
-          "age": 23,
-          "joinDate": "2023-05-14T17:34:04.802Z",
-          "role": "Finance"
-        }
-      ],
-      "statues": "approved",
-      "createdAt": 1713803112386,
-      "id": 4
-    },
-    {
-      "patientId": 7,
-      "createDateTimeString": "Mon Apr 22 2024",
-      "formData": [
-        {
-          "id": "93f057e1-56ff-5e04-ae57-67bbabcbb3c0",
-          "name": "keith mason",
-          "age": 25,
-          "joinDate": "2023-12-24T10:02:13.581Z",
-          "role": "Finance"
-        },
-        {
-          "id": "79f59040-827e-5d51-bc14-336128f8d2e8",
-          "name": "Vernon Clarke",
-          "age": 36,
-          "joinDate": "2015-12-04T00:00:00.000Z",
-          "role": "Development"
-        },
-        {
-          "id": "c66c6677-a395-5964-9fc1-15e59ab9d11a",
-          "name": "Walter Romero",
-          "age": 19,
-          "joinDate": "2023-12-25T12:03:34.560Z",
-          "role": "Market"
-        },
-        {
-          "id": "82fb6c82-ac7b-5631-a8df-5b915fece865",
-          "name": "Mathilda Sparks",
-          "age": 28,
-          "joinDate": "2023-07-21T15:42:13.977Z",
-          "role": "Market"
-        },
-        {
-          "id": "6d094354-ea73-5cde-b184-6aaa5c50a82c",
-          "name": "Richard Rogers",
-          "age": 23,
-          "joinDate": "2023-05-14T17:34:04.802Z",
-          "role": "Finance"
-        }
-      ],
-      "statues": "created",
-      "createdAt": 1713803129363,
-      "id": 5
-    },
-    {
-      "patientId": 24,
-      "createDateTimeString": "Tue Apr 23 2024",
-      "formData": [
-        {
-          "id": "6cefffa8-98cf-5b89-ac67-0e7e8bbf48b3",
-          "name": "keith mason",
-          "age": 25,
-          "joinDate": "2023-10-29T06:41:36.259Z",
-          "role": "Finance"
-        },
-        {
-          "id": "e7d13ec3-b5f1-5e55-b28e-5962363bd6a5",
-          "name": "Vernon Clarke",
-          "age": 36,
-          "joinDate": "2015-12-04T00:00:00.000Z",
-          "role": "Development"
-        },
-        {
-          "id": "b36346cf-5310-588f-ab1f-5ce33f5a76ec",
-          "name": "Walter Romero",
-          "age": 19,
-          "joinDate": "2023-12-01T20:37:27.294Z",
-          "role": "Market"
-        },
-        {
-          "id": "17191b4f-51c5-5506-a8ee-314a233ec2e3",
-          "name": "Mathilda Sparks",
-          "age": 28,
-          "joinDate": "2024-03-14T22:24:32.006Z",
-          "role": "Market"
-        },
-        {
-          "id": "34f46786-a1f8-5ac6-97f4-5177b216cd6c",
-          "name": "Richard Rogers",
-          "age": 23,
-          "joinDate": "2023-11-24T13:04:56.387Z",
-          "role": "Development"
-        }
-      ],
-      "statues": "approved",
-      "id": 6
     }
   ],
   "guestPatient": [
@@ -623,8 +406,8 @@
       "date": "2024-05-07",
       "dayOfWeek": "Tuesday",
       "time": "15:00-16:00",
-      "bookedByPID": null,
-      "status": "open"
+      "bookedByPID": "5",
+      "status": "hold"
     },
     {
       "id": "18",
@@ -749,6 +532,18 @@
       "status": "beforeApprove",
       "createdAt": 1714404866155,
       "id": 8
+    },
+    {
+      "patientId": "5",
+      "gpId": "8",
+      "slotId": "17",
+      "gpName": "GP1",
+      "time": "15:00-16:00",
+      "date": "2024-05-07",
+      "reason": "d",
+      "status": "beforeApprove",
+      "createdAt": 1714489415987,
+      "id": 6
     }
   ],
   "profile": [
@@ -816,7 +611,22 @@
       "id": 6
     }
   ],
-  "medical-history": [],
+  "medical-history": [
+    {
+      "id": "f9fb13fa-cf1f-5548-9e66-2809a27f7e44",
+      "medicalhistory": "Cancer",
+      "diseasedetails": "dwedwe",
+      "diagnosedDate": "2024-04-14T23:00:00.000Z",
+      "patientId": 5
+    },
+    {
+      "id": "b14d656b-b6b7-545a-97a7-e59778fdc78d",
+      "medicalhistory": "Asthma",
+      "diseasedetails": "dwdw",
+      "diagnosedDate": "2024-04-10T23:00:00.000Z",
+      "patientId": 5
+    }
+  ],
   "test": [
     {
       "id": 1,

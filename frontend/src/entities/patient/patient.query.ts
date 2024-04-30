@@ -2,7 +2,8 @@ import { DefaultError, useMutation, useQuery } from "@tanstack/react-query";
 import { authorizationHeader, sessionStore } from "../session";
 import { pathKeys } from "../../pages/medical/config/path";
 import { GridRowsProp } from "@mui/x-data-grid";
-import { selfRegiForm } from "../../pages/medical/patient/selfRegister/form";
+import { selfRegiForm } from "../../pages/medical/patient/selfRegister/form.tsx";
+import {randomId} from "@mui/x-data-grid-generator";
 
 export type SelfRegisterData_forSubmit = {
     patientId: string;
