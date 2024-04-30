@@ -31,6 +31,7 @@ import { SelfRegisterData_forSubmit, useSelfRegisterFormMutation } from '../../.
 import { Role } from '../../../../entities/session/session.types';
 import {forEach} from "json-server-auth";
 import {sessionStore} from "../../../../entities/session";
+import {useMedicalHistoryMutation} from "../../../../entities/patient/submitHistory.query.ts";
 
 
 const initialRows: GridRowsProp = [
@@ -76,19 +77,10 @@ type selfRegisterConfig = {
 export type selfRegiForm = any[]
 
 export default function PartFullFeaturedCrudGrid(config: selfRegisterConfig) {
-
     // TODO admin not allow to edit registration itself
     const editable = config.role === 'patient' ? true : false;
     // TODO extend to a dynamic form
     function parseStringToForm(stringForm: selfRegiForm) {
-
-        const res0: GridRowsProp = [{
-            id: "ce9ea426-1716-5216-a3c0-aa5d576093db",
-            name: "Richard Rogers",
-            age: 23,
-            joinDate: randomCreatedDate(),
-            //role: randomRole(),
-        }]
         // todo dynamic change
         const res = stringForm;
         res.forEach(row => {
@@ -101,6 +93,27 @@ export default function PartFullFeaturedCrudGrid(config: selfRegisterConfig) {
     const theRows = config.data === null ? initialRows : parseStringToForm(config.data);
 
     const { mutate } = useSelfRegisterFormMutation();
+   /* const ifNotSelfReg = config.role === 'patient' ? true : false;
+    // TODO extend to a dynamic form
+    function parseStringToForm(stringForm: selfRegiForm) {
+        // todo dynamic change
+        const res = stringForm;
+        res.forEach(row => {
+            row.age = Number(row.age)
+            row.joinDate = new Date(row.joinDate)
+            row.diagnosedDate = new Date(row.diagnosedDate)
+        });
+        return res;
+    }
+    const theRows = config.data === null ? initialRows : parseStringToForm(config.data);
+
+    const selfRegMutate = useSelfRegisterFormMutation();
+    const historyMutate = useMedicalHistoryMutation();
+
+    //const mutate = ifNotSelfReg ? historyMutate.mutate : selfRegMutate.mutate;
+    // 这里是确定使用哪个 mutate 函数的逻辑
+    const mutate = config.role === 'patient' ? selfRegMutate.mutate : historyMutate.mutate;*/
+
 
     function handleSubmit(event: FormEvent<HTMLFormElement>): void {
         event.preventDefault();
@@ -206,7 +219,7 @@ export default function PartFullFeaturedCrudGrid(config: selfRegisterConfig) {
             valueOptions: ['Market', 'Finance', 'Development'],
         },*/
         {
-            field: 'medicalhistory',
+            field: 'disease',
             headerName: 'Disease',
             width: 220,
             editable: false,

@@ -7,6 +7,10 @@ export const pathKeys = {
     signUp() { return this.root.concat('sign-up') },
     apiGetGpss() { return apiPrefix('/gpss') },
     apiGetSlots() { return apiPrefix('/slots') },
+
+    apiHistory(){
+    return apiPrefix('/medical-history');
+},
     patient: {
         root() {
             return pathKeys.root.concat('patient/');
@@ -122,7 +126,7 @@ export const pathKeys = {
         }
     },
     apiGetHistory(id: string) {
-        return apiPrefix("/medical-history".concat(`?userId=${id}`));
+        return apiPrefix("/medical-history".concat(`?patientId=${id}`));
     }
 }
 

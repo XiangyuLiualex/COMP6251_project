@@ -31,15 +31,15 @@
       1. [x] search my appointments
       2. [x] update my appointments
    2. today works
-      1. search today's appointments
+      1. [x] search today's appointments
       2. appointment take place
-         1. update the appointment?
+         1. [x] update the appointment?
          2. update patient medical history
-         3. create prescription
-         4. optional: order additional tests
+         3. [x] create prescription
+         4. [x] optional: order additional tests
 5. Tester:
-   1. incoming tests
-   2. update test results
+   1. [x] incoming tests
+   2. [x] update test results
    3. update patient medical history
    4. notification to patients
 6. patient:
