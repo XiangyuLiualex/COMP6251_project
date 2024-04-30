@@ -3,15 +3,17 @@ import { authorizationHeader, sessionStore } from "../session";
 import { useQuery, useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import { useSnackbar } from 'notistack';
+import { pathKeys } from "../../pages/medical/config/path";
 
-const baseURL = "http://localhost:3001";
+// const baseURL = "http://localhost:3001";
 
 export function useProfileQuery(userId) {
   const { enqueueSnackbar } = useSnackbar();
   return useQuery({
     queryKey: ["profile", userId], //
     queryFn: async () => {
-      var response = await axios(`${baseURL}/profile?userId=${userId}`);
+      // `${baseURL}/profile?userId=${userId}`
+      var response = await axios(pathKeys.profile.apiGetProfileById(userId));
       console.log("from query:", response.data);
       if (response.status !== 200 || response.data.length === 0) {
         enqueueSnackbar('No profile found, please create your profile first.',
@@ -28,18 +30,19 @@ const updateProfileRequest = async (
   name,
   gender,
   profession,
-  hobby,
-  email,
+  phoneNum,
+  birthday,
   aboutMe
 ) => {
   var fn = null;
-  var url = `${baseURL}/profile`;
+  // `${baseURL}/profile`
+  var url = pathKeys.profile.apiEditProfile();
   var payload = {
     name,
     gender,
     profession,
-    hobby,
-    email,
+    phoneNum,
+    birthday,
     aboutMe,
   }
   if (method === "POST") {
@@ -51,6 +54,7 @@ const updateProfileRequest = async (
   } else {
     throw new Error("Invalid method");
   }
+  console.log("update url by "+url)
   const response = await fn(
     url,
     payload,
@@ -74,8 +78,8 @@ export const useUpdateProfileMutation = (method) => {
         data.name,
         data.gender,
         data.profession,
-        data.hobby,
-        data.email,
+        data.phoneNum,
+        data.birthday,
         data.aboutMe
       ),
     onSuccess: (data) => {
@@ -83,8 +87,9 @@ export const useUpdateProfileMutation = (method) => {
       console.log("Profile updated successfully:", data);
     },
     onError: (error) => {
+      enqueueSnackbar("Failed to update Profile: " + error.message, { variant: 'failed', autoHideDuration: 3500 });
       console.error("Error updating Profile:", error);
-      alert("Failed to update Profile: " + error.message);
+      // alert("Failed to update Profile: " + error.message);
     },
   });
 };

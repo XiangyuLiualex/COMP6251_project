@@ -36,7 +36,7 @@ async function approveSelfRegisterRequest(patientId: string): Promise<any> {
             'Content-Type': 'application/json',
             ...authorizationHeader()
         },
-        body: JSON.stringify({ statues: "approved" })
+        body: JSON.stringify({ status: "approved" })
     }).then((response) => {
         if (!response.ok) {
             throw new Error('Approve Self Register Failed: ' + response.text);

@@ -1,0 +1,805 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "email": "admin@gmail.com",
+      "password": "admin"
+    },
+    {
+      "id": 2,
+      "email": "user1@email.com",
+      "password": "user1"
+    },
+    {
+      "id": 3,
+      "email": "user2@email.com",
+      "password": "user2"
+    },
+    {
+      "email": "patient2@email.com",
+      "password": "$2a$10$bKWS3y1mO2Pt5gWKSyt3P.TW9w04B0yYEninS7qsbtxjVwLDzgcW.",
+      "createdAt": 1712193325036,
+      "id": 5,
+      "role": "patient"
+    },
+    {
+      "email": "patient3@email.com",
+      "password": "$2a$10$1pFpyK4puFluANL9gGK55.cOJXQz7pTp/U1Tos7B6dYohS/3ZASW6",
+      "createdAt": 1712193327677,
+      "id": 6,
+      "role": "patient"
+    },
+    {
+      "email": "admin@email.com",
+      "password": "$2a$10$udY7BscuktiJTq.WT2MUj.fk/UdXo4KWBJQ91TXlT./lSr5xJUa.i",
+      "createdAt": 1712193331069,
+      "id": 7,
+      "role": "admin"
+    },
+    {
+      "email": "GP1@email.com",
+      "password": "$2a$10$uQyAQoXQyUIuasCUefRwC.Na1dqEvsbUBPfSpcsrSCl.eHKUo.jOi",
+      "createdAt": 1712193411366,
+      "id": 8,
+      "role": "gp"
+    },
+    {
+      "email": "patient5@email.com",
+      "password": "$2a$10$5/nlBnL9kTED9OVPombCL.c.oUsYOPimgtG95mn0hGXyMy/D1efSu",
+      "createdAt": 1712521986202,
+      "id": 9
+    },
+    {
+      "email": "patient4@email.com",
+      "password": "$2a$10$Ld5atDiK/hUh47RCzHsxVeW4IwXSC08jLaSb7vjkBrKEMpt4ln1yO",
+      "createdAt": 1712522153107,
+      "id": 10
+    },
+    {
+      "email": "patient6@email.com",
+      "password": "$2a$10$zuWPfd7HexTRBAT1L4J2p.3/KzkLg5feo.oWzQMd4njHdZ6.3A522",
+      "createdAt": 1712522297600,
+      "id": 11
+    },
+    {
+      "email": "patient7@email.com",
+      "password": "$2a$10$O/.nK6law3nA06fa2MDQMOsLLmG0UYpH8zh/Waw3NAkZ9AChMBOU2",
+      "createdAt": 1713812376438,
+      "id": 12
+    },
+    {
+      "email": "patient8@email.com",
+      "password": "$2a$10$4VkfiMKj9HvKYrYooXjn1uFx8IUocLnEgA7Bz7TKNwslUClD8tglu",
+      "createdAt": 1713812982555,
+      "id": 13
+    },
+    {
+      "email": "patient9@email.com",
+      "password": "$2a$10$.n0g2wGPJI.tLXELhJwE8uxwLzzmXcfYXUWkAxt4CNszYQCoD8A5q",
+      "createdAt": 1713813150241,
+      "id": 14
+    },
+    {
+      "email": "patient10@email.com",
+      "password": "$2a$10$bXZ7H1gjXmeVdNjJWH2L/uKJvwiGdNqN.K8qIN3JJvpXrVJ.YzXDS",
+      "createdAt": 1713813185221,
+      "id": 15
+    },
+    {
+      "email": "patient13@email.com",
+      "password": "$2a$10$/hrV6hIH7si/Gq3BcDLquOHOPbmzHZycRiyCitGdIJSPPCDmLm8qS",
+      "id": 17
+    },
+    {
+      "email": "patient21@email.com",
+      "password": "$2a$10$z4JW1hLAY1gsiOO23nNvvOOJqINmEJE6UCrarJXj8CIwgZedDRcmO",
+      "name": "patient2",
+      "id": 18
+    },
+    {
+      "email": "patient14@email.com",
+      "password": "$2a$10$aJY6AHjRcFawEdN9rS9b9usl0gYzcZxuhb/SgfRA6flhGJSbLBNSW",
+      "role": "patient",
+      "id": 19
+    },
+    {
+      "email": "patient141@email.com",
+      "password": "$2a$10$.eLeKDJV1QEtdpDkSBlF0eqXPtpOLaM2h/tEkdYsc1RYybVK.xUzC",
+      "role": "patient",
+      "id": 20
+    },
+    {
+      "email": "patient15@email.com",
+      "password": "$2a$10$BxLtJh.TMaR2qlwYAZJsluRUA64hDoKr7yl/efX1TZZCEuFQVUwcO",
+      "role": "patient",
+      "id": 21
+    },
+    {
+      "email": "patient16@email.com",
+      "password": "$2a$10$ToRpftQ3eY.RNAOKqUYus.b6fEg1Yo0VFj3CKetty7oNHIs5AZWEa",
+      "role": "patient",
+      "id": 22
+    },
+    {
+      "email": "patient17@email.com",
+      "password": "$2a$10$PvUAo8XL9VlEWrwCMFKabOqEsYqwERISRHGhjIERZZ1Cj3TTcDaw.",
+      "role": "patient",
+      "id": 23
+    },
+    {
+      "email": "patient@email.com",
+      "password": "$2a$10$HoMKfpgVbigJIqN.N4tKs.dyWnYXHcC5yrWGJi20392O2FT2V0L3e",
+      "firstName": "z",
+      "lastName": "x",
+      "role": "patient",
+      "id": 24
+    }
+  ],
+  "self-reg": [
+    {
+      "patientId": 4,
+      "createDateTimeString": "Mon Apr 22 2024",
+      "formData": [
+        {
+          "id": "93f057e1-56ff-5e04-ae57-67bbabcbb3c0",
+          "name": "keith mason",
+          "age": 25,
+          "joinDate": "2023-12-24T10:02:13.581Z",
+          "role": "Finance"
+        },
+        {
+          "id": "79f59040-827e-5d51-bc14-336128f8d2e8",
+          "name": "Vernon Clarke",
+          "age": 36,
+          "joinDate": "2015-12-04T00:00:00.000Z",
+          "role": "Development"
+        },
+        {
+          "id": "c66c6677-a395-5964-9fc1-15e59ab9d11a",
+          "name": "Walter Romero",
+          "age": 19,
+          "joinDate": "2023-12-25T12:03:34.560Z",
+          "role": "Market"
+        },
+        {
+          "id": "82fb6c82-ac7b-5631-a8df-5b915fece865",
+          "name": "Mathilda Sparks",
+          "age": 28,
+          "joinDate": "2023-07-21T15:42:13.977Z",
+          "role": "Market"
+        },
+        {
+          "id": "6d094354-ea73-5cde-b184-6aaa5c50a82c",
+          "name": "Richard Rogers",
+          "age": 23,
+          "joinDate": "2023-05-14T17:34:04.802Z",
+          "role": "Finance"
+        }
+      ],
+      "status": "approved",
+      "createdAt": 1713800984485,
+      "id": 1
+    },
+    {
+      "patientId": 4,
+      "createDateTimeString": "Mon Apr 22 2024",
+      "formData": [
+        {
+          "id": "93f057e1-56ff-5e04-ae57-67bbabcbb3c0",
+          "name": "keith mason",
+          "age": 25,
+          "joinDate": "2023-12-24T10:02:13.581Z",
+          "role": "Finance"
+        },
+        {
+          "id": "79f59040-827e-5d51-bc14-336128f8d2e8",
+          "name": "Vernon Clarke",
+          "age": 36,
+          "joinDate": "2015-12-04T00:00:00.000Z",
+          "role": "Development"
+        },
+        {
+          "id": "c66c6677-a395-5964-9fc1-15e59ab9d11a",
+          "name": "Walter Romero",
+          "age": 19,
+          "joinDate": "2023-12-25T12:03:34.560Z",
+          "role": "Market"
+        },
+        {
+          "id": "82fb6c82-ac7b-5631-a8df-5b915fece865",
+          "name": "Mathilda Sparks",
+          "age": 28,
+          "joinDate": "2023-07-21T15:42:13.977Z",
+          "role": "Market"
+        },
+        {
+          "id": "6d094354-ea73-5cde-b184-6aaa5c50a82c",
+          "name": "Richard Rogers",
+          "age": 23,
+          "joinDate": "2023-05-14T17:34:04.802Z",
+          "role": "Finance"
+        }
+      ],
+      "status": "approved",
+      "createdAt": 1713800989661,
+      "id": 2
+    },
+    {
+      "patientId": 4,
+      "createDateTimeString": "Mon Apr 22 2024",
+      "formData": [
+        {
+          "id": "93f057e1-56ff-5e04-ae57-67bbabcbb3c0",
+          "name": "keith mason",
+          "age": 25,
+          "joinDate": "2023-12-24T10:02:13.581Z",
+          "role": "Finance"
+        },
+        {
+          "id": "79f59040-827e-5d51-bc14-336128f8d2e8",
+          "name": "Vernon Clarke",
+          "age": 36,
+          "joinDate": "2015-12-04T00:00:00.000Z",
+          "role": "Development"
+        },
+        {
+          "id": "c66c6677-a395-5964-9fc1-15e59ab9d11a",
+          "name": "Walter Romero",
+          "age": 19,
+          "joinDate": "2023-12-25T12:03:34.560Z",
+          "role": "Market"
+        },
+        {
+          "id": "82fb6c82-ac7b-5631-a8df-5b915fece865",
+          "name": "Mathilda Sparks",
+          "age": 28,
+          "joinDate": "2023-07-21T15:42:13.977Z",
+          "role": "Market"
+        },
+        {
+          "id": "6d094354-ea73-5cde-b184-6aaa5c50a82c",
+          "name": "Richard Rogers",
+          "age": 23,
+          "joinDate": "2023-05-14T17:34:04.802Z",
+          "role": "Finance"
+        }
+      ],
+      "status": "created",
+      "createdAt": 1713800998005,
+      "id": 3
+    },
+    {
+      "patientId": 7,
+      "createDateTimeString": "Mon Apr 22 2024",
+      "formData": [
+        {
+          "id": "93f057e1-56ff-5e04-ae57-67bbabcbb3c0",
+          "name": "keith mason",
+          "age": 25,
+          "joinDate": "2023-12-24T10:02:13.581Z",
+          "role": "Finance"
+        },
+        {
+          "id": "79f59040-827e-5d51-bc14-336128f8d2e8",
+          "name": "Vernon Clarke",
+          "age": 36,
+          "joinDate": "2015-12-04T00:00:00.000Z",
+          "role": "Development"
+        },
+        {
+          "id": "c66c6677-a395-5964-9fc1-15e59ab9d11a",
+          "name": "Walter Romero",
+          "age": 19,
+          "joinDate": "2023-12-25T12:03:34.560Z",
+          "role": "Market"
+        },
+        {
+          "id": "82fb6c82-ac7b-5631-a8df-5b915fece865",
+          "name": "Mathilda Sparks",
+          "age": 28,
+          "joinDate": "2023-07-21T15:42:13.977Z",
+          "role": "Market"
+        },
+        {
+          "id": "6d094354-ea73-5cde-b184-6aaa5c50a82c",
+          "name": "Richard Rogers",
+          "age": 23,
+          "joinDate": "2023-05-14T17:34:04.802Z",
+          "role": "Finance"
+        }
+      ],
+      "status": "approved",
+      "createdAt": 1713803112386,
+      "id": 4
+    },
+    {
+      "patientId": 7,
+      "createDateTimeString": "Mon Apr 22 2024",
+      "formData": [
+        {
+          "id": "93f057e1-56ff-5e04-ae57-67bbabcbb3c0",
+          "name": "keith mason",
+          "age": 25,
+          "joinDate": "2023-12-24T10:02:13.581Z",
+          "role": "Finance"
+        },
+        {
+          "id": "79f59040-827e-5d51-bc14-336128f8d2e8",
+          "name": "Vernon Clarke",
+          "age": 36,
+          "joinDate": "2015-12-04T00:00:00.000Z",
+          "role": "Development"
+        },
+        {
+          "id": "c66c6677-a395-5964-9fc1-15e59ab9d11a",
+          "name": "Walter Romero",
+          "age": 19,
+          "joinDate": "2023-12-25T12:03:34.560Z",
+          "role": "Market"
+        },
+        {
+          "id": "82fb6c82-ac7b-5631-a8df-5b915fece865",
+          "name": "Mathilda Sparks",
+          "age": 28,
+          "joinDate": "2023-07-21T15:42:13.977Z",
+          "role": "Market"
+        },
+        {
+          "id": "6d094354-ea73-5cde-b184-6aaa5c50a82c",
+          "name": "Richard Rogers",
+          "age": 23,
+          "joinDate": "2023-05-14T17:34:04.802Z",
+          "role": "Finance"
+        }
+      ],
+      "status": "created",
+      "createdAt": 1713803129363,
+      "id": 5
+    },
+    {
+      "patientId": 24,
+      "createDateTimeString": "Tue Apr 23 2024",
+      "formData": [
+        {
+          "id": "6cefffa8-98cf-5b89-ac67-0e7e8bbf48b3",
+          "name": "keith mason",
+          "age": 25,
+          "joinDate": "2023-10-29T06:41:36.259Z",
+          "role": "Finance"
+        },
+        {
+          "id": "e7d13ec3-b5f1-5e55-b28e-5962363bd6a5",
+          "name": "Vernon Clarke",
+          "age": 36,
+          "joinDate": "2015-12-04T00:00:00.000Z",
+          "role": "Development"
+        },
+        {
+          "id": "b36346cf-5310-588f-ab1f-5ce33f5a76ec",
+          "name": "Walter Romero",
+          "age": 19,
+          "joinDate": "2023-12-01T20:37:27.294Z",
+          "role": "Market"
+        },
+        {
+          "id": "17191b4f-51c5-5506-a8ee-314a233ec2e3",
+          "name": "Mathilda Sparks",
+          "age": 28,
+          "joinDate": "2024-03-14T22:24:32.006Z",
+          "role": "Market"
+        },
+        {
+          "id": "34f46786-a1f8-5ac6-97f4-5177b216cd6c",
+          "name": "Richard Rogers",
+          "age": 23,
+          "joinDate": "2023-11-24T13:04:56.387Z",
+          "role": "Development"
+        }
+      ],
+      "status": "approved",
+      "id": 6
+    }
+  ],
+  "guestPatient": [
+    {
+      "id": 123,
+      "patientId": 2,
+      "ifPatientValid": "false"
+    },
+    {
+      "id": 15,
+      "patientId": 15,
+      "ifPatientValid": "false",
+      "createdAt": 1713816636010
+    },
+    {
+      "id": 4,
+      "patientId": 4,
+      "ifPatientValid": "false",
+      "createdAt": 1713816636010
+    },
+    {
+      "id": 16,
+      "patientId": 16,
+      "ifPatientValid": "true",
+      "createdAt": 1713823968940
+    },
+    {
+      "id": 5,
+      "patientId": 5,
+      "ifPatientValid": "true",
+      "createdAt": 1713824901357
+    },
+    {
+      "id": 19,
+      "patientId": 19,
+      "ifPatientValid": "false"
+    },
+    {
+      "id": 21,
+      "patientId": 21,
+      "ifPatientValid": "false"
+    },
+    {
+      "id": 22,
+      "patientId": 22,
+      "ifPatientValid": "false"
+    },
+    {
+      "id": 23,
+      "patientId": 23,
+      "ifPatientValid": "false"
+    },
+    {
+      "id": 24,
+      "patientId": 24,
+      "ifPatientValid": "true"
+    }
+  ],
+  "gpss": [
+    {
+      "name": "GP1",
+      "id": "8",
+      "treatments": "Internal Medicine Treatment",
+      "yearsInPractice": 4,
+      "phone": "+44 123123123"
+    },
+    {
+      "name": "GP2",
+      "id": "2",
+      "treatments": "Internal Medicine Treatment",
+      "yearsInPractice": 3,
+      "phone": "+44 77777889"
+    }
+  ],
+  "slots": [
+    {
+      "id": "1",
+      "gpId": "8",
+      "date": "2024-05-06",
+      "dayOfWeek": "Monday",
+      "time": "8:00-9:00",
+      "bookedByPID": null,
+      "status": "open"
+    },
+    {
+      "id": "2",
+      "gpId": "8",
+      "date": "2024-05-06",
+      "dayOfWeek": "Monday",
+      "time": "9:00-10:00",
+      "bookedByPID": "002",
+      "status": "hold"
+    },
+    {
+      "id": "3",
+      "gpId": "8",
+      "date": "2024-05-06",
+      "dayOfWeek": "Monday",
+      "time": "10:00-11:00",
+      "bookedByPID": null,
+      "status": "open"
+    },
+    {
+      "id": "4",
+      "gpId": "8",
+      "date": "2024-05-06",
+      "dayOfWeek": "Monday",
+      "time": "11:00-12:00",
+      "bookedByPID": null,
+      "status": "open"
+    },
+    {
+      "id": "5",
+      "gpId": "8",
+      "date": "2024-05-06",
+      "dayOfWeek": "Monday",
+      "time": "13:00-14:00",
+      "bookedByPID": null,
+      "status": "open"
+    },
+    {
+      "id": "6",
+      "gpId": "8",
+      "date": "2024-05-06",
+      "dayOfWeek": "Monday",
+      "time": "14:00-15:00",
+      "bookedByPID": null,
+      "status": "open"
+    },
+    {
+      "id": "7",
+      "gpId": "8",
+      "date": "2024-05-06",
+      "dayOfWeek": "Monday",
+      "time": "15:00-16:00",
+      "bookedByPID": 5,
+      "status": "hold"
+    },
+    {
+      "id": "8",
+      "gpId": "8",
+      "date": "2024-05-06",
+      "dayOfWeek": "Monday",
+      "time": "16:00-17:00",
+      "bookedByPID": 5,
+      "status": "hold"
+    },
+    {
+      "id": "9",
+      "gpId": "2",
+      "date": "2024-05-06",
+      "dayOfWeek": "Monday",
+      "time": "8:00-9:00",
+      "bookedByPID": 5,
+      "status": "hold"
+    },
+    {
+      "id": "10",
+      "gpId": "2",
+      "date": "2024-05-06",
+      "dayOfWeek": "Monday",
+      "time": "9:00-10:00",
+      "bookedByPID": 5,
+      "status": "hold"
+    },
+    {
+      "id": "11",
+      "gpId": "2",
+      "date": "2024-05-06",
+      "dayOfWeek": "Monday",
+      "time": "10:00-11:00",
+      "bookedByPID": 5,
+      "status": "hold"
+    },
+    {
+      "id": "12",
+      "gpId": "2",
+      "date": "2024-05-06",
+      "dayOfWeek": "Monday",
+      "time": "11:00-12:00",
+      "bookedByPID": null,
+      "status": "open"
+    },
+    {
+      "id": "13",
+      "gpId": "2",
+      "date": "2024-05-06",
+      "dayOfWeek": "Monday",
+      "time": "13:00-14:00",
+      "bookedByPID": null,
+      "status": "open"
+    },
+    {
+      "id": "14",
+      "gpId": "2",
+      "date": "2024-05-06",
+      "dayOfWeek": "Monday",
+      "time": "14:00-15:00",
+      "bookedByPID": null,
+      "status": "open"
+    },
+    {
+      "id": "15",
+      "gpId": "2",
+      "date": "2024-05-06",
+      "dayOfWeek": "Monday",
+      "time": "15:00-16:00",
+      "bookedByPID": null,
+      "status": "open"
+    },
+    {
+      "id": "16",
+      "gpId": "2",
+      "date": "2024-05-06",
+      "dayOfWeek": "Monday",
+      "time": "16:00-17:00",
+      "bookedByPID": 5,
+      "status": "hold"
+    },
+    {
+      "id": "17",
+      "gpId": "8",
+      "date": "2024-05-07",
+      "dayOfWeek": "Tuesday",
+      "time": "15:00-16:00",
+      "bookedByPID": null,
+      "status": "open"
+    },
+    {
+      "id": "18",
+      "gpId": "2",
+      "date": "2024-05-07",
+      "dayOfWeek": "Tuesday",
+      "time": "16:00-17:00",
+      "bookedByPID": null,
+      "status": "open"
+    },
+    {
+      "id": "19",
+      "gpId": "8",
+      "date": "2024-05-08",
+      "dayOfWeek": "Wednesday",
+      "time": "15:00-16:00",
+      "bookedByPID": null,
+      "status": "open"
+    },
+    {
+      "id": "20",
+      "gpId": "2",
+      "date": "2024-05-09",
+      "dayOfWeek": "Thursday",
+      "time": "16:00-17:00",
+      "bookedByPID": null,
+      "status": "open"
+    }
+  ],
+  "appointment": [
+    {
+      "id": 1,
+      "patientId": "8",
+      "gpId": "1",
+      "slotId": "9",
+      "gpName": "GP1",
+      "time": "8:00-9:00",
+      "date": "2024-05-05",
+      "reason": "I feel headache",
+      "status": "beforeApprove"
+    },
+    {
+      "patientId": "5",
+      "gpId": "8",
+      "slotId": "3",
+      "gpName": "GP1",
+      "time": "11:00-12:00",
+      "date": "2024-05-06",
+      "reason": "try me",
+      "status": "beforeApprove",
+      "createdAt": 1713974895561,
+      "id": 2
+    },
+    {
+      "patientId": "5",
+      "gpId": "8",
+      "slotId": "3",
+      "gpName": "GP1",
+      "time": "10:00-11:00",
+      "date": "2024-05-06",
+      "reason": "",
+      "status": "beforeApprove",
+      "createdAt": 1713974999811,
+      "id": 3
+    },
+    {
+      "patientId": "5",
+      "gpId": "8",
+      "slotId": "6",
+      "gpName": "GP1",
+      "time": "14:00-15:00",
+      "date": "2024-05-06",
+      "reason": "我肚子疼",
+      "status": "beforeApprove",
+      "createdAt": 1713975029223,
+      "id": 4
+    },
+    {
+      "patientId": "5",
+      "gpId": "8",
+      "slotId": "11",
+      "gpName": "GP1",
+      "time": "09:00-10:00",
+      "date": "2024-05-05",
+      "reason": "我是谁",
+      "status": "beforeApprove",
+      "createdAt": 1713975086074,
+      "id": 5
+    }
+  ],
+  "profile": [
+    {
+      "id": 1,
+      "userId": "9",
+      "name": "Alex",
+      "gender": "male",
+      "profession": "Software Engineer",
+      "hobby": "frisbee",
+      "email": "alex@emial.com",
+      "aboutMe": "I am a patient"
+    },
+    {
+      "id": 2,
+      "userId": 3,
+      "name": "GP1",
+      "gender": "female",
+      "profession": "General Practioner",
+      "hobby": "Movie",
+      "email": "GP1@emial.com",
+      "aboutMe": "I am professional with Internal Medicine Treatment"
+    },
+    {
+      "id": 3,
+      "userId": "2",
+      "name": "admin1",
+      "gender": "male",
+      "profession": "Admin",
+      "hobby": "basketball",
+      "email": "admin@emial.com",
+      "aboutMe": "I will prove the self signUp"
+    },
+    {
+      "name": "Jame",
+      "gender": "male",
+      "profession": "Student",
+      "hobby": "LOL",
+      "aboutMe": "I am jame",
+      "userId": 5,
+      "createdAt": 1714076556367,
+      "id": 4
+    },
+    {
+      "name": "Daney",
+      "gender": "female",
+      "profession": "Docter",
+      "hobby": "study",
+      "aboutMe": "I am Daney",
+      "userId": 8,
+      "createdAt": 1714076753892,
+      "id": 5
+    },
+    {
+      "name": "Tom",
+      "gender": "male",
+      "profession": "Admin",
+      "hobby": "Web dev",
+      "aboutMe": "I am tom",
+      "userId": 7,
+      "createdAt": 1714076826010,
+      "id": 6
+    }
+  ],
+  "medical-history": [
+    {
+      "userId": 12,
+      "dissese": "fever",
+      "discription": "Take 2 tablets of paracetamol",
+      "createdAt": 1714402623948,
+      "id": 1
+    },
+    {
+      "userId": 12,
+      "dissese": "fever",
+      "discription": "Take 2 tablets of paracetamol",
+      "createdAt": 1714402629646,
+      "id": 2
+    },
+    {
+      "userId": 12,
+      "dissese": "fever",
+      "discription": "Take 2 tablets of paracetamol",
+      "createdAt": 1714403969087,
+      "id": 3
+    }
+  ],
+  "test": [],
+  "prescription": []
+}
