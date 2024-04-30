@@ -10,7 +10,7 @@ export type SelfRegisterData_forSubmit = {
     // todo type this
     formData: selfRegiForm;
     // todo backend stage remove it
-    statues: string;
+    status: string;
 };
 export type SelfRegisterData_forReceive = SelfRegisterData_forSubmit & {
     id: string;
@@ -18,12 +18,12 @@ export type SelfRegisterData_forReceive = SelfRegisterData_forSubmit & {
 
 function handleRequestData(form: any) {
     const createTime = new Date().toDateString();
-    const statues = "created";
+    const status = "created";
     const data: SelfRegisterData_forSubmit = {
         patientId: sessionStore.getState().uid,
         createDateTimeString: createTime,
         formData: form,
-        statues: statues,
+        status: status,
     };
 
     return JSON.stringify(data);

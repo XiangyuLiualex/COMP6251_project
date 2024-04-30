@@ -41,7 +41,7 @@
 - using React Query
 
 - backend
-  - user account statues
+  - user account status
   - authentication method
     - [why not jwt](http://cryto.net/~joepie91/blog/2016/06/13/stop-using-jwt-for-sessions/)
     - [diff session](https://www.cnblogs.com/liqing/p/about-session.html)

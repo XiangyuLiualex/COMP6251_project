@@ -23,20 +23,20 @@ async function getAllApprovalsRequest(): Promise<any> {
 }
 
 export function useGetAllApprovalsQuery() {
-    return useQuery<SelfRegisterData_forReceive[],Error>({
+    return useQuery<SelfRegisterData_forReceive[], Error>({
         queryKey: ['getAllApprovals'],
         queryFn: () => getAllApprovalsRequest(),
     })
 }
 
 async function approveSelfRegisterRequest(patientId: string): Promise<any> {
-    const response= await fetch(pathKeys.admin.apiApproveSelfRegister(patientId), {
+    const response = await fetch(pathKeys.admin.apiApproveSelfRegister(patientId), {
         method: 'PATCH',
         headers: {
             'Content-Type': 'application/json',
             ...authorizationHeader()
         },
-        body: JSON.stringify({ statues: "approved" })
+        body: JSON.stringify({ status: "approved" })
     }).then((response) => {
         if (!response.ok) {
             throw new Error('Approve Self Register Failed: ' + response.text);
