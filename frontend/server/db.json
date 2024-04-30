@@ -155,7 +155,7 @@
           "patientId": 5
         }
       ],
-      "statues": "created",
+      "status": "created",
       "createdAt": 1714488046438,
       "id": 1
     },
@@ -178,7 +178,7 @@
           "patientId": 5
         }
       ],
-      "statues": "created",
+      "status": "created",
       "createdAt": 1714490221413,
       "id": 2
     }
