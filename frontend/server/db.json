@@ -709,22 +709,7 @@
       "id": 6
     }
   ],
-  "medical-history": [
-    {
-      "id": "f9fb13fa-cf1f-5548-9e66-2809a27f7e44",
-      "medicalhistory": "Cancer",
-      "diseasedetails": "dwedwe",
-      "diagnosedDate": "2024-04-14T23:00:00.000Z",
-      "patientId": 5
-    },
-    {
-      "id": "b14d656b-b6b7-545a-97a7-e59778fdc78d",
-      "medicalhistory": "Asthma",
-      "diseasedetails": "dwdw",
-      "diagnosedDate": "2024-04-10T23:00:00.000Z",
-      "patientId": 5
-    }
-  ],
+  "medical-history": [],
   "test": [
     {
       "id": 1,
