@@ -29,47 +29,20 @@ import {
 import { FormEvent } from 'react';
 import { SelfRegisterData_forSubmit, useSelfRegisterFormMutation } from '../../../../entities/patient/patient.query';
 import { Role } from '../../../../entities/session/session.types';
+import {forEach} from "json-server-auth";
+import {sessionStore} from "../../../../entities/session";
 
-const roles = ['Market', 'Finance', 'Development'];
-const randomRole = () => {
+//const roles = ['Market', 'Finance', 'Development'];
+/*const randomRole = () => {
     return randomArrayItem(roles);
-};
+};*/
 
 const initialRows: GridRowsProp = [
     {
         id: randomId(),
-        name: "keith mason",
-        age: 25,
-        joinDate: randomCreatedDate(),
-        role: "Finance",
-    },
-    {
-        id: randomId(),
-        name: "Vernon Clarke",
-        age: 36,
-        joinDate: new Date('04 Dec 2015 GMT'),
-        role: "Development",
-    },
-    {
-        id: randomId(),
-        name: "Walter Romero",
-        age: 19,
-        joinDate: randomCreatedDate(),
-        role: "Market",
-    },
-    {
-        id: randomId(),
-        name: "Mathilda Sparks",
-        age: 28,
-        joinDate: randomCreatedDate(),
-        role: "Market",
-    },
-    {
-        id: randomId(),
-        name: "Richard Rogers",
-        age: 23,
-        joinDate: randomCreatedDate(),
-        role: randomRole(),
+        //name: "",
+        //age: null,
+        //joinDate: null,
     },
 ];
 
@@ -85,7 +58,8 @@ function EditToolbar(props: EditToolbarProps) {
 
     const handleClick = () => {
         const id = randomId();
-        setRows((oldRows) => [...oldRows, { id, name: '', age: '', isNew: true }]);
+        //setRows((oldRows) => [...oldRows, { id, name: '', age: '', isNew: true }]);
+        setRows((oldRows) => [...oldRows, { id }]);
         setRowModesModel((oldModel) => ({
             ...oldModel,
             [id]: { mode: GridRowModes.Edit, fieldToFocus: 'name' },
@@ -120,13 +94,14 @@ export default function FullFeaturedCrudGrid(config: selfRegisterConfig) {
             name: "Richard Rogers",
             age: 23,
             joinDate: randomCreatedDate(),
-            role: randomRole(),
+            //role: randomRole(),
         }]
         // todo dynamic change
         const res = stringForm;
         res.forEach(row => {
             row.age = Number(row.age)
             row.joinDate = new Date(row.joinDate)
+            row.diagnosedDate = new Date(row.diagnosedDate)
         });
         return res;
     }
@@ -136,10 +111,24 @@ export default function FullFeaturedCrudGrid(config: selfRegisterConfig) {
 
     function handleSubmit(event: FormEvent<HTMLFormElement>): void {
         event.preventDefault();
-        mutate(rows)
-        console.log(rows)
+        /*const updatedRows = rows.map(row => ({
+            ...row,
+            patientId: sessionStore.getState().uid
+        }));*/
 
+        const updatedRows = rows.map((row => {
+            const { id, ...rest } = row;
+            return {
+                id: randomId(),
+                ...rest,
+                patientId: sessionStore.getState().uid
+            };
+        }));
+
+        mutate(updatedRows)
+        console.log(updatedRows)//在这里加一个获取新的PatientId，怎么才能在formdata里面得到这个PatientId？现在这个patientId在formdata外面
     }
+
     const [rows, setRows] = React.useState(theRows);
     const [rowModesModel, setRowModesModel] = React.useState<GridRowModesModel>({});
 
@@ -174,7 +163,8 @@ export default function FullFeaturedCrudGrid(config: selfRegisterConfig) {
     };
 
     const processRowUpdate = (newRow: GridRowModel) => {
-        const updatedRow = { ...newRow, isNew: false };
+        //const updatedRow = { ...newRow, isNew: false };
+        const updatedRow = { ...newRow };
         setRows(rows.map((row) => (row.id === newRow.id ? updatedRow : row)));
         return updatedRow;
     };
@@ -184,8 +174,21 @@ export default function FullFeaturedCrudGrid(config: selfRegisterConfig) {
     };
 
     const columns: GridColDef[] = [
-        { field: 'name', headerName: 'Name', width: 180, editable: true },
-        {
+        /*{ field: 'name', headerName: 'Name', width: 180, editable: true },*/
+/*        {
+            field: 'patientid',
+            headerName: 'PatientId',
+            type: 'number',
+            width: 80,
+            align: 'left',
+            headerAlign: 'left',
+            editable: true,
+           /!*hide:true,
+            disableColumnMenu:true,
+            disableReorder: true,*!/
+            //hideable:true,
+        },*/
+       /* {
             field: 'age',
             headerName: 'Age',
             type: 'number',
@@ -200,20 +203,41 @@ export default function FullFeaturedCrudGrid(config: selfRegisterConfig) {
             type: 'date',
             width: 180,
             editable: true,
-        },
-        {
+        },*/
+        /*{
             field: 'role',
             headerName: 'Department',
             width: 220,
             editable: true,
             type: 'singleSelect',
             valueOptions: ['Market', 'Finance', 'Development'],
+        },*/
+        {
+            field: 'medicalhistory',
+            headerName: 'Disease',
+            width: 240,
+            editable: true,
+            type: 'singleSelect',
+            valueOptions: ['None','Asthma', 'Diabetes', 'Epilepsy','Heart Attack','Raised Blood Pressure','Cancer','Heart Failure','Bipolar Disorder','Dementia','Others'],
+        },
+        {
+            field: 'diseasedetails',
+            headerName: 'Disease Details',
+            width: 240,
+            editable: true
+        },
+        {
+            field: 'diagnosedDate',
+            headerName: 'Diagnosed date',
+            type: 'date',
+            width: 200,
+            editable: true,
         },
         {
             field: 'actions',
             type: 'actions',
             headerName: 'Actions',
-            width: 100,
+            width: 140,
             cellClassName: 'actions',
             getActions: ({ id }) => {
                 const isInEditMode = rowModesModel[id]?.mode === GridRowModes.Edit;
@@ -297,3 +321,4 @@ export default function FullFeaturedCrudGrid(config: selfRegisterConfig) {
         </Box>
     );
 }
+

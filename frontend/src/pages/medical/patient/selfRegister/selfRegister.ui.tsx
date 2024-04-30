@@ -1,5 +1,5 @@
 import { sessionStore } from "../../../../entities/session";
-import FullFeaturedCrudGrid from "./form";
+import FullFeaturedCrudGrid from "./form.tsx";
 
 // TODO complete the form details
 export function SelfRegisterPage() {

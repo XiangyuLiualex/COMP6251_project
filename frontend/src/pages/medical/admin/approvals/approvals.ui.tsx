@@ -1,6 +1,6 @@
 import { Box, Button, Divider, List, ListItem } from "@mui/material"
 import { useApproveSelfRegisterMutation, useGetAllApprovalsQuery } from "../../../../entities/admin/admin.query"
-import FullFeaturedCrudGrid from "../../patient/selfRegister/form"
+import PartFullFeaturedCrudGrid from "../../patient/selfRegister/onlyreadform.tsx"
 
 
 
@@ -35,7 +35,7 @@ export function ApprovalsPage() {
                                     <div>id:{item.id} statues:{item.statues} patient: {item.patientId} createTime:{item.createDateTimeString}</div>
                                     <Button variant="contained" color="primary" id={item.patientId} onClick={handleApproveClick}>Approve</Button>
                                     <Divider />
-                                    <FullFeaturedCrudGrid role="admin" data={item.formData} />
+                                    <PartFullFeaturedCrudGrid role="admin" data={item.formData} />
                                 </Box>
                             </ListItem>
                         })}
