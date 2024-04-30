@@ -98,7 +98,11 @@ export default function FullFeaturedCrudGrid(config: selfRegisterConfig) {
         });
         return res;
     }
-    const theRows = config.data === null ? initialRows : parseStringToForm(config.data);
+    console.log(config.data===null)
+    console.log(config.data===undefined)
+    var theRows = config.data === null ? initialRows : parseStringToForm(config.data);
+     theRows = config.data === undefined ? initialRows : parseStringToForm(config.data);
+     console.log('I am here',theRows)
 
     const selfRegMutate = useSelfRegisterFormMutation();
     const historyMutate = useMedicalHistoryMutation();

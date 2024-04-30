@@ -22,8 +22,96 @@ import { ViewProfile } from "../../general/generalProfile.ui";
 import { useUpdateAppointmentStatusMutation } from "../../../../entities/practitioner/handleAppointment.query";
 import { Box } from "@mui/material";
 import { useAddPrescriptionMutation } from "../../../../entities/general/prescription.query";
+import { MedicalHistoryPage } from "../../common/MedicalHistory.tsx";
+import FullFeaturedCrudGrid from "../../patient/selfRegister/form.tsx"
 // import ViewProfile from "../../general/generalProfile.ui";
   
+export function EditMedicalHistory({ patientId}) {
+  const [open, setOpen] = React.useState(false);
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
+  
+  return (
+    <React.Fragment>
+      <Button variant="outlined" onClick={handleClickOpen}>
+        Edit Medical History
+      </Button>
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+        sx={{
+          '& .MuiDialog-paper': { width: '60%', maxWidth: 'none' }, // 调整宽度
+        }}
+      >
+        <DialogTitle id="alert-dialog-title" sx={{ textAlign: 'center' }}>
+          {"Edit Patient's Medical History:"}
+        </DialogTitle>
+        <DialogContent sx={{ textAlign: 'center' }}>
+            {console.log("Today"+patientId)}
+             <FullFeaturedCrudGrid role="gp" id={patientId} />
+          
+        </DialogContent>
+        <DialogActions sx={{ justifyContent: 'center' }}>
+          <Button onClick={handleClose} autoFocus>
+            Cancel
+          </Button>
+        </DialogActions>
+      </Dialog>
+
+    </React.Fragment>
+  );
+}
+
+
+
+export function ViewMedicalHistory({ patientId}) {
+  const [open, setOpen] = React.useState(false);
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
+  
+  return (
+    <React.Fragment>
+      <Button variant="outlined" onClick={handleClickOpen}>
+        View Medical History
+      </Button>
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+        sx={{
+          '& .MuiDialog-paper': { width: '60%', maxWidth: 'none' }, // 调整宽度
+        }}
+      >
+        <DialogTitle id="alert-dialog-title" sx={{ textAlign: 'center' }}>
+          {"Patient's Medical History:"}
+        </DialogTitle>
+        <DialogContent sx={{ textAlign: 'center' }}>
+            <MedicalHistoryPage id={patientId} />
+          
+        </DialogContent>
+        <DialogActions sx={{ justifyContent: 'center' }}>
+          <Button onClick={handleClose} autoFocus>
+            Cancel
+          </Button>
+        </DialogActions>
+      </Dialog>
+
+    </React.Fragment>
+  );
+}
+
+
 
 
 
@@ -230,8 +318,10 @@ function AddPrescription({ appointment, onAddPrescription }) {
                                         <ViewProfile patientId={row.patientId} ifReadOnly={true} />
                                         
                                         <AddPrescription appointment={row} onAddPrescription={onAddPrescription}/>
-                                        <Button variant="outlined">View Medical History</Button>
-                                        <Button variant="outlined">Add Medical History</Button>
+                                        
+                                        <ViewMedicalHistory patientId={row.patientId}/>
+                                        <EditMedicalHistory patientId={row.patientId} />
+                                        {/* <Button variant="outlined">Add Medical History</Button> */}
                                     </Box>
                                 </TableCell>
                             </TableRow>

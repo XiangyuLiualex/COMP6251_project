@@ -14,6 +14,7 @@ import { useProfileQuery } from '../../../entities/general/profile.query';
 
 
 
+
 export function ViewProfile({ patientId, ifReadOnly }) {
   const [open, setOpen] = React.useState(false);
   const handleClickOpen = () => {
@@ -40,8 +41,6 @@ export function ViewProfile({ patientId, ifReadOnly }) {
       </div>
     )
   }
-
-
   return (
     <React.Fragment>
       <Button variant="outlined" onClick={handleClickOpen}>
