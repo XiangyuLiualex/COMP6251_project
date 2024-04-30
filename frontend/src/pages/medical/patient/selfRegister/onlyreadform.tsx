@@ -206,7 +206,7 @@ export default function PartFullFeaturedCrudGrid(config: selfRegisterConfig) {
             valueOptions: ['Market', 'Finance', 'Development'],
         },*/
         {
-            field: 'medicalhistory',
+            field: 'disease',
             headerName: 'Disease',
             width: 220,
             editable: false,
