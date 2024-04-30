@@ -106,6 +106,14 @@ export const pathKeys = {
         apiAddTest(){
             return apiPrefix(pathKeys.test.root())
         }
+    },
+    prescription:{
+        root(){
+            return pathKeys.root.concat('prescription/')
+        },
+        apiAddPrescription(){
+            return apiPrefix(pathKeys.prescription.root())
+        }
     }
 }
 

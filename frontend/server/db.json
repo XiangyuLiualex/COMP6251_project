@@ -685,7 +685,7 @@
       "gpName": "GP1",
       "time": "10:00-11:00",
       "date": "2024-05-06",
-      "reason": "我要把这句话写的吞吞吐吐吞吞吐吐吞吞吐吐吞吞吐吐他吞吞吐吐吞吞吐吐他吞吞吐吐他吞吞吐吐特别长",
+      "reason": "我要把这句话写别长",
       "status": "Done",
       "createdAt": 1713974999811,
       "id": 3
@@ -862,9 +862,18 @@
       "id": 1,
       "patientId": 5,
       "appointmentId": 3,
-      "medicationName":"banlangen",
-      "medicationInstruction":"twice a day",
-      "quantity":"3"
+      "medicationName": "banlangen",
+      "medicationInstruction": "twice a day",
+      "quantity": "3"
+    },
+    {
+      "patientId": "5",
+      "appointmentId": 3,
+      "medicationName": "藿香正气",
+      "medicationInstruction": "一日一次",
+      "quantity": "2",
+      "createdAt": 1714484486056,
+      "id": 2
     }
   ]
 }

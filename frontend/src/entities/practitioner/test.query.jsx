@@ -4,18 +4,6 @@ import { useSnackbar } from 'notistack';
 import { pathKeys } from "../../pages/medical/config/path";
 
 
-// for get gpss and timeslot date
-// export function useHandleAppointmentQuery(gpId) {
-//   return useQuery({
-//     queryKey: ["appointments", gpId], // gpId 是动态参数
-//     queryFn: async () => {
-//       // `${baseURL}/appointment?gpId=${gpId}`
-//       var response = await axios(pathKeys.appointment.apiGetAppointmentById(gpId));
-//       return response.data;
-//     },
-//   });
-// }
-
 const addTestRequest = async (patientId,appointmentId,name,date,time,description) => {
   const response = await axios.post(pathKeys.test.apiAddTest(), {
     patientId,

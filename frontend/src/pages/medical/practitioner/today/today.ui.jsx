@@ -21,8 +21,90 @@ import {
 import { ViewProfile } from "../../general/generalProfile.ui";
 import { useUpdateAppointmentStatusMutation } from "../../../../entities/practitioner/handleAppointment.query";
 import { Box } from "@mui/material";
+import { useAddPrescriptionMutation } from "../../../../entities/general/prescription.query";
 // import ViewProfile from "../../general/generalProfile.ui";
   
+
+
+
+
+function AddPrescription({ appointment, onAddPrescription }) {
+    const [open, setOpenAlt] = React.useState(false);
+    const handleClickOpen = () => {
+      setOpenAlt(true);
+    };
+    const handleClose = () => {
+      setOpenAlt(false);
+    };
+
+    return (
+      <React.Fragment>
+        <Button variant="outlined" onClick={handleClickOpen}>
+          Add Prescription
+        </Button>
+        <Dialog
+          open={open}
+          onClose={handleClose}
+          PaperProps={{
+            component: 'form',
+            onSubmit: (event) => {
+              event.preventDefault();
+              const formData = new FormData(event.currentTarget);
+              const formJson = Object.fromEntries(formData.entries());
+              const patientId = appointment.patientId;
+              const appointmentId = appointment.id;
+              const medicationName=formJson.medicationName;
+              const medicationInstruction=formJson.medicationInstruction;
+              const quantity=formJson.quantity;
+            //   console.log(gpId,slotId,gpName,time,date);
+            onAddPrescription(patientId,appointmentId,medicationName,medicationInstruction,quantity)
+              handleClose();
+            },
+          }}
+        //   patientId,appointmentId,medicationName,medicationInstruction,quantity
+        >
+          <DialogTitle>Add Prescription</DialogTitle>
+          <DialogContent>
+            <DialogContentText>
+              Please Enter Prescription informations:
+            </DialogContentText>
+            <TextField
+              margin="dense"
+              id="medicationName"
+              name="medicationName"
+              label="Medication Name"
+              type="text"
+              fullWidth
+              variant="standard"
+            />
+            <TextField
+              margin="dense"
+              id="medicationInstruction"
+              name="medicationInstruction"
+              label="Medication Instruction"
+              type="text"
+              fullWidth
+              variant="standard"
+            />
+            <TextField
+              margin="dense"
+              id="quantity"
+              name="quantity"
+              label="Quantity"
+              type="text"
+              fullWidth
+              variant="standard"
+            />
+            
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleClose}>Cancel</Button>
+            <Button type="submit">Submit</Button>
+          </DialogActions>
+        </Dialog>
+      </React.Fragment>
+    );
+  }
   
   
 
@@ -112,7 +194,7 @@ import { Box } from "@mui/material";
     );
   }
 
-  export function TodayAppointmentTable({appointments, onAddTest, onUpdateStatus}) {
+  export function TodayAppointmentTable({appointments, onAddTest, onUpdateStatus,onAddPrescription}) {
     return (
         <TableContainer component={Paper}>
             <Table sx={{ width: 'auto' }} aria-label="simple table">
@@ -136,7 +218,7 @@ import { Box } from "@mui/material";
                                 <TableCell align="right">{row.reason}</TableCell>
                                 <TableCell align="right">{row.status}</TableCell>
                                 <TableCell align="right">
-                                    <Button variant="outlined" onClick={() => onUpdateStatus(row.id, "Done")}>
+                                    <Button variant="contained" onClick={() => onUpdateStatus(row.id, "Done")}>
                                         Done
                                     </Button>
                                 </TableCell>
@@ -146,8 +228,10 @@ import { Box } from "@mui/material";
                                     <Box display="flex" justifyContent="space-around" width="100%">
                                         <AddTest appointment={row} onAddTest={onAddTest} />
                                         <ViewProfile patientId={row.patientId} ifReadOnly={true} />
-                                        <Button variant="outlined">Add Prescription</Button>
+                                        
+                                        <AddPrescription appointment={row} onAddPrescription={onAddPrescription}/>
                                         <Button variant="outlined">View Medical History</Button>
+                                        <Button variant="outlined">Add Medical History</Button>
                                     </Box>
                                 </TableCell>
                             </TableRow>
@@ -170,6 +254,7 @@ export function TodayPage() {
     const { mutate: mutateAddTest, isLoading: isLoad, isError, isSuccess: isAddSuccess } = useAddTestMutation();
     const { mutate: mutateAppointmentStatus, isSuccess } = useUpdateAppointmentStatusMutation();
     const [shouldRefetch, setShouldRefetch] = React.useState(false);
+    const { mutate: mutateAddPrescription} = useAddPrescriptionMutation();
 
     // 使用 useEffect 来观察 isSuccess 的变化，而不是在渲染逻辑中直接进行条件判断
     React.useEffect(() => {
@@ -187,6 +272,16 @@ export function TodayPage() {
 
     if (error) return <h4>Error: {error.message}, please retry.</h4>;
     if (isLoading) return <h4>Loading data...</h4>;
+
+    const handleAddPrescription=(patientId,appointmentId,medicationName,medicationInstruction,quantity)=>{
+        mutateAddPrescription({
+            patientId:patientId,
+            appointmentId:appointmentId,
+            medicationName:medicationName,
+            medicationInstruction:medicationInstruction,
+            quantity:quantity
+        });
+    }
 
     const handleAddTest = (patientId, appointmentId, name, date, time, description) => {
         mutateAddTest({
@@ -220,6 +315,7 @@ export function TodayPage() {
                 appointments={appointments}
                 onAddTest={handleAddTest}
                 onUpdateStatus={handleUpdateStatus}
+                onAddPrescription={handleAddPrescription}
             />
         </div>
     );
