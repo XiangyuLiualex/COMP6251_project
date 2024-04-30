@@ -176,7 +176,7 @@
           "role": "Finance"
         }
       ],
-      "statues": "approved",
+      "status": "approved",
       "createdAt": 1713800984485,
       "id": 1
     },
@@ -220,7 +220,7 @@
           "role": "Finance"
         }
       ],
-      "statues": "approved",
+      "status": "approved",
       "createdAt": 1713800989661,
       "id": 2
     },
@@ -264,7 +264,7 @@
           "role": "Finance"
         }
       ],
-      "statues": "created",
+      "status": "created",
       "createdAt": 1713800998005,
       "id": 3
     },
@@ -308,7 +308,7 @@
           "role": "Finance"
         }
       ],
-      "statues": "approved",
+      "status": "approved",
       "createdAt": 1713803112386,
       "id": 4
     },
@@ -352,7 +352,7 @@
           "role": "Finance"
         }
       ],
-      "statues": "created",
+      "status": "created",
       "createdAt": 1713803129363,
       "id": 5
     },
@@ -396,7 +396,7 @@
           "role": "Development"
         }
       ],
-      "statues": "approved",
+      "status": "approved",
       "id": 6
     }
   ],
@@ -415,7 +415,7 @@
     {
       "id": 4,
       "patientId": 4,
-      "ifPatientValid": "true",
+      "ifPatientValid": "false",
       "createdAt": 1713816636010
     },
     {
@@ -777,7 +777,29 @@
       "id": 6
     }
   ],
-  "medical-history": [],
+  "medical-history": [
+    {
+      "userId": 12,
+      "dissese": "fever",
+      "discription": "Take 2 tablets of paracetamol",
+      "createdAt": 1714402623948,
+      "id": 1
+    },
+    {
+      "userId": 12,
+      "dissese": "fever",
+      "discription": "Take 2 tablets of paracetamol",
+      "createdAt": 1714402629646,
+      "id": 2
+    },
+    {
+      "userId": 12,
+      "dissese": "fever",
+      "discription": "Take 2 tablets of paracetamol",
+      "createdAt": 1714403969087,
+      "id": 3
+    }
+  ],
   "test": [],
   "prescription": []
 }
