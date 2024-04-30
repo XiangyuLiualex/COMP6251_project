@@ -32,8 +32,8 @@ export function PatientProfilePage() {
         name,
         gender,
         profession,
-        hobby,
-        email,
+        phoneNum,
+        birthday,
         aboutMe
     ) => {
         mutateProfile.mutate({
@@ -41,8 +41,8 @@ export function PatientProfilePage() {
             name: name,
             gender: gender,
             profession: profession,
-            hobby: hobby,
-            email: email,
+            phoneNum: phoneNum,
+            birthday: birthday,
             aboutMe: aboutMe,
         });
     };

@@ -1,6 +1,4 @@
 import { useState } from "react";
-import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
 import { sessionStore } from "../../../../entities/session";
 // import useUpdateSlotMutation from "../../../../entities/patient/appointment.query";
 import Stack from '@mui/material/Stack';
