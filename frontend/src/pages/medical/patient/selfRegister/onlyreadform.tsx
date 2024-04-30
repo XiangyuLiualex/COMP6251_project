@@ -32,51 +32,10 @@ import { Role } from '../../../../entities/session/session.types';
 import {forEach} from "json-server-auth";
 import {sessionStore} from "../../../../entities/session";
 
-const roles = ['Market', 'Finance', 'Development'];
-const randomRole = () => {
-    return randomArrayItem(roles);
-};
 
 const initialRows: GridRowsProp = [
     {
         id: randomId(),
-        //patientId: 'P001',
-        name: "keith mason",
-        age: 25,
-        joinDate: randomCreatedDate(),
-        role: "Finance",
-    },
-    {
-        id: randomId(),
-        //patientId: 'P002',
-        name: "Vernon Clarke",
-        age: 36,
-        joinDate: new Date('04 Dec 2015 GMT'),
-        role: "Development",
-    },
-    {
-        id: randomId(),
-        //patientId: 'P003',
-        name: "Walter Romero",
-        age: 19,
-        joinDate: randomCreatedDate(),
-        role: "Market",
-    },
-    {
-        id: randomId(),
-        //patientId: 'P004',
-        name: "Mathilda Sparks",
-        age: 28,
-        joinDate: randomCreatedDate(),
-        role: "Market",
-    },
-    {
-        id: randomId(),
-        //patientId: 'P005',
-        name: "Richard Rogers",
-        age: 23,
-        joinDate: randomCreatedDate(),
-        role: randomRole(),
     },
 ];
 
@@ -92,7 +51,8 @@ function EditToolbar(props: EditToolbarProps) {
 
     const handleClick = () => {
         const id = randomId();
-        setRows((oldRows) => [...oldRows, { id, name: '', age: '', isNew: true }]);
+        //setRows((oldRows) => [...oldRows, { id, name: '', age: '', isNew: true }]);
+        setRows((oldRows) => [...oldRows, { id }]);
         setRowModesModel((oldModel) => ({
             ...oldModel,
             [id]: { mode: GridRowModes.Edit, fieldToFocus: 'name' },
@@ -127,13 +87,14 @@ export default function PartFullFeaturedCrudGrid(config: selfRegisterConfig) {
             name: "Richard Rogers",
             age: 23,
             joinDate: randomCreatedDate(),
-            role: randomRole(),
+            //role: randomRole(),
         }]
         // todo dynamic change
         const res = stringForm;
         res.forEach(row => {
             row.age = Number(row.age)
             row.joinDate = new Date(row.joinDate)
+            row.diagnosedDate = new Date(row.diagnosedDate)
         });
         return res;
     }
@@ -195,7 +156,8 @@ export default function PartFullFeaturedCrudGrid(config: selfRegisterConfig) {
     };
 
     const processRowUpdate = (newRow: GridRowModel) => {
-        const updatedRow = { ...newRow, isNew: false };
+        //const updatedRow = { ...newRow, isNew: false };
+        const updatedRow = { ...newRow };
         setRows(rows.map((row) => (row.id === newRow.id ? updatedRow : row)));
         return updatedRow;
     };
@@ -205,7 +167,7 @@ export default function PartFullFeaturedCrudGrid(config: selfRegisterConfig) {
     };
 
     const columns: GridColDef[] = [
-        { field: 'name', headerName: 'Name', width: 180, editable: false,},
+        /*{ field: 'name', headerName: 'Name', width: 180, editable: false,},*/
 /*        {
             field: 'patientid',
             headerName: 'PatientId',
@@ -219,7 +181,7 @@ export default function PartFullFeaturedCrudGrid(config: selfRegisterConfig) {
             disableReorder: true,*!/
             //hideable:true,
         },*/
-        {
+       /* {
             field: 'age',
             headerName: 'Age',
             type: 'number',
@@ -227,14 +189,14 @@ export default function PartFullFeaturedCrudGrid(config: selfRegisterConfig) {
             align: 'left',
             headerAlign: 'left',
             editable: false,
-        },
-        {
+        },*/
+        /*{
             field: 'joinDate',
             headerName: 'Join date',
             type: 'date',
             width: 180,
             editable: false,
-        },
+        },*/
         /*{
             field: 'role',
             headerName: 'Department',
@@ -258,7 +220,7 @@ export default function PartFullFeaturedCrudGrid(config: selfRegisterConfig) {
             editable: false
         },
         {
-            field: 'DiagnosedDate',
+            field: 'diagnosedDate',
             headerName: 'Diagnosed date',
             type: 'date',
             width: 180,
