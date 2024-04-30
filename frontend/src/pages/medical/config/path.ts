@@ -86,7 +86,10 @@ export const pathKeys = {
         },
         apiGetAppointmentByIdAndDate(gpid: string, date: string) {
             return apiPrefix(pathKeys.root.concat('appointment?date=' + date + '&gpId=' + gpid));
-        }
+        },
+        apiGetAppointmentByPId(patientId: string) {
+            return apiPrefix(pathKeys.root.concat('appointment?patientId=' + patientId));
+        },
     },
     profile: {
         root() {

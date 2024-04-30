@@ -84,7 +84,7 @@ export const useSubmitAppointmentMutation = () => {
 // for get gpss and timeslot date
 export function useAppointmentQuery() {
   return useQuery({
-    queryKey: ["speakers"],
+    queryKey: ["appointment"],
     queryFn: async () => {
       var gpss = await axios(pathKeys.apiGetGpss());
       // var gpss = await axios("http://localhost:3001/gpss");
@@ -99,6 +99,16 @@ export function useAppointmentQuery() {
         };
       });
       return response;
+    },
+  });
+}
+
+export function useMyAppointmentQuery(patientId) {
+  return useQuery({
+    queryKey: ["appointments", patientId], // gpId 是动态参数
+    queryFn: async () => {
+      var response = await axios(pathKeys.appointment.apiGetAppointmentByPId(patientId));
+      return response.data;
     },
   });
 }

@@ -2,10 +2,6 @@ import { useEffect, useState } from "react";
 import { useTestQuery,useUpdateTestMutation,useDoneTestMutation } from "../../../../entities/practitioner/test.query";
 import { Table, TableContainer } from "@mui/material";
 import { sessionStore } from "../../../../entities/session";
-import {
-    useHandleAppointmentQuery,
-    useUpdateAppointmentMutation,
-  } from "../../../../entities/practitioner/handleAppointment.query";
   import * as React from "react";
   import TableBody from "@mui/material/TableBody";
   import TableCell from "@mui/material/TableCell";

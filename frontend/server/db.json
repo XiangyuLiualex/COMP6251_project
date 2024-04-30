@@ -457,7 +457,7 @@
       "time": "11:00-12:00",
       "date": "2024-05-06",
       "reason": "try me",
-      "status": "Done",
+      "status": "Approved",
       "createdAt": 1713974895561,
       "id": 2
     },
@@ -469,7 +469,7 @@
       "time": "10:00-11:00",
       "date": "2024-05-06",
       "reason": "我要把这句话写别长",
-      "status": "Done",
+      "status": "Approved",
       "createdAt": 1713974999811,
       "id": 3
     },
@@ -481,7 +481,7 @@
       "time": "14:00-15:00",
       "date": "2024-05-06",
       "reason": "我肚子疼",
-      "status": "Done",
+      "status": "done",
       "createdAt": 1713975029223,
       "id": 4
     },
@@ -517,7 +517,7 @@
       "time": "14:00-15:00",
       "date": "2024-05-06",
       "reason": "",
-      "status": "Done",
+      "status": "done",
       "createdAt": 1714404556430,
       "id": 7
     },
@@ -637,8 +637,8 @@
       "date": "2024-08-08",
       "time": "09:00-10:00",
       "description": "Do not eat anything",
-      "status": "undo",
-      "result": "haha good"
+      "status": "done",
+      "result": "good blood"
     },
     {
       "patientId": "5",

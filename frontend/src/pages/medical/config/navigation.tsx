@@ -16,7 +16,8 @@ export const patientConfig: NaviListConfig[] = [
     { primary: guestPrimary.selfRegister, to: pathKeys.patient.selfRegister(), icon: <PeopleIcon /> },
     { primary: 'Medical History', to: pathKeys.patient.history(), icon: <PeopleIcon /> },
     { primary: 'Medical Tests', to: pathKeys.patient.tests(), icon: <PeopleIcon /> },
-    { primary: 'Book Appointment', to: '/patient/appointment', icon: <PeopleIcon /> }
+    { primary: 'Book Appointment', to: '/patient/appointment', icon: <PeopleIcon /> },
+    { primary: 'My Appointment', to:'/patient/myAppointment',icon:<PeopleIcon/>}
 ];
 export const adminConfig: NaviListConfig[] = [
     { primary: 'Profile', to: pathKeys.admin.profile(), icon: <PeopleIcon /> },

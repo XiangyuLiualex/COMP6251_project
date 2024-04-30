@@ -55,12 +55,6 @@ function AlternativeComponent({ appointment, onUpdateAppointment }) {
             event.preventDefault();
             const formData = new FormData(event.currentTarget);
             const formJson = Object.fromEntries(formData.entries());
-            // const gpId = formJson.gpId;
-            // const slotId=formJson.slotId;
-            // const gpName=formJson.gpName;
-            // const time=formJson.time;
-            // const date=formJson.date;
-            // console.log(gpId,slotId,gpName,time,date);
             handleonUpdate(formJson, appointment);
 
             // console.log(slotId==="");

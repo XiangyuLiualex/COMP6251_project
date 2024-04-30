@@ -218,7 +218,7 @@ function AddPrescription({ appointment, onAddPrescription }) {
                                 <TableCell align="right">{row.reason}</TableCell>
                                 <TableCell align="right">{row.status}</TableCell>
                                 <TableCell align="right">
-                                    <Button variant="contained" onClick={() => onUpdateStatus(row.id, "Done")}>
+                                    <Button variant="contained" onClick={() => onUpdateStatus(row.id, "done")}>
                                         Done
                                     </Button>
                                 </TableCell>
