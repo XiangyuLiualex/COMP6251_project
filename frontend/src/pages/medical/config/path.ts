@@ -105,6 +105,9 @@ export const pathKeys = {
         },
         apiAddTest(){
             return apiPrefix(pathKeys.test.root())
+        },
+        apiUpdateTestById(testId:string){
+            return apiPrefix(pathKeys.test.root().concat('/'+testId));
         }
     },
     prescription:{

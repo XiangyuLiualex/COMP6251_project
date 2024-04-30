@@ -27,6 +27,9 @@
   - user get guestpaitent check, /patient/guest-check/:id
 - medical-history
 - test
-  - user    POST   addTest, /test
+  - gp    POST   addTest, /test
+  - user    GET    getAllTest, /test
+  - gp    PATCH   update test, /test/{id}
+  - gp    PATCH   update test status, /test/{id}
 - prescription
   - user    POST   addPrescription, /prescription
