@@ -31,7 +31,7 @@ import { SelfRegisterData_forSubmit, useSelfRegisterFormMutation } from '../../.
 import { Role } from '../../../../entities/session/session.types';
 import { forEach } from "json-server-auth";
 import { sessionStore } from "../../../../entities/session";
-import {useMedicalHistoryMutation } from '../../../../entities/patient/submitHistory.query.ts';
+import { useMedicalHistoryMutation } from '../../../../entities/patient/submitHistory.query.ts';
 
 //const roles = ['Market', 'Finance', 'Development'];
 /*const randomRole = () => {
@@ -98,11 +98,10 @@ export default function FullFeaturedCrudGrid(config: selfRegisterConfig) {
         });
         return res;
     }
-    console.log(config.data===null)
-    console.log(config.data===undefined)
-    var theRows = config.data === null ? initialRows : parseStringToForm(config.data);
-     theRows = config.data === undefined ? initialRows : parseStringToForm(config.data);
-     console.log('I am here',theRows)
+
+    const theRows = config.data === null ? initialRows : parseStringToForm(config.data);
+    console.log("the config", config)
+    console.log("the rows:", theRows)
 
     const selfRegMutate = useSelfRegisterFormMutation();
     const historyMutate = useMedicalHistoryMutation();
