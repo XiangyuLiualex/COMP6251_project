@@ -32,7 +32,7 @@ export function ApprovalsPage() {
                         {approvals.map((item) => {
                             return <ListItem key={item.id} >
                                 <Box>
-                                    <div>id:{item.id} statues:{item.statues} patient: {item.patientId} createTime:{item.createDateTimeString}</div>
+                                    <div>id:{item.id} status:{item.status} patient: {item.patientId} createTime:{item.createDateTimeString}</div>
                                     <Button variant="contained" color="primary" id={item.patientId} onClick={handleApproveClick}>Approve</Button>
                                     <Divider />
                                     <FullFeaturedCrudGrid role="admin" data={item.formData} />
