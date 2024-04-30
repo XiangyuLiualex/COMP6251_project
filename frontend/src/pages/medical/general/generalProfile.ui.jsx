@@ -95,12 +95,15 @@ function UpdateProfileComponent({ profile, onUpdateProfile }) {
     if (formJson.name !== '') updateData.name = formJson.name;
     if (formJson.gender !== '') updateData.gender = formJson.gender;
     if (formJson.profession !== '') updateData.profession = formJson.profession;
-    if (formJson.hobby !== '') updateData.hobby = formJson.hobby;
+    if (formJson.phoneNum !== '') updateData.phoneNum = formJson.phoneNum;
+    if (formJson.birthday !== '') updateData.birthday = formJson.birthday;
     if (formJson.profession !== '') updateData.profession = formJson.profession;
     if (formJson.aboutMe !== '') updateData.aboutMe = formJson.aboutMe;
     const dataToSend = { ...profile, ...updateData };
-    onUpdateProfile(dataToSend.id, dataToSend.name, dataToSend.gender, dataToSend.profession, dataToSend.hobby, dataToSend.email, dataToSend.aboutMe);
+    console.log("I am in UpdateProfileComponent",dataToSend);
+    onUpdateProfile(dataToSend.id, dataToSend.name, dataToSend.gender, dataToSend.profession, dataToSend.phoneNum, dataToSend.birthday, dataToSend.aboutMe);
   }
+ 
   return (
     <React.Fragment>
       <Button variant="outlined" onClick={handleClickOpen}>
@@ -157,19 +160,19 @@ function UpdateProfileComponent({ profile, onUpdateProfile }) {
           />
           <TextField
             margin="dense"
-            id="hobby"
-            name="hobby"
-            label="Hobby"
+            id="phoneNum"
+            name="phoneNum"
+            label="Phone Number"
             type="text"
             fullWidth
             variant="standard"
           />
           <TextField
             margin="dense"
-            id="email"
-            name="email"
-            label="Email"
-            type="email"
+            id="birthday"
+            name="birthday"
+            label="Birthday"
+            type="text"
             fullWidth
             variant="standard"
           />
@@ -210,11 +213,11 @@ export default function ProfileList({ profile, onUpdateProfile, ifReadOnly }) {
           secondaryTypographyProps={{ fontSize: '1.1rem' }} />
       </ListItem>
       <ListItem>
-        <ListItemText primary="Hobby" secondary={profile.hobby} primaryTypographyProps={{ fontWeight: 'bold', fontSize: '1.4rem' }}
+        <ListItemText primary="Phone Number" secondary={profile.phoneNum} primaryTypographyProps={{ fontWeight: 'bold', fontSize: '1.4rem' }}
           secondaryTypographyProps={{ fontSize: '1.1rem' }} />
       </ListItem>
       <ListItem>
-        <ListItemText primary="Email" secondary={profile.email} primaryTypographyProps={{ fontWeight: 'bold', fontSize: '1.4rem' }}
+        <ListItemText primary="Birthday" secondary={profile.birthday} primaryTypographyProps={{ fontWeight: 'bold', fontSize: '1.4rem' }}
           secondaryTypographyProps={{ fontSize: '1.1rem' }} />
       </ListItem>
       <ListItem>

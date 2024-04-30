@@ -141,16 +141,17 @@ import { Box } from "@mui/material";
                                     </Button>
                                 </TableCell>
                             </TableRow>
-                            <TableRow key={`${row.id}-actions`} sx={{ backgroundColor: index % 2 ? '#f9f9f9' : '#ffffff', borderBottom: 'none', borderTop: '1px solid rgba(224, 224, 224, 1)' }}>
+                            <TableRow key={`${row.id}-actions`} sx={{ backgroundColor: index % 2 ? '#f9f9f9' : '#ffffff' }}>
                                 <TableCell colSpan={6} style={{ paddingTop: 0, paddingBottom: 0 }}>
                                     <Box display="flex" justifyContent="space-around" width="100%">
                                         <AddTest appointment={row} onAddTest={onAddTest} />
                                         <ViewProfile patientId={row.patientId} ifReadOnly={true} />
-                                        <Button variant="outlined">Create Prescription</Button>
+                                        <Button variant="outlined">Add Prescription</Button>
                                         <Button variant="outlined">View Medical History</Button>
                                     </Box>
                                 </TableCell>
                             </TableRow>
+                            <br/>
                         </>
                     ))}
                 </TableBody>

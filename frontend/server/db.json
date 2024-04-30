@@ -734,7 +734,7 @@
       "time": "14:00-15:00",
       "date": "2024-05-06",
       "reason": "",
-      "status": "Approved",
+      "status": "Done",
       "createdAt": 1714404556430,
       "id": 7
     },
@@ -758,8 +758,8 @@
       "name": "Alex",
       "gender": "male",
       "profession": "Software Engineer",
-      "hobby": "frisbee",
-      "email": "alex@emial.com",
+      "phoneNum": "444-3353335",
+      "birthday": "2003-09-05",
       "aboutMe": "I am a patient"
     },
     {
@@ -768,8 +768,8 @@
       "name": "GP1",
       "gender": "female",
       "profession": "General Practioner",
-      "hobby": "Movie",
-      "email": "GP1@emial.com",
+      "phoneNum": "444-3353335",
+      "birthday": "2003-09-05",
       "aboutMe": "I am professional with Internal Medicine Treatment"
     },
     {
@@ -778,26 +778,28 @@
       "name": "admin1",
       "gender": "male",
       "profession": "Admin",
-      "hobby": "basketball",
-      "email": "admin@emial.com",
+      "phoneNum": "444-3353335",
+      "birthday": "2003-09-05",
       "aboutMe": "I will prove the self signUp"
     },
     {
       "name": "Jame",
       "gender": "male",
       "profession": "Student",
-      "hobby": "LOL",
+      "phoneNum": "444-3353335",
+      "birthday": "1998-08-09",
       "aboutMe": "I am jame",
       "userId": 5,
       "createdAt": 1714076556367,
       "id": 4
     },
     {
-      "name": "Daney",
+      "name": "aaa",
       "gender": "female",
       "profession": "Docter",
-      "hobby": "study",
-      "aboutMe": "I am Daney",
+      "phoneNum": "444-3353335",
+      "birthday": "1998-08-08",
+      "aboutMe": "lala",
       "userId": 8,
       "createdAt": 1714076753892,
       "id": 5
@@ -806,7 +808,8 @@
       "name": "Tom",
       "gender": "male",
       "profession": "Admin",
-      "hobby": "Web dev",
+      "phoneNum": "444-3353335",
+      "birthday": "2003-09-05",
       "aboutMe": "I am tom",
       "userId": 7,
       "createdAt": 1714076826010,
@@ -858,7 +861,10 @@
     {
       "id": 1,
       "patientId": 5,
-      "appointmentId": 3
+      "appointmentId": 3,
+      "medicationName":"banlangen",
+      "medicationInstruction":"twice a day",
+      "quantity":"3"
     }
   ]
 }

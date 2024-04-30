@@ -30,8 +30,8 @@ const updateProfileRequest = async (
   name,
   gender,
   profession,
-  hobby,
-  email,
+  phoneNum,
+  birthday,
   aboutMe
 ) => {
   var fn = null;
@@ -41,8 +41,8 @@ const updateProfileRequest = async (
     name,
     gender,
     profession,
-    hobby,
-    email,
+    phoneNum,
+    birthday,
     aboutMe,
   }
   if (method === "POST") {
@@ -78,8 +78,8 @@ export const useUpdateProfileMutation = (method) => {
         data.name,
         data.gender,
         data.profession,
-        data.hobby,
-        data.email,
+        data.phoneNum,
+        data.birthday,
         data.aboutMe
       ),
     onSuccess: (data) => {
