@@ -539,25 +539,18 @@
   ],
   "medical-history": [
     {
-      "userId": 12,
-      "disease": "fever",
-      "description": "Take 2 tablets of paracetamol",
-      "createdAt": 1714402623948,
-      "id": 1
-    },
+    "id": "f9fb13fa-cf1f-5548-9e66-2809a27f7e44",
+    "medicalhistory": "Cancer",
+    "diseasedetails": "dwedwe",
+    "diagnosedDate": "2024-04-14T23:00:00.000Z",
+    "patientId": 5
+  },
     {
-      "userId": 12,
-      "disease": "fever",
-      "description": "Take 2 tablets of paracetamol",
-      "createdAt": 1714402629646,
-      "id": 2
-    },
-    {
-      "userId": 12,
-      "disease": "fever",
-      "description": "Take 2 tablets of paracetamol",
-      "createdAt": 1714403969087,
-      "id": 3
+      "id": "b14d656b-b6b7-545a-97a7-e59778fdc78d",
+      "medicalhistory": "Asthma",
+      "diseasedetails": "dwdw",
+      "diagnosedDate": "2024-04-10T23:00:00.000Z",
+      "patientId": 5
     }
   ],
   "test": [],
