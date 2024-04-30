@@ -1,6 +1,6 @@
 import { Box, Button, Divider, List, ListItem } from "@mui/material"
 import { useApproveSelfRegisterMutation, useGetAllApprovalsQuery } from "../../../../entities/admin/admin.query"
-import FullFeaturedCrudGrid from "../../patient/selfRegister/form"
+import FullFeaturedCrudGrid from "../../patient/selfRegister/form.tsx"
 
 
 

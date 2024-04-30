@@ -29,6 +29,8 @@ import {
 import { FormEvent } from 'react';
 import { SelfRegisterData_forSubmit, useSelfRegisterFormMutation } from '../../../../entities/patient/patient.query';
 import { Role } from '../../../../entities/session/session.types';
+import {forEach} from "json-server-auth";
+import {sessionStore} from "../../../../entities/session";
 
 const roles = ['Market', 'Finance', 'Development'];
 const randomRole = () => {
@@ -38,6 +40,7 @@ const randomRole = () => {
 const initialRows: GridRowsProp = [
     {
         id: randomId(),
+        //patientId: 'P001',
         name: "keith mason",
         age: 25,
         joinDate: randomCreatedDate(),
@@ -45,6 +48,7 @@ const initialRows: GridRowsProp = [
     },
     {
         id: randomId(),
+        //patientId: 'P002',
         name: "Vernon Clarke",
         age: 36,
         joinDate: new Date('04 Dec 2015 GMT'),
@@ -52,6 +56,7 @@ const initialRows: GridRowsProp = [
     },
     {
         id: randomId(),
+        //patientId: 'P003',
         name: "Walter Romero",
         age: 19,
         joinDate: randomCreatedDate(),
@@ -59,6 +64,7 @@ const initialRows: GridRowsProp = [
     },
     {
         id: randomId(),
+        //patientId: 'P004',
         name: "Mathilda Sparks",
         age: 28,
         joinDate: randomCreatedDate(),
@@ -66,6 +72,7 @@ const initialRows: GridRowsProp = [
     },
     {
         id: randomId(),
+        //patientId: 'P005',
         name: "Richard Rogers",
         age: 23,
         joinDate: randomCreatedDate(),
@@ -136,9 +143,21 @@ export default function FullFeaturedCrudGrid(config: selfRegisterConfig) {
 
     function handleSubmit(event: FormEvent<HTMLFormElement>): void {
         event.preventDefault();
-        mutate(rows)
-        console.log(rows)
+        /*const updatedRows = rows.map(row => ({
+            ...row,
+            patientId: sessionStore.getState().uid
+        }));*/
 
+        const updatedRows = rows.map((row => {
+            const { id, ...rest } = row;
+            return {
+                ...rest,
+                patientId: sessionStore.getState().uid
+            };
+        }));
+
+        mutate(updatedRows)
+        console.log(updatedRows)//在这里加一个获取新的PatientId，怎么才能在formdata里面得到这个PatientId？现在这个patientId在formdata外面
     }
     const [rows, setRows] = React.useState(theRows);
     const [rowModesModel, setRowModesModel] = React.useState<GridRowModesModel>({});
@@ -185,6 +204,19 @@ export default function FullFeaturedCrudGrid(config: selfRegisterConfig) {
 
     const columns: GridColDef[] = [
         { field: 'name', headerName: 'Name', width: 180, editable: true },
+/*        {
+            field: 'patientid',
+            headerName: 'PatientId',
+            type: 'number',
+            width: 80,
+            align: 'left',
+            headerAlign: 'left',
+            editable: true,
+           /!*hide:true,
+            disableColumnMenu:true,
+            disableReorder: true,*!/
+            //hideable:true,
+        },*/
         {
             field: 'age',
             headerName: 'Age',
@@ -208,6 +240,14 @@ export default function FullFeaturedCrudGrid(config: selfRegisterConfig) {
             editable: true,
             type: 'singleSelect',
             valueOptions: ['Market', 'Finance', 'Development'],
+        },
+        {
+            field: 'medicalhistory',
+            headerName: 'Disease',
+            width: 220,
+            editable: true,
+            type: 'singleSelect',
+            valueOptions: ['None','Asthma', 'Diabetes', 'Epilepsy','Heart Attack','Raised Blood Pressure','Cancer','Heart Failure','Bipolar Disorder','Dementia'],
         },
         {
             field: 'actions',
