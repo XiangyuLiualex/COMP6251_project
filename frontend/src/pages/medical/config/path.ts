@@ -119,7 +119,7 @@ export const pathKeys = {
         }
     },
     apiGetHistory(id: string) {
-        return apiPrefix("/medical-history".concat(`?userId=${id}`));
+        return apiPrefix("/medical-history".concat(`?patientId=${id}`));
     }
 }
 

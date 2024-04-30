@@ -22,8 +22,8 @@ export function MedicalHistoryPage(config) {
     const rows = data?.map((item) => createData({
         userId: item.userId,
         disease: item.disease,
-        description: item.description,
-        createdAt: item.createdAt,
+        description: item.diseasedetails,
+        createdAt: item.diagnosedDate,
     })) || [];
 
     return (
@@ -31,22 +31,18 @@ export function MedicalHistoryPage(config) {
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
                 <TableHead>
                     <TableRow>
-                        <TableCell>Name</TableCell>
-                        <TableCell align="right">UserID</TableCell>
+                        <TableCell align="right">date</TableCell>
                         <TableCell align="right">Disease</TableCell>
                         <TableCell align="right">Threapy</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {rows.map((row)=> (
+                    {rows.map((row) => (
                         <TableRow
                             key={row.userId}
                             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                         >
-                            <TableCell component="th" scope="row">
-                                {rows.userId}
-                            </TableCell>
-                            <TableCell align="right">{row.userId}</TableCell>
+                            <TableCell align="right">{row.createdAt}</TableCell>
                             <TableCell align="right">{row.disease}</TableCell>
                             <TableCell align="right">{row.description}</TableCell>
                         </TableRow>
@@ -55,21 +51,7 @@ export function MedicalHistoryPage(config) {
             </Table>
         </TableContainer>
     );
-    /*return (
-        <div>
-            <h1>Medical History</h1>
-            {data?.map((item) => {
-                return (
-                    <div key={item.id}>
-                        <p>{item.userId}</p>
-                        <p>{item.disease}</p>
-                        <p>{item.description}</p>
-                        <p>{item.createdAt}</p>
-                    </div>
-                )
-            })}
-        </div>
-    )*/
+
 }
 
 

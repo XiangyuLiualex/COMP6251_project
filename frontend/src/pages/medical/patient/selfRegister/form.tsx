@@ -29,8 +29,8 @@ import {
 import { FormEvent } from 'react';
 import { SelfRegisterData_forSubmit, useSelfRegisterFormMutation } from '../../../../entities/patient/patient.query';
 import { Role } from '../../../../entities/session/session.types';
-import {forEach} from "json-server-auth";
-import {sessionStore} from "../../../../entities/session";
+import { forEach } from "json-server-auth";
+import { sessionStore } from "../../../../entities/session";
 
 //const roles = ['Market', 'Finance', 'Development'];
 /*const randomRole = () => {
@@ -85,17 +85,9 @@ export type selfRegiForm = any[]
 export default function FullFeaturedCrudGrid(config: selfRegisterConfig) {
 
     // TODO admin not allow to edit registration itself
-    const editable = config.role === 'patient' ? true : false;
+    const ifNotSelfReg = config.role === 'patient' ? true : false;
     // TODO extend to a dynamic form
     function parseStringToForm(stringForm: selfRegiForm) {
-
-        const res0: GridRowsProp = [{
-            id: "ce9ea426-1716-5216-a3c0-aa5d576093db",
-            name: "Richard Rogers",
-            age: 23,
-            joinDate: randomCreatedDate(),
-            //role: randomRole(),
-        }]
         // todo dynamic change
         const res = stringForm;
         res.forEach(row => {
@@ -107,7 +99,12 @@ export default function FullFeaturedCrudGrid(config: selfRegisterConfig) {
     }
     const theRows = config.data === null ? initialRows : parseStringToForm(config.data);
 
-    const { mutate } = useSelfRegisterFormMutation();
+    const selfRegMutate = useSelfRegisterFormMutation();
+    const historyMutate = useMedicalHistoryMutation();
+
+    const mutate = ifNotSelfReg ? historyMutate.mutate : selfRegMutate.mutate;
+
+
 
     function handleSubmit(event: FormEvent<HTMLFormElement>): void {
         event.preventDefault();
@@ -175,35 +172,35 @@ export default function FullFeaturedCrudGrid(config: selfRegisterConfig) {
 
     const columns: GridColDef[] = [
         /*{ field: 'name', headerName: 'Name', width: 180, editable: true },*/
-/*        {
-            field: 'patientid',
-            headerName: 'PatientId',
-            type: 'number',
-            width: 80,
-            align: 'left',
-            headerAlign: 'left',
-            editable: true,
-           /!*hide:true,
-            disableColumnMenu:true,
-            disableReorder: true,*!/
-            //hideable:true,
-        },*/
-       /* {
-            field: 'age',
-            headerName: 'Age',
-            type: 'number',
-            width: 80,
-            align: 'left',
-            headerAlign: 'left',
-            editable: true,
-        },
-        {
-            field: 'joinDate',
-            headerName: 'Join date',
-            type: 'date',
-            width: 180,
-            editable: true,
-        },*/
+        /*        {
+                    field: 'patientid',
+                    headerName: 'PatientId',
+                    type: 'number',
+                    width: 80,
+                    align: 'left',
+                    headerAlign: 'left',
+                    editable: true,
+                   /!*hide:true,
+                    disableColumnMenu:true,
+                    disableReorder: true,*!/
+                    //hideable:true,
+                },*/
+        /* {
+             field: 'age',
+             headerName: 'Age',
+             type: 'number',
+             width: 80,
+             align: 'left',
+             headerAlign: 'left',
+             editable: true,
+         },
+         {
+             field: 'joinDate',
+             headerName: 'Join date',
+             type: 'date',
+             width: 180,
+             editable: true,
+         },*/
         /*{
             field: 'role',
             headerName: 'Department',
@@ -218,7 +215,7 @@ export default function FullFeaturedCrudGrid(config: selfRegisterConfig) {
             width: 240,
             editable: true,
             type: 'singleSelect',
-            valueOptions: ['None','Asthma', 'Diabetes', 'Epilepsy','Heart Attack','Raised Blood Pressure','Cancer','Heart Failure','Bipolar Disorder','Dementia','Others'],
+            valueOptions: ['None', 'Asthma', 'Diabetes', 'Epilepsy', 'Heart Attack', 'Raised Blood Pressure', 'Cancer', 'Heart Failure', 'Bipolar Disorder', 'Dementia', 'Others'],
         },
         {
             field: 'diseasedetails',
