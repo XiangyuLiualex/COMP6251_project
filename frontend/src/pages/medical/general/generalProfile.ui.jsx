@@ -9,6 +9,73 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
+import { useProfileQuery } from '../../../entities/general/profile.query';
+
+
+
+
+export function ViewProfile({ patientId, ifReadOnly }) {
+  const [open, setOpen] = React.useState(false);
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
+  // console.log("I am here!!! in viewProfile!",patientId,ifReadOnly)
+  const { data, isLoading, isError, refetch } = useProfileQuery(patientId);
+  if (isLoading) {
+    return <div>Loading...</div>; // 或其他加载指示器
+  }
+  if (isError) {
+    return <div>Error: {isError.message}</div>; // 显示错误信息
+  }
+  // console.log(data)
+  const profile = data[0] === undefined ? null : data[0];
+  // console.log("I am in viewProfile",profile)
+  if (!profile) {
+    return (
+      <div>
+        <h1>Sorry, patient have not create profile yet.</h1>
+      </div>
+    )
+  }
+
+
+  return (
+    <React.Fragment>
+      <Button variant="outlined" onClick={handleClickOpen}>
+        View Profile
+      </Button>
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+        sx={{
+          '& .MuiDialog-paper': { width: '60%', maxWidth: 'none' }, // 调整宽度
+        }}
+      >
+        <DialogTitle id="alert-dialog-title" sx={{ textAlign: 'center' }}>
+          {"Patient's information:"}
+        </DialogTitle>
+        <DialogContent sx={{ textAlign: 'center' }}>
+          <ProfileList profile={profile} ifReadOnly={ifReadOnly} />
+        </DialogContent>
+        <DialogActions sx={{ justifyContent: 'center' }}>
+          <Button onClick={handleClose} autoFocus>
+            Cancel
+          </Button>
+        </DialogActions>
+      </Dialog>
+
+    </React.Fragment>
+  );
+}
+
+
+
+
 
 
 function UpdateProfileComponent({ profile, onUpdateProfile }) {
@@ -28,12 +95,15 @@ function UpdateProfileComponent({ profile, onUpdateProfile }) {
     if (formJson.name !== '') updateData.name = formJson.name;
     if (formJson.gender !== '') updateData.gender = formJson.gender;
     if (formJson.profession !== '') updateData.profession = formJson.profession;
-    if (formJson.hobby !== '') updateData.hobby = formJson.hobby;
+    if (formJson.phoneNum !== '') updateData.phoneNum = formJson.phoneNum;
+    if (formJson.birthday !== '') updateData.birthday = formJson.birthday;
     if (formJson.profession !== '') updateData.profession = formJson.profession;
     if (formJson.aboutMe !== '') updateData.aboutMe = formJson.aboutMe;
     const dataToSend = { ...profile, ...updateData };
-    onUpdateProfile(dataToSend.id, dataToSend.name, dataToSend.gender, dataToSend.profession, dataToSend.hobby, dataToSend.email, dataToSend.aboutMe);
+    console.log("I am in UpdateProfileComponent",dataToSend);
+    onUpdateProfile(dataToSend.id, dataToSend.name, dataToSend.gender, dataToSend.profession, dataToSend.phoneNum, dataToSend.birthday, dataToSend.aboutMe);
   }
+ 
   return (
     <React.Fragment>
       <Button variant="outlined" onClick={handleClickOpen}>
@@ -90,19 +160,19 @@ function UpdateProfileComponent({ profile, onUpdateProfile }) {
           />
           <TextField
             margin="dense"
-            id="hobby"
-            name="hobby"
-            label="Hobby"
+            id="phoneNum"
+            name="phoneNum"
+            label="Phone Number"
             type="text"
             fullWidth
             variant="standard"
           />
           <TextField
             margin="dense"
-            id="email"
-            name="email"
-            label="Email"
-            type="email"
+            id="birthday"
+            name="birthday"
+            label="Birthday"
+            type="text"
             fullWidth
             variant="standard"
           />
@@ -127,7 +197,7 @@ function UpdateProfileComponent({ profile, onUpdateProfile }) {
 
 
 
-export default function ProfileList({ profile, onUpdateProfile }) {
+export default function ProfileList({ profile, onUpdateProfile, ifReadOnly }) {
   return (
     <List sx={{ width: '60%', maxWidth: 360, bgcolor: 'background.paper' }}>
       <ListItem>
@@ -143,22 +213,23 @@ export default function ProfileList({ profile, onUpdateProfile }) {
           secondaryTypographyProps={{ fontSize: '1.1rem' }} />
       </ListItem>
       <ListItem>
-        <ListItemText primary="Hobby" secondary={profile.hobby} primaryTypographyProps={{ fontWeight: 'bold', fontSize: '1.4rem' }}
+        <ListItemText primary="Phone Number" secondary={profile.phoneNum} primaryTypographyProps={{ fontWeight: 'bold', fontSize: '1.4rem' }}
           secondaryTypographyProps={{ fontSize: '1.1rem' }} />
       </ListItem>
       <ListItem>
-        <ListItemText primary="Email" secondary={profile.email} primaryTypographyProps={{ fontWeight: 'bold', fontSize: '1.4rem' }}
+        <ListItemText primary="Birthday" secondary={profile.birthday} primaryTypographyProps={{ fontWeight: 'bold', fontSize: '1.4rem' }}
           secondaryTypographyProps={{ fontSize: '1.1rem' }} />
       </ListItem>
       <ListItem>
         <ListItemText primary="About Me" secondary={profile.aboutMe} primaryTypographyProps={{ fontWeight: 'bold', fontSize: '1.4rem' }}
           secondaryTypographyProps={{ fontSize: '1.1rem' }} />
       </ListItem>
-      <ListItem align="center">
-        <UpdateProfileComponent profile={profile}
-          onUpdateProfile={onUpdateProfile}
-        />
-      </ListItem>
+
+      {!ifReadOnly && (
+        <ListItem align="center">
+          <UpdateProfileComponent profile={profile} onUpdateProfile={onUpdateProfile} />
+        </ListItem>
+      )}
 
     </List>
   );

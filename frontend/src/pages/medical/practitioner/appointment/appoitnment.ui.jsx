@@ -18,6 +18,7 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
+import { useEffect, useState } from 'react';
 
 function AlternativeComponent({ appointment, onUpdateAppointment }) {
   const [open, setOpenAlt] = React.useState(false);
@@ -27,10 +28,10 @@ function AlternativeComponent({ appointment, onUpdateAppointment }) {
   const handleClose = () => {
     setOpenAlt(false);
   };
-  console.log(appointment.id);
+  // console.log(appointment.id);
   // gpId,slotId,gpName,time,date,status
   const handleonUpdate = (formJson, appointment) => {
-    console.log(appointment);
+    // console.log(appointment);
     const updateData = {};
     updateData.id = appointment.id;
     if (formJson.gpId !== '') updateData.gpId = formJson.gpId;
@@ -133,8 +134,6 @@ function AlternativeComponent({ appointment, onUpdateAppointment }) {
 
 
 export function BasicTable({ appointments, onUpdateAppointment }) {
-
-
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -191,31 +190,51 @@ export function BasicTable({ appointments, onUpdateAppointment }) {
   );
 }
 
+
+
 export function HandleAppointmentPage() {
   const { data, isLoading, error, refetch } = useHandleAppointmentQuery(sessionStore.getState().uid);
-  const { mutate: mutateAppointment, isLoad, isError, isSuccess, } = useUpdateAppointmentMutation();
+  const { mutate: mutateAppointment, isSuccess } = useUpdateAppointmentMutation();
+  const [shouldRefetch, setShouldRefetch] = useState(false);
 
+  useEffect(() => {
+    if (isSuccess) {
+      setShouldRefetch(true);
+    }
+  }, [isSuccess]);
 
-  if (error) return <h4>Error:{error.message}, retry again</h4>;
+  useEffect(() => {
+    if (shouldRefetch) {
+      refetch();
+      setShouldRefetch(false);  // 重置状态，确保不会无限循环触发 refetch
+    }
+  }, [shouldRefetch, refetch]);
+
+  if (error) return <h4>Error: {error.message}, retry again</h4>;
   if (isLoading) return <h4>...Loading data</h4>;
-  console.log(data);
-  const appointments = data;
 
-  if (isSuccess) {
-    // isSuccess 变为 true 时执行的函数
-    // 
-    refetch();
-    // 可在这里调用需要执行的函数
-  }
+  const appointments = data.sort((a, b) => {
+    if (a.date < b.date) {
+      return -1;
+    } else if (a.date > b.date) {
+      return 1;
+    }
+    let timeA = a.time.split('-')[0]; // 获取开始时间 "8:00"
+    let timeB = b.time.split('-')[0]; // 获取开始时间 "9:00"
+    let minutesA = parseInt(timeA.split(':')[0]) * 60 + parseInt(timeA.split(':')[1]);
+    let minutesB = parseInt(timeB.split(':')[0]) * 60 + parseInt(timeB.split(':')[1]);
+    return minutesA - minutesB;
+  });
+
   const handleUpdateAppointment = (appointmentId, gpId, slotId, gpName, time, date, status) => {
     mutateAppointment({
-      appointmentId: appointmentId,
-      gpId: gpId,
-      slotId: slotId,
-      gpName: gpName,
-      time: time,
-      date: date,
-      status: status,
+      appointmentId,
+      gpId,
+      slotId,
+      gpName,
+      time,
+      date,
+      status,
     });
   };
 

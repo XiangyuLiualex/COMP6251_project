@@ -1,12 +1,14 @@
 import { useQuery, useMutation } from '@tanstack/react-query';
+import { pathKeys } from "../../pages/medical/config/path";
 import axios from 'axios';
+import { useSnackbar } from 'notistack';
 
-const baseURL = "http://localhost:3001";
 
 // For update slot
 // 创建一个函数用于调用API
 const updateSlotRequest = async (slotId, bookedByPID) => {
-  const response = await axios.patch(`${baseURL}/slots/${slotId}`, {
+  //`${baseURL}/slots/${slotId}`
+  const response = await axios.patch(pathKeys.slots.apiUpdateSlotById(slotId), {
     bookedByPID,
     status: "hold"
   }, {
@@ -19,25 +21,30 @@ const updateSlotRequest = async (slotId, bookedByPID) => {
 
 // 使用useMutation钩子，并添加成功和错误处理
 const useUpdateSlotMutation = () => {
+  const { enqueueSnackbar } = useSnackbar();
   return useMutation({
     mutationFn: (data) => updateSlotRequest(data.slotId, data.bookedByPID),
     onSuccess: (data) => {
       // 成功回调函数
+      enqueueSnackbar('Slot updated successfully!', { variant: 'success', autoHideDuration: 2000 });
       console.log('Slot updated successfully:', data);
-      alert('Slot updated successfully!');
+      // alert('Slot updated successfully!');
     },
     onError: (error) => {
       // 错误处理回调函数
+      enqueueSnackbar('Failed to update slot: ' + error.message, { variant: 'failed', autoHideDuration: 3500 });
       console.error('Error updating slot:', error);
-      alert('Failed to update slot: ' + error.message);
+      // alert('Failed to update slot: ' + error.message);
     }
   });
 };
 
 // for submit appointment
 const submitAppointmentRequest = async (patientId, gpId, slotId, gpName, time, date, reason) => {
-  console.log("Submitting url with :", { patientId, gpId, slotId, gpName, time, date, reason });
-  const response = await axios.post(`${baseURL}/appointment/`, {
+  // console.log("Submitting url with :", { patientId, gpId, slotId, gpName, time, date, reason });
+  console.log("send appointment message to "+pathKeys.appointment.apiAddAppointment());
+  //`${baseURL}/appointment/`
+  const response = await axios.post(pathKeys.appointment.apiAddAppointment(), {
     patientId,
     gpId,
     slotId,
@@ -55,18 +62,21 @@ const submitAppointmentRequest = async (patientId, gpId, slotId, gpName, time, d
 };
 
 export const useSubmitAppointmentMutation = () => {
+  const { enqueueSnackbar } = useSnackbar();
   return useMutation({
 
     mutationFn: (data) => submitAppointmentRequest(data.patientId, data.gpId, data.slotId, data.gpName, data.time, data.date, data.reason),
     onSuccess: (data) => {
       // 成功回调函数
+      enqueueSnackbar('Appointment submit successfully!', { variant: 'success', autoHideDuration: 2000 });
       console.log('Appointment submit successfully:', data);
-      alert('Appointment submit successfully!');
+      // alert('Appointment submit successfully!');
     },
     onError: (error) => {
       // 错误处理回调函数
+      enqueueSnackbar('Failed to Appointment submit: ' + error.message, { variant: 'success', autoHideDuration: 2000 });
       console.error('Error Appointment submit:', error);
-      alert('Failed to Appointment submit: ' + error.message);
+      // alert('Failed to Appointment submit: ' + error.message);
     }
   });
 };
@@ -76,9 +86,10 @@ export function useAppointmentQuery() {
   return useQuery({
     queryKey: ["speakers"],
     queryFn: async () => {
-      var gpss = await axios("http://localhost:3001/gpss");
-      // console.log(gpss.data);
-      var slots = await axios("http://localhost:3001/slots")
+      var gpss = await axios(pathKeys.apiGetGpss());
+      // var gpss = await axios("http://localhost:3001/gpss");
+      var slots = await axios(pathKeys.apiGetSlots());
+      // var slots = await axios("http://localhost:3001/slots")
 
       var response = gpss.data.map(gp => {
         const gpSlots = slots.data.filter(slot => slot.gpId === gp.id);

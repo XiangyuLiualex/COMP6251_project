@@ -11,6 +11,10 @@ export function GpProfilePage() {
     const { data, isLoading, isError, refetch } = useProfileQuery(id);
     const patchMutate = useUpdateProfileMutation("PATCH");
     const postMutate = useUpdateProfileMutation("POST");
+    // const [shouldRefetch, setShouldRefetch] = React.useState(false);
+
+    // 使用 useEffect 来观察 isSuccess 的变化，而不是在渲染逻辑中直接进行条件判断
+   
 
     if (isLoading) {
         return <div>Loading...</div>; // 或其他加载指示器
@@ -32,8 +36,8 @@ export function GpProfilePage() {
         name,
         gender,
         profession,
-        hobby,
-        email,
+        phoneNum,
+        birthday,
         aboutMe
     ) => {
         mutateProfile.mutate({
@@ -41,8 +45,8 @@ export function GpProfilePage() {
             name: name,
             gender: gender,
             profession: profession,
-            hobby: hobby,
-            email: email,
+            phoneNum: phoneNum,
+            birthday: birthday,
             aboutMe: aboutMe,
         });
     };
