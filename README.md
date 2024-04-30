@@ -23,6 +23,9 @@
       3. [ ] update an appointment
       4. [ ] history appointment
       5. [ ] tests prescription
+   4. [] self register
+      1. [ ] submit rows of medical history
+      2. [ ] query rows of medical history
 4. GP:
    1. appointments
       1. [x] search my appointments
