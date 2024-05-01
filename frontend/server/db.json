@@ -338,7 +338,7 @@
     {
       "name": "GP1",
       "id": "8",
-      "treatments": "Internal Medicine Treatment",
+      "treatments": "Eyes",
       "yearsInPractice": 4,
       "phone": "+44 123123123"
     },
@@ -347,6 +347,34 @@
       "id": "2",
       "treatments": "Internal Medicine Treatment",
       "yearsInPractice": 3,
+      "phone": "+44 77777889"
+    },
+    {
+      "name": "GP3",
+      "id": "99",
+      "treatments": "Leg",
+      "yearsInPractice": 4,
+      "phone": "+44 123123123"
+    },
+    {
+      "name": "GP4",
+      "id": "88",
+      "treatments": "heart",
+      "yearsInPractice": 8,
+      "phone": "+44 77777889"
+    },
+    {
+      "name": "GP5",
+      "id": "44",
+      "treatments": "hand",
+      "yearsInPractice": 4,
+      "phone": "+44 123123123"
+    },
+    {
+      "name": "GP6",
+      "id": "34",
+      "treatments": "ear",
+      "yearsInPractice": 6,
       "phone": "+44 77777889"
     }
   ],
@@ -366,8 +394,8 @@
       "date": "2024-05-06",
       "dayOfWeek": "Monday",
       "time": "9:00-10:00",
-      "bookedByPID": null,
-      "status": "open"
+      "bookedByPID": "5",
+      "status": "hold"
     },
     {
       "id": "3",
@@ -501,8 +529,8 @@
       "date": "2024-05-07",
       "dayOfWeek": "Tuesday",
       "time": "15:00-16:00",
-      "bookedByPID": null,
-      "status": "open"
+      "bookedByPID": "5",
+      "status": "hold"
     },
     {
       "id": 18,
@@ -687,6 +715,90 @@
       "status": "Accepted",
       "createdAt": 1714573613203,
       "id": 13
+    },
+    {
+      "patientId": "5",
+      "gpId": "8",
+      "slotId": "5",
+      "gpName": "GP1",
+      "time": "13:00-14:00",
+      "date": "2024-05-06",
+      "reason": "try",
+      "status": "Rejected",
+      "createdAt": 1714579914673,
+      "id": 14
+    },
+    {
+      "patientId": "5",
+      "gpId": "8",
+      "slotId": 2,
+      "gpName": "GP1",
+      "time": "9:00-10:00",
+      "date": "2024-05-06",
+      "reason": "I feel sad",
+      "status": "before Approve",
+      "createdAt": 1714592477675,
+      "id": 15
+    },
+    {
+      "patientId": "5",
+      "gpId": "8",
+      "slotId": 19,
+      "gpName": "GP1",
+      "time": "15:00-16:00",
+      "date": "2024-05-08",
+      "reason": "reset",
+      "status": "Rejected",
+      "createdAt": 1714593115942,
+      "id": 16
+    },
+    {
+      "patientId": "5",
+      "gpId": "8",
+      "slotId": 19,
+      "gpName": "GP1",
+      "time": "15:00-16:00",
+      "date": "2024-05-08",
+      "reason": "sdsd",
+      "status": "Rejected",
+      "createdAt": 1714593270926,
+      "id": 17
+    },
+    {
+      "patientId": "5",
+      "gpId": "8",
+      "slotId": 19,
+      "gpName": "GP1",
+      "time": "15:00-16:00",
+      "date": "2024-05-08",
+      "reason": "try",
+      "status": "Rejected",
+      "createdAt": 1714593766072,
+      "id": 18
+    },
+    {
+      "patientId": "5",
+      "gpId": "8",
+      "slotId": 17,
+      "gpName": "GP1",
+      "time": "15:00-16:00",
+      "date": "2024-05-07",
+      "reason": "try",
+      "status": "Rejected",
+      "createdAt": 1714594139324,
+      "id": 19
+    },
+    {
+      "patientId": "5",
+      "gpId": "8",
+      "slotId": 17,
+      "gpName": "GP1",
+      "time": "15:00-16:00",
+      "date": "2024-05-07",
+      "reason": "ygfyfyf",
+      "status": "before Approve",
+      "createdAt": 1714594230576,
+      "id": 20
     }
   ],
   "profile": [

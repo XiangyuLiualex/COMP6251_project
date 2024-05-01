@@ -16,8 +16,8 @@ export function useProfileQuery(userId) {
       var response = await axios(pathKeys.profile.apiGetProfileById(userId));
       console.log("from query:", response.data);
       if (response.status !== 200 || response.data.length === 0) {
-        enqueueSnackbar('No profile found, please create your profile first.',
-          { variant: 'info', autoHideDuration: 3500 });
+        // enqueueSnackbar('No profile found, please create your profile first.',
+        //   { variant: 'info', autoHideDuration: 3500 });
       }
       return response.data;
     },

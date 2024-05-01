@@ -36,9 +36,33 @@ export function ViewProfile({ patientId, ifReadOnly }) {
   // console.log("I am in viewProfile",profile)
   if (!profile) {
     return (
-      <div>
-        <h1>Sorry, patient have not create profile yet.</h1>
-      </div>
+      <React.Fragment>
+      <Button variant="outlined" onClick={handleClickOpen}>
+        View Profile
+      </Button>
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+        sx={{
+          '& .MuiDialog-paper': { width: '60%', maxWidth: 'none' }, // 调整宽度
+        }}
+      >
+        <DialogTitle id="alert-dialog-title" sx={{ textAlign: 'center' }}>
+          {"Basic information:"}
+        </DialogTitle>
+        <DialogContent sx={{ textAlign: 'center' }}>
+          <h2>Sorry, this person don't have profile yet...</h2>
+        </DialogContent>
+        <DialogActions sx={{ justifyContent: 'center' }}>
+          <Button onClick={handleClose} autoFocus>
+            Cancel
+          </Button>
+        </DialogActions>
+      </Dialog>
+
+    </React.Fragment>
     )
   }
   return (
@@ -56,7 +80,7 @@ export function ViewProfile({ patientId, ifReadOnly }) {
         }}
       >
         <DialogTitle id="alert-dialog-title" sx={{ textAlign: 'center' }}>
-          {"Patient's information:"}
+          {"Basic information:"}
         </DialogTitle>
         <DialogContent sx={{ textAlign: 'center' }}>
           <ProfileList profile={profile} ifReadOnly={ifReadOnly} />
