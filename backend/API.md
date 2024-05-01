@@ -16,20 +16,22 @@
   - user    GET   profile, /profile?userId={id}
 - slots
   - user    GET     all slots, /slots
-  - user    PATCH   update slot, /slots/{id}
+  - user    PATCH   update slot, /slots/{id} body:{bookedByPId, status:[open/hold]}
 - appointment
   - user    POST    appointment, /appointment
   - gp      GET     gps appointments, /appointment?gpId={id}
-  - gp      PATCH   update appointment, /appointment/{id}
+  - gp      PATCH   update appointment, /appointment/{id} body:{gpId,slotId,gpName,time,date,status:[beforeApprove/Accepted/Rejected/done]}
 - gpss
   - user    GET     all gps, /medical-history?userId={id}
 - guestPatient
   - user get guestpaitent check, /patient/guest-check/:id
 - medical-history
 - test
-  - gp    POST   addTest, /test
+  - gp    POST   addTest, /test body:{patientId,
+    testerId:"", appointmentId, name, date, time, description, status:"undo", result:""}
   - user    GET    getAllTest, /test
   - gp    PATCH   update test, /test/{id}
-  - gp    PATCH   update test status, /test/{id}
+  - gp    PATCH   update test status, /test/{id} body:{status:done}
 - prescription
   - user    POST   addPrescription, /prescription
+  - user    GET    viewPrescription, /prescription/{id}

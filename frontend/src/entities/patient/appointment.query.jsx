@@ -6,11 +6,11 @@ import { useSnackbar } from 'notistack';
 
 // For update slot
 // 创建一个函数用于调用API
-const updateSlotRequest = async (slotId, bookedByPID) => {
+const updateSlotRequest = async (slotId, bookedByPID, status) => {
   //`${baseURL}/slots/${slotId}`
   const response = await axios.patch(pathKeys.slots.apiUpdateSlotById(slotId), {
     bookedByPID,
-    status: "hold"
+    status: status
   }, {
     headers: {
       'Content-Type': 'application/json'
@@ -23,7 +23,7 @@ const updateSlotRequest = async (slotId, bookedByPID) => {
 const useUpdateSlotMutation = () => {
   const { enqueueSnackbar } = useSnackbar();
   return useMutation({
-    mutationFn: (data) => updateSlotRequest(data.slotId, data.bookedByPID),
+    mutationFn: (data) => updateSlotRequest(data.slotId, data.bookedByPID,data.status),
     onSuccess: (data) => {
       // 成功回调函数
       enqueueSnackbar('Slot updated successfully!', { variant: 'success', autoHideDuration: 2000 });
@@ -52,7 +52,7 @@ const submitAppointmentRequest = async (patientId, gpId, slotId, gpName, time, d
     time,
     date,
     reason,
-    "status": "beforeApprove"
+    "status": "before Approve"
   }, {
     headers: {
       'Content-Type': 'application/json'
