@@ -297,14 +297,14 @@ export function TodayAppointmentTable({ appointments, onAddTest, onUpdateStatus,
           </TableRow>
         </TableHead>
         <TableBody>
-          {appointments.map((row, index) => (
+          {appointments.filter(row => row.status !== "Rejected").map((row, index) => (
             <>
               <TableRow key={`${row.id}-info`} sx={{ backgroundColor: index % 2 ? '#f9f9f9' : '#ffffff' }}>
                 <TableCell component="th" scope="row">{row.patientId}</TableCell>
                 <TableCell align="right">{row.date}</TableCell>
                 <TableCell align="right">{row.time}</TableCell>
                 <TableCell align="right">{row.reason}</TableCell>
-                <TableCell align="right">{row.status}</TableCell>
+                <TableCell align="right">{row.status.toUpperCase()}</TableCell>
                 <TableCell align="right">
                   <Button variant="contained" onClick={() => onUpdateStatus(row.id, "done")}>
                     Done

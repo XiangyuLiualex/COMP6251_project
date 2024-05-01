@@ -178,7 +178,7 @@ export function MyAppointmentTable({ appointments, status }) {
               <TableCell align="right">{row.date}</TableCell>
               <TableCell align="right">{row.time}</TableCell>
               <TableCell align="right">{row.reason}</TableCell>
-              <TableCell align="right">{row.status}</TableCell>
+              <TableCell align="right">{row.status.toUpperCase()}</TableCell>
               <TableCell align="right">
               {status === "done" && <ViewPrescription appointmentId={row.id}/>}
               {status === "done" && <ViewTests appointmentId={row.id}/>}

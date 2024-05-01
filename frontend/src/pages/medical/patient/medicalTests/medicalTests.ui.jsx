@@ -46,7 +46,7 @@ export function PatientTestTable({ tests, status }) {
                 <TableCell align="right">{row.description}</TableCell>
                 <TableCell align="right">{row.date}</TableCell>
                 <TableCell align="right">{row.time}</TableCell>
-                <TableCell align="right">{row.status}</TableCell>
+                <TableCell align="right">{row.status.toUpperCase()}</TableCell>
                 {row.status === "done" && <TableCell align="right">{row.result}</TableCell>} {/* Conditionally render Result column */}
               </TableRow>
             ))}
