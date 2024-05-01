@@ -1,0 +1,11 @@
+@baseURL = http://localhost:8080
+# @name allSlots
+GET {{baseURL}}/slots
+###
+# @name bookSlot
+PATCH {{baseURL}}/slots/3
+Content-Type: application/json
+
+{
+  "status": "hold"
+}
