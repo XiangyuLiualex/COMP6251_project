@@ -2,6 +2,7 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import { pathKeys } from "../../pages/medical/config/path";
 import { authorizationHeader } from "../session";
 import { SelfRegisterData_forReceive, SelfRegisterData_forSubmit } from "../patient/patient.query";
+import { useSnackbar } from 'notistack';
 
 export function useApprovalMutation() { }
 
@@ -48,17 +49,21 @@ async function approveSelfRegisterRequest(patientId: string): Promise<any> {
     if (!response.ok) {
         throw new Error('Approve Self Register Failed: ' + response.text);
     }
+    console.log("I approved")
     return response.json();
 }
 
 export function useApproveSelfRegisterMutation() {
+    //const { enqueueSnackbar } = useSnackbar();
     return useMutation({
         mutationFn: (patientId: string) => approveSelfRegisterRequest(patientId),
         // todo handle success and error feedback
         onSuccess: (data) => {
+            //enqueueSnackbar('Approve Self Register Successful!', { variant: 'success', autoHideDuration: 2000 });
             console.log('Approve Self Register Success:', data);
         },
         onError: (error) => {
+            //enqueueSnackbar('Approve Self Register Successful!', { variant: 'success', autoHideDuration: 3500 });
             console.error('Approve Self Register Failed:', error);
         }
     });

@@ -9,7 +9,7 @@
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+    //animation: App-logo-spin infinite 20s linear;
   }
 }
 
@@ -22,6 +22,8 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  width: 100%;
+  height: auto;
 }
 
 .App-link {
@@ -36,3 +38,50 @@
     transform: rotate(360deg);
   }
 }
+
+.description-container {
+  position: absolute;
+  top: 50%;            /* 垂直居中 */
+  left:4%;             /* 在容器的最左侧 */
+  transform: translateY(-50%); /* 确保完全居中 */
+  width: 40%;          /* 可根据需要调整宽度 */
+  padding: 10px;       /* 添加一些内边距 */
+  /*background: rgba(255, 255, 255, 0.7); !* 添加半透明背景以增强可读性 *!*/
+  background: transparent;
+  color: #000;         /* 文本颜色 */
+  text-align: center;  /* 文本居中对齐 */
+}
+.App-header {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+.overlay {
+  position: absolute;
+  top: 30%;  /* 或者根据图片具体位置调整 */
+  left: 20%;
+  transform: translate(-50%, -50%);
+  color: #fff; /* 文字颜色 */
+  background-color: transparent; /* 背景半透明，视需求调整 */
+  padding: 20px;
+  border-radius: 10px;
+  text-transform: uppercase;
+  //color: #00223d
+}
+
+.overlay h1 {
+  font-size: 1em;
+}
+
+.overlay button {
+  padding: 10px 20px;
+  font-size: 24px;
+  color: white;
+  background-color: #3678c6;
+  border: none;
+  cursor: pointer;
+  border-radius: 20px; /* 圆角 */
+
+}
+

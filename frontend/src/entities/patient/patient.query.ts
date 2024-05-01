@@ -6,6 +6,7 @@ import { selfRegiForm } from "../../pages/medical/patient/selfRegister/form.tsx"
 import { randomId } from "@mui/x-data-grid-generator";
 
 export type SelfRegisterData_forSubmit = {
+    name? : string;
     patientId: string;
     createDateTimeString: string;
     // todo type this
