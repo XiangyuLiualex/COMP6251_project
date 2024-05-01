@@ -8,10 +8,14 @@ import org.springframework.web.servlet.function.router
 class AdminController {
     @Bean
     fun useRouter(service: AdminService) = router {
-        PATCH("/admin/approve-reg/{id}") {
-            val id = it.pathVariable("id").toLong()
+        PATCH("/admin/approve/{id}") {
+            val pId = it.pathVariable("id").toLong()
             val payload = it.body<ApproveRegRequest>()
-            val model = service.approveReg(id)
+            val model = service.approveReg(pId)
+            ok().body(model)
+        }
+        GET("/admin/approvals"){
+            val model = service.getUnapprovedSelfReg()
             ok().body(model)
         }
     }

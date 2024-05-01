@@ -1,7 +1,9 @@
 package com.chzfakevox.backend.admin
 
-import com.chzfakevox.backend.user.SelfRegModel
-import com.chzfakevox.backend.user.SelfRegRepository
+import com.chzfakevox.backend.selfReg.SelfRegModel
+import com.chzfakevox.backend.selfReg.SelfRegRepository
+import com.chzfakevox.backend.util.tx
+import com.chzfakevox.backend.util.unprocessable
 import org.springframework.stereotype.Service
 
 
@@ -10,11 +12,16 @@ class AdminService (
     private val selfRegRepository: SelfRegRepository
 ){
     private fun toModel(){}
-    fun approveReg(id: Long): SelfRegModel {
-        val formItem = selfRegRepository.findById(id).orElseThrow { Exception("SelfReg not found") }
-        selfRegRepository.update(formItem.copy(approved = "APPROVED"))
+    fun approveReg(patientId: Long): SelfRegModel = tx{
+        val formItem = selfRegRepository.findByPatientId(patientId)
+            ?: unprocessable("Form not found")
+        selfRegRepository.approveItem(formItem)
         //TODO guest remove
-        return SelfRegModel.fromModel(formItem)
+        SelfRegModel.fromModel(formItem)
+    }
+
+    fun getUnapprovedSelfReg(): List<SelfRegModel> = tx{
+        selfRegRepository.findUnapproved().map { SelfRegModel.fromModel(it) }
     }
 
 
