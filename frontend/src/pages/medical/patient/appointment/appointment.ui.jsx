@@ -187,10 +187,11 @@ export function AppointmentPage() {
   const GPS = data;
 
   const handleUpdateSlot = (sId, pId) => {
-    console.log("last place:" + sId + " " + pId);
+    // console.log("last place:" + sId + " " + pId);
     mutateSlot({
       slotId: sId,
       bookedByPID: pId,
+      status:"hold"
     });
   };
   const handleSubmitAppointment = (patientId, gpId, slotId, gpName, time, date, reason) => {

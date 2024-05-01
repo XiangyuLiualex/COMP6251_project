@@ -664,7 +664,7 @@
       "time": "8:00-9:00",
       "date": "2024-05-05",
       "reason": "I feel headache",
-      "status": "beforeApprove"
+      "status": "before Approve"
     },
     {
       "patientId": "5",
@@ -674,7 +674,7 @@
       "time": "11:00-12:00",
       "date": "2024-05-06",
       "reason": "try me",
-      "status": "beforeApprove",
+      "status": "before Approve",
       "createdAt": 1713974895561,
       "id": 2
     },
@@ -686,7 +686,7 @@
       "time": "10:00-11:00",
       "date": "2024-05-06",
       "reason": "",
-      "status": "beforeApprove",
+      "status": "before Approve",
       "createdAt": 1713974999811,
       "id": 3
     },
@@ -698,7 +698,7 @@
       "time": "14:00-15:00",
       "date": "2024-05-06",
       "reason": "我肚子疼",
-      "status": "beforeApprove",
+      "status": "before Approve",
       "createdAt": 1713975029223,
       "id": 4
     },
@@ -710,7 +710,7 @@
       "time": "09:00-10:00",
       "date": "2024-05-05",
       "reason": "我是谁",
-      "status": "beforeApprove",
+      "status": "before Approve",
       "createdAt": 1713975086074,
       "id": 5
     }

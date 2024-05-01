@@ -2,10 +2,6 @@ import { useEffect, useState } from "react";
 import { useTestQuery,useUpdateTestMutation,useDoneTestMutation } from "../../../../entities/practitioner/test.query";
 import { Table, TableContainer } from "@mui/material";
 import { sessionStore } from "../../../../entities/session";
-import {
-    useHandleAppointmentQuery,
-    useUpdateAppointmentMutation,
-  } from "../../../../entities/practitioner/handleAppointment.query";
   import * as React from "react";
   import TableBody from "@mui/material/TableBody";
   import TableCell from "@mui/material/TableCell";
@@ -19,6 +15,7 @@ import {
   import DialogContent from '@mui/material/DialogContent';
   import DialogContentText from '@mui/material/DialogContentText';
   import DialogTitle from '@mui/material/DialogTitle';
+  import {EditMedicalHistory} from '../today/today.ui';
 
 
 
@@ -118,12 +115,17 @@ export function TestTable({ tests,onUpdateTest,onDoneTest}) {
                 <TableCell align="right">{row.name}</TableCell>
                 <TableCell align="right">{row.date}</TableCell>
                 <TableCell align="right">{row.time}</TableCell>
-                <TableCell align="right">{row.status}</TableCell>
+                <TableCell align="right">{row.status.toUpperCase()}</TableCell>
                 <TableCell align="right">
                   <UpdateTest test={row}
                               onUpdateTest={onUpdateTest}
                   />
                 </TableCell>
+                <TableCell align="right">
+                  <EditMedicalHistory patientId={row.patientId}/>
+                
+                </TableCell>
+
                 <TableCell align="right">
                     <Button variant="contained"
                         onClick={()=>onDoneTest(row.id)}

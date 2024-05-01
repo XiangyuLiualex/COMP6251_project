@@ -37,3 +37,13 @@ export const useAddPrescriptionMutation = () => {
     }
   });
 };
+
+export function usePrescriptionQuery(appointmentId) {
+  return useQuery({
+    queryKey: ["prescription", appointmentId], // gpId 是动态参数
+    queryFn: async () => {
+      var response = await axios(pathKeys.prescription.apiViewPrescriptionById(appointmentId));
+      return response.data;
+    },
+  });
+}
