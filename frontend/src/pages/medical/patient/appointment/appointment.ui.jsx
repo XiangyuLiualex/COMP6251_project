@@ -124,8 +124,23 @@ function DaySchedule({ onSlotSelect, daySlots }) {
 }
 
 function WeekSchedule({ onSlotSelect, weekSlots }) {
-  weekSlots.sort((a, b) => a.id - b.id);
-  const slots = weekSlots.reduce((acc, slot) => {
+  const wSlots = weekSlots.sort((a, b) => {
+    if (a.date < b.date) {
+      return -1;
+    } else if (a.date > b.date) {
+      return 1;
+    }
+    let timeA = a.time.split('-')[0]; // 获取开始时间 "8:00"
+    let timeB = b.time.split('-')[0]; // 获取开始时间 "9:00"
+    let minutesA = parseInt(timeA.split(':')[0]) * 60 + parseInt(timeA.split(':')[1]);
+    let minutesB = parseInt(timeB.split(':')[0]) * 60 + parseInt(timeB.split(':')[1]);
+    return minutesA - minutesB;
+  });
+
+  // weekSlots.sort((a, b) => a.id - b.id);
+
+
+  const slots = wSlots.reduce((acc, slot) => {
     const existingGroup = acc.find(group => group[0].date === slot.date);
     if (existingGroup) {
       existingGroup.push(slot);

@@ -4,7 +4,68 @@ import {
 } from "../../../../entities/general/profile.query";
 import { sessionStore } from "../../../../entities/session";
 import ProfileList from "../../general/generalProfile.ui";
+import {Button, Box} from '@mui/material';
+import * as React from 'react';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever'; 
 
+
+export function DeleteAccount() {
+    const [open, setOpen] = React.useState(false);
+  
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
+  
+    const handleClose = () => {
+        setOpen(false);
+    };
+
+    return (
+      <React.Fragment>
+        <Button 
+          variant="outlined" 
+          color="error" // Make the button stand out as a serious action
+          startIcon={<DeleteForeverIcon />} // Adds an icon for visual impact
+          onClick={handleClickOpen}
+          sx={{ mt: 2 }} // Adds margin top for spacing
+        >
+          Delete Account
+        </Button>
+        <Dialog
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
+        >
+          <DialogTitle id="alert-dialog-title">
+            {"Confirm Account Deletion"}
+          </DialogTitle>
+          <DialogContent>
+            <DialogContentText id="alert-dialog-description">
+              Are you sure you want to permanently delete your account? 
+              <br/>
+              <strong>This action cannot be undone.</strong>
+              <br />
+              All your data will be irreversibly removed from our hospital system.
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleClose} color="primary">
+              Cancel
+            </Button>
+            <Button onClick={handleClose} color="error" autoFocus>
+              Confirm
+            </Button>
+          </DialogActions>
+        </Dialog>
+      </React.Fragment>
+    );
+}
 
 export function PatientProfilePage() {
     const id = sessionStore.getState().uid;
@@ -49,7 +110,11 @@ export function PatientProfilePage() {
 
     return (
         <div>
-            <h1>Profile</h1>
+            {/* <h1>Profile</h1> */}
+            <Box display="flex" justifyContent="space-between" alignItems="center">
+            <h1>Profile Page</h1>
+            <DeleteAccount/>
+          </Box>
             <ProfileList profile={profile} onUpdateProfile={handleUpdateProfile} />
         </div>
     );
