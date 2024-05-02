@@ -1,6 +1,7 @@
 package com.chzfakevox.backend.medical
 
 import com.chzfakevox.backend.appointment.*
+import com.chzfakevox.backend.user.GpModel
 import com.chzfakevox.backend.user.UserRepository
 import com.chzfakevox.backend.util.tx
 import com.chzfakevox.backend.util.unprocessable
@@ -96,7 +97,7 @@ class MedicalService (
             SlotUpdateRequest(patient.id.value, SlotStatus.hold)
             ,payload.slotId)
 
-        val newGp = userRepository.getGpextByUserId(newSlot.pg_id)?: unprocessable("GP not found")
+        val newGp = userRepository.getGpextByUserId(newSlot.gpId)?: unprocessable("GP not found")
 
         appointmentRepository.updateAppointment(appointment, newSlot.id, newGp.id)
         toAppointmentModel(appointment,newSlot,newGp)
@@ -123,5 +124,35 @@ class MedicalService (
 
     fun getPrescriptionByAppointmentId(aId: Long): List<PrescriptionModel> = tx {
         medicalRepository.getPrescriptionByAppointmentId(aId).map { PrescriptionModel.from(it) }
+    }
+
+    fun getGps(): List<GpModel > = tx{
+        userRepository.getGps().map { GpModel.fromModel(it) }
+
+    }
+
+    fun getMedicalRecords(pId: Long): List<MedicalRecord> = tx {
+        medicalHistoryRepository.getMedicalRecords(pId)
+    }
+
+    fun createTest(payload: MedicalTestModel): MedicalTestModel = tx{
+        val patient = userRepository.getUserById(payload.patientId)?: unprocessable("Patient not found")
+        val tester = userRepository.getUserById(payload.testerId)?: unprocessable("Tester not found")
+        val appointment = appointmentRepository.getById(payload.appointmentId)?: unprocessable("Appointment not found")
+        MedicalTestModel.from(medicalRepository.createTest(tId = tester.id, pId = patient.id, aId = appointment.id,
+            payload = payload
+        ))
+    }
+
+    fun getAllTests(): List<MedicalTestModel> = tx {
+        medicalRepository.getAllTests().map { MedicalTestModel.from(it) }
+    }
+    fun getTestByPatientId(pId: Long): List<MedicalTestModel> = tx {
+        medicalRepository.getTestByPatientId(pId).map { MedicalTestModel.from(it) }
+    }
+
+    fun updateTest(tId: Long, payload: MedicalTestUpdateModel): MedicalTestModel = tx {
+        MedicalTestModel.from(medicalRepository.updateTest(tId, payload))
+
     }
 }

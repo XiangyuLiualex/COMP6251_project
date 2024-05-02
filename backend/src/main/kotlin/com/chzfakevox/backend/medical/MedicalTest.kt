@@ -10,7 +10,7 @@ import org.jetbrains.exposed.dao.id.EntityID
 import org.jetbrains.exposed.sql.javatime.Date
 import org.jetbrains.exposed.sql.javatime.date
 
-object MedicalTestTable :BaseIdTable<Long>("medical_tests") {
+object MedicalTestTable :BaseIdTable<Long>("medical_test") {
     override val id = long("id").autoIncrement().entityId()
     override val primaryKey = PrimaryKey(id)
     val patientId = reference("patient_id", UserTable.id)
@@ -31,9 +31,9 @@ enum class MedicalTestStatus {
 class MedicalTest (id: EntityID<Long>) : BaseEntity<Long>(id, MedicalTestTable) {
     companion object : BaseEntityClass<Long, MedicalTest>(MedicalTestTable)
 
-    val patientId by MedicalTestTable.patientId
-    val testerId by MedicalTestTable.testerId
-    val appointmentId by MedicalTestTable.appointmentId
+    var patientId by MedicalTestTable.patientId
+    var testerId by MedicalTestTable.testerId
+    var appointmentId by MedicalTestTable.appointmentId
     var name by MedicalTestTable.name
     var date by MedicalTestTable.date
     var time by MedicalTestTable.time

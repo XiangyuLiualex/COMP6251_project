@@ -31,4 +31,8 @@ class UserRepository {
     fun getGpextByUserId(id: Long): GP? {
         return GP.find { gpExtension.gpId eq id }.firstOrNull()
     }
+
+    fun getGps(): List<GP> {
+        return GP.all().toList()
+    }
 }

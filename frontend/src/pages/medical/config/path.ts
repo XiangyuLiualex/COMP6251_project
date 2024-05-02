@@ -72,7 +72,7 @@ export const pathKeys = {
             return pathKeys.root.concat('slots/');
         },
         apiUpdateSlotById(sid: string) {
-            return apiPrefix(pathKeys.slots.root().concat("/" + sid));
+            return apiPrefix(pathKeys.slots.root().concat(sid));
         }
     },
     appointment: {
@@ -80,13 +80,13 @@ export const pathKeys = {
             return pathKeys.root.concat('appointment/');
         },
         apiAddAppointment() {
-            return apiPrefix(pathKeys.appointment.root());
+            return apiPrefix("/appointment");
         },
         apiGetAppointmentById(gpid: string) {
             return apiPrefix(pathKeys.root.concat('appointment?gpId=' + gpid));
         },
         apiUpdateAppointmentById(appointmentId: string) {
-            return apiPrefix(pathKeys.appointment.root().concat('/' + appointmentId));
+            return apiPrefix(pathKeys.appointment.root().concat(appointmentId));
         },
         apiGetAppointmentByIdAndDate(gpid: string, date: string) {
             return apiPrefix(pathKeys.root.concat('appointment?date=' + date + '&gpId=' + gpid));
@@ -113,8 +113,11 @@ export const pathKeys = {
         apiAddTest() {
             return apiPrefix(pathKeys.test.root())
         },
+        apiGetTestById(patientId: string) {
+            return apiPrefix('/test?patientId=' + patientId);
+        },
         apiUpdateTestById(testId: string) {
-            return apiPrefix(pathKeys.test.root().concat('/' + testId));
+            return apiPrefix(pathKeys.test.root().concat(testId));
         },
         apiGetTestByAppointmentId(appointmentId: string) {
             return apiPrefix(pathKeys.root.concat('test?appointmentId=' + appointmentId));

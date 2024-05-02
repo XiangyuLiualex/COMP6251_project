@@ -7,7 +7,7 @@ data class SlotUpdateRequest (
 
 data class SlotModel(
     val id: Long,
-    val pgId: Long,
+    val gpId: Long,
     val date: String,
     val dayOfWeek: String,
     val time: String,
@@ -17,7 +17,7 @@ data class SlotModel(
     companion object{
         fun fromModel(slot: Slot): SlotModel = SlotModel(
             id = slot.id.value,
-            pgId = slot.pg_id,
+            gpId = slot.gpId,
             date = slot.date.toString(),
             dayOfWeek = slot.day_of_week.name,
             time = slot.time,

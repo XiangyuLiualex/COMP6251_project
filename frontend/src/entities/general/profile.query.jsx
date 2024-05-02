@@ -50,11 +50,11 @@ const updateProfileRequest = async (
     payload.userId = sessionStore.getState().uid;
   } else if (method === "PATCH") {
     fn = axios.patch;
-    url += `/${profileId}`;
+    url += `${profileId}`;
   } else {
     throw new Error("Invalid method");
   }
-  console.log("update url by "+url)
+  console.log("update url by " + url)
   const response = await fn(
     url,
     payload,

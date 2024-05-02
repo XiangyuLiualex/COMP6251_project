@@ -72,3 +72,44 @@ Content-Type: application/json
 # @name get prescr by appointmentID
 GET {{baseURL}}/prescription?appointmentId=8
 ###
+
+# @name get all gps
+GET {{baseURL}}/gpss
+###
+
+# @name get all medical history by pid
+GET {{baseURL}}/medical-history?patientId=3
+###
+
+
+# @name create medical tests
+POST {{baseURL}}/test
+Content-Type: application/json
+
+{
+  "patientId": 5,
+  "testerId": 1,
+  "appointmentId": 1,
+  "name": "happy test2",
+  "date": "2024-08-15",
+  "time": "09:00-10:00",
+  "description": "11",
+  "status": "undo",
+  "result": ""
+}
+###
+# @name get medical tests by patientId
+GET {{baseURL}}/test?patientId=5
+###
+# @name get all tests
+GET {{baseURL}}/test/
+###
+# @name update test
+PATCH {{baseURL}}/test/1
+Content-Type: application/json
+
+{
+  "status": "done",
+  "result": "negative"
+}
+###

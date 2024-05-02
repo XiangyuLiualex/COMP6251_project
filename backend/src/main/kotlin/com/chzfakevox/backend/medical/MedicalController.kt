@@ -19,6 +19,11 @@ class MedicalController {
             val model = service.getThisMonthSlots()
             ok().body(model)
         }
+        GET("/gpss"){
+            // all slots get
+            val model = service.getGps()
+            ok().body(model)
+        }
         PATCH("/slots/{id}"){
             val sId = it.pathVariable("id").toLong()
             val payload = it.body<SlotUpdateRequest>()
@@ -47,6 +52,11 @@ class MedicalController {
             val res = "$count records has been saved"
             ok().body(res)
         }
+        GET("/medical-history"){
+            val pId = it.param("patientId").orElse("0").toLong()
+            val model = service.getMedicalRecords(pId)
+            ok().body(model)
+        }
 
         GET("/prescription"){
             val appoId = it.param("appointmentId").orElse("0").toLong()
@@ -60,6 +70,28 @@ class MedicalController {
             ok().body(model)
         }
 
+        POST("/test"){
+            val payload = it.body<MedicalTestModel>()
+            val model = service.createTest(payload)
+            ok().body(model)
+        }
+        GET("/test/"){
+            //get all tests
+            val model = service.getAllTests()
+            ok().body(model)
+
+        }
+        GET("/test"){
+            val pId = it.param("patientId").orElse("0").toLong()
+            val model = service.getTestByPatientId(pId)
+            ok().body(model)
+        }
+        PATCH("/test/{id}"){
+            val tId = it.pathVariable("id").toLong()
+            val payload = it.body<MedicalTestUpdateModel>()
+            val model = service.updateTest(tId,payload)
+            ok().body(model)
+        }
 
     }
 }

@@ -12,7 +12,7 @@ object MedicalHistoryTable : BaseIdTable<Long>("medical_history"){
     override val primaryKey = PrimaryKey(id)
     val disease = varchar("disease", 255)
     val diseasedetails = varchar("disease_details", 255)
-    val diagnosedDate = timestampWithTimeZone("diagnosed_date")
+    val diagnosedDate = date("diagnosed_date")
     val patientId = long("patient_id")
 }
 

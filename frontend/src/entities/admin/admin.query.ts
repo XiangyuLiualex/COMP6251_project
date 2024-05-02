@@ -54,16 +54,16 @@ async function approveSelfRegisterRequest(patientId: string): Promise<any> {
 }
 
 export function useApproveSelfRegisterMutation() {
-    //const { enqueueSnackbar } = useSnackbar();
+    const { enqueueSnackbar } = useSnackbar();
     return useMutation({
         mutationFn: (patientId: string) => approveSelfRegisterRequest(patientId),
         // todo handle success and error feedback
         onSuccess: (data) => {
-            //enqueueSnackbar('Approve Self Register Successful!', { variant: 'success', autoHideDuration: 2000 });
+            enqueueSnackbar('Approve Self Register Successful!', { variant: 'success', autoHideDuration: 2000 });
             console.log('Approve Self Register Success:', data);
         },
         onError: (error) => {
-            //enqueueSnackbar('Approve Self Register Successful!', { variant: 'success', autoHideDuration: 3500 });
+            enqueueSnackbar('Approve Self Register Successful!', { variant: 'success', autoHideDuration: 3500 });
             console.error('Approve Self Register Failed:', error);
         }
     });

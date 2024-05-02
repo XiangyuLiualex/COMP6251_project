@@ -9,7 +9,7 @@ import org.jetbrains.exposed.sql.javatime.date
 object SlotTable : BaseIdTable<Long>("slots") {
     override val id = long("id").autoIncrement().entityId()
     override val primaryKey = PrimaryKey(id)
-    val pg_id = long("gp_id")
+    val gpId = long("gp_id")
     val date = date("date")
     val day_of_week = enumerationByName("day_of_week", 20, DayOfWeek::class)
     val time =varchar("duration",100)
@@ -21,7 +21,7 @@ object SlotTable : BaseIdTable<Long>("slots") {
 class Slot(id: EntityID<Long>) : BaseEntity<Long>(id, SlotTable) {
     companion object : BaseEntityClass<Long, Slot>(SlotTable)
 
-    var pg_id by SlotTable.pg_id
+    var gpId by SlotTable.gpId
     var date by SlotTable.date
     var day_of_week by SlotTable.day_of_week
     var time by SlotTable.time
