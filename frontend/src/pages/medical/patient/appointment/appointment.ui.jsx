@@ -5,6 +5,8 @@ import Stack from '@mui/material/Stack';
 import useUpdateSlotMutation, { useAppointmentQuery, useSubmitAppointmentMutation } from "../../../../entities/patient/appointment.query";
 import { Table,TextField, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle ,TableHead, TableBody, TableCell, TableRow, Button, Paper, Typography,Container,CardActions, Box,Grid, Card, CardContent,Collapse} from '@mui/material';
 import { ViewProfile } from "../../general/generalProfile.ui";
+import CallIcon from '@mui/icons-material/Call';
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 
 
 export function DoubleConfirm({ gpName, date, time, reason, slotId, patientId, gpId, isError, isLoad, isSuccess, onUpdateSlot, onSubmitAppointment, onReset }) {
@@ -202,7 +204,7 @@ function GPBox({ onGpSelect, gp }) {
           <Button size="small" variant="contained" color="primary" onClick={() => onGpSelect(gp)}>
             Book Online
           </Button>
-          <Button size="small" variant="outlined" onClick={togglePhone}>
+          <Button size="small" variant="outlined" onClick={togglePhone} startIcon={<CallIcon/>}>
             Consult By Call
           </Button>
           <Collapse in={showPhone}>
@@ -359,7 +361,7 @@ export function AppointmentPage() {
         <div>
           <Box display="flex" justifyContent="space-between" alignItems="center">
             <h1>Appointment Page</h1>
-            <Button variant="contained" onClick={() => onResetTo("Initial")}>
+            <Button variant="contained" onClick={() => onResetTo("Initial")} startIcon={<ArrowBackIosIcon/>}>
               Back
             </Button>
           </Box>
@@ -371,10 +373,12 @@ export function AppointmentPage() {
         <div>
           <Box display="flex" justifyContent="space-between" alignItems="center">
             <h1>Appointment Page</h1>
-            <Button variant="contained" onClick={() => onResetTo("GPS")}>
+            
+            <Button variant="contained" onClick={() => onResetTo("GPS")} startIcon={<ArrowBackIosIcon/>}>
               Back
             </Button>
           </Box>
+          <h3>Please select a time slot:</h3>
           <WeekSchedule
             onSlotSelect={handleSlotSelect}
             weekSlots={gpSelect.slots}
@@ -386,7 +390,7 @@ export function AppointmentPage() {
         <div>
           <Box display="flex" justifyContent="space-between" alignItems="center">
             <h1>Appointment Page</h1>
-            <Button variant="contained" onClick={() => onResetTo("schedule")}>
+            <Button variant="contained" onClick={() => onResetTo("schedule")} startIcon={<ArrowBackIosIcon/>}>
               Back
             </Button>
           </Box>
@@ -404,7 +408,7 @@ export function AppointmentPage() {
         <div>
           <Box display="flex" justifyContent="space-between" alignItems="center">
             <h1>Appointment Page</h1>
-            <Button variant="contained" onClick={() => onResetTo("confirm")}>
+            <Button variant="contained" onClick={() => onResetTo("confirm")} startIcon={<ArrowBackIosIcon/>}>
               Back
             </Button>
           </Box>
