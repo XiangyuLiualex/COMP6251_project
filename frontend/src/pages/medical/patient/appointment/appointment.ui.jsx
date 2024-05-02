@@ -2,168 +2,262 @@ import { useState } from "react";
 import { sessionStore } from "../../../../entities/session";
 // import useUpdateSlotMutation from "../../../../entities/patient/appointment.query";
 import Stack from '@mui/material/Stack';
-import Button from '@mui/material/Button';
 import useUpdateSlotMutation, { useAppointmentQuery, useSubmitAppointmentMutation } from "../../../../entities/patient/appointment.query";
+import { Table,TextField, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle ,TableHead, TableBody, TableCell, TableRow, Button, Paper, Typography,Container,CardActions, Box,Grid, Card, CardContent,Collapse} from '@mui/material';
+import { ViewProfile } from "../../general/generalProfile.ui";
 
-export function DoubleConfirm({ gpName, date, time, reason, slotId, patientId, gpId, isError, isLoad, isSuccess, onUpdateSlot, onSubmitAppointment }) {
-  const handleOnSubmit = () => {
-    onUpdateSlot(slotId, patientId)
-    onSubmitAppointment(patientId, gpId, slotId, gpName, time, date, reason)
-  }
-  console.log(patientId, gpId, slotId, gpName, time, date, reason);
+
+export function DoubleConfirm({ gpName, date, time, reason, slotId, patientId, gpId, isError, isLoad, isSuccess, onUpdateSlot, onSubmitAppointment, onReset }) {
+  const [open, setOpen] = useState(false);
+
+  const handleOnSubmit = async () => {
+    try {
+      onUpdateSlot(slotId, patientId);
+      await onSubmitAppointment(patientId, gpId, slotId, gpName, time, date, reason);
+      setOpen(true);
+    } catch (error) {
+      console.error("Error during submission: ", error);
+      setOpen(true);
+    }
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+    onReset("Initial");  // Assuming `onReset` will handle navigating back to the initial component
+  };
+
   return (
-    <div>
-      <h2>Please confirm your booking information: </h2>
-      <h3>GP name: {gpName}</h3>
-      <h3>Date Selected: {date}</h3>
-      <h3>Time Selected: {time}</h3>
-      <h3>Booking Reason: {reason}</h3>
-      <button onClick={handleOnSubmit} disabled={isLoad}>
-        Submit
-      </button>
-
-      {isError && <p>An error occurred: {isError.message}</p>}
-      {isSuccess && <p>Slot updated successfully!</p>}
-    </div>
+    <Box sx={{ maxWidth: 700, mx: 'auto', mt: 5, p: 3, boxShadow: 3, borderRadius: 2, bgcolor: 'background.paper' }}>
+      <Typography variant="h5" component="h2" sx={{ mb: 3, fontWeight: 'bold' }}>
+        Please confirm your booking information:
+      </Typography>
+      {/* Information display */}
+      <Typography variant="subtitle1" sx={{ mb: 1 }}>GP name: {gpName}</Typography>
+      <Typography variant="subtitle1" sx={{ mb: 1 }}>Date Selected: {date}</Typography>
+      <Typography variant="subtitle1" sx={{ mb: 1 }}>Time Selected: {time}</Typography>
+      <Typography variant="subtitle1" sx={{ mb: 3 }}>Booking Reason: {reason}</Typography>
+      {/* Submit button */}
+      <Button variant="contained" color="primary" onClick={handleOnSubmit} disabled={isLoad} fullWidth>
+        {isLoad ? <CircularProgress size={24} /> : "Submit"}
+      </Button>
+      {/* Dialog */}
+      <Dialog open={open} onClose={handleClose}>
+        <DialogTitle>{"Booking Confirmation"}</DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            {isSuccess ? "You have booked the appointment successfully" : "Sorry, something went wrong"}
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose} autoFocus>OK</Button>
+        </DialogActions>
+      </Dialog>
+    </Box>
   );
 }
 
-function ConfirmBox({ reasonText, onSubmit, onReasonText }) {
+function ConfirmBox({ gpSelect, slotSelect, reasonText, onSubmit, onReasonText }) {
   return (
-    <div>
-      <h2>What is the reason for this appointment</h2>
-      <input
-        type="text"
+    <Box sx={{ maxWidth: 600, mx: 'auto', mt: 5, p: 3, boxShadow: 3, borderRadius: 2, bgcolor: 'background.paper' }}>
+      <Typography variant="h6" sx={{ mt: 2, mb: 1 , fontWeight: 'bold'}}>
+        You have selected an appointment with:
+      </Typography>
+      <Typography variant="subtitle1" sx={{ mb: 2 }}>
+        {gpSelect.name}
+      </Typography>
+
+      <Typography variant="h6" sx={{ fontWeight: 'bold' }}>
+        Your selected time slot:
+      </Typography>
+      <Typography variant="subtitle1" sx={{ mb: 2 }}>
+        {slotSelect.date} at {slotSelect.time}
+      </Typography>
+
+      <Typography variant="h6" sx={{ mt: 2, mb: 2 ,fontWeight: 'bold'}}>
+        What is the reason for this appointment?
+      </Typography>
+      <TextField
+        fullWidth
+        label="Describe your problem"
+        placeholder="Briefly describe your problem here..."
+        variant="outlined"
         value={reasonText}
-        placeholder="Berifly describe your problem here..."
         onChange={onReasonText}
+        multiline
+        rows={4}
+        sx={{ mb: 2 }}
       />
-      <button onClick={() => onSubmit()}>Submit</button>
-    </div>
+
+      <Button variant="contained" color="primary" onClick={onSubmit} fullWidth>
+        Submit
+      </Button>
+    </Box>
   );
 }
-
-// {
-//   "id": "6",
-//   "gpId": "1",
-//   "date": "2024-05-06",
-//   "dayOfWeek": "Monday",
-//   "time": "14:00-15:00",
-//   "bookedByPID": null
-// }
 
 function DaySchedule({ onSlotSelect, daySlots }) {
-  // console.log(daySlots);
-  // console.log(daySlots[0].bookedByPID === null);
-  //onSlotSelect, schedule
-
   return (
-    <td>
-
-      <ul>
-        <h4>{daySlots[0].date}</h4>
-        <h5>{daySlots[0].dayOfWeek}</h5>
-        {daySlots.map(
-          (slot, index) =>
-            slot.status === "open" && (
-              <li key={index}>
-                <button
-                  onClick={() =>
-                    onSlotSelect({ date: slot.date, time: slot.time, id: slot.id })
-                  }
-                >
-                  {slot.time}
-                </button>
-              </li>
-            )
-        )}
-      </ul>
-    </td>
+    <TableCell>
+      <Stack direction="column" spacing={1}>
+        {daySlots.map((slot, index) => (
+          <Button
+            key={index}
+            variant="outlined"
+            onClick={() => slot.status === "open" ? onSlotSelect({ date: slot.date, time: slot.time, id: slot.id }) : null}
+            disabled={slot.status !== "open"}
+            sx={{
+              justifyContent: 'flex-start',
+              textTransform: 'none',
+              backgroundColor: slot.status !== "open" ? '#e0e0e0' : '', // Change the background color for non-open slots
+              color: slot.status !== "open" ? '#9e9e9e' : '', // Change text color for better readability on disabled buttons
+              '&:hover': {
+                backgroundColor: slot.status === "open" ? '#e3f2fd' : '#e0e0e0', // Maintain hover effect only for active buttons
+              }
+            }}
+          >
+            {slot.time}
+          </Button>
+        ))}
+      </Stack>
+    </TableCell>
   );
 }
 
 function WeekSchedule({ onSlotSelect, weekSlots }) {
-  weekSlots.sort((a, b) => a.id - b.id);
-  const slots = weekSlots.reduce((acc, slot) => {
-    // 查找当前日期是否已经有对应的分组
+  const wSlots = weekSlots.sort((a, b) => {
+    if (a.date < b.date) {
+      return -1;
+    } else if (a.date > b.date) {
+      return 1;
+    }
+    let timeA = a.time.split('-')[0]; // 获取开始时间 "8:00"
+    let timeB = b.time.split('-')[0]; // 获取开始时间 "9:00"
+    let minutesA = parseInt(timeA.split(':')[0]) * 60 + parseInt(timeA.split(':')[1]);
+    let minutesB = parseInt(timeB.split(':')[0]) * 60 + parseInt(timeB.split(':')[1]);
+    return minutesA - minutesB;
+  });
+
+  // weekSlots.sort((a, b) => a.id - b.id);
+
+
+  const slots = wSlots.reduce((acc, slot) => {
     const existingGroup = acc.find(group => group[0].date === slot.date);
     if (existingGroup) {
-      // 如果存在，将当前slot添加到该组
       existingGroup.push(slot);
     } else {
-      // 如果不存在，创建新的组并添加到accumulator
       acc.push([slot]);
     }
     return acc;
   }, []);
-  console.log(slots);
 
   return (
-    <table>
-      <tbody>
-        <tr>
-          {slots.map((slot, index) => (
-            <DaySchedule
-              onSlotSelect={onSlotSelect}
-              key={index}
-              daySlots={slot}
-            />
-          ))}
-        </tr>
-      </tbody>
-    </table>
+    <Paper sx={{ overflowX: 'auto' }}>
+      <Table size="small">
+        <TableHead>
+          <TableRow>
+            {slots.map((daySlots, index) => (
+              <TableCell key={index}>
+                <strong>{daySlots[0].date}</strong> - {daySlots[0].dayOfWeek}
+              </TableCell>
+            ))}
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          <TableRow>
+            {slots.map((slot, index) => (
+              <DaySchedule
+                onSlotSelect={onSlotSelect}
+                key={index}
+                daySlots={slot}
+              />
+            ))}
+          </TableRow>
+        </TableBody>
+      </Table>
+    </Paper>
   );
 }
 
 function GPBox({ onGpSelect, gp }) {
+  const [showPhone, setShowPhone] = useState(false); // State to track the visibility of the phone number
+
+  const togglePhone = () => {
+    setShowPhone(!showPhone); // Toggle the visibility state
+  };
+
   return (
-    <tr>
-      <td>{gp.name}</td>
-      <td>{gp.Treatments}</td>
-      <td>Year in practice: {gp.yearsInPractice}</td>
-      <td>
-        <button onClick={() => onGpSelect(gp)}>Book Online</button>
-        <button>Consult By Call</button>
-      </td>
-    </tr>
+    <Grid item xs={12} sm={6} md={4} lg={3}>
+      <Card raised sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: '100%' }}>
+        <CardContent>
+          <Typography variant="h6" gutterBottom>
+            Name: {gp.name}
+          </Typography>
+          <Typography variant="body1">
+            Treatments: {gp.treatments}
+          </Typography>
+        </CardContent>
+        <CardActions sx={{ flexDirection: 'column', alignItems: 'center', gap: 1, padding: 2 }}>
+        <ViewProfile patientId={gp.id} ifReadOnly={true} />
+        <br/>
+          <Button size="small" variant="contained" color="primary" onClick={() => onGpSelect(gp)}>
+            Book Online
+          </Button>
+          <Button size="small" variant="outlined" onClick={togglePhone}>
+            Consult By Call
+          </Button>
+          <Collapse in={showPhone}>
+            <Paper elevation={3} sx={{ padding: 1, marginTop: 1, width: '100%', textAlign: 'center' }}>
+              <Typography variant="body2">
+                Phone Number: {gp.phone}
+              </Typography>
+            </Paper>
+          </Collapse>
+          
+        </CardActions>
+      </Card>
+    </Grid>
   );
 }
 
+
+
+
 function GPSBox({ onGpSelect, gps, type }) {
-  const rows = [];
-  if (type === "healthComplaint") {
-    gps.forEach((gp) => {
-      if (gp.yearsInPractice <= 3) {
-        rows.push(<GPBox onGpSelect={onGpSelect} gp={gp} key={gp.id} />);
-      }
-    });
-  } else {
-    gps.forEach((gp) => {
-      if (gp.yearsInPractice > 3) {
-        rows.push(<GPBox onGpSelect={onGpSelect} gp={gp} key={gp.id} />);
-      }
-    });
-  }
+  const rows = gps.filter(gp => (type === "healthComplaint" ? gp.yearsInPractice <= 3 : gp.yearsInPractice > 3))
+                  .map(gp => <GPBox onGpSelect={onGpSelect} gp={gp} key={gp.id} />);
+
   return (
-    <div>
-      <h3>GPs that match your choice: </h3>
-      <div>{rows}</div>
-    </div>
+    <Box sx={{ padding: 3 }}>
+      <Typography variant="h4" gutterBottom>
+        GPs that match your choice:
+      </Typography>
+      <Grid container spacing={2}>
+        {rows}
+      </Grid>
+    </Box>
   );
 }
+
 
 function InitialBox({ onTypeSelect }) {
   return (
-
-    <div>
-      <h2>Please choose your appointment type: </h2>
-      <Stack spacing={2} direction="row">
-        <Button variant="contained" onClick={() => onTypeSelect("illness")}>Illness</Button>
-        <Button variant="contained" onClick={() => onTypeSelect("healthComplaint")}>
-          Health Complaint
-        </Button>
-      </Stack>
-    </div>
+    <Container maxWidth="sm"> {/* Limit the max width for better focus and alignment */}
+      <Paper elevation={3} sx={{ padding: 4, marginTop: 4 }}> {/* Adds shadow and padding for emphasis */}
+        <Typography variant="h5" component="h2" gutterBottom> {/* Styled heading */}
+          Please choose your appointment type:
+        </Typography>
+        <br/>
+   
+        <Stack spacing={2} direction="row" justifyContent="center"> {/* Centered buttons with spacing */}
+          <Button variant="contained" color="primary" onClick={() => onTypeSelect("illness")}>
+            Illness
+          </Button>
+          <Button variant="contained" color="primary" onClick={() => onTypeSelect("healthComplaint")}>
+            Health Complaint
+          </Button>
+        </Stack>
+      </Paper>
+    </Container>
   );
 }
 
@@ -176,7 +270,7 @@ export function AppointmentPage() {
   const [reasonText, setReasonText] = useState("");
   const { mutate: mutateSlot, isLoad, isError, isSuccess } = useUpdateSlotMutation();
   const { mutate: mutateAppointment } = useSubmitAppointmentMutation();
-  const { data, isLoading, error } = useAppointmentQuery()
+  const { data, isLoading, error ,refetch} = useAppointmentQuery()
 
 
 
@@ -226,6 +320,14 @@ export function AppointmentPage() {
   const handleReasonText = (event) => {
     setReasonText(event.target.value);
   };
+  const onResetTo = (position) => {
+    
+    setCurrentBox(position);
+    if(position==="Initial"){
+      refetch();
+    }
+    // Reset other relevant states as needed
+  };
 
   const handleSubmit = () => {
     console.log(
@@ -243,18 +345,6 @@ export function AppointmentPage() {
     setCurrentBox("doubleConfirm");
   };
 
-  // return (
-  //   <>
-  //     <h1>Displaying GPS Information</h1>
-  //     <ul>
-  //       {data.map((speaker) => (
-  //         <li key={speaker.id}>
-  //           {speaker.name}, <em> {speaker.Treatments} </em>
-  //         </li>
-  //       ))}
-  //     </ul>
-  //   </>
-  // );
 
   switch (currentBox) {
     case "Initial":
@@ -267,14 +357,24 @@ export function AppointmentPage() {
     case "GPS":
       return (
         <div>
-          <h1>Appointment Page</h1>
+          <Box display="flex" justifyContent="space-between" alignItems="center">
+            <h1>Appointment Page</h1>
+            <Button variant="contained" onClick={() => onResetTo("Initial")}>
+              Back
+            </Button>
+          </Box>
           <GPSBox onGpSelect={handleGpSelect} gps={GPS} type={type} />
         </div>
       );
     case "schedule":
       return (
         <div>
-          <h1>Appointment Page</h1>
+          <Box display="flex" justifyContent="space-between" alignItems="center">
+            <h1>Appointment Page</h1>
+            <Button variant="contained" onClick={() => onResetTo("GPS")}>
+              Back
+            </Button>
+          </Box>
           <WeekSchedule
             onSlotSelect={handleSlotSelect}
             weekSlots={gpSelect.slots}
@@ -284,13 +384,15 @@ export function AppointmentPage() {
     case "confirm":
       return (
         <div>
-          <h1>Appointment Page</h1>
-          <h3>You have select appointment with: </h3>
-          <h4>{gpSelect.name}</h4>
-          <h3> Your have select time slot:</h3>
-          <h4>{slotSelect.date}</h4>
-          <h4>{slotSelect.time}</h4>
+          <Box display="flex" justifyContent="space-between" alignItems="center">
+            <h1>Appointment Page</h1>
+            <Button variant="contained" onClick={() => onResetTo("schedule")}>
+              Back
+            </Button>
+          </Box>
           <ConfirmBox
+            gpSelect={gpSelect}
+            slotSelect={slotSelect}
             reasonText={reasonText}
             onSubmit={handleSubmit}
             onReasonText={handleReasonText}
@@ -300,7 +402,12 @@ export function AppointmentPage() {
     case "doubleConfirm":
       return (
         <div>
-          <h1>Appointment Page</h1>
+          <Box display="flex" justifyContent="space-between" alignItems="center">
+            <h1>Appointment Page</h1>
+            <Button variant="contained" onClick={() => onResetTo("confirm")}>
+              Back
+            </Button>
+          </Box>
           <DoubleConfirm
             gpName={gpSelect.name}
             date={slotSelect.date}
@@ -314,6 +421,7 @@ export function AppointmentPage() {
             isSuccess={isSuccess}
             onUpdateSlot={handleUpdateSlot}
             onSubmitAppointment={handleSubmitAppointment}
+            onReset={onResetTo}
           />
         </div>
       );
