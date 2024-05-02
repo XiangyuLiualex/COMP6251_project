@@ -22,8 +22,8 @@ POST {{baseURL}}/login HTTP/1.1
 Content-Type: application/json
 
 {
-  "password": "patient",
-  "email": "email1"
+  "email": "GP1@email.com",
+  "password": "generalP1"
 }
 ### without formdata item id
 # @name createSelfRegForm
@@ -70,7 +70,7 @@ Content-Type: application/json
 GET {{baseURL}}/admin/approvals
 ###
 # @name getProfile
-GET {{baseURL}}/profile/2
+GET {{baseURL}}/profile?userId=1
 ###
 # @name updateProfile
 PATCH {{baseURL}}/profile/2

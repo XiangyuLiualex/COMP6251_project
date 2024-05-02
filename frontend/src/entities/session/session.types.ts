@@ -1,27 +1,23 @@
 export type Role = "patient" | "admin" | "gp";
 export type ifPatientValid = boolean;
 
-export type Token = string ;
+export type Token = string;
 
-export type State ={
-    token : Token | null;
-    role: Role | null;
-    uid: string ;
+export type State = {
+  token: Token | null;
+  role: Role | null;
+  uid: string;
 }
 
 export type Actions = {
-    updateToken : (token : Token|null) => void;
+  updateToken: (token: Token | null) => void;
 }
 
 export type sessionState = State & Actions;
 
 export type UserCredential = {
-  accessToken: string;
-  user: {
-    // todo remove createAt when backend build
-    createdAt: string;
-    email: string;
-    id: string;
-    role?: Role;
-  };
+  token: string;
+  email: string;
+  id: string;
+  role: Role;
 }

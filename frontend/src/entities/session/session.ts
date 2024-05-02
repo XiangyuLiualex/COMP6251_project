@@ -73,12 +73,13 @@ export function useLoginMutation() {
       // todo : when backend build change into this way
       // sessionStore.setState({ token: data.accessToken, role: data.user.role})
       // temporary workaround
-      const role = await fetch(apiPrefix(`/users/${data.user.id}`)).
-        then((res) => res.json()).then((data) => data.role);
-      sessionStore.setState({ token: data.accessToken, role: role, uid: data.user.id })
+      sessionStore.setState({ token: data.token, role: data.role.toLocaleLowerCase() as Role, uid: data.id })
 
-      navigate(roleBasedRedirect(role))
-      console.log("login success", role);
+      navigate(roleBasedRedirect(data.role.toLocaleLowerCase() as Role));
+      console.log("login success", data.role);
+    },
+    onError: (error) => {
+      console.error("login error", error);
     }
   });
 

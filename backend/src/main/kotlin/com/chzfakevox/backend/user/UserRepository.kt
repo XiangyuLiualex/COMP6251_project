@@ -15,7 +15,7 @@ class UserRepository {
         val u = User.new {
             email = payload.email
             password = payload.password
-            role = theRole.name
+            role = theRole
         }
         val p = Profile.new {
             userId = u.id

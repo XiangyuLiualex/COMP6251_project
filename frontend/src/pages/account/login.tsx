@@ -102,7 +102,7 @@ export function Login() {
         {isPending && <div>Fetching user data...</div>}
         {isError && <div>{`is error!!!`}</div>}
         {error && <div>{`Error get data!!!`}</div>}
-        {isSuccess && <div>success: user {data.user?.email} </div>}
+        {isSuccess && <div>success: user {data.email} </div>}
         {hasToken() && <span>
           <div>role: {sessionStore.getState().role}</div>
           <div> Logined {sessionStore.getState().token}</div>

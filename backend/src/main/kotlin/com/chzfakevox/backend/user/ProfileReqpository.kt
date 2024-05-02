@@ -1,12 +1,12 @@
 package com.chzfakevox.backend.user
 
 import com.chzfakevox.backend.util.unprocessable
+import org.jetbrains.exposed.dao.id.EntityID
 import org.springframework.stereotype.Repository
 
 
 @Repository
 class ProfileRepository {
-    companion object {
         fun updateProfile(payload: ProfileModel, id: Long): Profile {
             val prof = Profile.findById(id) ?: unprocessable("Profile not found")
             payload.name?.let { prof.name = it }
@@ -18,8 +18,12 @@ class ProfileRepository {
             return prof
         }
 
-        fun getProfile(id: Long): Profile {
-            return Profile.findById(id) ?: unprocessable("Profile not found")
+        fun getProfileByUid(id: Long): Profile? {
+            return Profile.find { ProfileTable.userId eq id }.firstOrNull()
         }
-    }
+        fun createProfile(uId: EntityID<Long>): Profile {
+            return Profile.new {
+                userId = uId
+            }
+        }
 }

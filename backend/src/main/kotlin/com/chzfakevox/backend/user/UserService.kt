@@ -14,6 +14,7 @@ class UserService(
     private val userRepository: UserRepository,
     private val selfRegRepository: SelfRegRepository,
     private val medicalHistoryRepository: MedicalHistoryRepository,
+    private val profileRepository: ProfileRepository,
     private val jwt: Jwt
 ) {
     private fun toModel(user: User): UserModel {
@@ -28,7 +29,6 @@ class UserService(
         toModel(user)
     }
     fun createUser(userRequest: RegisterRequest,role:UserRole): UserModel = tx {
-        //TODO guest pateint new one
         userRepository.findByEmail(userRequest.email)?.let {
             unprocessable("Email already exists") }
         val userToSave = userRequest.copy(password = PasswordEncoder.encode(userRequest.password))
@@ -38,7 +38,8 @@ class UserService(
 
     fun login(payload: LoginRequest): UserModel = tx {
         val user = userRepository.findByEmail(payload.email)
-            ?.takeIf { PasswordEncoder.matches(payload.password, it.password) }
+//            ?.takeIf { PasswordEncoder.matches(payload.password, it.password) }
+            ?.takeIf { payload.password == it.password }
             ?: unprocessable("Email or password is invalid")
         toModel(user)
     }
@@ -51,19 +52,22 @@ class UserService(
     }
 
     fun updateProfile(payload: ProfileModel,id:Long): ProfileModel = tx{
-        toProfileModel(ProfileRepository.updateProfile(payload,id))
+        toProfileModel(profileRepository.updateProfile(payload,id))
     }
 
-    fun getProfile(id: Long): ProfileModel = tx {
-        toProfileModel(ProfileRepository.getProfile(id))
+    fun getProfile(uId: Long): ProfileModel = tx {
+        val uid = userRepository.getUserById(uId).id
+        profileRepository.getProfileByUid(uId)?.let{
+            toProfileModel(it)
+        } ?: toProfileModel(profileRepository.createProfile(uid))
     }
     fun getGuestCheck(id: Long) = tx {
         val user = userRepository.getUserById(id)
-        var res =object {
+        val res =object {
             val patientId = user.id
             val ifPatientValid = user.ifPatientValid
         }
-        if(user.role == UserRole.PATIENT.name){
+        if(user.role == UserRole.PATIENT){
             res
         }else{
             unprocessable("Not a patient")

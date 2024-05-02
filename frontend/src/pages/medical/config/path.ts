@@ -8,9 +8,9 @@ export const pathKeys = {
     apiGetGpss() { return apiPrefix('/gpss') },
     apiGetSlots() { return apiPrefix('/slots') },
 
-    apiHistory(){
-    return apiPrefix('/medical-history');
-},
+    apiHistory() {
+        return apiPrefix('/medical-history');
+    },
     patient: {
         root() {
             return pathKeys.root.concat('patient/');
@@ -116,7 +116,7 @@ export const pathKeys = {
         apiUpdateTestById(testId: string) {
             return apiPrefix(pathKeys.test.root().concat('/' + testId));
         },
-        apiGetTestByAppointmentId(appointmentId:string){
+        apiGetTestByAppointmentId(appointmentId: string) {
             return apiPrefix(pathKeys.root.concat('test?appointmentId=' + appointmentId));
         }
     },
@@ -127,7 +127,7 @@ export const pathKeys = {
         apiAddPrescription() {
             return apiPrefix(pathKeys.prescription.root())
         },
-        apiViewPrescriptionById(appointmentId:string){
+        apiViewPrescriptionById(appointmentId: string) {
             return apiPrefix(pathKeys.root.concat('prescription?appointmentId=' + appointmentId));
         }
     },
@@ -140,7 +140,8 @@ export function apiPrefix(input: string) {
     if (import.meta.env.PROD) {
         return 'https://api.chzfakevox.com/api'.concat(input);
     } else {
-        return 'http://localhost:3001/api'.concat(input);
+        // return 'http://localhost:3001/api'.concat(input);
+        return 'http://localhost:8080'.concat(input);
     }
 }
 

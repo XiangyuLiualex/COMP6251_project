@@ -10,7 +10,7 @@ object UserTable : BaseIdTable<Long>("user_account"){
     override val primaryKey = PrimaryKey(id)
     val email = varchar("email", 255).uniqueIndex()
     val password = varchar("password", 255)
-    val role = varchar("role", 255)
+    val role = enumerationByName("role", 20, UserRole::class)
     val ifPatientValid = bool("if_patient_valid").default(false)
 }
 enum class UserRole{

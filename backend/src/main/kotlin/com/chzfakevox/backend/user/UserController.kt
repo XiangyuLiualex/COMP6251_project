@@ -44,10 +44,10 @@ class UserRouterConfiguration {
             val model = service.updateProfile(payload,id)
             ok().body(model)
         }
-        GET("/profile/{id}"){
+        GET("/profile"){
             // todo only update id= tokenId
-            val id = it.pathVariable("id").toLong()
-            val model = service.getProfile(id)
+            val uId = it.param("userId").orElse("0").toLong()
+            val model = service.getProfile(uId)
             ok().body(model)
         }
         POST("/profile"){
