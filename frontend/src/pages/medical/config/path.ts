@@ -8,9 +8,9 @@ export const pathKeys = {
     apiGetGpss() { return apiPrefix('/gpss') },
     apiGetSlots() { return apiPrefix('/slots') },
 
-    apiHistory(){
-    return apiPrefix('/medical-history');
-},
+    apiHistory() {
+        return apiPrefix('/medical-history');
+    },
     patient: {
         root() {
             return pathKeys.root.concat('patient/');
@@ -72,7 +72,7 @@ export const pathKeys = {
             return pathKeys.root.concat('slots/');
         },
         apiUpdateSlotById(sid: string) {
-            return apiPrefix(pathKeys.slots.root().concat("/" + sid));
+            return apiPrefix(pathKeys.slots.root().concat(sid));
         }
     },
     appointment: {
@@ -80,13 +80,13 @@ export const pathKeys = {
             return pathKeys.root.concat('appointment/');
         },
         apiAddAppointment() {
-            return apiPrefix(pathKeys.appointment.root());
+            return apiPrefix("/appointment");
         },
         apiGetAppointmentById(gpid: string) {
             return apiPrefix(pathKeys.root.concat('appointment?gpId=' + gpid));
         },
         apiUpdateAppointmentById(appointmentId: string) {
-            return apiPrefix(pathKeys.appointment.root().concat('/' + appointmentId));
+            return apiPrefix(pathKeys.appointment.root().concat(appointmentId));
         },
         apiGetAppointmentByIdAndDate(gpid: string, date: string) {
             return apiPrefix(pathKeys.root.concat('appointment?date=' + date + '&gpId=' + gpid));
@@ -113,10 +113,13 @@ export const pathKeys = {
         apiAddTest() {
             return apiPrefix(pathKeys.test.root())
         },
-        apiUpdateTestById(testId: string) {
-            return apiPrefix(pathKeys.test.root().concat('/' + testId));
+        apiGetTestById(patientId: string) {
+            return apiPrefix('/test?patientId=' + patientId);
         },
-        apiGetTestByAppointmentId(appointmentId:string){
+        apiUpdateTestById(testId: string) {
+            return apiPrefix(pathKeys.test.root().concat(testId));
+        },
+        apiGetTestByAppointmentId(appointmentId: string) {
             return apiPrefix(pathKeys.root.concat('test?appointmentId=' + appointmentId));
         }
     },
@@ -127,7 +130,7 @@ export const pathKeys = {
         apiAddPrescription() {
             return apiPrefix(pathKeys.prescription.root())
         },
-        apiViewPrescriptionById(appointmentId:string){
+        apiViewPrescriptionById(appointmentId: string) {
             return apiPrefix(pathKeys.root.concat('prescription?appointmentId=' + appointmentId));
         }
     },
@@ -140,7 +143,9 @@ export function apiPrefix(input: string) {
     if (import.meta.env.PROD) {
         return 'https://api.chzfakevox.com/api'.concat(input);
     } else {
-        return 'http://localhost:3001/api'.concat(input);
+        // return 'http://localhost:3001/api'.concat(input);
+        // return 'http://localhost:8080'.concat(input);
+        return 'http://10.14.138.148:8080'.concat(input);
     }
 }
 

@@ -10,11 +10,10 @@ export function GpProfilePage() {
     const id = sessionStore.getState().uid;
     const { data, isLoading, isError, refetch } = useProfileQuery(id);
     const patchMutate = useUpdateProfileMutation("PATCH");
-    const postMutate = useUpdateProfileMutation("POST");
     // const [shouldRefetch, setShouldRefetch] = React.useState(false);
 
     // 使用 useEffect 来观察 isSuccess 的变化，而不是在渲染逻辑中直接进行条件判断
-   
+
 
     if (isLoading) {
         return <div>Loading...</div>; // 或其他加载指示器
@@ -23,8 +22,8 @@ export function GpProfilePage() {
         return <div>Error: {isError.message}</div>; // 显示错误信息
     }
 
-    const profile = data[0] === undefined ? {} : data[0];
-    const mutateProfile = data[0] === undefined ? postMutate : patchMutate;
+    const profile = data
+    const mutateProfile = patchMutate;
 
     if (mutateProfile.isSuccess) {
         refetch();

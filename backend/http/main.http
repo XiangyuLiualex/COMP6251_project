@@ -22,7 +22,63 @@ POST {{baseURL}}/login HTTP/1.1
 Content-Type: application/json
 
 {
-  "password": "patient",
-  "email": "email1"
+  "email": "GP1@email.com",
+  "password": "generalP1"
+}
+### without formdata item id
+# @name createSelfRegForm
+POST {{baseURL}}/patient/self-reg
+Content-Type: application/json
+
+{
+  "patientId": 2,
+  "createDateTimeString": "Tue Apr 30 2024",
+  "formData": [
+    {
+      "disease": "Heart Attack",
+      "diseasedetails": "cfqav",
+      "diagnosedDate": "2024-04-09T23:00:00.000Z",
+      "patientId": 2
+    },
+    {
+      "disease": "Cancer",
+      "diseasedetails": "feqfq",
+      "diagnosedDate": "2024-04-15T23:00:00.000Z",
+      "patientId": 2
+    },
+    {
+      "disease": "Epilepsy",
+      "diseasedetails": "wfq",
+      "diagnosedDate": "2024-04-08T23:00:00.000Z",
+      "patientId": 2
+    }
+  ],
+  "status": "created",
+  "createdAt": 1714495520496,
+  "id": 4
 }
 ###
+# @name approve
+PATCH {{baseURL}}/admin/approve/2
+Content-Type: application/json
+
+{
+  "status": "approved"
+}
+###
+# @name getAllSelfRegForms
+GET {{baseURL}}/admin/approvals
+###
+# @name getProfile
+GET {{baseURL}}/profile?userId=1
+###
+# @name updateProfile
+PATCH {{baseURL}}/profile/2
+Content-Type: application/json
+
+{
+  "name": "newName",
+  "phone": "111111111"
+}
+
+

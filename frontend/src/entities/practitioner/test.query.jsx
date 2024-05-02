@@ -6,17 +6,17 @@ import { pathKeys } from "../../pages/medical/config/path";
 
 
 
-const addTestRequest = async (patientId,appointmentId,name,date,time,description) => {
+const addTestRequest = async (patientId, appointmentId, name, date, time, description) => {
   const response = await axios.post(pathKeys.test.apiAddTest(), {
     patientId,
-    testerId:"",
+    testerId: "",
     appointmentId,
     name,
     date,
     time,
     description,
-    status:"undo",
-    result:""
+    status: "undo",
+    result: ""
   }, {
     headers: {
       'Content-Type': 'application/json'
@@ -28,7 +28,7 @@ const addTestRequest = async (patientId,appointmentId,name,date,time,description
 export const useAddTestMutation = () => {
   const { enqueueSnackbar } = useSnackbar();
   return useMutation({
-    mutationFn: (data) => addTestRequest(data.patientId,data.appointmentId,data.name,data.date,data.time,data.description),
+    mutationFn: (data) => addTestRequest(data.patientId, data.appointmentId, data.name, data.date, data.time, data.description),
     onSuccess: (data) => {
       enqueueSnackbar('Test add successfully!', { variant: 'success', autoHideDuration: 2000 });
       console.log('Test add successfully:', data);
@@ -45,15 +45,26 @@ export function useTestQuery() {
   return useQuery({
     queryKey: ["test"],
     queryFn: async () => {
-      var response = await axios(pathKeys.test.apiAddTest() );
+      var response = await axios(pathKeys.test.apiAddTest());
+      return response.data;
+    },
+  });
+}
+export function useGetTestQuery(userId) {
+  return useQuery({
+    queryKey: ["test", userId],
+    queryFn: async () => {
+      var response = await axios(pathKeys.test.apiGetTestById(userId));
       return response.data;
     },
   });
 }
 
+
+
 export function useTestByAppointmentQuery(appointmentId) {
   return useQuery({
-    queryKey: ["test",appointmentId],
+    queryKey: ["test", appointmentId],
     queryFn: async () => {
       var response = await axios(pathKeys.test.apiGetTestByAppointmentId(appointmentId));
       return response.data;
@@ -63,7 +74,7 @@ export function useTestByAppointmentQuery(appointmentId) {
 
 
 
-const updateTestRequest = async (testId,testerId,result) => {
+const updateTestRequest = async (testId, testerId, result) => {
   const response = await axios.patch(pathKeys.test.apiUpdateTestById(testId), {
     testerId,
     result
@@ -94,7 +105,7 @@ export const useUpdateTestMutation = () => {
 
 const doneTestRequest = async (testId) => {
   const response = await axios.patch(pathKeys.test.apiUpdateTestById(testId), {
-    status:"done"
+    status: "done"
   }, {
     headers: {
       'Content-Type': 'application/json'

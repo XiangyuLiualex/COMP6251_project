@@ -3,7 +3,7 @@ import { sessionStore } from "../../../../entities/session";
 // import useUpdateSlotMutation from "../../../../entities/patient/appointment.query";
 import Stack from '@mui/material/Stack';
 import useUpdateSlotMutation, { useAppointmentQuery, useSubmitAppointmentMutation } from "../../../../entities/patient/appointment.query";
-import { Table,TextField, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle ,TableHead, TableBody, TableCell, TableRow, Button, Paper, Typography,Container,CardActions, Box,Grid, Card, CardContent,Collapse} from '@mui/material';
+import { Table, TextField, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, TableHead, TableBody, TableCell, TableRow, Button, Paper, Typography, Container, CardActions, Box, Grid, Card, CardContent, Collapse } from '@mui/material';
 import { ViewProfile } from "../../general/generalProfile.ui";
 import CallIcon from '@mui/icons-material/Call';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
@@ -14,7 +14,7 @@ export function DoubleConfirm({ gpName, date, time, reason, slotId, patientId, g
 
   const handleOnSubmit = async () => {
     try {
-      onUpdateSlot(slotId, patientId);
+      // onUpdateSlot(slotId, patientId);
       await onSubmitAppointment(patientId, gpId, slotId, gpName, time, date, reason);
       setOpen(true);
     } catch (error) {
@@ -61,7 +61,7 @@ export function DoubleConfirm({ gpName, date, time, reason, slotId, patientId, g
 function ConfirmBox({ gpSelect, slotSelect, reasonText, onSubmit, onReasonText }) {
   return (
     <Box sx={{ maxWidth: 600, mx: 'auto', mt: 5, p: 3, boxShadow: 3, borderRadius: 2, bgcolor: 'background.paper' }}>
-      <Typography variant="h6" sx={{ mt: 2, mb: 1 , fontWeight: 'bold'}}>
+      <Typography variant="h6" sx={{ mt: 2, mb: 1, fontWeight: 'bold' }}>
         You have selected an appointment with:
       </Typography>
       <Typography variant="subtitle1" sx={{ mb: 2 }}>
@@ -75,7 +75,7 @@ function ConfirmBox({ gpSelect, slotSelect, reasonText, onSubmit, onReasonText }
         {slotSelect.date} at {slotSelect.time}
       </Typography>
 
-      <Typography variant="h6" sx={{ mt: 2, mb: 2 ,fontWeight: 'bold'}}>
+      <Typography variant="h6" sx={{ mt: 2, mb: 2, fontWeight: 'bold' }}>
         What is the reason for this appointment?
       </Typography>
       <TextField
@@ -199,12 +199,12 @@ function GPBox({ onGpSelect, gp }) {
           </Typography>
         </CardContent>
         <CardActions sx={{ flexDirection: 'column', alignItems: 'center', gap: 1, padding: 2 }}>
-        <ViewProfile patientId={gp.id} ifReadOnly={true} />
-        <br/>
+          <ViewProfile patientId={gp.id} ifReadOnly={true} />
+          <br />
           <Button size="small" variant="contained" color="primary" onClick={() => onGpSelect(gp)}>
             Book Online
           </Button>
-          <Button size="small" variant="outlined" onClick={togglePhone} startIcon={<CallIcon/>}>
+          <Button size="small" variant="outlined" onClick={togglePhone} startIcon={<CallIcon />}>
             Consult By Call
           </Button>
           <Collapse in={showPhone}>
@@ -214,7 +214,7 @@ function GPBox({ onGpSelect, gp }) {
               </Typography>
             </Paper>
           </Collapse>
-          
+
         </CardActions>
       </Card>
     </Grid>
@@ -226,7 +226,7 @@ function GPBox({ onGpSelect, gp }) {
 
 function GPSBox({ onGpSelect, gps, type }) {
   const rows = gps.filter(gp => (type === "healthComplaint" ? gp.yearsInPractice <= 3 : gp.yearsInPractice > 3))
-                  .map(gp => <GPBox onGpSelect={onGpSelect} gp={gp} key={gp.id} />);
+    .map(gp => <GPBox onGpSelect={onGpSelect} gp={gp} key={gp.id} />);
 
   return (
     <Box sx={{ padding: 3 }}>
@@ -248,8 +248,8 @@ function InitialBox({ onTypeSelect }) {
         <Typography variant="h5" component="h2" gutterBottom> {/* Styled heading */}
           Please choose your appointment type:
         </Typography>
-        <br/>
-   
+        <br />
+
         <Stack spacing={2} direction="row" justifyContent="center"> {/* Centered buttons with spacing */}
           <Button variant="contained" color="primary" onClick={() => onTypeSelect("illness")}>
             Illness
@@ -272,14 +272,14 @@ export function AppointmentPage() {
   const [reasonText, setReasonText] = useState("");
   const { mutate: mutateSlot, isLoad, isError, isSuccess } = useUpdateSlotMutation();
   const { mutate: mutateAppointment } = useSubmitAppointmentMutation();
-  const { data, isLoading, error ,refetch} = useAppointmentQuery()
+  const { data, isLoading, error, refetch } = useAppointmentQuery()
 
 
 
 
   if (error) return <h4>Error:{error.message}, retry again</h4>;
   if (isLoading) return <h4>...Loading data</h4>;
-  // console.log(data);
+  console.log(data);
   const GPS = data;
 
   const handleUpdateSlot = (sId, pId) => {
@@ -287,7 +287,7 @@ export function AppointmentPage() {
     mutateSlot({
       slotId: sId,
       bookedByPID: pId,
-      status:"hold"
+      status: "hold"
     });
   };
   const handleSubmitAppointment = (patientId, gpId, slotId, gpName, time, date, reason) => {
@@ -323,9 +323,9 @@ export function AppointmentPage() {
     setReasonText(event.target.value);
   };
   const onResetTo = (position) => {
-    
+
     setCurrentBox(position);
-    if(position==="Initial"){
+    if (position === "Initial") {
       refetch();
     }
     // Reset other relevant states as needed
@@ -361,7 +361,7 @@ export function AppointmentPage() {
         <div>
           <Box display="flex" justifyContent="space-between" alignItems="center">
             <h1>Appointment Page</h1>
-            <Button variant="contained" onClick={() => onResetTo("Initial")} startIcon={<ArrowBackIosIcon/>}>
+            <Button variant="contained" onClick={() => onResetTo("Initial")} startIcon={<ArrowBackIosIcon />}>
               Back
             </Button>
           </Box>
@@ -373,8 +373,8 @@ export function AppointmentPage() {
         <div>
           <Box display="flex" justifyContent="space-between" alignItems="center">
             <h1>Appointment Page</h1>
-            
-            <Button variant="contained" onClick={() => onResetTo("GPS")} startIcon={<ArrowBackIosIcon/>}>
+
+            <Button variant="contained" onClick={() => onResetTo("GPS")} startIcon={<ArrowBackIosIcon />}>
               Back
             </Button>
           </Box>
@@ -390,7 +390,7 @@ export function AppointmentPage() {
         <div>
           <Box display="flex" justifyContent="space-between" alignItems="center">
             <h1>Appointment Page</h1>
-            <Button variant="contained" onClick={() => onResetTo("schedule")} startIcon={<ArrowBackIosIcon/>}>
+            <Button variant="contained" onClick={() => onResetTo("schedule")} startIcon={<ArrowBackIosIcon />}>
               Back
             </Button>
           </Box>
@@ -408,7 +408,7 @@ export function AppointmentPage() {
         <div>
           <Box display="flex" justifyContent="space-between" alignItems="center">
             <h1>Appointment Page</h1>
-            <Button variant="contained" onClick={() => onResetTo("confirm")} startIcon={<ArrowBackIosIcon/>}>
+            <Button variant="contained" onClick={() => onResetTo("confirm")} startIcon={<ArrowBackIosIcon />}>
               Back
             </Button>
           </Box>

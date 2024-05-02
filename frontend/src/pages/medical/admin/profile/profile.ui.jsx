@@ -19,8 +19,8 @@ export function AdminProfilePage() {
         return <div>Error: {isError.message}</div>; // 显示错误信息
     }
 
-    const profile = data[0] === undefined ? {} : data[0];
-    const mutateProfile = data[0] === undefined ? postMutate : patchMutate;
+    const profile = data;
+    const mutateProfile = patchMutate;
 
     if (mutateProfile.isSuccess) {
         refetch();

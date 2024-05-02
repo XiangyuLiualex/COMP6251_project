@@ -5,6 +5,8 @@ plugins {
     id("io.spring.dependency-management") version "1.1.4"
     kotlin("jvm") version "1.9.23"
     kotlin("plugin.spring") version "1.9.23"
+    kotlin("plugin.serialization") version "1.5.31"
+
 }
 
 group = "com.chzfakevox"
@@ -30,6 +32,7 @@ dependencies {
 
     implementation("com.auth0:java-jwt:4.4.0")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.16.1")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.2")
 }
 
 tasks.withType<KotlinCompile> {

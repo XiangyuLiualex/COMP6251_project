@@ -23,7 +23,7 @@ const updateSlotRequest = async (slotId, bookedByPID, status) => {
 const useUpdateSlotMutation = () => {
   const { enqueueSnackbar } = useSnackbar();
   return useMutation({
-    mutationFn: (data) => updateSlotRequest(data.slotId, data.bookedByPID,data.status),
+    mutationFn: (data) => updateSlotRequest(data.slotId, data.bookedByPID, data.status),
     onSuccess: (data) => {
       // 成功回调函数
       enqueueSnackbar('Slot updated successfully!', { variant: 'success', autoHideDuration: 2000 });
@@ -42,7 +42,7 @@ const useUpdateSlotMutation = () => {
 // for submit appointment
 const submitAppointmentRequest = async (patientId, gpId, slotId, gpName, time, date, reason) => {
   // console.log("Submitting url with :", { patientId, gpId, slotId, gpName, time, date, reason });
-  console.log("send appointment message to "+pathKeys.appointment.apiAddAppointment());
+  console.log("send appointment message to " + pathKeys.appointment.apiAddAppointment());
   //`${baseURL}/appointment/`
   const response = await axios.post(pathKeys.appointment.apiAddAppointment(), {
     patientId,
@@ -52,7 +52,7 @@ const submitAppointmentRequest = async (patientId, gpId, slotId, gpName, time, d
     time,
     date,
     reason,
-    "status": "before Approve"
+    "status": "beforeApprove"
   }, {
     headers: {
       'Content-Type': 'application/json'
@@ -92,6 +92,8 @@ export function useAppointmentQuery() {
       // var slots = await axios("http://localhost:3001/slots")
 
       var response = gpss.data.map(gp => {
+        console.log("gp:", gp);
+        console.log("slots:", slots.data)
         const gpSlots = slots.data.filter(slot => slot.gpId === gp.id);
         return {
           ...gp,

@@ -1,0 +1,59 @@
+package com.chzfakevox.backend.medical
+
+import org.jetbrains.exposed.dao.id.EntityID
+import org.springframework.stereotype.Repository
+import java.time.LocalDate
+
+@Repository
+class MedicalRepository {
+    fun createPrescription(inGpId :EntityID<Long>,inPatientID: EntityID<Long>,inAppoId:EntityID<Long>,payload: PrescriptionModel) : Prescription {
+        return Prescription.new {
+            gpId = inGpId
+            patientId = inPatientID
+            appointmentId = inAppoId
+            medicationInstruction = payload.medicationInstruction
+            medicationName = payload.medicationName
+            quantity = payload.quantity
+        }
+    }
+
+    fun getPrescriptionByAppointmentId(aId: Long): List<Prescription> {
+        return Prescription.find { PrescriptionTable.appointmentId eq aId }.toList()
+    }
+
+    fun createTest(pId:EntityID<Long>,tId:EntityID<Long>,
+                   aId:EntityID<Long>,payload: MedicalTestModel): MedicalTest {
+        return MedicalTest.new {
+            patientId = pId
+            testerId  = tId
+            appointmentId = aId
+            name = payload.name
+            date = LocalDate.parse(payload.date)
+            time = payload.time
+            description = payload.description
+            result = payload.result
+            status = payload.status
+        }
+    }
+
+    fun getAllTests(): List<MedicalTest> {
+        return MedicalTest.all().toList()
+    }
+
+    fun getTestByPatientId(pId: Long): List<MedicalTest> {
+        return MedicalTest.find { MedicalTestTable.patientId eq pId }.toList()
+    }
+    fun updateTest(tId: Long, payload: MedicalTestUpdateModel): MedicalTest {
+        val test = MedicalTest[tId]
+        payload.name?.let { test.name = it }
+        payload.date?.let { test.date = LocalDate.parse(it) }
+        payload.time?.let { test.time = it }
+        payload.description?.let { test.description = it }
+        payload.result?.let { test.result = it }
+        payload.status?.let { test.status = it }
+
+        return test
+    }
+
+
+}

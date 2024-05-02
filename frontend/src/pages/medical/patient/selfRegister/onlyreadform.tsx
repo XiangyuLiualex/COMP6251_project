@@ -29,9 +29,9 @@ import {
 import { FormEvent } from 'react';
 import { SelfRegisterData_forSubmit, useSelfRegisterFormMutation } from '../../../../entities/patient/patient.query';
 import { Role } from '../../../../entities/session/session.types';
-import {forEach} from "json-server-auth";
-import {sessionStore} from "../../../../entities/session";
-import {useMedicalHistoryMutation} from "../../../../entities/patient/submitHistory.query.ts";
+import { forEach } from "json-server-auth";
+import { sessionStore } from "../../../../entities/session";
+import { useMedicalHistoryMutation } from "../../../../entities/patient/submitHistory.query.ts";
 
 
 const initialRows: GridRowsProp = [
@@ -60,13 +60,13 @@ function EditToolbar(props: EditToolbarProps) {
         }));
     };
 
-   /* return (
-        <GridToolbarContainer>
-            <Button color="primary" startIcon={<AddIcon />} onClick={handleClick}>
-                Add record
-            </Button>
-        </GridToolbarContainer>
-    );*/
+    /* return (
+         <GridToolbarContainer>
+             <Button color="primary" startIcon={<AddIcon />} onClick={handleClick}>
+                 Add record
+             </Button>
+         </GridToolbarContainer>
+     );*/
 }
 
 
@@ -87,32 +87,33 @@ export default function PartFullFeaturedCrudGrid(config: selfRegisterConfig) {
             row.age = Number(row.age)
             row.joinDate = new Date(row.joinDate)
             row.diagnosedDate = new Date(row.diagnosedDate)
+            row.id = randomId();
         });
         return res;
     }
     const theRows = config.data === null ? initialRows : parseStringToForm(config.data);
 
     const { mutate } = useSelfRegisterFormMutation();
-   /* const ifNotSelfReg = config.role === 'patient' ? true : false;
-    // TODO extend to a dynamic form
-    function parseStringToForm(stringForm: selfRegiForm) {
-        // todo dynamic change
-        const res = stringForm;
-        res.forEach(row => {
-            row.age = Number(row.age)
-            row.joinDate = new Date(row.joinDate)
-            row.diagnosedDate = new Date(row.diagnosedDate)
-        });
-        return res;
-    }
-    const theRows = config.data === null ? initialRows : parseStringToForm(config.data);
-
-    const selfRegMutate = useSelfRegisterFormMutation();
-    const historyMutate = useMedicalHistoryMutation();
-
-    //const mutate = ifNotSelfReg ? historyMutate.mutate : selfRegMutate.mutate;
-    // 这里是确定使用哪个 mutate 函数的逻辑
-    const mutate = config.role === 'patient' ? selfRegMutate.mutate : historyMutate.mutate;*/
+    /* const ifNotSelfReg = config.role === 'patient' ? true : false;
+     // TODO extend to a dynamic form
+     function parseStringToForm(stringForm: selfRegiForm) {
+         // todo dynamic change
+         const res = stringForm;
+         res.forEach(row => {
+             row.age = Number(row.age)
+             row.joinDate = new Date(row.joinDate)
+             row.diagnosedDate = new Date(row.diagnosedDate)
+         });
+         return res;
+     }
+     const theRows = config.data === null ? initialRows : parseStringToForm(config.data);
+ 
+     const selfRegMutate = useSelfRegisterFormMutation();
+     const historyMutate = useMedicalHistoryMutation();
+ 
+     //const mutate = ifNotSelfReg ? historyMutate.mutate : selfRegMutate.mutate;
+     // 这里是确定使用哪个 mutate 函数的逻辑
+     const mutate = config.role === 'patient' ? selfRegMutate.mutate : historyMutate.mutate;*/
 
 
     function handleSubmit(event: FormEvent<HTMLFormElement>): void {
@@ -181,28 +182,28 @@ export default function PartFullFeaturedCrudGrid(config: selfRegisterConfig) {
 
     const columns: GridColDef[] = [
         /*{ field: 'name', headerName: 'Name', width: 180, editable: false,},*/
-/*        {
-            field: 'patientid',
-            headerName: 'PatientId',
-            type: 'number',
-            width: 80,
-            align: 'left',
-            headerAlign: 'left',
-            editable: true,
-           /!*hide:true,
-            disableColumnMenu:true,
-            disableReorder: true,*!/
-            //hideable:true,
-        },*/
-       /* {
-            field: 'age',
-            headerName: 'Age',
-            type: 'number',
-            width: 80,
-            align: 'left',
-            headerAlign: 'left',
-            editable: false,
-        },*/
+        /*        {
+                    field: 'patientid',
+                    headerName: 'PatientId',
+                    type: 'number',
+                    width: 80,
+                    align: 'left',
+                    headerAlign: 'left',
+                    editable: true,
+                   /!*hide:true,
+                    disableColumnMenu:true,
+                    disableReorder: true,*!/
+                    //hideable:true,
+                },*/
+        /* {
+             field: 'age',
+             headerName: 'Age',
+             type: 'number',
+             width: 80,
+             align: 'left',
+             headerAlign: 'left',
+             editable: false,
+         },*/
         /*{
             field: 'joinDate',
             headerName: 'Join date',
@@ -224,7 +225,7 @@ export default function PartFullFeaturedCrudGrid(config: selfRegisterConfig) {
             width: 220,
             editable: false,
             type: 'singleSelect',
-            valueOptions: ['None','Asthma', 'Diabetes', 'Epilepsy','Heart Attack','Raised Blood Pressure','Cancer','Heart Failure','Bipolar Disorder','Dementia','Others'],
+            valueOptions: ['None', 'Asthma', 'Diabetes', 'Epilepsy', 'Heart Attack', 'Raised Blood Pressure', 'Cancer', 'Heart Failure', 'Bipolar Disorder', 'Dementia', 'Others'],
         },
         {
             field: 'diseasedetails',
