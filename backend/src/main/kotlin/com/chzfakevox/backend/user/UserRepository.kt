@@ -1,5 +1,7 @@
 package com.chzfakevox.backend.user
 
+import com.chzfakevox.backend.appointment.GP
+import com.chzfakevox.backend.appointment.gpExtension
 import org.springframework.stereotype.Repository
 
 
@@ -24,5 +26,9 @@ class UserRepository {
 
     fun findByEmail(email: String): User? {
         return User.find { UserTable.email eq email }.firstOrNull()
+    }
+
+    fun getGpextByUserId(id: Long): GP? {
+        return GP.find { gpExtension.gpId eq id }.firstOrNull()
     }
 }

@@ -13,6 +13,7 @@ object ProfileTable : BaseIdTable<Long>("user_profile"){
     val name = varchar("name", 255).nullable()
     val gender = varchar("gender", 255).nullable()
     val phone = varchar("phone", 255).nullable()
+    val medicationName = varchar("medication_name", 255).nullable()
     val birthday = date("birth_date").nullable()
     val profession = varchar("profession",255).nullable()
     val aboutMe = varchar("about_me",255).nullable()

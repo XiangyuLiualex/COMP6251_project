@@ -11,9 +11,10 @@ object UserTable : BaseIdTable<Long>("user_account"){
     val email = varchar("email", 255).uniqueIndex()
     val password = varchar("password", 255)
     val role = varchar("role", 255)
+    val ifPatientValid = bool("if_patient_valid").default(false)
 }
 enum class UserRole{
-    PATIENT, DOCTOR, ADMIN
+    PATIENT, GP, ADMIN
 }
 class User(id: EntityID<Long>) : BaseEntity<Long>(id, UserTable) {
     companion object : BaseEntityClass<Long, User>(UserTable)
@@ -21,5 +22,6 @@ class User(id: EntityID<Long>) : BaseEntity<Long>(id, UserTable) {
     var email by UserTable.email
     var password by UserTable.password
     var role by UserTable.role
+    var ifPatientValid by UserTable.ifPatientValid
 }
 

@@ -57,5 +57,18 @@ class UserService(
     fun getProfile(id: Long): ProfileModel = tx {
         toProfileModel(ProfileRepository.getProfile(id))
     }
+    fun getGuestCheck(id: Long) = tx {
+        val user = userRepository.getUserById(id)
+        var res =object {
+            val patientId = user.id
+            val ifPatientValid = user.ifPatientValid
+        }
+        if(user.role == UserRole.PATIENT.name){
+            res
+        }else{
+            unprocessable("Not a patient")
+        }
+
+    }
 
 }

@@ -9,3 +9,66 @@ Content-Type: application/json
 {
   "status": "hold"
 }
+###
+
+# @name create appointment
+POST {{baseURL}}/appointment
+Content-Type: application/json
+
+{
+  "patientId": 1,
+  "gpId": 3,
+  "slotId": 3,
+  "gpName": "GP1",
+  "time": "8:00-9:00",
+  "date": "2024-05-05",
+  "reason": "I feel headache",
+  "status": "beforeApprove"
+}
+###
+# @name get appointment by gpID
+GET {{baseURL}}/appointment?gpId=3
+###
+#  beforeApprove Accepted
+# @name update appointment, only status
+PATCH {{baseURL}}/appointment/1
+Content-Type: application/json
+
+{
+  "slotId": 3,
+  "status": "beforeApprove"
+}
+###
+# @name update appointment, provide alternavie
+PATCH {{baseURL}}/appointment/9
+Content-Type: application/json
+
+{
+  "slotId": 5
+}
+
+###------------------------------------------------------------------------------
+# @name get appointment by patientID
+POST {{baseURL}}/medical-history
+Content-Type: application/json
+
+{
+  "patientId": 1
+}
+###
+
+# @name create prescreption
+POST {{baseURL}}/prescription
+Content-Type: application/json
+
+{
+  "patientId": 1,
+  "appointmentId": 8,
+  "medicationName": "paracetamol",
+  "medicationInstruction": "twice a day",
+  "quantity": "3"
+}
+###
+# @name get prescr by appointmentID
+GET {{baseURL}}/prescription?appointmentId=8
+###

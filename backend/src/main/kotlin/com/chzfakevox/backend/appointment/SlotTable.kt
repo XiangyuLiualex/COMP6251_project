@@ -1,4 +1,4 @@
-package com.chzfakevox.backend.medical
+package com.chzfakevox.backend.appointment
 
 import com.chzfakevox.backend.util.BaseEntity
 import com.chzfakevox.backend.util.BaseEntityClass

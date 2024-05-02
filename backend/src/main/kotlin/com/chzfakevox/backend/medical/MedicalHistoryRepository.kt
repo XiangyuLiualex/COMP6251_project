@@ -8,12 +8,12 @@ import java.time.OffsetDateTime
 
 @Repository
 class MedicalHistoryRepository {
-        fun saveBatchRecords(formData: List<MedicalRecord>) {
-            MedicalHistoryTable.batchInsert(formData){
+        fun saveBatchRecords(formData: List<MedicalRecord>) : Int {
+            return MedicalHistoryTable.batchInsert(formData){
                 this[MedicalHistoryTable.patientId] = it.patientId
                 this[MedicalHistoryTable.disease] = it.disease
                 this[MedicalHistoryTable.diseasedetails] = it.diseasedetails
                 this[MedicalHistoryTable.diagnosedDate] = OffsetDateTime.parse(it.diagnosedDate)
-            }
+            }.count()
         }
 }

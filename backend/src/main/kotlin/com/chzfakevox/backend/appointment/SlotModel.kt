@@ -1,4 +1,4 @@
-package com.chzfakevox.backend.medical
+package com.chzfakevox.backend.appointment
 
 data class SlotUpdateRequest (
     val bookedByPID: Long,

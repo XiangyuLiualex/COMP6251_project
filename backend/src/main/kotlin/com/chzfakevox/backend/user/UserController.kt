@@ -53,6 +53,11 @@ class UserRouterConfiguration {
         POST("/profile"){
             ok().body("profile should be created by default, use PATCH to update profile")
         }
+        GET("/patient/guest-check/{id}"){
+            val id = it.pathVariable("id").toLong()
+            val model = service.getGuestCheck(id)
+            ok().body(model)
+        }
 
     }
 }
