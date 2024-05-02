@@ -65,7 +65,7 @@ import React, { useRef } from 'react';
                 </header>
 
                 <div ref={descriptionRef} id="description" className="description-section">
-                    <h2>Description</h2>
+                    <h2>About Us</h2>
                     <p>The modern treatment concept ensures the healthy recovery of every patient and advocates
                         a healthy lifestyle. At G4, the primary goal of our clinic philosophy is to help patients
                         recover and to ensure their vitality through prevention and a healthy and balanced lifestyle
@@ -116,6 +116,18 @@ function Doctors() {
             specialty: "General Practitioner",
             experience: "Specializes in chronic disease management",
             image: "/images/dr-susan-lee.jpg"
+        },
+        {
+            name: "Dr. Mark Johnson",
+            specialty: "Family Physician",
+            experience: "Expert in preventative healthcare",
+            image: "/images/dr-mark-johnson.jpg"
+        },
+        {
+            name: "Dr. Mark Johnson",
+            specialty: "Family Physician",
+            experience: "Expert in preventative healthcare",
+            image: "/images/dr-mark-johnson.jpg"
         },
         {
             name: "Dr. Mark Johnson",
