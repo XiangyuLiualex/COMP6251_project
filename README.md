@@ -4,6 +4,8 @@
 - backend: api.*.com for api
 - api design!
 
+
+##TODO admin query文件里面的snackbar有问题，approve数据可能有问题
 ## plan
 
 1. patient:

@@ -322,9 +322,9 @@ export default function PartFullFeaturedCrudGrid(config: selfRegisterConfig) {
                     toolbar: { setRows, setRowModesModel },
                 }}
             />
-            <Button type="submit" variant="contained" color="primary" >
+            {/*<Button type="submit" variant="contained" color="primary" >
                 Submit
-            </Button>
+            </Button>*/}
         </Box>
     );
 }

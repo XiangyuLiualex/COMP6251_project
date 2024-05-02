@@ -32,7 +32,14 @@ import { Role } from '../../../../entities/session/session.types';
 import { forEach } from "json-server-auth";
 import { sessionStore } from "../../../../entities/session";
 import { useMedicalHistoryMutation } from '../../../../entities/patient/submitHistory.query.ts';
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert, { AlertProps }  from '@mui/material/Alert';
+import { useState , forwardRef} from 'react';
 
+
+const Alert = React.forwardRef<HTMLDivElement, AlertProps>((props, ref) => (
+    <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />
+));
 //const roles = ['Market', 'Finance', 'Development'];
 /*const randomRole = () => {
     return randomArrayItem(roles);
@@ -85,6 +92,11 @@ export type selfRegiForm = any[]
 
 export default function FullFeaturedCrudGrid(config: selfRegisterConfig) {
 
+    const [open, setOpen] = useState(false);  // 控制Snackbar显示
+    const [message, setMessage] = useState('');  // Snackbar消息
+    const [severity, setSeverity] = useState('success');  // 消息类型
+
+
     // TODO admin not allow to edit registration itself
     const ifNotSelfReg = config.role === 'patient' ? true : false;
     // TODO extend to a dynamic form
@@ -130,9 +142,23 @@ export default function FullFeaturedCrudGrid(config: selfRegisterConfig) {
             };
         }));
 
-        mutate(updatedRows)
+        //mutate(updatedRows)
+        mutate(updatedRows, {
+            onSuccess: () => {
+                setMessage('Submit successful!');
+                setSeverity('success');
+                setOpen(true);
+            },
+            onError: () => {
+                setMessage('Submit failed!');
+                setSeverity('error');
+                setOpen(true);
+            }
+        });//修改mutate加入更多信息
+
         console.log(updatedRows)//在这里加一个获取新的PatientId，怎么才能在formdata里面得到这个PatientId？现在这个patientId在formdata外面
     }
+
 
     const [rows, setRows] = React.useState(theRows);
     const [rowModesModel, setRowModesModel] = React.useState<GridRowModesModel>({});
@@ -165,6 +191,12 @@ export default function FullFeaturedCrudGrid(config: selfRegisterConfig) {
         if (editedRow!.isNew) {
             setRows(rows.filter((row) => row.id !== id));
         }
+    };
+    const handleClose = (event?: React.SyntheticEvent<any, Event> | Event, reason?: string) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+        setOpen(false);
     };
 
     const processRowUpdate = (newRow: GridRowModel) => {
@@ -323,6 +355,11 @@ export default function FullFeaturedCrudGrid(config: selfRegisterConfig) {
             <Button type="submit" variant="contained" color="primary" >
                 Submit
             </Button>
+            <Snackbar open={open} autoHideDuration={6000} onClose={handleClose} >
+                <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
+                    Submission Successful!
+                </Alert>
+            </Snackbar>
         </Box>
     );
 }

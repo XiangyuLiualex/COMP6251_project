@@ -3,9 +3,12 @@ import { useApproveSelfRegisterMutation, useGetAllApprovalsQuery } from "../../.
 import PartFullFeaturedCrudGrid from "../../patient/selfRegister/onlyreadform.tsx"
 import { Accordion, AccordionSummary, AccordionDetails, Typography, Button, Box, List, ListItem, Divider } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import * as React from "react";
+
 
 
 export function ApprovalsPage() {
+
     const { data: approvals, isLoading, error } = useGetAllApprovalsQuery();
     const { mutate } = useApproveSelfRegisterMutation();
 
@@ -15,15 +18,21 @@ export function ApprovalsPage() {
     }
 
     function handleApprove(selfRegiFormId: string): void {
+
         mutate(selfRegiFormId);
         console.log('Approve:', selfRegiFormId);
     }
 
+
+    // @ts-ignore
+    // @ts-ignore
     return (
         <div>
             <h1>Approvals Page</h1>
             {isLoading && <div>Loading...</div>}
             {error && <div>Error: {error.message}</div>}
+
+
             {approvals && (
                 <List component="nav">
                     {approvals.map((item) => (
@@ -33,7 +42,7 @@ export function ApprovalsPage() {
                                 aria-controls="panel1a-content"
                                 id="panel1a-header"
                             >
-                                <Typography>id:{item.id} status:{item.status} patient: {item.patientId} createTime:{item.createDateTimeString}</Typography>
+                                <Typography>patient: {item.patientId}  name:{item.name}  createTime:{item.createDateTimeString} status:{item.status}</Typography>
                             </AccordionSummary>
                             <AccordionDetails>
                                 <Box>
