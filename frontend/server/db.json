@@ -141,6 +141,14 @@
       "lastName": "",
       "createdAt": 1714569406529,
       "id": 25
+    },
+    {
+      "email": "try@email",
+      "password": "$2a$10$Tr8joYXhO8EclHt4b0eKuOXzvfpNAF1E2oMmL.CMAgdg2bpVCuLEK",
+      "firstName": "try",
+      "lastName": "try",
+      "createdAt": 1714657845164,
+      "id": 26
     }
   ],
   "self-reg": [
@@ -918,7 +926,7 @@
       "time": "15:00-16:00",
       "date": "2024-05-07",
       "reason": "ygfyfyf",
-      "status": "before Approve",
+      "status": "Accepted",
       "createdAt": 1714594230576,
       "id": 20
     }
