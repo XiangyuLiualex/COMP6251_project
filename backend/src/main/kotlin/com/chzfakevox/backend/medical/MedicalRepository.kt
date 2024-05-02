@@ -21,18 +21,16 @@ class MedicalRepository {
         return Prescription.find { PrescriptionTable.appointmentId eq aId }.toList()
     }
 
-    fun createTest(pId:EntityID<Long>,tId:EntityID<Long>,
+    fun createTest(pId:EntityID<Long>,
                    aId:EntityID<Long>,payload: MedicalTestModel): MedicalTest {
         return MedicalTest.new {
             patientId = pId
-            testerId  = tId
             appointmentId = aId
             name = payload.name
-            date = LocalDate.parse(payload.date)
             time = payload.time
             description = payload.description
-            result = payload.result
             status = payload.status
+            date = LocalDate.parse(payload.date)
         }
     }
 

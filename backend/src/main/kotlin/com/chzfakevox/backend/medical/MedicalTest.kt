@@ -14,13 +14,13 @@ object MedicalTestTable :BaseIdTable<Long>("medical_test") {
     override val id = long("id").autoIncrement().entityId()
     override val primaryKey = PrimaryKey(id)
     val patientId = reference("patient_id", UserTable.id)
-    val testerId = reference("tester_id", UserTable.id)
+    val testerId = reference("tester_id", UserTable.id).nullable()
     val appointmentId = reference("appointment_id",AppointmentTable.id)
     val name = varchar("name", 255)
     val date = date("date")
     val time = varchar("time", 255)
     val description = varchar("description",1000)
-    val result = varchar("result",1000)
+    val result = varchar("result",1000).nullable()
     val status = enumerationByName("status", 10, MedicalTestStatus::class)
 }
 

@@ -83,12 +83,11 @@ GET {{baseURL}}/medical-history?patientId=3
 
 
 # @name create medical tests
-POST {{baseURL}}/test
+POST {{baseURL}}/test/
 Content-Type: application/json
 
 {
   "patientId": 5,
-  "testerId": 1,
   "appointmentId": 1,
   "name": "happy test2",
   "date": "2024-08-15",
@@ -96,6 +95,22 @@ Content-Type: application/json
   "description": "11",
   "status": "undo",
   "result": ""
+}
+###
+# @name create test
+POST {{baseURL}}/test
+Content-Type: application/json
+
+{
+  "patientId":3,
+  "testerId":"",
+  "appointmentId":1,
+  "name":"2121",
+  "date":"2000-01-02",
+  "time":"2121",
+  "description":"333",
+  "status":"undo",
+  "result":""
 }
 ###
 # @name get medical tests by patientId

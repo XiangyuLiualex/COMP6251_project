@@ -26,27 +26,27 @@ data class PrescriptionModel(
 data class MedicalTestModel(
     val id: Long?,
     val patientId: Long,
-    val testerId: Long,
+    val testerId: Long?,
     val appointmentId: Long,
     val name: String,
     val date: String,
     val time: String,
     val description: String,
-    val result: String,
+    val result: String?,
     val status: MedicalTestStatus
 ){
     companion object {
         fun from(medicalTest: MedicalTest) = MedicalTestModel(
-            medicalTest.id.value,
-            medicalTest.patientId.value,
-            medicalTest.testerId.value,
-            medicalTest.appointmentId.value,
-            medicalTest.name,
-            medicalTest.date.toString(),
-            medicalTest.time,
-            medicalTest.description,
-            medicalTest.result,
-            medicalTest.status
+            id= medicalTest.id.value,
+            patientId = medicalTest.patientId.value,
+            testerId = medicalTest.testerId?.value,
+            appointmentId = medicalTest.appointmentId.value,
+            name = medicalTest.name,
+            date = medicalTest.date.toString(),
+            time = medicalTest.time,
+            description = medicalTest.description,
+            result = medicalTest.result,
+            status = medicalTest.status
         )
     }
 }

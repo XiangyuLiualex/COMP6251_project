@@ -75,7 +75,7 @@ class MedicalController {
             val model = service.createTest(payload)
             ok().body(model)
         }
-        GET("/test/"){
+        GET("/test"){
             //get all tests
             val model = service.getAllTests()
             ok().body(model)

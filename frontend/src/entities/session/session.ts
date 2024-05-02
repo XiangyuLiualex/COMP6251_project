@@ -68,10 +68,7 @@ export function useLoginMutation() {
     mutationFn: ({ email, password }) => loginRequest({ email, password }),
     onSuccess: async (data) => {
       // todo add data type validation using zod, or something else
-
-      // sessionStore.setState({ token: data.accessToken })
       // todo : when backend build change into this way
-      // sessionStore.setState({ token: data.accessToken, role: data.user.role})
       // temporary workaround
       sessionStore.setState({ token: data.token, role: data.role.toLocaleLowerCase() as Role, uid: data.id })
 

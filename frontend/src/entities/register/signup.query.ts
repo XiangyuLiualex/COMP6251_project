@@ -39,7 +39,7 @@ export function useSignUpMutation() {
     return useMutation({
         mutationFn: (signUpForm: SignUpForm) => signUpRequest(signUpForm),
         onSuccess: (data) => {
-            sessionStore.setState({ token: data.accessToken, role: "patient" });
+            sessionStore.setState({ token: data.token, role: "patient" });
             navigate("/patient");
         },
         onError: (error) => {

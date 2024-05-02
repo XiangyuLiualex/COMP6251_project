@@ -111,7 +111,7 @@ export const pathKeys = {
             return pathKeys.root.concat('test/')
         },
         apiAddTest() {
-            return apiPrefix(pathKeys.test.root())
+            return apiPrefix("/test")
         },
         apiGetTestById(patientId: string) {
             return apiPrefix('/test?patientId=' + patientId);
@@ -145,7 +145,7 @@ export function apiPrefix(input: string) {
     } else {
         // return 'http://localhost:3001/api'.concat(input);
         // return 'http://localhost:8080'.concat(input);
-        return 'http://10.14.138.148:8080'.concat(input);
+        return 'http://10.14.137.210:8080'.concat(input);
     }
 }
 

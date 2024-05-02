@@ -137,11 +137,11 @@ class MedicalService (
 
     fun createTest(payload: MedicalTestModel): MedicalTestModel = tx{
         val patient = userRepository.getUserById(payload.patientId)?: unprocessable("Patient not found")
-        val tester = userRepository.getUserById(payload.testerId)?: unprocessable("Tester not found")
         val appointment = appointmentRepository.getById(payload.appointmentId)?: unprocessable("Appointment not found")
-        MedicalTestModel.from(medicalRepository.createTest(tId = tester.id, pId = patient.id, aId = appointment.id,
+        val mt=medicalRepository.createTest(pId = patient.id, aId = appointment.id,
             payload = payload
-        ))
+        )
+        MedicalTestModel.from(mt)
     }
 
     fun getAllTests(): List<MedicalTestModel> = tx {
