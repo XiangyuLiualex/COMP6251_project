@@ -13,7 +13,7 @@ services:
       context: .
       dockerfile: Dockerfile
       args:
-        JAR_FILE: build/libs/your-app-0.0.1-SNAPSHOT.jar
+        JAR_FILE: build/libs/backend-0.0.1-SNAPSHOT.jar
     depends_on:
       - db
     ports:

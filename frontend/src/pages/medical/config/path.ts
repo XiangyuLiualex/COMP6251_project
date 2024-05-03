@@ -144,8 +144,7 @@ export function apiPrefix(input: string) {
         return 'https://api.chzfakevox.com/api'.concat(input);
     } else {
         // return 'http://localhost:3001/api'.concat(input);
-        // return 'http://localhost:8080'.concat(input);
-        return 'http://10.14.137.210:8080'.concat(input);
+        return 'http://localhost:8080'.concat(input);
     }
 }
 

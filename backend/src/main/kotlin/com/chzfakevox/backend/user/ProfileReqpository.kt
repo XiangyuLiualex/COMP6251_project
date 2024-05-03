@@ -11,7 +11,7 @@ class ProfileRepository {
             val prof = Profile.findById(id) ?: unprocessable("Profile not found")
             payload.name?.let { prof.name = it }
             payload.gender?.let{prof.gender = it}
-            payload.phone?.let{prof.phone = it}
+            payload.phoneNum?.let{prof.phone = it}
             payload.birthday?.let{prof.birthday = it}
             payload.profession?.let{prof.profession = it}
             payload.aboutMe?.let{prof.aboutMe = it}
