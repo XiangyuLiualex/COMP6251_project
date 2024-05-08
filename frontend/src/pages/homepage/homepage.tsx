@@ -6,6 +6,10 @@ import { useNavigate } from 'react-router-dom';
 import { pathKeys } from '../medical/config/path';
 import homepageImage from '../../assets/homepage.jpg';
 import React, { useRef } from 'react';
+import  gp1Image from '../../assets/gp1.jpeg';
+import  gp2Image from '../../assets/gp2.jpeg';
+import  gp3Image from '../../assets/gp3.jpeg';
+import  gp4Image from '../../assets/gp4.jpeg';
 
 
 
@@ -66,10 +70,7 @@ import React, { useRef } from 'react';
 
                 <div ref={descriptionRef} id="description" className="description-section">
                     <h2>Description</h2>
-                    <p>The modern treatment concept ensures the healthy recovery of every patient and advocates
-                        a healthy lifestyle. At G4, the primary goal of our clinic philosophy is to help patients
-                        recover and to ensure their vitality through prevention and a healthy and balanced lifestyle
-                        that includes both physical and emotional aspects.</p>
+                    <p>G4 Health Practice Pro service is a multi-function medical management platform, including appointment request, Expert Recommendation, update of medical history, e-prescription and appointment of additional testing services. The implementation of these functions is aimed at improving the efficiency of medical services and patient satisfaction while ensuring compliance with data processing.</p>
                 </div>
 
                     <a
@@ -103,31 +104,34 @@ function Doctors() {
             name: "Dr. Emily Roberts",
             specialty: "General Practitioner",
             experience: "15 years of experience in family medicine",
-            image: "/images/dr-emily-roberts.jpg"
+            image: gp1Image
         },
         {
             name: "Dr. John Smith",
-            specialty: "Family Medicine",
+            specialty: "General Practitioner",
             experience: "10 years of experience, with a focus on pediatric and adult care",
-            image: "/images/dr-john-smith.jpg"
+            image: gp2Image
         },
         {
             name: "Dr. Susan Lee",
             specialty: "General Practitioner",
             experience: "Specializes in chronic disease management",
-            image: "/images/dr-susan-lee.jpg"
+            image: gp3Image
         },
         {
             name: "Dr. Mark Johnson",
-            specialty: "Family Physician",
+            specialty: "General Practitioner",
             experience: "Expert in preventative healthcare",
-            image: "/images/dr-mark-johnson.jpg"
+            image: gp4Image
         }
     ];
 
     return (
         <div className="doctors-container">
-            {doctors.map(doctor => <DoctorCard key={doctor.name} doctor={doctor} />)}
+            <h1>Doctors Team </h1>
+            <div>
+                {doctors.map(doctor => <DoctorCard key={doctor.name} doctor={doctor}/>)}
+            </div>
         </div>
     );
 }
@@ -145,7 +149,7 @@ function Footer() {
                 <div className="footer-map">
                     <h3>realmap</h3>
                     <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d24321.234567899654!2d-0.12775849999999999!3d51.5073505!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4876035159bb13c5%3A0x40b82c3688c9460!2sLondon!5e0!3m2!1sen!2suk!4v1393884854786"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2514.3497096557294!2d-1.3992183875135678!3d50.93574535218484!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487473f58304cebf%3A0x50cabc792a027365!2sUniversity%20of%20Southampton%20Highfield%20Campus!5e0!3m2!1szh-CN!2suk!4v1715172476008!5m2!1szh-CN!2suk"
                         width="600"
                         height="450"
                         style={{border: 0}}

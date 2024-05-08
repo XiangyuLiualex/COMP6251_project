@@ -133,22 +133,6 @@
       "lastName": "x",
       "role": "patient",
       "id": 24
-    },
-    {
-      "email": "1@email.com",
-      "password": "$2a$10$YhLId8xK87M.fAEJ4XPNK.4BVw7nXrtClPc9VJvjAfLJNrjglWT7e",
-      "firstName": "",
-      "lastName": "",
-      "createdAt": 1714569406529,
-      "id": 25
-    },
-    {
-      "email": "try@email",
-      "password": "$2a$10$Tr8joYXhO8EclHt4b0eKuOXzvfpNAF1E2oMmL.CMAgdg2bpVCuLEK",
-      "firstName": "try",
-      "lastName": "try",
-      "createdAt": 1714657845164,
-      "id": 26
     }
   ],
   "self-reg": [
@@ -292,120 +276,6 @@
       "status": "created",
       "createdAt": 1714514474647,
       "id": 9
-    },
-    {
-      "patientId": 5,
-      "createDateTimeString": "Wed May 01 2024",
-      "formData": [
-        {
-          "id": "bee2b5f5-d95d-51ac-b0ba-ef5d5bea8583",
-          "patientId": 5
-        }
-      ],
-      "status": "created",
-      "createdAt": 1714573247650,
-      "id": 10
-    },
-    {
-      "patientId": 5,
-      "createDateTimeString": "Wed May 01 2024",
-      "formData": [
-        {
-          "id": "1b768cc1-96b9-5d68-81d1-2bd7c4dd35bf",
-          "disease": "Raised Blood Pressure",
-          "diseasedetails": "SnackBarTest",
-          "diagnosedDate": "2024-04-30T23:00:00.000Z",
-          "patientId": 5
-        }
-      ],
-      "status": "created",
-      "createdAt": 1714573260745,
-      "id": 11
-    },
-    {
-      "patientId": 7,
-      "createDateTimeString": "Wed May 01 2024",
-      "formData": [
-        {
-          "id": "692fc947-8132-54f0-84e7-e701e1e73762",
-          "disease": "Raised Blood Pressure",
-          "diseasedetails": "SnackBarTest",
-          "diagnosedDate": "2024-04-30T23:00:00.000Z",
-          "patientId": 7,
-          "age": null,
-          "joinDate": null
-        }
-      ],
-      "status": "created",
-      "createdAt": 1714574008195,
-      "id": 12
-    },
-    {
-      "patientId": 7,
-      "createDateTimeString": "Wed May 01 2024",
-      "formData": [
-        {
-          "id": "6a3dc931-f696-510e-8ef1-eeab5c731448",
-          "disease": "Raised Blood Pressure",
-          "diseasedetails": "SnackBarTest",
-          "diagnosedDate": "2024-04-30T23:00:00.000Z",
-          "patientId": 7,
-          "age": null,
-          "joinDate": null
-        }
-      ],
-      "status": "created",
-      "createdAt": 1714574011904,
-      "id": 13
-    },
-    {
-      "patientId": 7,
-      "createDateTimeString": "Wed May 01 2024",
-      "formData": [
-        {
-          "id": "c44c9a64-c681-5609-927a-3d5fdb899fe8",
-          "disease": "Raised Blood Pressure",
-          "diseasedetails": "SnackBarTest",
-          "diagnosedDate": "2024-04-30T23:00:00.000Z",
-          "patientId": 7,
-          "age": null,
-          "joinDate": null
-        }
-      ],
-      "status": "created",
-      "createdAt": 1714574035391,
-      "id": 14
-    },
-    {
-      "patientId": 7,
-      "createDateTimeString": "Wed May 01 2024",
-      "formData": [
-        {
-          "id": "dd2cee2f-b062-587e-bc42-2d57b0a2fd2f",
-          "disease": "Raised Blood Pressure",
-          "diseasedetails": "SnackBarTest",
-          "diagnosedDate": "2024-04-30T23:00:00.000Z",
-          "patientId": 7,
-          "age": null,
-          "joinDate": null
-        }
-      ],
-      "status": "created",
-      "createdAt": 1714574037387,
-      "id": 15
-    },
-    {
-      "patientId": 5,
-      "createDateTimeString": "Wed May 01 2024",
-      "formData": [
-        {
-          "id": "0bb8ec05-e5c6-5267-bcbb-d2eda2284361",
-          "patientId": 5
-        }
-      ],
-      "status": "created",
-      "createdAt": 1714577055266,
-      "id": 16
     }
   ],
   "guestPatient": [
@@ -468,7 +338,7 @@
     {
       "name": "GP1",
       "id": "8",
-      "treatments": "Eyes",
+      "treatments": "Internal Medicine Treatment",
       "yearsInPractice": 4,
       "phone": "+44 123123123"
     },
@@ -478,39 +348,11 @@
       "treatments": "Internal Medicine Treatment",
       "yearsInPractice": 3,
       "phone": "+44 77777889"
-    },
-    {
-      "name": "GP3",
-      "id": "99",
-      "treatments": "Leg",
-      "yearsInPractice": 4,
-      "phone": "+44 123123123"
-    },
-    {
-      "name": "GP4",
-      "id": "88",
-      "treatments": "heart",
-      "yearsInPractice": 8,
-      "phone": "+44 77777889"
-    },
-    {
-      "name": "GP5",
-      "id": "44",
-      "treatments": "hand",
-      "yearsInPractice": 4,
-      "phone": "+44 123123123"
-    },
-    {
-      "name": "GP6",
-      "id": "34",
-      "treatments": "ear",
-      "yearsInPractice": 6,
-      "phone": "+44 77777889"
     }
   ],
   "slots": [
     {
-      "id": 1,
+      "id": "1",
       "gpId": "8",
       "date": "2024-05-06",
       "dayOfWeek": "Monday",
@@ -519,12 +361,12 @@
       "status": "hold"
     },
     {
-      "id": 2,
+      "id": "2",
       "gpId": "8",
       "date": "2024-05-06",
       "dayOfWeek": "Monday",
       "time": "9:00-10:00",
-      "bookedByPID": "5",
+      "bookedByPID": "002",
       "status": "hold"
     },
     {
@@ -533,8 +375,8 @@
       "date": "2024-05-06",
       "dayOfWeek": "Monday",
       "time": "10:00-11:00",
-      "bookedByPID": null,
-      "status": "open"
+      "bookedByPID": "5",
+      "status": "hold"
     },
     {
       "id": "4",
@@ -632,8 +474,8 @@
       "date": "2024-05-06",
       "dayOfWeek": "Monday",
       "time": "14:00-15:00",
-      "bookedByPID": "5",
-      "status": "hold"
+      "bookedByPID": null,
+      "status": "open"
     },
     {
       "id": "15",
@@ -654,7 +496,7 @@
       "status": "hold"
     },
     {
-      "id": 17,
+      "id": "17",
       "gpId": "8",
       "date": "2024-05-07",
       "dayOfWeek": "Tuesday",
@@ -663,7 +505,7 @@
       "status": "hold"
     },
     {
-      "id": 18,
+      "id": "18",
       "gpId": "2",
       "date": "2024-05-07",
       "dayOfWeek": "Tuesday",
@@ -672,7 +514,7 @@
       "status": "open"
     },
     {
-      "id": 19,
+      "id": "19",
       "gpId": "8",
       "date": "2024-05-08",
       "dayOfWeek": "Wednesday",
@@ -700,7 +542,7 @@
       "time": "8:00-9:00",
       "date": "2024-05-05",
       "reason": "I feel headache",
-      "status": "before Approve"
+      "status": "beforeApprove"
     },
     {
       "patientId": "5",
@@ -710,7 +552,7 @@
       "time": "11:00-12:00",
       "date": "2024-05-06",
       "reason": "try me",
-      "status": "Rejected",
+      "status": "Approved",
       "createdAt": 1713974895561,
       "id": 2
     },
@@ -722,7 +564,7 @@
       "time": "10:00-11:00",
       "date": "2024-05-06",
       "reason": "我要把这句话写别长",
-      "status": "Rejected",
+      "status": "Approved",
       "createdAt": 1713974999811,
       "id": 3
     },
@@ -746,19 +588,19 @@
       "time": "09:00-10:00",
       "date": "2024-05-05",
       "reason": "我是谁",
-      "status": "Rejected",
+      "status": "Approved",
       "createdAt": 1713975086074,
       "id": 5
     },
     {
       "patientId": "5",
-      "gpId": "8",
-      "slotId": "17",
-      "gpName": "GP1",
-      "time": "15:00-16:00",
-      "date": "2024-05-07",
+      "gpId": "2",
+      "slotId": "12",
+      "gpName": "GP2",
+      "time": "11:00-12:00",
+      "date": "2024-05-06",
       "reason": "",
-      "status": "Rejected",
+      "status": "beforeApprove",
       "createdAt": 1714403823982,
       "id": 6
     },
@@ -770,7 +612,7 @@
       "time": "14:00-15:00",
       "date": "2024-05-06",
       "reason": "",
-      "status": "Rejected",
+      "status": "done",
       "createdAt": 1714404556430,
       "id": 7
     },
@@ -782,21 +624,9 @@
       "time": "13:00-14:00",
       "date": "2024-05-06",
       "reason": "",
-      "status": "before Approve",
+      "status": "beforeApprove",
       "createdAt": 1714404866155,
       "id": 8
-    },
-    {
-      "patientId": "5",
-      "gpId": "2",
-      "slotId": "14",
-      "gpName": "GP2",
-      "time": "14:00-15:00",
-      "date": "2024-05-06",
-      "reason": "",
-      "status": "before Approve",
-      "createdAt": 1714571676489,
-      "id": 9
     },
     {
       "patientId": "5",
@@ -805,130 +635,10 @@
       "gpName": "GP1",
       "time": "15:00-16:00",
       "date": "2024-05-07",
-      "reason": "try",
-      "status": "Rejected",
-      "createdAt": 1714572848936,
-      "id": 10
-    },
-    {
-      "patientId": "5",
-      "gpId": "8",
-      "slotId": 17,
-      "gpName": "GP1",
-      "time": "15:00-16:00",
-      "date": "2024-05-07",
-      "reason": "",
-      "status": "Rejected",
-      "createdAt": 1714573224169,
-      "id": 11
-    },
-    {
-      "patientId": "5",
-      "gpId": "8",
-      "slotId": 17,
-      "gpName": "GP1",
-      "time": "15:00-16:00",
-      "date": "2024-05-07",
-      "reason": "",
-      "status": "Rejected",
-      "createdAt": 1714573411955,
-      "id": 12
-    },
-    {
-      "patientId": "5",
-      "gpId": "8",
-      "slotId": 1,
-      "gpName": "GP1",
-      "time": "8:00-9:00",
-      "date": "2024-05-06",
-      "reason": "",
-      "status": "Accepted",
-      "createdAt": 1714573613203,
-      "id": 13
-    },
-    {
-      "patientId": "5",
-      "gpId": "8",
-      "slotId": "5",
-      "gpName": "GP1",
-      "time": "13:00-14:00",
-      "date": "2024-05-06",
-      "reason": "try",
-      "status": "Rejected",
-      "createdAt": 1714579914673,
-      "id": 14
-    },
-    {
-      "patientId": "5",
-      "gpId": "8",
-      "slotId": 2,
-      "gpName": "GP1",
-      "time": "9:00-10:00",
-      "date": "2024-05-06",
-      "reason": "I feel sad",
-      "status": "before Approve",
-      "createdAt": 1714592477675,
-      "id": 15
-    },
-    {
-      "patientId": "5",
-      "gpId": "8",
-      "slotId": 19,
-      "gpName": "GP1",
-      "time": "15:00-16:00",
-      "date": "2024-05-08",
-      "reason": "reset",
-      "status": "Rejected",
-      "createdAt": 1714593115942,
-      "id": 16
-    },
-    {
-      "patientId": "5",
-      "gpId": "8",
-      "slotId": 19,
-      "gpName": "GP1",
-      "time": "15:00-16:00",
-      "date": "2024-05-08",
-      "reason": "sdsd",
-      "status": "Rejected",
-      "createdAt": 1714593270926,
-      "id": 17
-    },
-    {
-      "patientId": "5",
-      "gpId": "8",
-      "slotId": 19,
-      "gpName": "GP1",
-      "time": "15:00-16:00",
-      "date": "2024-05-08",
-      "reason": "try",
-      "status": "Rejected",
-      "createdAt": 1714593766072,
-      "id": 18
-    },
-    {
-      "patientId": "5",
-      "gpId": "8",
-      "slotId": 17,
-      "gpName": "GP1",
-      "time": "15:00-16:00",
-      "date": "2024-05-07",
-      "reason": "try",
-      "status": "Rejected",
-      "createdAt": 1714594139324,
-      "id": 19
-    },
-    {
-      "patientId": "5",
-      "gpId": "8",
-      "slotId": 17,
-      "gpName": "GP1",
-      "time": "15:00-16:00",
-      "date": "2024-05-07",
-      "reason": "ygfyfyf",
-      "status": "Accepted",
-      "createdAt": 1714594230576,
-      "id": 20
+      "reason": "d",
+      "status": "beforeApprove",
+      "createdAt": 1714489415987,
+      "id": 6
     }
   ],
   "profile": [
@@ -963,7 +673,7 @@
       "aboutMe": "I will prove the self signUp"
     },
     {
-      "name": "Test1",
+      "name": "Jame",
       "gender": "male",
       "profession": "Student",
       "phoneNum": "444-3353335",
@@ -1121,24 +831,6 @@
       "quantity": "2",
       "createdAt": 1714484486056,
       "id": 2
-    },
-    {
-      "patientId": "5",
-      "appointmentId": 4,
-      "medicationName": "莲花清瘟",
-      "medicationInstruction": "一日三次",
-      "quantity": "3",
-      "createdAt": 1714517671453,
-      "id": 3
-    },
-    {
-      "patientId": "5",
-      "appointmentId": 7,
-      "medicationName": "喝水",
-      "medicationInstruction": "多喝",
-      "quantity": "99",
-      "createdAt": 1714517690790,
-      "id": 4
     }
   ]
 }

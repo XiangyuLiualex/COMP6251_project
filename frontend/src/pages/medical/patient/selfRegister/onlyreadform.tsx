@@ -66,7 +66,7 @@ function EditToolbar(props: EditToolbarProps) {
                  Add record
              </Button>
          </GridToolbarContainer>
-     );*/
+     ); */
 }
 
 

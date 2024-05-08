@@ -24,6 +24,9 @@
   color: white;
   width: 100%;
   height: auto;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .App-link {
@@ -41,15 +44,15 @@
 
 .description-container {
   position: absolute;
-  top: 50%;            /* 垂直居中 */
-  left:4%;             /* 在容器的最左侧 */
-  transform: translateY(-50%); /* 确保完全居中 */
-  width: 40%;          /* 可根据需要调整宽度 */
-  padding: 10px;       /* 添加一些内边距 */
-  /*background: rgba(255, 255, 255, 0.7); !* 添加半透明背景以增强可读性 *!*/
-  background: transparent;
-  color: #000;         /* 文本颜色 */
-  text-align: center;  /* 文本居中对齐 */
+  top: 50%;
+  left:4%;
+  transform: translateY(-50%);
+  width: 40%;
+  padding: 10px;
+  background: lightblue!important;
+  border: 2px solid #000;
+  color: #000;
+  text-align: center;
 }
 .App-header {
   position: relative;
@@ -59,14 +62,15 @@
 
 .overlay {
   position: absolute;
-  top: 30%;  /* 或者根据图片具体位置调整 */
+  top: 30%;
   left: 20%;
   transform: translate(-50%, -50%);
-  color: #fff; /* 文字颜色 */
-  background-color: transparent; /* 背景半透明，视需求调整 */
+  color: #fff;
+  background-color: transparent;
   padding: 20px;
   border-radius: 10px;
   text-transform: uppercase;
+  /*text-align: center;*/
   //color: #00223d
 }
 
@@ -111,9 +115,20 @@
 }
 .doctors-container {
   display: flex;
+  flex-direction:column;
   flex-wrap: wrap;
   justify-content: space-around;
   padding: 20px;
+}
+.doctors-container h1 {
+  margin: 20px 0;
+  text-align: center;
+}
+.doctors-container > div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
 }
 
 .doctor-card {
