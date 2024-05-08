@@ -10,14 +10,14 @@ import { UseGuestCheck } from "../../../entities/patient/patient.query";
 // save in store
 function pattientGuestValid(patientConfig: NaviListConfig[]) {
     const { data, error, isError } = UseGuestCheck();
-    console.log(data);
+    console.log("check", data);
     if (!data) {
         return patientConfig;
     }
 
-    if (data.ifPatientValid === "true") {
+    if (data.ifPatientValid) {
         return patientConfig;
-    } else if (data.ifPatientValid === "false") {
+    } else if (!data.ifPatientValid) {
         return patientConfig.filter((item) =>
             item.primary === guestPrimary.profile || item.primary === guestPrimary.selfRegister);
     }

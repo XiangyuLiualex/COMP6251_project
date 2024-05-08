@@ -18,7 +18,9 @@ class UserService(
     private val jwt: Jwt
 ) {
     private fun toModel(user: User): UserModel {
-        return UserModel.fromModel(user,jwt.generateToken(user))
+
+        val userName = profileRepository.getProfileByUid(user.id.value)?.name ?: "Unknown"
+        return UserModel.fromModel(userName,user,jwt.generateToken(user))
     }
     private fun toProfileModel(profile : Profile): ProfileModel{
         return ProfileModel.fromModel(profile)
@@ -38,8 +40,8 @@ class UserService(
 
     fun login(payload: LoginRequest): UserModel = tx {
         val user = userRepository.findByEmail(payload.email)
-//            ?.takeIf { PasswordEncoder.matches(payload.password, it.password) }
-            ?.takeIf { payload.password == it.password }
+            ?.takeIf { PasswordEncoder.matches(payload.password, it.password) }
+//            ?.takeIf { payload.password == it.password }
             ?: unprocessable("Email or password is invalid")
         toModel(user)
     }
@@ -63,16 +65,23 @@ class UserService(
     }
     fun getGuestCheck(id: Long) = tx {
         val user = userRepository.getUserById(id)
-        val res =object {
-            val patientId = user.id
-            val ifPatientValid = user.ifPatientValid
-        }
+        val res = UserCheckModel(user.id.value,user.ifPatientValid)
         if(user.role == UserRole.PATIENT){
             res
         }else{
             unprocessable("Not a patient")
         }
 
+    }
+
+    fun deleteAccount(id: Long): Any {
+        return tx {
+            userRepository.deleteUser(id)
+            val deleteRecords = medicalHistoryRepository.deleteRecordsByPatientId(id)
+            profileRepository.deleteProfileByUid(id)
+            selfRegRepository.deleteSelfRegByPatientId(id)
+            deleteRecords
+        }
     }
 
 }

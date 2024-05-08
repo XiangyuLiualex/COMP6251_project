@@ -30,4 +30,8 @@ class MedicalHistoryRepository {
             )
         }
     }
+
+    fun deleteRecordsByPatientId(id: Long) : Int{
+        return MedicalHistoryTable.deleteWhere { patientId eq id }
+    }
 }

@@ -1,6 +1,7 @@
 package com.chzfakevox.backend.medical
 
 import org.jetbrains.exposed.dao.id.EntityID
+import org.jetbrains.exposed.sql.and
 import org.springframework.stereotype.Repository
 import java.time.LocalDate
 
@@ -53,5 +54,14 @@ class MedicalRepository {
         return test
     }
 
+    fun getUndoTestByUserId(uId: Long): List<MedicalTest> {
+        return MedicalTest.find { (MedicalTestTable.patientId eq uId) and (MedicalTestTable.status eq MedicalTestStatus.undo) }.toList()
 
+    }
+
+//    fun userCheckTest(tId: Long): MedicalTest? {
+//        val test = MedicalTest[tId]
+//        test.status = MedicalTestStatus.done
+//        return test
+//    }
 }

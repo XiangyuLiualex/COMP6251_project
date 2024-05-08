@@ -33,6 +33,9 @@ dependencies {
     implementation("com.auth0:java-jwt:4.4.0")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.16.1")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.2")
+
+    // https://mvnrepository.com/artifact/com.google.code.gson/gson
+    implementation("com.google.code.gson:gson:2.7")
 }
 
 tasks.withType<KotlinCompile> {

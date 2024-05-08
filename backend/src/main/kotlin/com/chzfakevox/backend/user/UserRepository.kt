@@ -35,4 +35,12 @@ class UserRepository {
     fun getGps(): List<GP> {
         return GP.all().toList()
     }
+
+    fun deleteUser(id: Long) {
+        User.findById(id)?.delete()
+    }
+    fun validPatient(id:Long) {
+        val user = User[id]
+        user.ifPatientValid = true
+    }
 }

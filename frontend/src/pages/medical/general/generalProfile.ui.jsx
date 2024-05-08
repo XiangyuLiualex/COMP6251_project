@@ -10,6 +10,7 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import { useProfileQuery } from '../../../entities/general/profile.query';
+import { ViewPatientPage } from '../practitioner/profile/profile.ui';
 
 
 
@@ -37,32 +38,33 @@ export function ViewProfile({ patientId, ifReadOnly }) {
   if (!profile) {
     return (
       <React.Fragment>
-      <Button variant="outlined" onClick={handleClickOpen}>
-        View Profile
-      </Button>
-      <Dialog
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-        sx={{
-          '& .MuiDialog-paper': { width: '60%', maxWidth: 'none' }, // 调整宽度
-        }}
-      >
-        <DialogTitle id="alert-dialog-title" sx={{ textAlign: 'center' }}>
-          {"Basic information:"}
-        </DialogTitle>
-        <DialogContent sx={{ textAlign: 'center' }}>
-          <h2>Sorry, this person don't have profile yet...</h2>
-        </DialogContent>
-        <DialogActions sx={{ justifyContent: 'center' }}>
-          <Button onClick={handleClose} autoFocus>
-            Cancel
-          </Button>
-        </DialogActions>
-      </Dialog>
+        <Button variant="outlined" onClick={handleClickOpen}>
+          View Profile
+        </Button>
+        <Dialog
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
+          sx={{
+            '& .MuiDialog-paper': { width: '60%', maxWidth: 'none' }, // 调整宽度
+          }}
+        >
+          <DialogTitle id="alert-dialog-title" sx={{ textAlign: 'center' }}>
+            {"Basic information:"}
+          </DialogTitle>
+          <DialogContent sx={{ textAlign: 'center' }}>
+            <ViewPatientPage patientId={patientId} />
+            {/* <ProfileList profile={profile} onUpdateProfile={handleUpdateProfile} /> */}
+          </DialogContent>
+          <DialogActions sx={{ justifyContent: 'center' }}>
+            <Button onClick={handleClose} autoFocus>
+              Close
+            </Button>
+          </DialogActions>
+        </Dialog>
 
-    </React.Fragment>
+      </React.Fragment>
     )
   }
   return (
@@ -123,10 +125,10 @@ function UpdateProfileComponent({ profile, onUpdateProfile }) {
     if (formJson.profession !== '') updateData.profession = formJson.profession;
     if (formJson.aboutMe !== '') updateData.aboutMe = formJson.aboutMe;
     const dataToSend = { ...profile, ...updateData };
-    console.log("I am in UpdateProfileComponent",dataToSend);
+    console.log("I am in UpdateProfileComponent", dataToSend);
     onUpdateProfile(dataToSend.id, dataToSend.name, dataToSend.gender, dataToSend.profession, dataToSend.phoneNum, dataToSend.birthday, dataToSend.aboutMe);
   }
- 
+
   return (
     <React.Fragment>
       <Button variant="outlined" onClick={handleClickOpen}>
@@ -221,6 +223,7 @@ function UpdateProfileComponent({ profile, onUpdateProfile }) {
 
 
 export default function ProfileList({ profile, onUpdateProfile, ifReadOnly }) {
+  console.log("profile:", profile)
   return (
     <List sx={{ width: '60%', maxWidth: 360, bgcolor: 'background.paper' }}>
       <ListItem>

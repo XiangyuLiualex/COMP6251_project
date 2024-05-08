@@ -7,6 +7,7 @@ export type State = {
   token: Token | null;
   role: Role | null;
   uid: string;
+  name: string;
 }
 
 export type Actions = {
@@ -20,4 +21,5 @@ export type UserCredential = {
   email: string;
   id: string;
   role: Role;
+  name: string;
 }

@@ -1,5 +1,5 @@
 import { useMutation } from "@tanstack/react-query";
-import { UserCredential } from "../session/session.types";
+import { Role, UserCredential } from "../session/session.types";
 import { useNavigate } from "react-router-dom";
 import { sessionStore } from "../session";
 import { pathKeys } from "../../pages/medical/config/path";
@@ -39,7 +39,10 @@ export function useSignUpMutation() {
     return useMutation({
         mutationFn: (signUpForm: SignUpForm) => signUpRequest(signUpForm),
         onSuccess: (data) => {
-            sessionStore.setState({ token: data.token, role: "patient" });
+
+            sessionStore.setState({ token: data.token, role: data.role.toLocaleLowerCase() as Role, uid: data.id, name: data.name })
+
+            // sessionStore.setState({ token: data.token, role: "patient" });
             navigate("/patient");
         },
         onError: (error) => {

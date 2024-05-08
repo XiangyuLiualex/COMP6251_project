@@ -10,57 +10,57 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Checkbox from '@mui/material/Checkbox';
 
 
-export default function InformationPermission() {
-    const [open, setOpen] = React.useState(false);
+// export default function InformationPermission() {
+//     const [open, setOpen] = React.useState(false);
 
-    const handleClickOpen = () => {
-        setOpen(true);
-    };
+//     const handleClickOpen = () => {
+//         setOpen(true);
+//     };
 
-    const handleClose = () => {
-        setOpen(false);
-    };
 
-    return (
-        <React.Fragment>
-            <Button variant="outlined" onClick={handleClickOpen}>
-                Provide Consent
-            </Button>
-            <Dialog
-                open={open}
-                onClose={handleClose}
-                aria-labelledby="alert-dialog-title"
-                aria-describedby="alert-dialog-description"
-            >
-                <DialogTitle id="alert-dialog-title">
-                    {"Consent for Access to Medical Information"}
-                </DialogTitle>
-                <DialogContent>
-                    <DialogContentText id="alert-dialog-description">
-                        To ensure the highest standard of medical service and efficient care coordination, 
-                        we require your consent to share your basic personal information and medical history 
-                        with healthcare professionals involved in your treatment. All shared information will 
-                        be handled confidentially and accessed only by authorized personnel.
-                        <br />
-                        <strong>If you do not provide consent, you will not be able to use this website.</strong>
-                        This measure is necessary to maintain the integrity and security of our operations 
-                        and your medical care.
-                    </DialogContentText>
-                </DialogContent>
-                <DialogActions>
-                    <Button onClick={handleClose} color="primary">
-                        Disagree
-                    </Button>
-                    <Button onClick={handleClose} color="primary" autoFocus>
-                        Agree
-                    </Button>
-                </DialogActions>
-            </Dialog>
-        </React.Fragment>
-    );
-}
+
+//     return (
+//         <React.Fragment>
+//             <Button variant="outlined" onClick={handleClickOpen}>
+//                 Provide Consent
+//             </Button>
+//             <Dialog
+//                 open={open}
+//                 onClose={handleClose}
+//                 aria-labelledby="alert-dialog-title"
+//                 aria-describedby="alert-dialog-description"
+//             >
+//                 <DialogTitle id="alert-dialog-title">
+//                     {"Consent for Access to Medical Information"}
+//                 </DialogTitle>
+//                 <DialogContent>
+//                     <DialogContentText id="alert-dialog-description">
+//                         To ensure the highest standard of medical service and efficient care coordination,
+//                         we require your consent to share your basic personal information and medical history
+//                         with healthcare professionals involved in your treatment. All shared information will
+//                         be handled confidentially and accessed only by authorized personnel.
+//                         <br />
+//                         <strong>If you do not provide consent, you will not be able to use this website.</strong>
+//                         This measure is necessary to maintain the integrity and security of our operations
+//                         and your medical care.
+//                     </DialogContentText>
+//                 </DialogContent>
+//                 <DialogActions>
+//                     <Button onClick={handleClose} color="primary">
+//                         Disagree
+//                     </Button>
+//                     <Button onClick={handleClose} color="primary" autoFocus>
+//                         Agree
+//                     </Button>
+//                 </DialogActions>
+//             </Dialog>
+//         </React.Fragment>
+//     );
+// }
 
 
 
@@ -90,8 +90,55 @@ export function SignUpPage() {
         mutate(dto);
     };
 
+    const [open, setOpen] = React.useState(false);
+    const [aggreed, setAggreed] = React.useState(false);
+
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
+    const handleAggree = () => {
+        setAggreed(true);
+        setOpen(false);
+    }
+    const handleDisagree = () => {
+        setAggreed(false);
+        setOpen(false);
+    }
+
+
+
     return (
         <div>
+            <Dialog
+                open={open}
+                onClose={handleDisagree}
+                aria-labelledby="alert-dialog-title"
+                aria-describedby="alert-dialog-description"
+            >
+                <DialogTitle id="alert-dialog-title">
+                    {"Consent for Access to Medical Information"}
+                </DialogTitle>
+                <DialogContent>
+                    <DialogContentText id="alert-dialog-description">
+                        To ensure the highest standard of medical service and efficient care coordination,
+                        we require your consent to share your basic personal information and medical history
+                        with healthcare professionals involved in your treatment. All shared information will
+                        be handled confidentially and accessed only by authorized personnel.
+                        <br />
+                        <strong>If you do not provide consent, you will not be able to use this website.</strong>
+                        This measure is necessary to maintain the integrity and security of our operations
+                        and your medical care.
+                    </DialogContentText>
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={handleDisagree} color="primary">
+                        Disagree
+                    </Button>
+                    <Button onClick={handleAggree} color="primary" autoFocus>
+                        Agree
+                    </Button>
+                </DialogActions>
+            </Dialog>
             <Container component="main" maxWidth="sm">
                 <CssBaseline />
                 <Box
@@ -108,7 +155,6 @@ export function SignUpPage() {
                     <Typography component="h1" variant="h5">
                         Sign up
                     </Typography>
-                    <InformationPermission/>
                     <Box sx={{
                         marginTop: 4,
                         display: 'flex',
@@ -175,6 +221,12 @@ export function SignUpPage() {
                                 />
                             </Grid>
 
+                            <Grid item xs={12}>
+                                <FormControlLabel
+                                    control={<Checkbox checked={aggreed} value="allowExtraEmails" color="primary" onClick={handleClickOpen} />}
+                                    label="I want to receive inspiration, marketing promotions and updates via email."
+                                />
+                            </Grid>
                         </Grid>
                         <LoadingButton
                             size="large"
@@ -188,6 +240,7 @@ export function SignUpPage() {
                             variant="outlined">
                             Sign Up
                         </LoadingButton>
+
                         {/* TODO: extract to a common component */}
                         {isError && <div style={{ color: "red" }}>{String(error)}</div>}
                         <Grid container justifyContent="flex-end">

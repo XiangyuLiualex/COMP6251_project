@@ -26,4 +26,8 @@ class ProfileRepository {
                 userId = uId
             }
         }
+
+    fun deleteProfileByUid(id: Long) {
+        Profile.find { ProfileTable.userId eq id }.firstOrNull()?.delete()
+    }
 }

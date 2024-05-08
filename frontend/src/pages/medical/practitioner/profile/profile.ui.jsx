@@ -29,7 +29,6 @@ export function GpProfilePage() {
         refetch();
     }
 
-    console.log("here i am" + profile.name);
     const handleUpdateProfile = (
         profileId,
         name,
@@ -57,3 +56,18 @@ export function GpProfilePage() {
         </div>
     );
 }
+
+export function ViewPatientPage({ patientId }) {
+
+    console.log("patientId:", patientId)
+    const { data, isLoading, isError, refetch } = useProfileQuery(patientId);
+    console.log("data:", data)
+    return (
+        <div>
+            <h1>Profile</h1>
+            <ProfileList profile={data} onUpdateProfile={null} />
+        </div>
+    )
+}
+
+

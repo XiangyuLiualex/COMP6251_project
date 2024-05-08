@@ -3,6 +3,8 @@ package com.chzfakevox.backend.medical
 import com.chzfakevox.backend.appointment.CreateAppointmentRequest
 import com.chzfakevox.backend.appointment.SlotUpdateRequest
 import com.chzfakevox.backend.appointment.UpdateAppointmentRequest
+import com.chzfakevox.backend.config.credential
+import com.chzfakevox.backend.util.unauthorized
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.web.servlet.function.body
@@ -92,6 +94,21 @@ class MedicalController {
             val model = service.updateTest(tId,payload)
             ok().body(model)
         }
+
+        GET("/test/notification"){
+            // get if any tests notification and unread
+            val payload = it.credential()?: unauthorized("User not found")
+            val model  = service.getUndoTestByUserId(payload.id)
+            ok().body(model)
+        }
+        PATCH("/test/notification/{id}"){
+            // check the notification
+            val tId = it.pathVariable("id").toLong()
+//            val model = service.userCheckTest(tId)
+            ok().body("")
+        }
+
+
 
     }
 }

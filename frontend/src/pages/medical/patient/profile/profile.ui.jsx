@@ -12,10 +12,14 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
-
+import { apiPrefix } from "../../config/path";
+import { useLogoutMutation } from "../../../../entities/session";
+import { authorizationHeader } from "../../../../entities/session";
+import { useSnackbar } from 'notistack';
 
 export function DeleteAccount() {
   const [open, setOpen] = React.useState(false);
+  const { enqueueSnackbar } = useSnackbar();
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -24,6 +28,34 @@ export function DeleteAccount() {
   const handleClose = () => {
     setOpen(false);
   };
+
+  async function deleteAccountRequest() {
+    const response = await fetch(apiPrefix("/patient/delete-account"), {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        ...authorizationHeader(),
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error("Medical History Form Failed: " + await response.text());
+    }
+
+    return await response.text();
+  }
+  const { mutate: logout } = useLogoutMutation();
+  const handleDeleteConfirm = () => {
+    // Delete the account
+    deleteAccountRequest().then((response) => {
+      setOpen(false);
+      enqueueSnackbar(response, { variant: 'success', autoHideDuration: 12000 });
+    }).then(() => {
+      logout();
+    }).catch((error) => {
+      console.error(error);
+    })
+  }
 
   return (
     <React.Fragment>
@@ -58,7 +90,7 @@ export function DeleteAccount() {
           <Button onClick={handleClose} color="primary">
             Cancel
           </Button>
-          <Button onClick={handleClose} color="error" autoFocus>
+          <Button onClick={handleDeleteConfirm} color="error" autoFocus>
             Confirm
           </Button>
         </DialogActions>

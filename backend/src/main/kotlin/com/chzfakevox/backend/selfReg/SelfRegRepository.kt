@@ -25,5 +25,9 @@ class SelfRegRepository {
         return SelfReg.find { SelfRegTable.status eq SelfStatus.PENDING }.toList()
     }
 
+    fun deleteSelfRegByPatientId(id: Long) {
+        SelfReg.find { SelfRegTable.patientId eq id }.forEach { it.delete() }
+    }
+
 
 }

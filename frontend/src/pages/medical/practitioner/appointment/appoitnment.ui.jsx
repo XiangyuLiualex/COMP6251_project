@@ -20,6 +20,7 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import { useEffect, useState } from 'react';
 import useUpdateSlotMutation from "../../../../entities/patient/appointment.query";
+import { ViewProfile } from "../../general/generalProfile.ui";
 
 function AlternativeComponent({ appointment, onUpdateAppointment }) {
   const [open, setOpenAlt] = React.useState(false);
@@ -45,8 +46,8 @@ function AlternativeComponent({ appointment, onUpdateAppointment }) {
   return (
     <React.Fragment>
       <Button variant="outlined"
-                  disabled={appointment.status === "done"}
-                  color={appointment.status === "done" ? "secondary" : "primary"} onClick={handleClickOpen}>
+        disabled={appointment.status === "done"}
+        color={appointment.status === "done" ? "secondary" : "primary"} onClick={handleClickOpen}>
         Alternative
       </Button>
       <Dialog
@@ -139,7 +140,7 @@ export function BasicTable({ appointments, onUpdateAppointment, onUpdateSlot }) 
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell>PatientId</TableCell>
+            <TableCell>Patient</TableCell>
             <TableCell align="right">Date</TableCell>
             <TableCell align="right">Time</TableCell>
             <TableCell align="right">Reason</TableCell>
@@ -156,17 +157,18 @@ export function BasicTable({ appointments, onUpdateAppointment, onUpdateSlot }) 
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
             >
               <TableCell component="th" scope="row">
-                {row.patientId}
+                {/* view patient  {row.patientId} profile */}
+                <ViewProfile patientId={row.patientId} ifReadOnly={true} />
               </TableCell>
               <TableCell align="right">{row.date}</TableCell>
               <TableCell align="right">{row.time}</TableCell>
               <TableCell align="right">{row.reason}</TableCell>
-              <TableCell align="right">{row.status.toUpperCase() }</TableCell>
+              <TableCell align="right">{row.status.toUpperCase()}</TableCell>
               <TableCell align="right">
                 <Button variant="outlined"
                   disabled={row.status === "done"}
                   color={row.status === "done" ? "secondary" : "primary"}
-                  onClick={() => onUpdateAppointment(row.id, row.gpId, row.slotId, row.gpName, row.time, row.date,"Accepted")}
+                  onClick={() => onUpdateAppointment(row.id, row.gpId, row.slotId, row.gpName, row.time, row.date, "Accepted")}
                 >
                   Accept
                 </Button>
@@ -200,7 +202,7 @@ export function HandleAppointmentPage() {
   const { data, isLoading, error, refetch } = useHandleAppointmentQuery(sessionStore.getState().uid);
   const { mutate: mutateAppointment, isSuccess } = useUpdateAppointmentMutation();
   const [shouldRefetch, setShouldRefetch] = useState(false);
-  const { mutate: mutateSlot, isLoad, isError} = useUpdateSlotMutation();
+  const { mutate: mutateSlot, isLoad, isError } = useUpdateSlotMutation();
 
   useEffect(() => {
     if (isSuccess) {
@@ -248,7 +250,7 @@ export function HandleAppointmentPage() {
     mutateSlot({
       slotId: sId,
       bookedByPID: null,
-      status:"open"
+      status: "open"
     });
   };
 

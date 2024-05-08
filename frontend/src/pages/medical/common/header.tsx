@@ -7,6 +7,13 @@ import { styled } from '@mui/material/styles';
 import { Badge, IconButton, Toolbar, Typography } from '@mui/material';
 import { Role } from '../../../entities/session/session.types';
 import { useLogoutMutation } from '../../../entities/session';
+import { useState } from 'react';
+import axios from 'axios';
+import { apiPrefix, pathKeys } from '../config/path';
+import { authorizationHeader } from '../../../entities/session';
+import { useQuery } from '@tanstack/react-query';
+import { useSnackbar } from 'notistack';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 interface AppBarProps extends MuiAppBarProps {
     open?: boolean;
@@ -31,6 +38,34 @@ const AppBar = styled(MuiAppBar, {
 }));
 
 export function Header({ role, open, toggleDrawer }: { role: Role, open: boolean, toggleDrawer: () => void }) {
+    const [notiNum, setNotiNum] = useState(0);
+    const { enqueueSnackbar } = useSnackbar();
+    const { isLoading, data } = useQuery({
+        queryKey: ['tests-notification'],
+        queryFn: async () => {
+            const { data } = await axios.get(
+                apiPrefix("/test/notification"),
+                {
+                    headers: {
+                        ...authorizationHeader()
+                    },
+                }
+            );
+            if (data.length !== notiNum) {
+                setNotiNum(data.length);
+                enqueueSnackbar('You have tests to do!', { variant: 'info', autoHideDuration: 10000 });
+            }
+            return data;
+        },
+        refetchInterval: 60 * 1000,
+        refetchIntervalInBackground: true
+    });
+
+    const navigate = useNavigate();
+    function handleGetNotification() {
+        navigate(pathKeys.patient.tests())
+    }
+
     const { mutate: logout } = useLogoutMutation();
     function handleLogout() {
         logout();
@@ -65,7 +100,7 @@ export function Header({ role, open, toggleDrawer }: { role: Role, open: boolean
                 </Typography>
                 <IconButton color="inherit">
                     {/* TODO: add function here */}
-                    <Badge badgeContent={2} color="secondary">
+                    <Badge badgeContent={notiNum} color="secondary" onClick={handleGetNotification}>
                         <NotificationsIcon />
                     </Badge>
                 </IconButton>

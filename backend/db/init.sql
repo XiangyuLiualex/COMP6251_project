@@ -10,11 +10,11 @@ create table user_account (
 );
 
 insert into user_account(email,password,role) values
-                                                  ('GP1@email.com','generalP1','GP'),
-                                                  ('GP2@email.com','generalP2','GP'),
-                                                  ('patient@email.com', 'patient', 'PATIENT'),
-                                                  ('patient2@email.com', 'patient2', 'PATIENT'),
-                                                  ('admin@email.com', 'admin', 'ADMIN')
+                                                  ('GP1@email.com','305c82f74c5299549bdf1eecbfdc1174fa3bb781a405ca46cd9d871a6077cdbd','GP'),
+                                                  ('GP2@email.com','c041a879a6ef1c83f7c5eeb09346fcfa32b529b4d10d9230cd1dcf3108f57714','GP'),
+                                                  ('patient@email.com', '2295ff7a8bd8b3f2884c6482146e3ded0417f72072c079fbe223e13e83a0388e', 'PATIENT'),
+                                                  ('patient2@email.com', '35dd16d588bd48e2d4410199fdae3b5ded6ea110823c5fb7614ba267506a12bc', 'PATIENT'),
+                                                  ('admin@email.com', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918', 'ADMIN')
 ;
 
 drop table if exists user_profile;

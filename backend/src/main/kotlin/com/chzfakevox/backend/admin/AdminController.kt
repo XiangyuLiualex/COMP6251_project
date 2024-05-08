@@ -12,6 +12,7 @@ class AdminController {
             val pId = it.pathVariable("id").toLong()
             val payload = it.body<ApproveRegRequest>()
             val model = service.approveReg(pId)
+
             ok().body(model)
         }
         GET("/admin/approvals"){

@@ -70,7 +70,10 @@ export function useLoginMutation() {
       // todo add data type validation using zod, or something else
       // todo : when backend build change into this way
       // temporary workaround
-      sessionStore.setState({ token: data.token, role: data.role.toLocaleLowerCase() as Role, uid: data.id })
+      sessionStore.setState({
+        token: data.token, role: data.role.toLocaleLowerCase() as Role, uid: data.id
+        , name: data.name
+      })
 
       navigate(roleBasedRedirect(data.role.toLocaleLowerCase() as Role));
       console.log("login success", data.role);
@@ -89,6 +92,7 @@ const createSessionSlice: StateCreator<sessionState, [], [], sessionState> = (se
   token: null,
   role: null,
   uid: "",
+  name: "",
   updateToken: (token: string | null) => set({ token: token || null, }),
 })
 

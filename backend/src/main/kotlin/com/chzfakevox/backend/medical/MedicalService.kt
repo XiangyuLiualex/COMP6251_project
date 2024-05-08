@@ -153,6 +153,13 @@ class MedicalService (
 
     fun updateTest(tId: Long, payload: MedicalTestUpdateModel): MedicalTestModel = tx {
         MedicalTestModel.from(medicalRepository.updateTest(tId, payload))
-
     }
+
+    fun getUndoTestByUserId(uId: Long): List<MedicalTestModel> = tx {
+        medicalRepository.getUndoTestByUserId(uId).map { MedicalTestModel.from(it) }
+    }
+
+//    fun userCheckTest(tId: Long): MedicalTest =tx {
+//        medicalRepository.userCheckTest(tId)?: unprocessable("Test not found")
+//    }
 }

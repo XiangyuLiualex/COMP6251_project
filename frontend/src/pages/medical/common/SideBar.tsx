@@ -4,6 +4,7 @@ import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import LocalHospitalIcon from '@mui/icons-material/LocalHospital';
 import { NavLists } from './naviList';
 import { Role } from '../../../entities/session/session.types';
+import { sessionStore } from '../../../entities/session';
 
 
 export const drawerWidth: number = 240;
@@ -34,6 +35,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 );
 
 export function SideBar({ role, open, toggleDrawer }: { role: Role, open: boolean, toggleDrawer: () => void }) {
+    const UserName = sessionStore.getState().name;
     return (
         <Drawer variant="permanent" open={open}>
             <Toolbar
@@ -50,7 +52,7 @@ export function SideBar({ role, open, toggleDrawer }: { role: Role, open: boolea
                 }}>
                     <LocalHospitalIcon />
                     <Typography variant="h6" noWrap component="div">
-                        Service
+                        {UserName}
                     </Typography>
                 </Box>
 
