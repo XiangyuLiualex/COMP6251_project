@@ -47,7 +47,7 @@ export function DoubleConfirm({ gpName, date, time, reason, slotId, patientId, g
         <DialogTitle>{"Booking Confirmation"}</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            {isSuccess ? "You have booked the appointment successfully" : "Sorry, something went wrong"}
+            {!isError ? "You have booked the appointment successfully" : "Sorry, something went wrong"}
           </DialogContentText>
         </DialogContent>
         <DialogActions>
@@ -275,6 +275,7 @@ export function AppointmentPage() {
   const { data, isLoading, error, refetch } = useAppointmentQuery()
 
 
+  console.log("submit:", isError);
 
 
   if (error) return <h4>Error:{error.message}, retry again</h4>;

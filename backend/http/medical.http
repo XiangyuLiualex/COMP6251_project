@@ -31,16 +31,15 @@ GET {{baseURL}}/appointment?gpId=3
 ###
 #  beforeApprove Accepted
 # @name update appointment, only status
-PATCH {{baseURL}}/appointment/1
+PATCH {{baseURL}}/appointment/3
 Content-Type: application/json
 
 {
-  "slotId": 3,
-  "status": "beforeApprove"
+  "status": "done"
 }
 ###
 # @name update appointment, provide alternavie
-PATCH {{baseURL}}/appointment/9
+PATCH {{baseURL}}/appointment/3
 Content-Type: application/json
 
 {

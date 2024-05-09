@@ -12,6 +12,7 @@ import MonitorHeartIcon from '@mui/icons-material/MonitorHeart';
 import MedicalInformationIcon from '@mui/icons-material/MedicalInformation';
 import InsertInvitationIcon from '@mui/icons-material/InsertInvitation';
 import HowToRegIcon from '@mui/icons-material/HowToReg';
+import MapIcon from '@mui/icons-material/Map';
 
 export interface NaviListConfig extends ListItemLinkProps {
     disabled?: boolean;
@@ -27,7 +28,8 @@ export const patientConfig: NaviListConfig[] = [
     { primary: 'Medical History', to: pathKeys.patient.history(), icon: <MedicalInformationIcon /> },
     { primary: 'Medical Tests', to: pathKeys.patient.tests(), icon: <BloodtypeIcon /> },
     { primary: 'Book Appointment', to: '/patient/appointment', icon: <Diversity1Icon /> },
-    { primary: 'My Appointment', to:'/patient/myAppointment',icon:<EventNoteIcon/>}
+    { primary: 'My Appointment', to: '/patient/myAppointment', icon: <EventNoteIcon /> },
+    { primary: 'Pharmacy Map', to: '/patient/map', icon: <MapIcon /> }
 ];
 export const adminConfig: NaviListConfig[] = [
     { primary: 'Profile', to: pathKeys.admin.profile(), icon: <AccountBoxIcon /> },

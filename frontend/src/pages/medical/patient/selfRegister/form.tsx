@@ -33,8 +33,8 @@ import { forEach } from "json-server-auth";
 import { sessionStore } from "../../../../entities/session";
 import { useMedicalHistoryMutation } from '../../../../entities/patient/submitHistory.query.ts';
 import Snackbar from '@mui/material/Snackbar';
-import MuiAlert, { AlertProps }  from '@mui/material/Alert';
-import { useState , forwardRef} from 'react';
+import MuiAlert, { AlertProps } from '@mui/material/Alert';
+import { useState, forwardRef } from 'react';
 
 
 const Alert = React.forwardRef<HTMLDivElement, AlertProps>((props, ref) => (
@@ -87,6 +87,7 @@ function EditToolbar(props: EditToolbarProps) {
 type selfRegisterConfig = {
     role: Role | null;
     data: any;
+    id: number | undefined;
 }
 export type selfRegiForm = any[]
 
@@ -135,10 +136,16 @@ export default function FullFeaturedCrudGrid(config: selfRegisterConfig) {
 
         const updatedRows = rows.map((row => {
             const { id, ...rest } = row;
+            let pid = 0
+            if (config.role === 'patient') {
+                pid = parseInt(sessionStore.getState().uid)
+            } else {
+                pid = config.id as number
+            }
             return {
                 id: randomId(),
                 ...rest,
-                patientId: sessionStore.getState().uid
+                patientId: pid
             };
         }));
 

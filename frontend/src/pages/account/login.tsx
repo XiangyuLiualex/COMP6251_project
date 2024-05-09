@@ -103,10 +103,10 @@ export function Login() {
         {isError && <div>{`is error!!!`}</div>}
         {error && <div>{`Error get data!!!`}</div>}
         {isSuccess && <div>success: user {data.email} </div>}
-        {hasToken() && <span>
+        {/* {hasToken() && <span>
           <div>role: {sessionStore.getState().role}</div>
           <div> Logined {sessionStore.getState().token}</div>
-        </span>}
+        </span>} */}
         {/* {mutation.data?.user && < Navigate to="/profile" replace={true} />} */}
       </div>
       {/* {userData ? <div>Logined

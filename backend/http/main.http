@@ -88,3 +88,7 @@ GET {{baseURL}}/patient/guest-check/3
 # @name delete
 DELETE {{baseURL}}/patient/delete-account
 ###
+
+# @name getApp
+GET {{baseURL}}/appointment?patientId=22
+###

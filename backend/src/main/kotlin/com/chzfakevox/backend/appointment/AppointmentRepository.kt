@@ -33,4 +33,8 @@ class AppointmentRepository {
         appointment.status = newStatus
         return appointment
     }
+
+    fun getByPatientId(pId: Long): List<Appointment> {
+        return Appointment.find { AppointmentTable.patientId eq pId }.toList()
+    }
 }

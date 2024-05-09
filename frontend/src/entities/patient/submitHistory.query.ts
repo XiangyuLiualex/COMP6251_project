@@ -21,7 +21,7 @@ async function medicalHistoryFormRequest(data: any) {
 
 export function useMedicalHistoryMutation() {
     return useMutation<any, DefaultError, any, unknown>({
-        mutationFn: (data)=> medicalHistoryFormRequest(data),
+        mutationFn: (data) => medicalHistoryFormRequest(data),
         onSuccess: (data) => {
             console.log("Medical history form submit: ", data);
         },

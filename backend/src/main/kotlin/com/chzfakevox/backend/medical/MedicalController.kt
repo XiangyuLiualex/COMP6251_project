@@ -38,10 +38,27 @@ class MedicalController {
             ok().body(model)
         }
         GET("/appointment"){
-            val gpId = it.param("gpId").orElse("0").toLong()
-            val model = service.getAppointments(gpId)
-            ok().body(model)
+            if(it.param("gpId").isPresent){
+                val gpId = it.param("gpId").orElse("0").toLong()
+                val model = service.getAppointments(gpId)
+                ok().body(model)}
+            else if (it.param("patientId").isPresent){
+                val pId = it.param("patientId").orElse("0").toLong()
+                val model = service.getAppointmentsByPatientId(pId)
+                ok().body(model)
+            }
+            else{
+                ok().body("No parameter found")
+            }
+//            val gpId = it.param("gpId").orElse("0").toLong()
+//            val model = service.getAppointments(gpId)
+//            ok().body(model)
         }
+//        GET("/appointment"){
+//            val pId = it.param("patientId").orElse("0").toLong()
+//            val model = service.getAppointmentsByPatientId(pId)
+//            ok().body(model)
+//        }
         PATCH("/appointment/{id}"){
             val aId = it.pathVariable("id").toLong()
             val payload = it.body<UpdateAppointmentRequest>()

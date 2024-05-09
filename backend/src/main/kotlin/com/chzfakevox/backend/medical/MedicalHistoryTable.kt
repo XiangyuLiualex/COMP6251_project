@@ -18,6 +18,7 @@ object MedicalHistoryTable : BaseIdTable<Long>("medical_history"){
 
 @Serializable
 class MedicalRecord(
+    @Transient val id: String? = null,
 
     val disease : String,
     val diseasedetails: String,

@@ -7,6 +7,7 @@ import { selfRegisterRoute } from "./selfRegister";
 import { appointmentRoute } from "./appointment";
 import { sessionStore } from "../../../entities/session";
 import { myAppointmentRoute } from "./myAppointment/myAppointment.route ";
+import { mapRoute } from "./map";
 
 //todo add role based check and redirect
 export const patientMedicalRoute: RouteObject = {
@@ -18,7 +19,9 @@ export const patientMedicalRoute: RouteObject = {
         medicalHistoryRoute,
         medicalTestsRoute,
         selfRegisterRoute,
-        myAppointmentRoute
+        myAppointmentRoute,
+        mapRoute
+
     ],
     loader: (args) => {
         const { token, role } = sessionStore.getState()

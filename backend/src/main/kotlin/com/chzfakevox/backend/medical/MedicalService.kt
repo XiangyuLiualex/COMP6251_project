@@ -69,7 +69,8 @@ class MedicalService (
 
         // case A slot id not changed and status changed
         // update status only
-        if(payload.slotId == appointment.slotId.value && payload.status!=null){
+//        if(payload.slotId == appointment.slotId.value && payload.status!=null){
+        if( payload.status!=null){
             updateAppointmentStatus(aId,payload.status)
         }else if(payload.slotId!=null){
             updateAppointmentAll(aId,payload)
@@ -157,6 +158,20 @@ class MedicalService (
 
     fun getUndoTestByUserId(uId: Long): List<MedicalTestModel> = tx {
         medicalRepository.getUndoTestByUserId(uId).map { MedicalTestModel.from(it) }
+    }
+
+    fun getAppointmentsByPatientId(pId: Long): List<AppointmentModel> = tx {
+        appointmentRepository.getByPatientId(pId).map {
+            val slot = repository.getSlotById(it.slotId.value)?: unprocessable("Slot not found")
+            val gp = userRepository.getGpextByUserId(it.gpId.value)?: unprocessable("GP not found")
+            toAppointmentModel(it,slot,gp)
+        }
+//        appointmentRepository.getByPatientId(pId).let {
+//            val slot = repository.getSlotById(it.slotId.value)?: unprocessable("Slot not found")
+//            val gp = userRepository.getGpextByUserId(it.gpId.value)?: unprocessable("GP not found")
+//            toAppointmentModel(it,slot,gp)
+//        }
+
     }
 
 //    fun userCheckTest(tId: Long): MedicalTest =tx {

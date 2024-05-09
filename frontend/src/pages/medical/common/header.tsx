@@ -98,9 +98,9 @@ export function Header({ role, open, toggleDrawer }: { role: Role, open: boolean
                 >
                     {role.toUpperCase()} PAGE
                 </Typography>
-                <IconButton color="inherit">
+                <IconButton color="inherit" onClick={handleGetNotification}>
                     {/* TODO: add function here */}
-                    <Badge badgeContent={notiNum} color="secondary" onClick={handleGetNotification}>
+                    <Badge badgeContent={notiNum} color="secondary" >
                         <NotificationsIcon />
                     </Badge>
                 </IconButton>

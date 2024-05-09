@@ -128,7 +128,7 @@ export const pathKeys = {
             return pathKeys.root.concat('prescription/')
         },
         apiAddPrescription() {
-            return apiPrefix(pathKeys.prescription.root())
+            return apiPrefix("/prescription")
         },
         apiViewPrescriptionById(appointmentId: string) {
             return apiPrefix(pathKeys.root.concat('prescription?appointmentId=' + appointmentId));
