@@ -42,7 +42,7 @@ export function ApprovalsPage() {
                                 aria-controls="panel1a-content"
                                 id="panel1a-header"
                             >
-                                <Typography>patient: {item.patientId}  name:{item.name}  createTime:{item.createDateTimeString} status:{item.status}</Typography>
+                                <Typography>patient: {item.patientId}   createTime:{item.createDateTimeString} status:{item.status}</Typography>
                             </AccordionSummary>
                             <AccordionDetails>
                                 <Box>
