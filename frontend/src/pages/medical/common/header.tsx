@@ -4,15 +4,15 @@ import MenuIcon from '@mui/icons-material/Menu';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { styled } from '@mui/material/styles';
-import { Badge, IconButton, Toolbar, Typography } from '@mui/material';
+import { Badge, Button, IconButton, Toolbar, Typography } from '@mui/material';
 import { Role } from '../../../entities/session/session.types';
 import { useLogoutMutation } from '../../../entities/session';
 import { useState } from 'react';
 import axios from 'axios';
 import { apiPrefix, pathKeys } from '../config/path';
 import { authorizationHeader } from '../../../entities/session';
-import { useQuery } from '@tanstack/react-query';
-import { useSnackbar } from 'notistack';
+import { useQuery, useMutation } from '@tanstack/react-query';
+import { closeSnackbar, useSnackbar } from 'notistack';
 import { Navigate, useNavigate } from 'react-router-dom';
 
 interface AppBarProps extends MuiAppBarProps {
@@ -40,7 +40,7 @@ const AppBar = styled(MuiAppBar, {
 export function Header({ role, open, toggleDrawer }: { role: Role, open: boolean, toggleDrawer: () => void }) {
     const [notiNum, setNotiNum] = useState(0);
     const { enqueueSnackbar } = useSnackbar();
-    const { isLoading, data } = useQuery({
+    const testUndo = useQuery({
         queryKey: ['tests-notification'],
         queryFn: async () => {
             const { data } = await axios.get(
@@ -51,14 +51,61 @@ export function Header({ role, open, toggleDrawer }: { role: Role, open: boolean
                     },
                 }
             );
+            // enqueueSnackbar('You have tests to do!', { variant: 'info', autoHideDuration: 10000 });
+            return data;
+        },
+        refetchInterval: 60 * 1000,
+        refetchIntervalInBackground: true
+    });
+    const getNotification = useQuery({
+        queryKey: ['notification'],
+        queryFn: async () => {
+            const { data } = await axios.get(
+                pathKeys.patient.apiGetNotification(),
+                {
+                    headers: {
+                        ...authorizationHeader()
+                    },
+                }
+            );
             if (data.length !== notiNum) {
                 setNotiNum(data.length);
-                enqueueSnackbar('You have tests to do!', { variant: 'info', autoHideDuration: 10000 });
+                console.log("notification", data);
+                data.forEach((n: any) => {
+                    enqueueSnackbar(n.message, {
+                        anchorOrigin: { vertical: 'bottom', horizontal: 'right' },
+                        variant: 'default', persist: true,
+                        action: (key) => (
+                            <Button color="inherit" onClick={() => { readNotification.mutate(n.id); closeSnackbar(key) }}>
+                                Mark as Read</Button>
+                        )
+                    }
+                    );
+                });
             }
             return data;
         },
         refetchInterval: 60 * 1000,
         refetchIntervalInBackground: true
+    });
+
+    const readNotification = useMutation({
+        mutationFn: async (nId: number) => {
+            await axios.patch(
+                pathKeys.patient.apiReadNotification(nId),
+                {},
+                {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        ...authorizationHeader()
+                    },
+                }
+            );
+            setNotiNum(notiNum - 1);
+        },
+        onSuccess: () => {
+            enqueueSnackbar('Read Notification Successful!', { variant: 'success', autoHideDuration: 2000 });
+        }
     });
 
     const navigate = useNavigate();
@@ -99,7 +146,6 @@ export function Header({ role, open, toggleDrawer }: { role: Role, open: boolean
                     {role.toUpperCase()} PAGE
                 </Typography>
                 <IconButton color="inherit" onClick={handleGetNotification}>
-                    {/* TODO: add function here */}
                     <Badge badgeContent={notiNum} color="secondary" >
                         <NotificationsIcon />
                     </Badge>

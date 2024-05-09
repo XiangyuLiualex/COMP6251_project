@@ -15,6 +15,12 @@ export const pathKeys = {
         root() {
             return pathKeys.root.concat('patient/');
         },
+        apiGetNotification() {
+            return apiPrefix('/notification');
+        },
+        apiReadNotification(id: number) {
+            return apiPrefix('/notification/' + id);
+        },
         selfRegister() {
             return pathKeys.patient.root().concat('self-register');
         },

@@ -59,6 +59,10 @@ class MedicalRepository {
 
     }
 
+    fun getTestById(tId: Long): MedicalTest {
+        return MedicalTest[tId]
+    }
+
 //    fun userCheckTest(tId: Long): MedicalTest? {
 //        val test = MedicalTest[tId]
 //        test.status = MedicalTestStatus.done

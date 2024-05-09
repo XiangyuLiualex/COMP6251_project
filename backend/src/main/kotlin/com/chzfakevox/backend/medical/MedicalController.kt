@@ -118,13 +118,19 @@ class MedicalController {
             val model  = service.getUndoTestByUserId(payload.id)
             ok().body(model)
         }
-        PATCH("/test/notification/{id}"){
-            // check the notification
-            val tId = it.pathVariable("id").toLong()
-//            val model = service.userCheckTest(tId)
-            ok().body("")
+        GET("/notification"){
+            // get if any tests notification and unread
+            val payload = it.credential()?: unauthorized("User not found")
+            val model  = service.getNotification(payload.id)
+            ok().body(model)
         }
 
+        PATCH("/notification/{id}"){
+            // check the notification
+            val tId = it.pathVariable("id").toLong()
+            val model = service.readNotification(tId)
+            ok().body("")
+        }
 
 
     }

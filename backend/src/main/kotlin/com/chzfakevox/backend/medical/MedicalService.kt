@@ -1,6 +1,7 @@
 package com.chzfakevox.backend.medical
 
 import com.chzfakevox.backend.appointment.*
+import com.chzfakevox.backend.common.NotificationModel
 import com.chzfakevox.backend.user.GpModel
 import com.chzfakevox.backend.user.UserRepository
 import com.chzfakevox.backend.util.tx
@@ -13,7 +14,8 @@ class MedicalService (
     private val appointmentRepository: AppointmentRepository,
     private val userRepository: UserRepository,
     private val medicalHistoryRepository: MedicalHistoryRepository,
-    private val medicalRepository : MedicalRepository
+    private val medicalRepository : MedicalRepository,
+    private val notificationRepository: NotificationRepository
 ){
     private fun toAppointmentModel(appointment: Appointment, slot: Slot, gp:GP): AppointmentModel {
         return AppointmentModel(
@@ -153,6 +155,13 @@ class MedicalService (
     }
 
     fun updateTest(tId: Long, payload: MedicalTestUpdateModel): MedicalTestModel = tx {
+        if(payload.status == MedicalTestStatus.done){
+            val test=medicalRepository.getTestById(tId)?: unprocessable("Test not found")
+            notificationRepository.createNotification(
+                inMessage = "Your test ${test.name} has been done",
+                pid = test.patientId,
+            )
+        }
         MedicalTestModel.from(medicalRepository.updateTest(tId, payload))
     }
 
@@ -162,19 +171,18 @@ class MedicalService (
 
     fun getAppointmentsByPatientId(pId: Long): List<AppointmentModel> = tx {
         appointmentRepository.getByPatientId(pId).map {
-            val slot = repository.getSlotById(it.slotId.value)?: unprocessable("Slot not found")
-            val gp = userRepository.getGpextByUserId(it.gpId.value)?: unprocessable("GP not found")
-            toAppointmentModel(it,slot,gp)
+            val slot = repository.getSlotById(it.slotId.value) ?: unprocessable("Slot not found")
+            val gp = userRepository.getGpextByUserId(it.gpId.value) ?: unprocessable("GP not found")
+            toAppointmentModel(it, slot, gp)
         }
-//        appointmentRepository.getByPatientId(pId).let {
-//            val slot = repository.getSlotById(it.slotId.value)?: unprocessable("Slot not found")
-//            val gp = userRepository.getGpextByUserId(it.gpId.value)?: unprocessable("GP not found")
-//            toAppointmentModel(it,slot,gp)
-//        }
-
     }
 
-//    fun userCheckTest(tId: Long): MedicalTest =tx {
-//        medicalRepository.userCheckTest(tId)?: unprocessable("Test not found")
-//    }
+    fun getNotification(uid: Long): List<NotificationModel> =tx {
+        notificationRepository.getNotification(uid).map { NotificationModel.from(it) }
+    }
+
+    fun readNotification(tId: Long): NotificationModel =tx {
+        NotificationModel.from(notificationRepository.readNotification(tId))
+    }
+
 }
