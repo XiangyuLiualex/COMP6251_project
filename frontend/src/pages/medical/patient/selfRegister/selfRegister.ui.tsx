@@ -5,7 +5,7 @@ import FullFeaturedCrudGrid from "./form.tsx";
 export function SelfRegisterPage() {
     return (
         <>
-            <FullFeaturedCrudGrid role="patient" data={null} />
+            <FullFeaturedCrudGrid role="patient" data={null} id={undefined} />
         </>
     )
 }
