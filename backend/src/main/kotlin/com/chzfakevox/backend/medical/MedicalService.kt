@@ -178,7 +178,7 @@ class MedicalService (
     }
 
     fun getNotification(uid: Long): List<NotificationModel> =tx {
-        notificationRepository.getNotification(uid).map { NotificationModel.from(it) }
+        notificationRepository.getUnreadNotification(uid).map { NotificationModel.from(it) }
     }
 
     fun readNotification(tId: Long): NotificationModel =tx {
