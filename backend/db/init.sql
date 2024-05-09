@@ -67,16 +67,25 @@ create table slots(
                       created_at timestamp not null default now(),
                       updated_at timestamp not null default now()
 );
-insert into slots(gp_id, date, day_of_week, duration)values
-                                                         (1, '2024-05-08', 'Monday', '8:00-9:00'),
-                                                         (1, '2024-05-08', 'Monday', '9:00-10:00'),
-                                                         (1, '2024-05-08', 'Monday', '10:00-11:00'),
-                                                         (1, '2024-05-08', 'Monday', '11:00-12:00'),
-                                                         (1, '2024-05-09', 'Monday', '8:00-9:00'),
-                                                         (1, '2024-05-09', 'Monday', '9:00-10:00'),
-                                                         (1, '2024-05-09', 'Monday', '10:00-11:00'),
-                                                         (1, '2024-05-09', 'Monday', '11:00-12:00');
 
+CREATE OR REPLACE FUNCTION generate_slots(gp_id INTEGER, start_date DATE, end_date DATE)
+    RETURNS VOID AS $$
+DECLARE
+    currentDate DATE := start_date;
+    hour INTEGER;
+BEGIN
+    WHILE currentDate <= end_date LOOP
+            FOR hour IN 8..18 LOOP
+                    INSERT INTO slots(gp_id, date, day_of_week, duration)
+                    VALUES (gp_id, currentDate, trim(to_char(currentDate, 'Day')), hour::text || ':00-' || (hour + 1)::text || ':00');
+                END LOOP;
+            currentDate := currentDate + INTERVAL '1 day';
+        END LOOP;
+END;
+$$ LANGUAGE plpgsql;
+
+SELECT generate_slots(2, '2024-05-09', '2024-06-11');
+SELECT generate_slots(1, '2024-05-09', '2024-06-11');
 
 -- **********************************************************************************
 drop table if exists gp;
@@ -132,6 +141,16 @@ create table prescription(
                              medication_name varchar(255) not null,
                              medication_instruction varchar(255) not null,
                              quantity integer not null,
+                             created_at timestamp not null default now(),
+                             updated_at timestamp not null default now()
+);
+
+drop table if exists notification;
+create table notification(
+                             id serial not null ,
+                             user_id integer not null,
+                             message varchar(255) not null,
+                             status varchar(20) not null default 'unread',
                              created_at timestamp not null default now(),
                              updated_at timestamp not null default now()
 );

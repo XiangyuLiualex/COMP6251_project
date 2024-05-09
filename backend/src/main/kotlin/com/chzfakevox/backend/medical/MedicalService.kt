@@ -2,6 +2,7 @@ package com.chzfakevox.backend.medical
 
 import com.chzfakevox.backend.appointment.*
 import com.chzfakevox.backend.common.NotificationModel
+import com.chzfakevox.backend.common.NotificationRepository
 import com.chzfakevox.backend.user.GpModel
 import com.chzfakevox.backend.user.UserRepository
 import com.chzfakevox.backend.util.tx

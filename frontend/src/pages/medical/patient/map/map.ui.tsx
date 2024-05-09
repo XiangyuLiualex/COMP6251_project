@@ -1,6 +1,28 @@
 import { Height } from "@mui/icons-material";
+import { useQuery } from "@tanstack/react-query";
 import { APIProvider, AdvancedMarker, Map, Marker, Pin } from "@vis.gl/react-google-maps";
 import React from "react";
+import { apiPrefix } from "../../config/path";
+import { authorizationHeader } from "../../../../entities/session";
+
+type Position = {
+    latitude: number,
+    longitude: number
+}
+
+function useGetPharmacies(position: Position) {
+    return useQuery({
+        queryKey: ['pharmacies'],
+        queryFn: () => {
+            fetch(apiPrefix(`/pharmacies?latitude=${position.latitude}&longitude=${position.longitude}`), {
+                method: 'GET',
+                headers: {
+                    ...authorizationHeader()
+                },
+            }).then(res => res.json())
+        }
+    });
+}
 
 
 export function MapPage() {
@@ -10,7 +32,7 @@ export function MapPage() {
     const [position, setPosition] = React.useState({ latitude: 0, longitude: 0 });
 
     if ("geolocation" in navigator) {
-        navigator.geolocation.getCurrentPosition(function (position) {
+        navigator.geolocation.getCurrentPosition((position) => {
             setPosition({
                 latitude: position.coords.latitude,
                 longitude: position.coords.longitude,
@@ -19,6 +41,8 @@ export function MapPage() {
     } else {
         console.log("Geolocation is not available in your browser.");
     }
+    const data = useGetPharmacies(position)
+
     return (
         <React.Fragment >
             <APIProvider apiKey={API_KEY} libraries={['marker']} >
@@ -27,12 +51,12 @@ export function MapPage() {
                 }}>
                     <Map
                         mapId={'bf51a910020fa25a'}
-                        defaultZoom={5}
-                        defaultCenter={{ lat: position.longitude, lng: position.latitude }}
+                        defaultZoom={16}
+                        // defaultCenter={{ lat: 50.9342467, lng: -1.381829 }}
+                        center={{ lat: position.latitude, lng: position.longitude }}
                         gestureHandling={'greedy'}
                         disableDefaultUI
                     >
-                        simple marker
                         {/* < Marker
                             position={{ lat: 10, lng: 10 }}
                             clickable={true}
@@ -56,7 +80,6 @@ export function MapPage() {
                             title={'AdvancedMarker with customized pin.'}>
                             <Pin background={'#22ccff'} borderColor={'#1e89a1'} scale={1.4}>
                                 {/* children are rendered as 'glyph' of pin */}
-                        👀
                         {/* </Pin> */}
                         {/* </AdvancedMarker> */}
 
