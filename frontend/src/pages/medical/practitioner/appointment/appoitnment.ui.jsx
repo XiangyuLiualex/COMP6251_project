@@ -41,7 +41,7 @@ function AlternativeComponent({ appointment, onUpdateAppointment }) {
     if (formJson.gpName !== '') updateData.gpName = formJson.gpName;
     if (formJson.time !== '') updateData.time = formJson.time;
     const dataToSend = { ...appointment, ...updateData };
-    onUpdateAppointment(dataToSend.id, dataToSend.gpId, dataToSend.slotId, dataToSend.gpName, dataToSend.time, dataToSend.date, "Approved");
+    onUpdateAppointment(dataToSend.id, dataToSend.gpId, dataToSend.slotId, dataToSend.gpName, dataToSend.time, dataToSend.date, "beforeApprove");
   }
   return (
     <React.Fragment>

@@ -34,7 +34,13 @@ create table user_profile(
                              created_at timestamp not null default now(),
                              updated_at timestamp not null default now()
 );
-
+insert into user_profile(user_id, name,gender,phone,birth_date,profession,about_me) values
+                                                                                        (1, 'Dr. Emily Roberts','male','+44 1212 343478','1964-10-2', 'General Practitioner', 'Cardiology: Focuses on heart and cardiovascular diseases.'),
+                                                                                        (2, 'Dr. John Smith', 'male','+44 1234 343478','1988-08-09','General Practitioner',  'Neurology: Treats disorders of the nervous system, including the brain and spinal cord.'),
+                                                                                        (3, 'Dr. Susan Lee', 'male','+44 1252 343478','1990-12-21','General Practitioner',  'Orthopedics: Deals with the musculoskeletal system, including bones, joints, and muscles. Pediatrics: Specializes in medical care for infants, children, and adolescents.'),
+                                                                                        (4, 'Dr. Mark Johnson', 'male','+44 1282 343478','1978-12-02','General Practitioner', 'Oncology: Focuses on cancer diagnosis and treatment.'),
+                                                                                        (5, 'Dr. John Doe', 'male','+44 1219 343478','1977-03-05','General Practitioner',  'Gastroenterology: Treats disorders of the digestive system.'),
+                                                                                        (6, 'Dr. Mary Jane', 'male','+44 1211 343478','1989-06-09','General Practitioner',  'Psychiatry: Focuses on mental health and behavioral disorders.');
 
 drop table if exists self_reg;
 create table self_reg(

@@ -76,8 +76,8 @@ class MedicalService (
 
         // case A slot id not changed and status changed
         // update status only
-//        if(payload.slotId == appointment.slotId.value && payload.status!=null){
-        if( payload.status!=null){
+//        if( payload.status!=null){
+        if(payload.slotId == appointment.slotId.value && payload.status!=null){
             updateAppointmentStatus(aId,payload.status)
         }else if(payload.slotId!=null){
             updateAppointmentAll(aId,payload)
