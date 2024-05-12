@@ -10,8 +10,12 @@ create table user_account (
 );
 
 insert into user_account(email,password,role) values
-                                                  ('GP1@email.com','305c82f74c5299549bdf1eecbfdc1174fa3bb781a405ca46cd9d871a6077cdbd','GP'),
-                                                  ('GP2@email.com','c041a879a6ef1c83f7c5eeb09346fcfa32b529b4d10d9230cd1dcf3108f57714','GP'),
+                                                  ('GP1@email.com','0feae16d55365acf07fe9f909834361ba6ee606854746539230bdc84a6a24cee','GP'),
+                                                  ('GP2@email.com','0feae16d55365acf07fe9f909834361ba6ee606854746539230bdc84a6a24cee','GP'),
+                                                  ('GP3@email.com','0feae16d55365acf07fe9f909834361ba6ee606854746539230bdc84a6a24cee','GP'),
+                                                  ('GP4@email.com','0feae16d55365acf07fe9f909834361ba6ee606854746539230bdc84a6a24cee','GP'),
+                                                  ('GP5@email.com','0feae16d55365acf07fe9f909834361ba6ee606854746539230bdc84a6a24cee','GP'),
+                                                  ('GP6@email.com','0feae16d55365acf07fe9f909834361ba6ee606854746539230bdc84a6a24cee','GP'),
                                                   ('patient@email.com', '2295ff7a8bd8b3f2884c6482146e3ded0417f72072c079fbe223e13e83a0388e', 'PATIENT'),
                                                   ('patient2@email.com', '35dd16d588bd48e2d4410199fdae3b5ded6ea110823c5fb7614ba267506a12bc', 'PATIENT'),
                                                   ('admin@email.com', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918', 'ADMIN')
@@ -84,8 +88,12 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-SELECT generate_slots(2, '2024-05-09', '2024-06-11');
 SELECT generate_slots(1, '2024-05-09', '2024-06-11');
+SELECT generate_slots(2, '2024-05-09', '2024-06-11');
+SELECT generate_slots(3, '2024-05-09', '2024-06-11');
+SELECT generate_slots(4, '2024-05-09', '2024-06-11');
+SELECT generate_slots(5, '2024-05-09', '2024-06-11');
+SELECT generate_slots(6, '2024-05-09', '2024-06-11');
 
 -- **********************************************************************************
 drop table if exists gp;
@@ -100,9 +108,12 @@ create table gp(
                    updated_at timestamp not null default now()
 );
 insert into gp(user_id, name, treatments, years_in_practice, phone) values
-                                                                        (1, 'Dr. John Doe', 'General Practitioner', 5, '1234567890'),
-                                                                        (2, 'Dr. Mary Jane', 'General Practitioner', 10, '1234567890');
-
+                                                                        (1, 'Dr. Emily Roberts', 'General Practitioner', 5, '1234567890'),
+                                                                        (2, 'Dr. John Smith', 'General Practitioner', 6, '2345678901'),
+                                                                        (3, 'Dr. Susan Lee', 'General Practitioner', 6, '3456789012'),
+                                                                        (4, 'Dr. Mark Johnson', 'General Practitioner', 7, '4567890123'),
+                                                                        (5, 'Dr. John Doe', 'General Practitioner', 1, '5678901234'),
+                                                                        (6, 'Dr. Mary Jane', 'General Practitioner', 1, '7890123456');
 
 drop table if exists appointment;
 create table appointment(
