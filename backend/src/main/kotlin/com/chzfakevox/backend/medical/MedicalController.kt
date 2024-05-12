@@ -18,7 +18,8 @@ class MedicalController {
 
         GET("/slots"){
             // all slots get
-            val model = service.getThisMonthSlots()
+//            val model = service.getThisMonthSlots()
+            val model = service.getThisWeekSlots()
             ok().body(model)
         }
         GET("/gpss"){

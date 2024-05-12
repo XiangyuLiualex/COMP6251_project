@@ -21,7 +21,7 @@ fun ServerRequest.credential(): UserCredentials? {
     val token = token() ?: unauthorized("Token not found")
     val jwt = context().getBean<Jwt>()
     val mapper = jacksonObjectMapper()
-    var gson = Gson()
+    val gson = Gson()
 
     try {
         val str = jwt.decodeToken(token)

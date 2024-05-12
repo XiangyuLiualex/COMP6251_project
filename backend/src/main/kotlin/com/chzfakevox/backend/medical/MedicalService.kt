@@ -38,6 +38,10 @@ class MedicalService (
         repository.getSlots(SlotType.THIS_MONTH)?.map { SlotModel.fromModel(it) }
             ?: unprocessable("No slots found")
     }
+    fun getThisWeekSlots() : List<SlotModel> = tx{
+        repository.getSlots(SlotType.THIS_WEEK)?.map { SlotModel.fromModel(it) }
+            ?: unprocessable("No slots found")
+    }
     fun bookSlot(payload: SlotUpdateRequest, id: Long) : SlotModel = tx{
         val slot = repository.bookSlot(payload, id)
         SlotModel.fromModel(slot)

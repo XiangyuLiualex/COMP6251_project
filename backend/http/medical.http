@@ -27,7 +27,7 @@ Content-Type: application/json
 }
 ###
 # @name get appointment by gpID
-GET {{baseURL}}/appointment?gpId=3
+GET {{baseURL}}/appointment?patientId=3
 ###
 #  beforeApprove Accepted
 # @name update appointment, only status
