@@ -26,5 +26,9 @@ class AdminService (
         selfRegRepository.findUnapproved().map { SelfRegModel.fromModel(it) }
     }
 
+    fun rejectReg(pId: Long): Any =tx {
+        selfRegRepository.rejectItem(pId)
+    }
+
 
 }

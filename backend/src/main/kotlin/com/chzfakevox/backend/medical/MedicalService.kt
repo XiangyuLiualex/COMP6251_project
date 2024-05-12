@@ -79,8 +79,12 @@ class MedicalService (
 //        if( payload.status!=null){
         if(payload.slotId == appointment.slotId.value && payload.status!=null){
             updateAppointmentStatus(aId,payload.status)
-        }else if(payload.slotId!=null){
+        }else if(payload.slotId!=null && payload.slotId!=appointment.slotId.value){
             updateAppointmentAll(aId,payload)
+        }else if(payload.slotId==null && payload.status!=null){
+            //done
+            updateAppointmentStatus(aId,payload.status)
+
         }else{
             unprocessable("Invalid request")
         }

@@ -29,5 +29,10 @@ class SelfRegRepository {
         SelfReg.find { SelfRegTable.patientId eq id }.forEach { it.delete() }
     }
 
+    fun rejectItem(pId: Long) {
+        SelfReg.find { SelfRegTable.patientId eq pId }.forEach { it.status = SelfStatus.REJECTED }
+
+    }
+
 
 }

@@ -19,5 +19,10 @@ class AdminController {
             val model = service.getUnapprovedSelfReg()
             ok().body(model)
         }
+        POST("/admin/approve/reject/{id}"){
+            val pId = it.pathVariable("id").toLong()
+            val model = service.rejectReg(pId)
+            ok().body(model)
+        }
     }
 }
