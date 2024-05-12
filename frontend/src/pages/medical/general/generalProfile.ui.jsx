@@ -54,7 +54,7 @@ export function ViewProfile({ patientId, ifReadOnly }) {
             {"Basic information:"}
           </DialogTitle>
           <DialogContent sx={{ textAlign: 'center' }}>
-            <ViewPatientPage patientId={patientId} />
+            <ViewPatientPage patientId={patientId} ifReadOnly={ifReadOnly} />
             {/* <ProfileList profile={profile} onUpdateProfile={handleUpdateProfile} /> */}
           </DialogContent>
           <DialogActions sx={{ justifyContent: 'center' }}>

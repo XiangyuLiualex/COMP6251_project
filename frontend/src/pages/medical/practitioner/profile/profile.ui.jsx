@@ -57,7 +57,7 @@ export function GpProfilePage() {
     );
 }
 
-export function ViewPatientPage({ patientId }) {
+export function ViewPatientPage({ patientId, ifReadOnly }) {
 
     console.log("patientId:", patientId)
     const { data, isLoading, isError, refetch } = useProfileQuery(patientId);
@@ -65,7 +65,7 @@ export function ViewPatientPage({ patientId }) {
     return (
         <div>
             <h1>Profile</h1>
-            <ProfileList profile={data} onUpdateProfile={null} />
+            <ProfileList profile={data} onUpdateProfile={null} ifReadOnly={ifReadOnly} />
         </div>
     )
 }
